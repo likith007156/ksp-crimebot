@@ -7,11 +7,21 @@
       "district": "Bengaluru Urban",
       "station": "Koramangala PS",
       "date": "2025-01-15",
-      "accused": ["Raju Kumar", "Suresh M"],
+      "time_of_day": "Evening",
+      "accused": [
+        "Raju Kumar",
+        "Suresh M"
+      ],
       "victim": "Anita Sharma",
       "status": "Under Investigation",
       "modus_operandi": "Snatching mobile phone in crowded area",
-      "socio_economic": "Urban slum background"
+      "socio_economic": "Urban slum background",
+      "weapon_used": "None",
+      "economic_loss": 25000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR005"
+      ]
     },
     {
       "id": "CR002",
@@ -20,11 +30,21 @@
       "district": "Mysuru",
       "station": "Vijayanagar PS",
       "date": "2025-01-20",
-      "accused": ["Mahesh R"],
+      "time_of_day": "Night",
+      "accused": [
+        "Mahesh R"
+      ],
       "victim": "Ramesh Gowda",
       "status": "Arrested",
       "modus_operandi": "Armed robbery at shop",
-      "socio_economic": "Unemployed youth"
+      "socio_economic": "Unemployed youth",
+      "weapon_used": "Knife",
+      "economic_loss": 45000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR008",
+        "CR012"
+      ]
     },
     {
       "id": "CR003",
@@ -33,24 +53,39 @@
       "district": "Bengaluru Urban",
       "station": "Whitefield PS",
       "date": "2025-02-05",
-      "accused": ["Unknown"],
+      "time_of_day": "Afternoon",
+      "accused": [
+        "Unknown"
+      ],
       "victim": "Priya Nair",
       "status": "Under Investigation",
       "modus_operandi": "UPI fraud via fake customer care",
-      "socio_economic": "Middle class victim"
+      "socio_economic": "Middle class victim",
+      "weapon_used": "None",
+      "economic_loss": 18000,
+      "repeat_offender": false,
+      "prior_cases": []
     },
     {
       "id": "CR004",
       "type": "Assault",
       "location": "Hubballi, Gokul Road",
-      "district": "Dharwad",
+      "district": "Hubballi-Dharwad",
       "station": "Gokul Road PS",
       "date": "2025-02-10",
-      "accused": ["Vijay S", "Arun T"],
+      "time_of_day": "Evening",
+      "accused": [
+        "Vijay S",
+        "Arun T"
+      ],
       "victim": "Mohammed Irfan",
       "status": "Chargesheeted",
       "modus_operandi": "Gang assault over property dispute",
-      "socio_economic": "Land dispute related"
+      "socio_economic": "Land dispute related",
+      "weapon_used": "Iron rod",
+      "economic_loss": 5000,
+      "repeat_offender": false,
+      "prior_cases": []
     },
     {
       "id": "CR005",
@@ -59,11 +94,20 @@
       "district": "Bengaluru Urban",
       "station": "Indiranagar PS",
       "date": "2025-02-18",
-      "accused": ["Raju Kumar"],
+      "time_of_day": "Night",
+      "accused": [
+        "Raju Kumar"
+      ],
       "victim": "Deepak Rao",
       "status": "Arrested",
       "modus_operandi": "Vehicle theft from parking lot",
-      "socio_economic": "Repeat offender"
+      "socio_economic": "Repeat offender",
+      "weapon_used": "None",
+      "economic_loss": 85000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR001"
+      ]
     },
     {
       "id": "CR006",
@@ -72,11 +116,18 @@
       "district": "Dakshina Kannada",
       "station": "Hampankatta PS",
       "date": "2025-03-01",
-      "accused": ["Unknown"],
+      "time_of_day": "Morning",
+      "accused": [
+        "Unknown"
+      ],
       "victim": "Sunita Bhat",
       "status": "Under Investigation",
       "modus_operandi": "Online lottery fraud",
-      "socio_economic": "Elderly victim"
+      "socio_economic": "Elderly victim",
+      "weapon_used": "None",
+      "economic_loss": 32000,
+      "repeat_offender": false,
+      "prior_cases": []
     },
     {
       "id": "CR007",
@@ -85,11 +136,18 @@
       "district": "Kalaburagi",
       "station": "Aland Road PS",
       "date": "2025-03-15",
-      "accused": ["Basavaraj K"],
+      "time_of_day": "Night",
+      "accused": [
+        "Basavaraj K"
+      ],
       "victim": "Siddappa M",
       "status": "Arrested",
       "modus_operandi": "Stabbing over personal dispute",
-      "socio_economic": "Rural agricultural community"
+      "socio_economic": "Rural agricultural community",
+      "weapon_used": "Knife",
+      "economic_loss": 0,
+      "repeat_offender": false,
+      "prior_cases": []
     },
     {
       "id": "CR008",
@@ -98,11 +156,22 @@
       "district": "Bengaluru Urban",
       "station": "HSR Layout PS",
       "date": "2025-03-22",
-      "accused": ["Mahesh R", "Suresh M"],
+      "time_of_day": "Night",
+      "accused": [
+        "Mahesh R",
+        "Suresh M"
+      ],
       "victim": "Kavitha P",
       "status": "Under Investigation",
       "modus_operandi": "Chain snatching near ATM",
-      "socio_economic": "Organized gang activity"
+      "socio_economic": "Organized gang activity",
+      "weapon_used": "None",
+      "economic_loss": 55000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR002",
+        "CR012"
+      ]
     },
     {
       "id": "CR009",
@@ -111,11 +180,18 @@
       "district": "Belagavi",
       "station": "Tilakwadi PS",
       "date": "2025-04-05",
-      "accused": ["Santosh B"],
+      "time_of_day": "Night",
+      "accused": [
+        "Santosh B"
+      ],
       "victim": "Rajendra N",
       "status": "Chargesheeted",
       "modus_operandi": "House burglary during night",
-      "socio_economic": "Migrant worker background"
+      "socio_economic": "Migrant worker background",
+      "weapon_used": "None",
+      "economic_loss": 40000,
+      "repeat_offender": false,
+      "prior_cases": []
     },
     {
       "id": "CR010",
@@ -124,11 +200,18 @@
       "district": "Bengaluru Urban",
       "station": "Electronic City PS",
       "date": "2025-04-12",
-      "accused": ["Unknown"],
+      "time_of_day": "Morning",
+      "accused": [
+        "Unknown"
+      ],
       "victim": "TechCorp Pvt Ltd",
       "status": "Under Investigation",
       "modus_operandi": "Ransomware attack on company servers",
-      "socio_economic": "Corporate target"
+      "socio_economic": "Corporate target",
+      "weapon_used": "None",
+      "economic_loss": 500000,
+      "repeat_offender": false,
+      "prior_cases": []
     },
     {
       "id": "CR011",
@@ -137,11 +220,19 @@
       "district": "Tumakuru",
       "station": "SS Puram PS",
       "date": "2025-04-20",
-      "accused": ["Ravi G", "Kumar H"],
+      "time_of_day": "Evening",
+      "accused": [
+        "Ravi G",
+        "Kumar H"
+      ],
       "victim": "Lakshmi Devi",
       "status": "Arrested",
       "modus_operandi": "Domestic violence",
-      "socio_economic": "Low income household"
+      "socio_economic": "Low income household",
+      "weapon_used": "None",
+      "economic_loss": 2000,
+      "repeat_offender": false,
+      "prior_cases": []
     },
     {
       "id": "CR012",
@@ -150,17 +241,2035 @@
       "district": "Mysuru",
       "station": "Hebbal PS",
       "date": "2025-05-03",
-      "accused": ["Mahesh R"],
+      "time_of_day": "Night",
+      "accused": [
+        "Mahesh R"
+      ],
       "victim": "Prakash Shetty",
       "status": "Arrested",
       "modus_operandi": "Bike-borne robbery",
-      "socio_economic": "Repeat offender"
+      "socio_economic": "Repeat offender",
+      "weapon_used": "None",
+      "economic_loss": 30000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR002",
+        "CR008"
+      ]
+    },
+    {
+      "id": "CR013",
+      "type": "Drug Trafficking",
+      "location": "Mangaluru, Bunder",
+      "district": "Dakshina Kannada",
+      "station": "Bunder PS",
+      "date": "2024-06-10",
+      "time_of_day": "Night",
+      "accused": [
+        "Imran Khan",
+        "Saleem A"
+      ],
+      "victim": "State of Karnataka",
+      "status": "Arrested",
+      "modus_operandi": "Smuggling ganja via coastal route",
+      "socio_economic": "Organized drug network",
+      "weapon_used": "None",
+      "economic_loss": 200000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR014"
+      ]
+    },
+    {
+      "id": "CR014",
+      "type": "Drug Trafficking",
+      "location": "Mangaluru, Panambur",
+      "district": "Dakshina Kannada",
+      "station": "Panambur PS",
+      "date": "2024-04-18",
+      "time_of_day": "Night",
+      "accused": [
+        "Imran Khan"
+      ],
+      "victim": "State of Karnataka",
+      "status": "Chargesheeted",
+      "modus_operandi": "Distribution of MDMA tablets in city",
+      "socio_economic": "Port area network",
+      "weapon_used": "None",
+      "economic_loss": 150000,
+      "repeat_offender": true,
+      "prior_cases": []
+    },
+    {
+      "id": "CR015",
+      "type": "Kidnapping",
+      "location": "Belagavi, Angol",
+      "district": "Belagavi",
+      "station": "Angol PS",
+      "date": "2024-07-22",
+      "time_of_day": "Evening",
+      "accused": [
+        "Shivappa N",
+        "Mallesh D"
+      ],
+      "victim": "Rohan Patil (Minor)",
+      "status": "Convicted",
+      "modus_operandi": "Child kidnapping for ransom",
+      "socio_economic": "Ransom demand of Rs 5 lakhs",
+      "weapon_used": "None",
+      "economic_loss": 500000,
+      "repeat_offender": false,
+      "prior_cases": []
+    },
+    {
+      "id": "CR016",
+      "type": "Chain Snatching",
+      "location": "Bengaluru, Jayanagar",
+      "district": "Bengaluru Urban",
+      "station": "Jayanagar PS",
+      "date": "2024-08-05",
+      "time_of_day": "Morning",
+      "accused": [
+        "Raju Kumar",
+        "Nagaraj P"
+      ],
+      "victim": "Saraswathi Iyengar",
+      "status": "Arrested",
+      "modus_operandi": "Two-wheeler chain snatching near temple",
+      "socio_economic": "Elderly victim targeted",
+      "weapon_used": "None",
+      "economic_loss": 75000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR001",
+        "CR005"
+      ]
+    },
+    {
+      "id": "CR017",
+      "type": "Financial Fraud",
+      "location": "Bengaluru, MG Road",
+      "district": "Bengaluru Urban",
+      "station": "MG Road PS",
+      "date": "2024-08-20",
+      "time_of_day": "Afternoon",
+      "accused": [
+        "Vikram Shah",
+        "Anand Joshi"
+      ],
+      "victim": "Subrahmanya Rao",
+      "status": "Chargesheeted",
+      "modus_operandi": "Fake investment scheme promising high returns",
+      "socio_economic": "Middle class investor victim",
+      "weapon_used": "None",
+      "economic_loss": 800000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR018"
+      ]
+    },
+    {
+      "id": "CR018",
+      "type": "Financial Fraud",
+      "location": "Bengaluru, Cunningham Road",
+      "district": "Bengaluru Urban",
+      "station": "Sadashivanagar PS",
+      "date": "2024-06-15",
+      "time_of_day": "Afternoon",
+      "accused": [
+        "Vikram Shah"
+      ],
+      "victim": "Meenakshi Sundaram",
+      "status": "Arrested",
+      "modus_operandi": "Chit fund fraud collecting money and absconding",
+      "socio_economic": "Lower middle class victim",
+      "weapon_used": "None",
+      "economic_loss": 350000,
+      "repeat_offender": true,
+      "prior_cases": []
+    },
+    {
+      "id": "CR019",
+      "type": "Murder",
+      "location": "Raichur, Manvi",
+      "district": "Raichur",
+      "station": "Manvi PS",
+      "date": "2024-09-10",
+      "time_of_day": "Night",
+      "accused": [
+        "Hanumantha R",
+        "Bheema S"
+      ],
+      "victim": "Narasimha Reddy",
+      "status": "Arrested",
+      "modus_operandi": "Murder over land boundary dispute",
+      "socio_economic": "Agricultural land dispute",
+      "weapon_used": "Sharp object",
+      "economic_loss": 0,
+      "repeat_offender": false,
+      "prior_cases": []
+    },
+    {
+      "id": "CR020",
+      "type": "Assault",
+      "location": "Kalaburagi, Super Market Area",
+      "district": "Kalaburagi",
+      "station": "Super Market PS",
+      "date": "2024-09-25",
+      "time_of_day": "Evening",
+      "accused": [
+        "Basavaraj K",
+        "Shivanand M"
+      ],
+      "victim": "Venkatesh T",
+      "status": "Chargesheeted",
+      "modus_operandi": "Gang assault over caste dispute",
+      "socio_economic": "Caste conflict in semi-urban area",
+      "weapon_used": "Iron rod",
+      "economic_loss": 10000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR007"
+      ]
+    },
+    {
+      "id": "CR021",
+      "type": "Vehicle Theft",
+      "location": "Mysuru, Kuvempunagar",
+      "district": "Mysuru",
+      "station": "Kuvempunagar PS",
+      "date": "2024-10-08",
+      "time_of_day": "Night",
+      "accused": [
+        "Suresh M",
+        "Nagaraj P"
+      ],
+      "victim": "Girish Kumar",
+      "status": "Under Investigation",
+      "modus_operandi": "Car theft using duplicate key from apartment parking",
+      "socio_economic": "Organized vehicle theft ring",
+      "weapon_used": "None",
+      "economic_loss": 600000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR001",
+        "CR008"
+      ]
+    },
+    {
+      "id": "CR022",
+      "type": "Domestic Violence",
+      "location": "Shivamogga, Kuvempu Nagar",
+      "district": "Shivamogga",
+      "station": "Kuvempu Nagar PS",
+      "date": "2024-10-15",
+      "time_of_day": "Night",
+      "accused": [
+        "Ravi G"
+      ],
+      "victim": "Pushpa Ravi",
+      "status": "Arrested",
+      "modus_operandi": "Repeated physical assault by husband under alcohol influence",
+      "socio_economic": "Daily wage worker family",
+      "weapon_used": "None",
+      "economic_loss": 0,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR011"
+      ]
+    },
+    {
+      "id": "CR023",
+      "type": "Land Dispute",
+      "location": "Vijayapura, Sindagi",
+      "district": "Vijayapura",
+      "station": "Sindagi PS",
+      "date": "2024-11-02",
+      "time_of_day": "Morning",
+      "accused": [
+        "Basappa Y",
+        "Channappa Y"
+      ],
+      "victim": "Mallikarjun S",
+      "status": "Under Investigation",
+      "modus_operandi": "Encroachment of agricultural land using forged documents",
+      "socio_economic": "Rural land ownership conflict",
+      "weapon_used": "None",
+      "economic_loss": 1200000,
+      "repeat_offender": false,
+      "prior_cases": []
+    },
+    {
+      "id": "CR024",
+      "type": "Theft",
+      "location": "Ballari, Gandhinagar",
+      "district": "Ballari",
+      "station": "Gandhinagar PS",
+      "date": "2024-11-18",
+      "time_of_day": "Night",
+      "accused": [
+        "Santosh B",
+        "Ramanna K"
+      ],
+      "victim": "Lakshman Das",
+      "status": "Arrested",
+      "modus_operandi": "Burglary of jewellery shop using drilling method",
+      "socio_economic": "Professional burglars",
+      "weapon_used": "Drilling tool",
+      "economic_loss": 950000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR009"
+      ]
+    },
+    {
+      "id": "CR025",
+      "type": "Cybercrime",
+      "location": "Bengaluru, Marathahalli",
+      "district": "Bengaluru Urban",
+      "station": "Marathahalli PS",
+      "date": "2024-12-01",
+      "time_of_day": "Afternoon",
+      "accused": [
+        "Arjun Mehta",
+        "Unknown"
+      ],
+      "victim": "Savitha Krishnamurthy",
+      "status": "Under Investigation",
+      "modus_operandi": "SIM swap fraud to steal bank funds",
+      "socio_economic": "Educated urban victim",
+      "weapon_used": "None",
+      "economic_loss": 240000,
+      "repeat_offender": false,
+      "prior_cases": []
+    },
+    {
+      "id": "CR026",
+      "type": "Murder",
+      "location": "Raichur, Lingasugur",
+      "district": "Raichur",
+      "station": "Lingasugur PS",
+      "date": "2024-12-10",
+      "time_of_day": "Night",
+      "accused": [
+        "Mallappa R"
+      ],
+      "victim": "Rangappa S",
+      "status": "Arrested",
+      "modus_operandi": "Murder using country-made pistol over gambling debt",
+      "socio_economic": "Gambling addiction related",
+      "weapon_used": "Country-made pistol",
+      "economic_loss": 0,
+      "repeat_offender": false,
+      "prior_cases": []
+    },
+    {
+      "id": "CR027",
+      "type": "Kidnapping",
+      "location": "Vijayapura, Indi",
+      "district": "Vijayapura",
+      "station": "Indi PS",
+      "date": "2025-01-08",
+      "time_of_day": "Evening",
+      "accused": [
+        "Shivappa N",
+        "Raju Kumar"
+      ],
+      "victim": "Fatima Begum",
+      "status": "Under Investigation",
+      "modus_operandi": "Woman kidnapped for forced marriage",
+      "socio_economic": "Inter-community relationship conflict",
+      "weapon_used": "None",
+      "economic_loss": 0,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR015"
+      ]
+    },
+    {
+      "id": "CR028",
+      "type": "Chain Snatching",
+      "location": "Hubballi, Vidyanagar",
+      "district": "Hubballi-Dharwad",
+      "station": "Vidyanagar PS",
+      "date": "2025-01-25",
+      "time_of_day": "Morning",
+      "accused": [
+        "Nagaraj P",
+        "Suresh M"
+      ],
+      "victim": "Geeta Patil",
+      "status": "Arrested",
+      "modus_operandi": "Chain snatching while victim walked to market",
+      "socio_economic": "Morning commuter targeted",
+      "weapon_used": "None",
+      "economic_loss": 60000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR016",
+        "CR021"
+      ]
+    },
+    {
+      "id": "CR029",
+      "type": "Financial Fraud",
+      "location": "Mangaluru, Bejai",
+      "district": "Dakshina Kannada",
+      "station": "Bejai PS",
+      "date": "2025-02-12",
+      "time_of_day": "Afternoon",
+      "accused": [
+        "Anand Joshi"
+      ],
+      "victim": "Vinayak Kamath",
+      "status": "Under Investigation",
+      "modus_operandi": "Real estate fraud selling non-existent plots",
+      "socio_economic": "Middle class home buyer victim",
+      "weapon_used": "None",
+      "economic_loss": 1500000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR017"
+      ]
+    },
+    {
+      "id": "CR030",
+      "type": "Assault",
+      "location": "Tumakuru, B.H. Road",
+      "district": "Tumakuru",
+      "station": "BH Road PS",
+      "date": "2025-02-28",
+      "time_of_day": "Night",
+      "accused": [
+        "Kumar H",
+        "Manjunath L"
+      ],
+      "victim": "Srinivas B",
+      "status": "Chargesheeted",
+      "modus_operandi": "Assault using weapons over road rage incident",
+      "socio_economic": "Urban road rage",
+      "weapon_used": "Stick",
+      "economic_loss": 8000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR011"
+      ]
+    },
+    {
+      "id": "CR031",
+      "type": "Vehicle Theft",
+      "location": "Bengaluru, Rajajinagar",
+      "district": "Bengaluru Urban",
+      "station": "Rajajinagar PS",
+      "date": "2025-03-05",
+      "time_of_day": "Night",
+      "accused": [
+        "Nagaraj P"
+      ],
+      "victim": "Harish Kumar",
+      "status": "Under Investigation",
+      "modus_operandi": "Motorcycle stolen from roadside using master key",
+      "socio_economic": "Repeat vehicle thief",
+      "weapon_used": "None",
+      "economic_loss": 95000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR021",
+        "CR028"
+      ]
+    },
+    {
+      "id": "CR032",
+      "type": "Drug Trafficking",
+      "location": "Hubballi, Old Town",
+      "district": "Hubballi-Dharwad",
+      "station": "Old Town PS",
+      "date": "2025-03-18",
+      "time_of_day": "Night",
+      "accused": [
+        "Saleem A",
+        "Arif B"
+      ],
+      "victim": "State of Karnataka",
+      "status": "Arrested",
+      "modus_operandi": "Distribution of heroin packets near bus stand",
+      "socio_economic": "Youth drug network",
+      "weapon_used": "None",
+      "economic_loss": 300000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR013"
+      ]
+    },
+    {
+      "id": "CR033",
+      "type": "Theft",
+      "location": "Bengaluru Rural, Devanahalli",
+      "district": "Bengaluru Rural",
+      "station": "Devanahalli PS",
+      "date": "2025-03-28",
+      "time_of_day": "Night",
+      "accused": [
+        "Ramanna K",
+        "Shiva T"
+      ],
+      "victim": "Nanjundappa G",
+      "status": "Arrested",
+      "modus_operandi": "Copper wire theft from irrigation pump",
+      "socio_economic": "Rural agricultural theft",
+      "weapon_used": "Cutting tool",
+      "economic_loss": 35000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR024"
+      ]
+    },
+    {
+      "id": "CR034",
+      "type": "Domestic Violence",
+      "location": "Ballari, Civil Station Area",
+      "district": "Ballari",
+      "station": "Civil Station PS",
+      "date": "2025-04-02",
+      "time_of_day": "Night",
+      "accused": [
+        "Mariyappa S"
+      ],
+      "victim": "Geetha M",
+      "status": "Arrested",
+      "modus_operandi": "Dowry harassment and physical assault",
+      "socio_economic": "Dowry dispute in lower income family",
+      "weapon_used": "None",
+      "economic_loss": 0,
+      "repeat_offender": false,
+      "prior_cases": []
+    },
+    {
+      "id": "CR035",
+      "type": "Robbery",
+      "location": "Shivamogga, Sagar Road",
+      "district": "Shivamogga",
+      "station": "Sagar Road PS",
+      "date": "2025-04-15",
+      "time_of_day": "Night",
+      "accused": [
+        "Arun T",
+        "Vijay S"
+      ],
+      "victim": "Nagabhushan T",
+      "status": "Under Investigation",
+      "modus_operandi": "Highway robbery targeting truck drivers",
+      "socio_economic": "Transporter targeted",
+      "weapon_used": "Knife",
+      "economic_loss": 120000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR004"
+      ]
+    },
+    {
+      "id": "CR036",
+      "type": "Cybercrime",
+      "location": "Bengaluru, Koramangala",
+      "district": "Bengaluru Urban",
+      "station": "Koramangala PS",
+      "date": "2025-04-28",
+      "time_of_day": "Afternoon",
+      "accused": [
+        "Arjun Mehta"
+      ],
+      "victim": "E-Commerce Pvt Ltd",
+      "status": "Chargesheeted",
+      "modus_operandi": "Return fraud using multiple fake accounts",
+      "socio_economic": "Organized e-commerce fraud",
+      "weapon_used": "None",
+      "economic_loss": 180000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR025"
+      ]
+    },
+    {
+      "id": "CR037",
+      "type": "Murder",
+      "location": "Kalaburagi, Sedam",
+      "district": "Kalaburagi",
+      "station": "Sedam PS",
+      "date": "2024-07-14",
+      "time_of_day": "Night",
+      "accused": [
+        "Shivanand M"
+      ],
+      "victim": "Parasappa K",
+      "status": "Convicted",
+      "modus_operandi": "Planned murder using poison over property inheritance",
+      "socio_economic": "Family property dispute",
+      "weapon_used": "Poison",
+      "economic_loss": 0,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR020"
+      ]
+    },
+    {
+      "id": "CR038",
+      "type": "Land Dispute",
+      "location": "Bengaluru Rural, Hosakote",
+      "district": "Bengaluru Rural",
+      "station": "Hosakote PS",
+      "date": "2024-08-30",
+      "time_of_day": "Morning",
+      "accused": [
+        "Muniswamy L",
+        "Krishnappa B"
+      ],
+      "victim": "Venkataramaiah S",
+      "status": "Under Investigation",
+      "modus_operandi": "Illegal land grabbing near highway expansion zone",
+      "socio_economic": "Real estate speculation near new highway",
+      "weapon_used": "None",
+      "economic_loss": 3000000,
+      "repeat_offender": false,
+      "prior_cases": []
+    },
+    {
+      "id": "CR039",
+      "type": "Theft",
+      "location": "Vijayapura, Station Road",
+      "district": "Vijayapura",
+      "station": "Station Road PS",
+      "date": "2024-09-12",
+      "time_of_day": "Night",
+      "accused": [
+        "Mallesh D"
+      ],
+      "victim": "Sangamesh P",
+      "status": "Chargesheeted",
+      "modus_operandi": "Mobile and cash theft from auto-rickshaw passengers",
+      "socio_economic": "Auto driver as accused",
+      "weapon_used": "None",
+      "economic_loss": 22000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR015"
+      ]
+    },
+    {
+      "id": "CR040",
+      "type": "Chain Snatching",
+      "location": "Mysuru, Hebbal Ring Road",
+      "district": "Mysuru",
+      "station": "Hebbal PS",
+      "date": "2024-10-20",
+      "time_of_day": "Evening",
+      "accused": [
+        "Suresh M",
+        "Nagaraj P"
+      ],
+      "victim": "Nalini Rao",
+      "status": "Arrested",
+      "modus_operandi": "Drive-by chain snatching near school",
+      "socio_economic": "Parent of student targeted",
+      "weapon_used": "None",
+      "economic_loss": 90000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR008",
+        "CR021",
+        "CR028"
+      ]
+    },
+    {
+      "id": "CR041",
+      "type": "Drug Trafficking",
+      "location": "Bengaluru, Shivajinagar",
+      "district": "Bengaluru Urban",
+      "station": "Shivajinagar PS",
+      "date": "2024-11-05",
+      "time_of_day": "Night",
+      "accused": [
+        "Imran Khan",
+        "Arif B"
+      ],
+      "victim": "State of Karnataka",
+      "status": "Arrested",
+      "modus_operandi": "Cannabis peddling near college campus",
+      "socio_economic": "Youth targeted near educational institutions",
+      "weapon_used": "None",
+      "economic_loss": 180000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR013",
+        "CR014"
+      ]
+    },
+    {
+      "id": "CR042",
+      "type": "Assault",
+      "location": "Ballari, Mundargi Road",
+      "district": "Ballari",
+      "station": "Mundargi Road PS",
+      "date": "2024-11-22",
+      "time_of_day": "Evening",
+      "accused": [
+        "Hanumantha R"
+      ],
+      "victim": "Basappa M",
+      "status": "Arrested",
+      "modus_operandi": "Assault with sharp weapon over water rights dispute",
+      "socio_economic": "Irrigation water dispute",
+      "weapon_used": "Sickle",
+      "economic_loss": 5000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR019"
+      ]
+    },
+    {
+      "id": "CR043",
+      "type": "Financial Fraud",
+      "location": "Bengaluru, Jayanagar",
+      "district": "Bengaluru Urban",
+      "station": "Jayanagar PS",
+      "date": "2024-12-08",
+      "time_of_day": "Afternoon",
+      "accused": [
+        "Vikram Shah",
+        "Anand Joshi"
+      ],
+      "victim": "Retired Teachers Association",
+      "status": "Chargesheeted",
+      "modus_operandi": "Pension fund embezzlement through fake invoices",
+      "socio_economic": "Retired government employees victimized",
+      "weapon_used": "None",
+      "economic_loss": 2500000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR017",
+        "CR018"
+      ]
+    },
+    {
+      "id": "CR044",
+      "type": "Kidnapping",
+      "location": "Raichur, Sindhanur",
+      "district": "Raichur",
+      "station": "Sindhanur PS",
+      "date": "2025-01-12",
+      "time_of_day": "Evening",
+      "accused": [
+        "Bheema S",
+        "Mallappa R"
+      ],
+      "victim": "Krishnaiah T (Minor)",
+      "status": "Under Investigation",
+      "modus_operandi": "Child lured with promise of mobile phone",
+      "socio_economic": "Targeting children from poor families",
+      "weapon_used": "None",
+      "economic_loss": 300000,
+      "repeat_offender": false,
+      "prior_cases": []
+    },
+    {
+      "id": "CR045",
+      "type": "Vehicle Theft",
+      "location": "Belagavi, Belgaum Camp",
+      "district": "Belagavi",
+      "station": "Camp PS",
+      "date": "2025-01-30",
+      "time_of_day": "Night",
+      "accused": [
+        "Ramanna K",
+        "Nagaraj P"
+      ],
+      "victim": "Sunil Desai",
+      "status": "Arrested",
+      "modus_operandi": "Truck hijacking on outskirts of city",
+      "socio_economic": "Interstate cargo theft ring",
+      "weapon_used": "Country-made pistol",
+      "economic_loss": 850000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR024",
+        "CR033"
+      ]
+    },
+    {
+      "id": "CR046",
+      "type": "Theft",
+      "location": "Tumakuru, Tiptur",
+      "district": "Tumakuru",
+      "station": "Tiptur PS",
+      "date": "2025-02-20",
+      "time_of_day": "Night",
+      "accused": [
+        "Shiva T"
+      ],
+      "victim": "Chandrashekar R",
+      "status": "Under Investigation",
+      "modus_operandi": "Coconut plantation theft using vehicle at night",
+      "socio_economic": "Agricultural produce theft",
+      "weapon_used": "None",
+      "economic_loss": 28000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR033"
+      ]
+    },
+    {
+      "id": "CR047",
+      "type": "Domestic Violence",
+      "location": "Kalaburagi, Gulbarga Layout",
+      "district": "Kalaburagi",
+      "station": "Gulbarga Layout PS",
+      "date": "2025-03-10",
+      "time_of_day": "Night",
+      "accused": [
+        "Ningappa S"
+      ],
+      "victim": "Bhagamma N",
+      "status": "Arrested",
+      "modus_operandi": "Physical assault and harassment for dowry",
+      "socio_economic": "First generation educated family conflict",
+      "weapon_used": "None",
+      "economic_loss": 0,
+      "repeat_offender": false,
+      "prior_cases": []
+    },
+    {
+      "id": "CR048",
+      "type": "Robbery",
+      "location": "Bengaluru, Yeshwanthpur",
+      "district": "Bengaluru Urban",
+      "station": "Yeshwanthpur PS",
+      "date": "2025-03-25",
+      "time_of_day": "Night",
+      "accused": [
+        "Mahesh R",
+        "Arun T"
+      ],
+      "victim": "Sunil Hegde",
+      "status": "Under Investigation",
+      "modus_operandi": "Robbery of cash courier vehicle",
+      "socio_economic": "Planned organized crime",
+      "weapon_used": "Gun",
+      "economic_loss": 2000000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR002",
+        "CR008",
+        "CR012"
+      ]
+    },
+    {
+      "id": "CR049",
+      "type": "Cybercrime",
+      "location": "Mysuru, Hebbal Industrial Area",
+      "district": "Mysuru",
+      "station": "Industrial Area PS",
+      "date": "2025-04-08",
+      "time_of_day": "Afternoon",
+      "accused": [
+        "Arjun Mehta"
+      ],
+      "victim": "Mysuru Silk Factory",
+      "status": "Under Investigation",
+      "modus_operandi": "Data theft and sale of trade secrets to competitor",
+      "socio_economic": "Corporate espionage",
+      "weapon_used": "None",
+      "economic_loss": 5000000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR025",
+        "CR036"
+      ]
+    },
+    {
+      "id": "CR050",
+      "type": "Murder",
+      "location": "Shivamogga, Thirthahalli",
+      "district": "Shivamogga",
+      "station": "Thirthahalli PS",
+      "date": "2025-04-22",
+      "time_of_day": "Night",
+      "accused": [
+        "Manjunath L"
+      ],
+      "victim": "Parameshwar G",
+      "status": "Arrested",
+      "modus_operandi": "Murder following alleged witchcraft accusation",
+      "socio_economic": "Superstition-driven rural crime",
+      "weapon_used": "Axe",
+      "economic_loss": 0,
+      "repeat_offender": false,
+      "prior_cases": []
+    },
+    {
+      "id": "CR051",
+      "type": "Land Dispute",
+      "location": "Raichur, Devadurga",
+      "district": "Raichur",
+      "station": "Devadurga PS",
+      "date": "2024-07-30",
+      "time_of_day": "Morning",
+      "accused": [
+        "Durugappa N",
+        "Venkatappa R"
+      ],
+      "victim": "Narasappa G",
+      "status": "Under Investigation",
+      "modus_operandi": "Encroachment of SC/ST land using fake documents",
+      "socio_economic": "SC/ST land rights violation",
+      "weapon_used": "None",
+      "economic_loss": 800000,
+      "repeat_offender": false,
+      "prior_cases": []
+    },
+    {
+      "id": "CR052",
+      "type": "Chain Snatching",
+      "location": "Bengaluru, Banashankari",
+      "district": "Bengaluru Urban",
+      "station": "Banashankari PS",
+      "date": "2025-05-05",
+      "time_of_day": "Morning",
+      "accused": [
+        "Raju Kumar",
+        "Suresh M"
+      ],
+      "victim": "Mangalamma D",
+      "status": "Arrested",
+      "modus_operandi": "Morning walk chain snatching near park",
+      "socio_economic": "Senior citizen victim",
+      "weapon_used": "None",
+      "economic_loss": 110000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR001",
+        "CR005",
+        "CR016"
+      ]
+    },
+    {
+      "id": "CR053",
+      "type": "Drug Trafficking",
+      "location": "Belagavi, Khanapur",
+      "district": "Belagavi",
+      "station": "Khanapur PS",
+      "date": "2025-05-12",
+      "time_of_day": "Night",
+      "accused": [
+        "Saleem A",
+        "Imran Khan"
+      ],
+      "victim": "State of Karnataka",
+      "status": "Under Investigation",
+      "modus_operandi": "Cross-border drug smuggling from Goa border",
+      "socio_economic": "Goa-Karnataka border smuggling route",
+      "weapon_used": "None",
+      "economic_loss": 450000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR013",
+        "CR032",
+        "CR041"
+      ]
+    },
+    {
+      "id": "CR054",
+      "type": "Financial Fraud",
+      "location": "Bengaluru Urban, Yeshwanthpur",
+      "district": "Bengaluru Urban",
+      "station": "Yeshwanthpur PS",
+      "date": "2024-08-09",
+      "time_of_day": "Afternoon",
+      "accused": [
+        "Arun T",
+        "Raju Kumar"
+      ],
+      "victim": "Sunil Hegde",
+      "status": "Arrested",
+      "modus_operandi": "Ponzi scheme targeting senior citizens",
+      "socio_economic": "Retired government employees victimized",
+      "weapon_used": "None",
+      "economic_loss": 447000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR004",
+        "CR035"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics"
+    },
+    {
+      "id": "CR055",
+      "type": "Cybercrime",
+      "location": "Bengaluru Urban, HSR Layout",
+      "district": "Bengaluru Urban",
+      "station": "HSR Layout PS",
+      "date": "2024-05-21",
+      "time_of_day": "Evening",
+      "accused": [
+        "Suresh M"
+      ],
+      "victim": "Chandru Naik",
+      "status": "Under Investigation",
+      "modus_operandi": "Ransomware attack on company servers",
+      "socio_economic": "Middle class urban professional victim",
+      "weapon_used": "None",
+      "economic_loss": 467000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR001",
+        "CR008"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics"
+    },
+    {
+      "id": "CR056",
+      "type": "Cybercrime",
+      "location": "Bengaluru Urban, Banaswadi",
+      "district": "Bengaluru Urban",
+      "station": "Banaswadi PS",
+      "date": "2025-02-26",
+      "time_of_day": "Afternoon",
+      "accused": [
+        "Imran Khan"
+      ],
+      "victim": "Meenakshi Sundaram",
+      "status": "Convicted",
+      "modus_operandi": "Online lottery fraud targeting elderly",
+      "socio_economic": "Middle class urban professional victim",
+      "weapon_used": "None",
+      "economic_loss": 399000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR013",
+        "CR014"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics"
+    },
+    {
+      "id": "CR057",
+      "type": "Drug Trafficking",
+      "location": "Mysuru, Kuvempunagar",
+      "district": "Mysuru",
+      "station": "Kuvempunagar PS",
+      "date": "2024-04-04",
+      "time_of_day": "Evening",
+      "accused": [
+        "Anand Joshi"
+      ],
+      "victim": "Girish Kumar",
+      "status": "Arrested",
+      "modus_operandi": "Heroin packets near bus stand",
+      "socio_economic": "Port area network",
+      "weapon_used": "None",
+      "economic_loss": 404000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR017",
+        "CR029"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Mysuru District Crime Statistics"
+    },
+    {
+      "id": "CR058",
+      "type": "Robbery",
+      "location": "Mysuru, Vijayanagar",
+      "district": "Mysuru",
+      "station": "Vijayanagar PS",
+      "date": "2024-09-17",
+      "time_of_day": "Night",
+      "accused": [
+        "Prasad V"
+      ],
+      "victim": "Prakash Shetty",
+      "status": "Arrested",
+      "modus_operandi": "Highway robbery targeting truck drivers",
+      "socio_economic": "Unemployed youth",
+      "weapon_used": "Knife",
+      "economic_loss": 1752000,
+      "repeat_offender": false,
+      "prior_cases": [],
+      "ncrb_reference": "NCRB 2022 Karnataka - Mysuru District Crime Statistics"
+    },
+    {
+      "id": "CR059",
+      "type": "Cybercrime",
+      "location": "Dakshina Kannada, Panambur",
+      "district": "Dakshina Kannada",
+      "station": "Panambur PS",
+      "date": "2024-11-08",
+      "time_of_day": "Evening",
+      "accused": [
+        "Imran Khan"
+      ],
+      "victim": "Vinayak Kamath",
+      "status": "Arrested",
+      "modus_operandi": "Social media account hacking for extortion",
+      "socio_economic": "Elderly victim with limited digital literacy",
+      "weapon_used": "None",
+      "economic_loss": 64000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR013",
+        "CR014"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Dakshina Kannada District Crime Statistics"
+    },
+    {
+      "id": "CR060",
+      "type": "Drug Trafficking",
+      "location": "Dakshina Kannada, Bejai",
+      "district": "Dakshina Kannada",
+      "station": "Bejai PS",
+      "date": "2024-06-26",
+      "time_of_day": "Night",
+      "accused": [
+        "Arjun Mehta",
+        "Anand Joshi"
+      ],
+      "victim": "Sunita Bhat",
+      "status": "Under Investigation",
+      "modus_operandi": "Cross-border drug smuggling from Goa border",
+      "socio_economic": "Port area network",
+      "weapon_used": "None",
+      "economic_loss": 162000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR025",
+        "CR036"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Dakshina Kannada District Crime Statistics"
+    },
+    {
+      "id": "CR061",
+      "type": "Land Dispute",
+      "location": "Hubballi, Gokul Road",
+      "district": "Hubballi-Dharwad",
+      "station": "Gokul Road PS",
+      "date": "2025-03-25",
+      "time_of_day": "Night",
+      "accused": [
+        "Arif B"
+      ],
+      "victim": "Geeta Patil",
+      "status": "Under Investigation",
+      "modus_operandi": "SC/ST land rights violation",
+      "socio_economic": "Rural land ownership conflict",
+      "weapon_used": "None",
+      "economic_loss": 4143000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR032",
+        "CR041"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Hubballi-Dharwad District Crime Statistics"
+    },
+    {
+      "id": "CR062",
+      "type": "Chain Snatching",
+      "location": "Hubballi, Gokul Road",
+      "district": "Hubballi-Dharwad",
+      "station": "Gokul Road PS",
+      "date": "2024-11-28",
+      "time_of_day": "Morning",
+      "accused": [
+        "Arif B",
+        "Saleem A"
+      ],
+      "victim": "Geeta Patil",
+      "status": "Under Investigation",
+      "modus_operandi": "Chain snatching targeting elderly women",
+      "socio_economic": "Senior citizen victim",
+      "weapon_used": "None",
+      "economic_loss": 109000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR032",
+        "CR041"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Hubballi-Dharwad District Crime Statistics"
+    },
+    {
+      "id": "CR063",
+      "type": "Kidnapping",
+      "location": "Belagavi, Khanapur",
+      "district": "Belagavi",
+      "station": "Khanapur PS",
+      "date": "2024-11-04",
+      "time_of_day": "Afternoon",
+      "accused": [
+        "Arjun Mehta",
+        "Shivappa N"
+      ],
+      "victim": "Rajendra N",
+      "status": "Under Investigation",
+      "modus_operandi": "Kidnapping for organ trafficking",
+      "socio_economic": "Ransom demand from affluent family",
+      "weapon_used": "None",
+      "economic_loss": 302000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR025",
+        "CR036"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Belagavi District Crime Statistics"
+    },
+    {
+      "id": "CR064",
+      "type": "Land Dispute",
+      "location": "Belagavi, Khanapur",
+      "district": "Belagavi",
+      "station": "Khanapur PS",
+      "date": "2025-07-15",
+      "time_of_day": "Afternoon",
+      "accused": [
+        "Nagaraj P",
+        "Mallesh D"
+      ],
+      "victim": "Sunil Desai",
+      "status": "Chargesheeted",
+      "modus_operandi": "Boundary dispute leading to assault",
+      "socio_economic": "Real estate speculation near new highway",
+      "weapon_used": "Stick",
+      "economic_loss": 783000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR016",
+        "CR021"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Belagavi District Crime Statistics"
+    },
+    {
+      "id": "CR065",
+      "type": "Domestic Violence",
+      "location": "Kalaburagi, Aland Road",
+      "district": "Kalaburagi",
+      "station": "Aland Road PS",
+      "date": "2024-05-21",
+      "time_of_day": "Night",
+      "accused": [
+        "Kumar H",
+        "Veerappa R"
+      ],
+      "victim": "Venkatesh T",
+      "status": "Chargesheeted",
+      "modus_operandi": "Marital dispute leading to severe injury",
+      "socio_economic": "Dowry dispute in lower income family",
+      "weapon_used": "Stick",
+      "economic_loss": 0,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR011",
+        "CR030"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Kalaburagi District Crime Statistics"
+    },
+    {
+      "id": "CR066",
+      "type": "Theft",
+      "location": "Kalaburagi, Super Market",
+      "district": "Kalaburagi",
+      "station": "Super Market PS",
+      "date": "2024-08-16",
+      "time_of_day": "Night",
+      "accused": [
+        "Ramanna K"
+      ],
+      "victim": "Bhagamma N",
+      "status": "Arrested",
+      "modus_operandi": "Copper wire theft from irrigation pump",
+      "socio_economic": "Urban slum background accused",
+      "weapon_used": "None",
+      "economic_loss": 126000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR024",
+        "CR033"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Kalaburagi District Crime Statistics"
+    },
+    {
+      "id": "CR067",
+      "type": "Theft",
+      "location": "Tumakuru, SS Puram",
+      "district": "Tumakuru",
+      "station": "SS Puram PS",
+      "date": "2025-10-03",
+      "time_of_day": "Night",
+      "accused": [
+        "Shivappa N",
+        "Shiva T"
+      ],
+      "victim": "Lakshmi Devi",
+      "status": "Arrested",
+      "modus_operandi": "Office equipment theft after hours",
+      "socio_economic": "Urban slum background accused",
+      "weapon_used": "None",
+      "economic_loss": 9000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR015",
+        "CR027"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Tumakuru District Crime Statistics"
+    },
+    {
+      "id": "CR068",
+      "type": "Theft",
+      "location": "Tumakuru, BH Road",
+      "district": "Tumakuru",
+      "station": "BH Road PS",
+      "date": "2024-11-18",
+      "time_of_day": "Night",
+      "accused": [
+        "Kumar H",
+        "Shiva T"
+      ],
+      "victim": "Pushpavathi N",
+      "status": "Arrested",
+      "modus_operandi": "Mobile phone snatching in crowded area",
+      "socio_economic": "Migrant worker background",
+      "weapon_used": "None",
+      "economic_loss": 20000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR011",
+        "CR030"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Tumakuru District Crime Statistics"
+    },
+    {
+      "id": "CR069",
+      "type": "Murder",
+      "location": "Shivamogga, Kuvempu Nagar",
+      "district": "Shivamogga",
+      "station": "Kuvempu Nagar PS",
+      "date": "2024-04-18",
+      "time_of_day": "Night",
+      "accused": [
+        "Prakash N"
+      ],
+      "victim": "Nagabhushan T",
+      "status": "Under Investigation",
+      "modus_operandi": "Contract killing over business rivalry",
+      "socio_economic": "Superstition-driven rural crime",
+      "weapon_used": "Sharp object",
+      "economic_loss": 0,
+      "repeat_offender": false,
+      "prior_cases": [],
+      "ncrb_reference": "NCRB 2022 Karnataka - Shivamogga District Crime Statistics"
+    },
+    {
+      "id": "CR070",
+      "type": "Robbery",
+      "location": "Shivamogga, Sagar Road",
+      "district": "Shivamogga",
+      "station": "Sagar Road PS",
+      "date": "2024-06-18",
+      "time_of_day": "Night",
+      "accused": [
+        "Prakash N"
+      ],
+      "victim": "Nagabhushan T",
+      "status": "Arrested",
+      "modus_operandi": "Armed robbery at shop using knife",
+      "socio_economic": "Inter-state criminal gang",
+      "weapon_used": "Gun",
+      "economic_loss": 482000,
+      "repeat_offender": false,
+      "prior_cases": [],
+      "ncrb_reference": "NCRB 2022 Karnataka - Shivamogga District Crime Statistics"
+    },
+    {
+      "id": "CR071",
+      "type": "Assault",
+      "location": "Vijayapura, Vijayapura Rural",
+      "district": "Vijayapura",
+      "station": "Vijayapura Rural PS",
+      "date": "2024-09-11",
+      "time_of_day": "Evening",
+      "accused": [
+        "Bheemappa S"
+      ],
+      "victim": "Rudrappa N",
+      "status": "Under Investigation",
+      "modus_operandi": "Stabbing in bar fight",
+      "socio_economic": "Land dispute related violence",
+      "weapon_used": "None",
+      "economic_loss": 4000,
+      "repeat_offender": false,
+      "prior_cases": [],
+      "ncrb_reference": "NCRB 2022 Karnataka - Vijayapura District Crime Statistics"
+    },
+    {
+      "id": "CR072",
+      "type": "Theft",
+      "location": "Ballari, Civil Station",
+      "district": "Ballari",
+      "station": "Civil Station PS",
+      "date": "2024-12-01",
+      "time_of_day": "Night",
+      "accused": [
+        "Hanumantha R",
+        "Venkatesha B"
+      ],
+      "victim": "Veeresh K",
+      "status": "Chargesheeted",
+      "modus_operandi": "Agricultural produce theft at night",
+      "socio_economic": "Repeat offender from low income area",
+      "weapon_used": "None",
+      "economic_loss": 87000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR019",
+        "CR042"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Ballari District Crime Statistics"
+    },
+    {
+      "id": "CR073",
+      "type": "Assault",
+      "location": "Ballari, Civil Station",
+      "district": "Ballari",
+      "station": "Civil Station PS",
+      "date": "2024-05-02",
+      "time_of_day": "Evening",
+      "accused": [
+        "Arif B",
+        "Santosh B"
+      ],
+      "victim": "Lakshman Das",
+      "status": "Arrested",
+      "modus_operandi": "Group assault over cricket betting dispute",
+      "socio_economic": "Land dispute related violence",
+      "weapon_used": "Knife",
+      "economic_loss": 8000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR032",
+        "CR041"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Ballari District Crime Statistics"
+    },
+    {
+      "id": "CR074",
+      "type": "Land Dispute",
+      "location": "Raichur, Manvi",
+      "district": "Raichur",
+      "station": "Manvi PS",
+      "date": "2024-01-01",
+      "time_of_day": "Afternoon",
+      "accused": [
+        "Mallappa R"
+      ],
+      "victim": "Narasimha Reddy",
+      "status": "Chargesheeted",
+      "modus_operandi": "SC/ST land rights violation",
+      "socio_economic": "Real estate speculation near new highway",
+      "weapon_used": "None",
+      "economic_loss": 3276000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR026",
+        "CR044"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Raichur District Crime Statistics"
+    },
+    {
+      "id": "CR075",
+      "type": "Theft",
+      "location": "Raichur, Manvi",
+      "district": "Raichur",
+      "station": "Manvi PS",
+      "date": "2025-12-28",
+      "time_of_day": "Night",
+      "accused": [
+        "Hanumantha R"
+      ],
+      "victim": "Basappa L",
+      "status": "Under Investigation",
+      "modus_operandi": "House burglary during daytime absence",
+      "socio_economic": "Migrant worker background",
+      "weapon_used": "None",
+      "economic_loss": 76000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR019",
+        "CR042"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Raichur District Crime Statistics"
+    },
+    {
+      "id": "CR076",
+      "type": "Land Dispute",
+      "location": "Bengaluru Rural, Devanahalli",
+      "district": "Bengaluru Rural",
+      "station": "Devanahalli PS",
+      "date": "2024-11-05",
+      "time_of_day": "Afternoon",
+      "accused": [
+        "Muniswamy L"
+      ],
+      "victim": "Hanumaiah B",
+      "status": "Arrested",
+      "modus_operandi": "SC/ST land rights violation",
+      "socio_economic": "Real estate speculation near new highway",
+      "weapon_used": "None",
+      "economic_loss": 4274000,
+      "repeat_offender": false,
+      "prior_cases": [],
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Rural District Crime Statistics"
+    },
+    {
+      "id": "CR077",
+      "type": "Land Dispute",
+      "location": "Bengaluru Rural, Doddaballapur",
+      "district": "Bengaluru Rural",
+      "station": "Doddaballapur PS",
+      "date": "2024-12-08",
+      "time_of_day": "Evening",
+      "accused": [
+        "Nanjundappa G"
+      ],
+      "victim": "Nanjappa R",
+      "status": "Arrested",
+      "modus_operandi": "Forced eviction of tenant using muscle power",
+      "socio_economic": "Real estate speculation near new highway",
+      "weapon_used": "None",
+      "economic_loss": 2095000,
+      "repeat_offender": false,
+      "prior_cases": [],
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Rural District Crime Statistics"
+    },
+    {
+      "id": "CR078",
+      "type": "Theft",
+      "location": "Bengaluru Urban, Electronic City",
+      "district": "Bengaluru Urban",
+      "station": "Electronic City PS",
+      "date": "2024-11-07",
+      "time_of_day": "Morning",
+      "accused": [
+        "Raju Kumar",
+        "Ramanna K"
+      ],
+      "victim": "Deepak Rao",
+      "status": "Convicted",
+      "modus_operandi": "Copper wire theft from irrigation pump",
+      "socio_economic": "Repeat offender from low income area",
+      "weapon_used": "Drilling tool",
+      "economic_loss": 65000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR001",
+        "CR005"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics"
+    },
+    {
+      "id": "CR079",
+      "type": "Chain Snatching",
+      "location": "Bengaluru Urban, Banaswadi",
+      "district": "Bengaluru Urban",
+      "station": "Banaswadi PS",
+      "date": "2025-12-25",
+      "time_of_day": "Evening",
+      "accused": [
+        "Shiva T"
+      ],
+      "victim": "TechCorp Pvt Ltd",
+      "status": "Convicted",
+      "modus_operandi": "Drive-by chain snatching near school",
+      "socio_economic": "Senior citizen victim",
+      "weapon_used": "None",
+      "economic_loss": 84000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR033",
+        "CR046"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics"
+    },
+    {
+      "id": "CR080",
+      "type": "Chain Snatching",
+      "location": "Mysuru, Jayalakshmipuram",
+      "district": "Mysuru",
+      "station": "Jayalakshmipuram PS",
+      "date": "2024-11-10",
+      "time_of_day": "Morning",
+      "accused": [
+        "Suresh M"
+      ],
+      "victim": "Shashikala D",
+      "status": "Chargesheeted",
+      "modus_operandi": "Chain snatching targeting elderly women",
+      "socio_economic": "Senior citizen victim",
+      "weapon_used": "None",
+      "economic_loss": 142000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR001",
+        "CR008"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Mysuru District Crime Statistics"
+    },
+    {
+      "id": "CR081",
+      "type": "Cybercrime",
+      "location": "Dakshina Kannada, Hampankatta",
+      "district": "Dakshina Kannada",
+      "station": "Hampankatta PS",
+      "date": "2024-11-05",
+      "time_of_day": "Morning",
+      "accused": [
+        "Unknown",
+        "Saleem A"
+      ],
+      "victim": "Anitha Rai",
+      "status": "Under Investigation",
+      "modus_operandi": "SIM swap fraud to steal bank funds",
+      "socio_economic": "Elderly victim with limited digital literacy",
+      "weapon_used": "None",
+      "economic_loss": 164000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR003",
+        "CR006"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Dakshina Kannada District Crime Statistics"
+    },
+    {
+      "id": "CR082",
+      "type": "Assault",
+      "location": "Kalaburagi, Kalaburagi Rural",
+      "district": "Kalaburagi",
+      "station": "Kalaburagi Rural PS",
+      "date": "2024-10-13",
+      "time_of_day": "Evening",
+      "accused": [
+        "Manjunath L",
+        "Ningappa S"
+      ],
+      "victim": "Siddappa M",
+      "status": "Under Investigation",
+      "modus_operandi": "Caste-based gang assault",
+      "socio_economic": "Caste conflict in semi-urban area",
+      "weapon_used": "Iron rod",
+      "economic_loss": 9000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR030",
+        "CR050"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Kalaburagi District Crime Statistics"
+    },
+    {
+      "id": "CR083",
+      "type": "Theft",
+      "location": "Ballari, Civil Station",
+      "district": "Ballari",
+      "station": "Civil Station PS",
+      "date": "2025-05-12",
+      "time_of_day": "Night",
+      "accused": [
+        "Arun T"
+      ],
+      "victim": "Veeresh K",
+      "status": "Arrested",
+      "modus_operandi": "Copper wire theft from irrigation pump",
+      "socio_economic": "Repeat offender from low income area",
+      "weapon_used": "Drilling tool",
+      "economic_loss": 133000,
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR004",
+        "CR035"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Ballari District Crime Statistics"
     }
   ],
   "criminal_network": [
-    {"from": "Raju Kumar", "to": "Suresh M", "relationship": "Co-accused", "cases": ["CR001", "CR005"]},
-    {"from": "Mahesh R", "to": "Suresh M", "relationship": "Co-accused", "cases": ["CR008"]},
-    {"from": "Vijay S", "to": "Arun T", "relationship": "Gang members", "cases": ["CR004"]},
-    {"from": "Mahesh R", "to": "Raju Kumar", "relationship": "Known associates", "cases": []}
-  ]
-} 
+    {
+      "from": "Raju Kumar",
+      "to": "Suresh M",
+      "relationship": "Co-accused",
+      "cases": [
+        "CR001",
+        "CR052"
+      ]
+    },
+    {
+      "from": "Mahesh R",
+      "to": "Suresh M",
+      "relationship": "Gang members",
+      "cases": [
+        "CR008",
+        "CR048"
+      ]
+    },
+    {
+      "from": "Vijay S",
+      "to": "Arun T",
+      "relationship": "Gang members",
+      "cases": [
+        "CR004",
+        "CR035"
+      ]
+    },
+    {
+      "from": "Mahesh R",
+      "to": "Raju Kumar",
+      "relationship": "Known associates",
+      "cases": [
+        "CR001",
+        "CR008"
+      ]
+    },
+    {
+      "from": "Imran Khan",
+      "to": "Saleem A",
+      "relationship": "Gang members",
+      "cases": [
+        "CR013",
+        "CR041",
+        "CR053"
+      ]
+    },
+    {
+      "from": "Saleem A",
+      "to": "Arif B",
+      "relationship": "Co-accused",
+      "cases": [
+        "CR032",
+        "CR041"
+      ]
+    },
+    {
+      "from": "Vikram Shah",
+      "to": "Anand Joshi",
+      "relationship": "Co-accused",
+      "cases": [
+        "CR017",
+        "CR043"
+      ]
+    },
+    {
+      "from": "Nagaraj P",
+      "to": "Suresh M",
+      "relationship": "Gang members",
+      "cases": [
+        "CR021",
+        "CR028",
+        "CR040"
+      ]
+    },
+    {
+      "from": "Santosh B",
+      "to": "Ramanna K",
+      "relationship": "Co-accused",
+      "cases": [
+        "CR024",
+        "CR033"
+      ]
+    },
+    {
+      "from": "Ramanna K",
+      "to": "Nagaraj P",
+      "relationship": "Known associates",
+      "cases": [
+        "CR045"
+      ]
+    },
+    {
+      "from": "Basavaraj K",
+      "to": "Shivanand M",
+      "relationship": "Gang members",
+      "cases": [
+        "CR020",
+        "CR037"
+      ]
+    },
+    {
+      "from": "Ravi G",
+      "to": "Kumar H",
+      "relationship": "Co-accused",
+      "cases": [
+        "CR011",
+        "CR030"
+      ]
+    },
+    {
+      "from": "Shivappa N",
+      "to": "Mallesh D",
+      "relationship": "Co-accused",
+      "cases": [
+        "CR015",
+        "CR039"
+      ]
+    },
+    {
+      "from": "Shivappa N",
+      "to": "Raju Kumar",
+      "relationship": "Known associates",
+      "cases": [
+        "CR027"
+      ]
+    },
+    {
+      "from": "Hanumantha R",
+      "to": "Bheema S",
+      "relationship": "Co-accused",
+      "cases": [
+        "CR019",
+        "CR044"
+      ]
+    },
+    {
+      "from": "Imran Khan",
+      "to": "Arif B",
+      "relationship": "Gang members",
+      "cases": [
+        "CR041"
+      ]
+    },
+    {
+      "from": "Mahesh R",
+      "to": "Arun T",
+      "relationship": "Gang members",
+      "cases": [
+        "CR048"
+      ]
+    },
+    {
+      "from": "Arjun Mehta",
+      "to": "Vikram Shah",
+      "relationship": "Known associates",
+      "cases": [
+        "CR025",
+        "CR036"
+      ]
+    },
+    {
+      "from": "Raju Kumar",
+      "to": "Nagaraj P",
+      "relationship": "Known associates",
+      "cases": [
+        "CR016",
+        "CR031"
+      ]
+    },
+    {
+      "from": "Ramanna K",
+      "to": "Shiva T",
+      "relationship": "Co-accused",
+      "cases": [
+        "CR033",
+        "CR046"
+      ]
+    },
+    {
+      "from": "Arun T",
+      "to": "Raju Kumar",
+      "relationship": "Co-accused",
+      "cases": [
+        "CR054"
+      ]
+    },
+    {
+      "from": "Arjun Mehta",
+      "to": "Anand Joshi",
+      "relationship": "Co-accused",
+      "cases": [
+        "CR060"
+      ]
+    },
+    {
+      "from": "Arif B",
+      "to": "Saleem A",
+      "relationship": "Co-accused",
+      "cases": [
+        "CR062"
+      ]
+    },
+    {
+      "from": "Arjun Mehta",
+      "to": "Shivappa N",
+      "relationship": "Co-accused",
+      "cases": [
+        "CR063"
+      ]
+    },
+    {
+      "from": "Nagaraj P",
+      "to": "Mallesh D",
+      "relationship": "Co-accused",
+      "cases": [
+        "CR064"
+      ]
+    },
+    {
+      "from": "Kumar H",
+      "to": "Veerappa R",
+      "relationship": "Co-accused",
+      "cases": [
+        "CR065"
+      ]
+    },
+    {
+      "from": "Shivappa N",
+      "to": "Shiva T",
+      "relationship": "Co-accused",
+      "cases": [
+        "CR067"
+      ]
+    },
+    {
+      "from": "Kumar H",
+      "to": "Shiva T",
+      "relationship": "Co-accused",
+      "cases": [
+        "CR068"
+      ]
+    },
+    {
+      "from": "Hanumantha R",
+      "to": "Venkatesha B",
+      "relationship": "Co-accused",
+      "cases": [
+        "CR072"
+      ]
+    },
+    {
+      "from": "Arif B",
+      "to": "Santosh B",
+      "relationship": "Co-accused",
+      "cases": [
+        "CR073"
+      ]
+    },
+    {
+      "from": "Raju Kumar",
+      "to": "Ramanna K",
+      "relationship": "Co-accused",
+      "cases": [
+        "CR078"
+      ]
+    },
+    {
+      "from": "Unknown",
+      "to": "Saleem A",
+      "relationship": "Co-accused",
+      "cases": [
+        "CR081"
+      ]
+    },
+    {
+      "from": "Manjunath L",
+      "to": "Ningappa S",
+      "relationship": "Co-accused",
+      "cases": [
+        "CR082"
+      ]
+    }
+  ],
+  "ncrb_statistics": {
+    "source": "NCRB Crime in India 2022 Report - Karnataka",
+    "reference_url": "https://data.opencity.in/dataset/karnataka-crime-data-2022",
+    "total_karnataka_crimes_2022": 180742,
+    "district_statistics": {
+      "Bengaluru Urban": {
+        "ipc_cases_2022": 28666,
+        "sll_cases_2022": 17521,
+        "total_cases_2022": 46187,
+        "population_lakh": 120,
+        "crime_rate_per_lakh": 385
+      },
+      "Bengaluru Rural": {
+        "ipc_cases_2022": 6031,
+        "sll_cases_2022": 961,
+        "total_cases_2022": 6992,
+        "population_lakh": 9.9,
+        "crime_rate_per_lakh": 70
+      },
+      "Mysuru": {
+        "ipc_cases_2022": 6973,
+        "sll_cases_2022": 1735,
+        "total_cases_2022": 8708,
+        "population_lakh": 30,
+        "crime_rate_per_lakh": 295
+      },
+      "Dakshina Kannada": {
+        "ipc_cases_2022": 3791,
+        "sll_cases_2022": 952,
+        "total_cases_2022": 4743,
+        "population_lakh": 22,
+        "crime_rate_per_lakh": 215
+      },
+      "Hubballi-Dharwad": {
+        "ipc_cases_2022": 3199,
+        "sll_cases_2022": 1675,
+        "total_cases_2022": 4874,
+        "population_lakh": 19,
+        "crime_rate_per_lakh": 256
+      },
+      "Belagavi": {
+        "ipc_cases_2022": 6424,
+        "sll_cases_2022": 1730,
+        "total_cases_2022": 8154,
+        "population_lakh": 49,
+        "crime_rate_per_lakh": 167
+      },
+      "Kalaburagi": {
+        "ipc_cases_2022": 4230,
+        "sll_cases_2022": 1432,
+        "total_cases_2022": 5662,
+        "population_lakh": 27,
+        "crime_rate_per_lakh": 209
+      },
+      "Tumakuru": {
+        "ipc_cases_2022": 5520,
+        "sll_cases_2022": 1524,
+        "total_cases_2022": 7044,
+        "population_lakh": 27,
+        "crime_rate_per_lakh": 261
+      },
+      "Shivamogga": {
+        "ipc_cases_2022": 4591,
+        "sll_cases_2022": 1500,
+        "total_cases_2022": 6091,
+        "population_lakh": 17,
+        "crime_rate_per_lakh": 358
+      },
+      "Vijayapura": {
+        "ipc_cases_2022": 2858,
+        "sll_cases_2022": 1438,
+        "total_cases_2022": 4296,
+        "population_lakh": 22,
+        "crime_rate_per_lakh": 195
+      },
+      "Ballari": {
+        "ipc_cases_2022": 1792,
+        "sll_cases_2022": 1434,
+        "total_cases_2022": 3226,
+        "population_lakh": 28,
+        "crime_rate_per_lakh": 115
+      },
+      "Raichur": {
+        "ipc_cases_2022": 2577,
+        "sll_cases_2022": 1348,
+        "total_cases_2022": 3925,
+        "population_lakh": 19,
+        "crime_rate_per_lakh": 206
+      }
+    }
+  }
+}
+
+
+
+
+
+

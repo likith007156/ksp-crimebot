@@ -1,0 +1,14 @@
+{
+  "district_stats": {
+    "Bengaluru Urban": {
+      "population": 12000000,
+      "crime_rate_per_lakh": 245,
+      "most_common_crime": "Cybercrime",
+      "high_risk_areas": ["Koramangala", "Whitefield", "HSR Layout"]
+    }
+  },
+  "yearly_trends": {
+    "2024": { "total": 28, "solved": 18, "unsolved": 10 },
+    "2025": { "total": 25, "solved": 14, "unsolved": 11 }
+  }
+}

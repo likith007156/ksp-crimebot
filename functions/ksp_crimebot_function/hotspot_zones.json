@@ -1,0 +1,13 @@
+{
+  "hotspots": [
+    {
+      "name": "Koramangala 5th Block",
+      "lat": 12.9352,
+      "lng": 77.6245,
+      "district": "Bengaluru Urban",
+      "crime_types": ["Theft", "Cybercrime"],
+      "risk_level": "HIGH",
+      "peak_hours": "20:00-23:00"
+    }
+  ]
+}
