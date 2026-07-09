@@ -1,0 +1,17 @@
+{
+  "offenders": [
+    {
+      "name": "Raju Kumar",
+      "age": 28,
+      "gender": "Male",
+      "native": "Bengaluru Rural",
+      "education": "8th Standard",
+      "occupation": "Auto Driver (former)",
+      "total_cases": 5,
+      "crime_speciality": "Chain Snatching, Theft",
+      "known_associates": ["Suresh M", "Nagaraj P"],
+      "risk_level": "HIGH",
+      "last_known_address": "Koramangala slum, Bengaluru"
+    }
+  ]
+}
