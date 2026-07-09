@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import anthropic
+from groq import Groq
 import json
 import os
 
