@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./App.css";
 
-const FUNCTION_URL = "https://ksp-crimebot-60033455592.development.catalystappsail.com"; // We'll update this after deploy
+const FUNCTION_URL = "https://ksp-crimebot-backend.onrender.com"; // We'll update this after deploy
 
 export default function App() {
   const [messages, setMessages] = useState([
