@@ -1,4 +1,4 @@
-anthropic
+groq
 flask
 flask-cors
 gunicorn
