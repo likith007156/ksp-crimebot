@@ -11,8 +11,7 @@ with open(os.path.join(os.path.dirname(__file__), 'crime_data.json'), 'r') as f:
     crime_data = json.load(f)
 
 # Initialize Anthropic client
-client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
-
+client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 def search_crime_data(query):
     """Simple keyword-based search over crime data"""
     query_lower = query.lower()
