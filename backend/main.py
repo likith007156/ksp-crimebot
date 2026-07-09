@@ -49,7 +49,7 @@ def detect_repeat_offenders(crimes):
 def get_hotspots(crimes):
     location_count = {}
     for crime in crimes:
-        loc = crime["district"]
+        loc = crime.get("district", "Unknown")
         location_count[loc] = location_count.get(loc, 0) + 1
     return sorted(location_count.items(), key=lambda x: x[1], reverse=True)
 
@@ -176,9 +176,9 @@ def stats():
     by_district = {}
     by_status = {}
     for crime in crimes:
-        by_type[crime['type']] = by_type.get(crime['type'], 0) + 1
-        by_district[crime['district']] = by_district.get(crime['district'], 0) + 1
-        by_status[crime['status']] = by_status.get(crime['status'], 0) + 1
+     by_type[crime.get('type', 'Unknown')] = by_type.get(crime.get('type', 'Unknown'), 0) + 1
+    by_district[crime.get('district', 'Unknown')] = by_district.get(crime.get('district', 'Unknown'), 0) + 1
+    by_status[crime.get('status', 'Unknown')] = by_status.get(crime.get('status', 'Unknown'), 0) + 1
     return jsonify({
         'total_cases': len(crimes),
         'by_type': by_type,
