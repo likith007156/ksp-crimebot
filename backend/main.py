@@ -6,41 +6,78 @@ import os
 
 app = Flask(__name__)
 CORS(app, origins=["https://ksp-crimebot.vercel.app", "http://localhost:3000"])
+
 # Load crime data
 with open(os.path.join(os.path.dirname(__file__), 'crime_data.json'), 'r') as f:
     crime_data = json.load(f)
 
-# Initialize Anthropic client
+# Initialize Groq client
 client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
+
 def search_crime_data(query):
-    """Simple keyword-based search over crime data"""
     query_lower = query.lower()
     relevant_crimes = []
-    
     for crime in crime_data["crimes"]:
-        # Check if query matches any field
         searchable = f"{crime['type']} {crime['location']} {crime['district']} {crime['status']} {crime['modus_operandi']} {' '.join(crime['accused'])}".lower()
         if any(word in searchable for word in query_lower.split()):
             relevant_crimes.append(crime)
-    
     return relevant_crimes if relevant_crimes else crime_data["crimes"][:3]
 
 def get_criminal_network(name):
-    """Get criminal network connections"""
     name_lower = name.lower()
     connections = []
-    
     for link in crime_data["criminal_network"]:
         if name_lower in link["from"].lower() or name_lower in link["to"].lower():
             connections.append(link)
-    
     return connections
 
+def detect_repeat_offenders(crimes):
+    accused_count = {}
+    accused_cases = {}
+    for crime in crimes:
+        for accused in crime["accused"]:
+            accused_count[accused] = accused_count.get(accused, 0) + 1
+            if accused not in accused_cases:
+                accused_cases[accused] = []
+            accused_cases[accused].append(crime["id"])
+    repeat_offenders = {
+        k: {"count": v, "cases": accused_cases[k]}
+        for k, v in accused_count.items() if v > 1
+    }
+    return repeat_offenders
+
+def get_hotspots(crimes):
+    location_count = {}
+    for crime in crimes:
+        loc = crime["district"]
+        location_count[loc] = location_count.get(loc, 0) + 1
+    return sorted(location_count.items(), key=lambda x: x[1], reverse=True)
+
+def early_warning(crimes):
+    warnings = []
+    location_count = {}
+    for crime in crimes:
+        loc = crime["district"]
+        location_count[loc] = location_count.get(loc, 0) + 1
+    for loc, count in location_count.items():
+        if count >= 3:
+            warnings.append({
+                "district": loc,
+                "crime_count": count,
+                "alert": f"HIGH ALERT: {count} crimes in {loc}. Increased patrolling recommended."
+            })
+    return warnings
+
+def analyze_trends(crimes):
+    monthly = {}
+    for crime in crimes:
+        month = crime["date"][:7]
+        monthly[month] = monthly.get(month, 0) + 1
+    return dict(sorted(monthly.items()))
+
 def build_context(query, relevant_crimes, connections):
-    """Build context string for Claude"""
     context = "KARNATAKA STATE POLICE - CRIME DATABASE\n\n"
     context += f"Relevant Crime Records ({len(relevant_crimes)} found):\n"
-    
     for crime in relevant_crimes:
         context += f"""
 Case ID: {crime['id']}
@@ -54,12 +91,10 @@ Status: {crime['status']}
 Modus Operandi: {crime['modus_operandi']}
 Socio-Economic Factor: {crime['socio_economic']}
 ---"""
-    
     if connections:
         context += "\n\nCriminal Network Connections:\n"
         for conn in connections:
             context += f"• {conn['from']} ↔ {conn['to']} ({conn['relationship']}) - Cases: {', '.join(conn['cases']) if conn['cases'] else 'Associated'}\n"
-    
     return context
 
 @app.route('/api/chat', methods=['POST'])
@@ -68,77 +103,82 @@ def chat():
         data = request.json
         user_message = data.get('message', '')
         conversation_history = data.get('history', [])
-        
+
         if not user_message:
             return jsonify({'error': 'No message provided'}), 400
-        
-        # Search relevant crime data
+
         relevant_crimes = search_crime_data(user_message)
-        
-        # Get criminal network if name mentioned
+
         connections = []
         for crime in crime_data["crimes"]:
             for accused in crime["accused"]:
                 if accused.lower().split()[0] in user_message.lower():
                     connections = get_criminal_network(accused)
                     break
-        
-        # Build context
-        context = build_context(user_message, relevant_crimes, connections)
-        
-        # System prompt
-        system_prompt = f"""You are KSP CrimeBot, an intelligent assistant for Karnataka State Police investigators.
-You help analyze crime data, identify patterns, and provide actionable insights.
 
-You have access to the following crime database context:
+        context = build_context(user_message, relevant_crimes, connections)
+        repeat_offenders = detect_repeat_offenders(crime_data["crimes"])
+        hotspots = get_hotspots(crime_data["crimes"])
+        warnings = early_warning(crime_data["crimes"])
+
+        system_prompt = f"""You are KSP CrimeBot, an expert crime analyst for Karnataka State Police.
+You assist senior investigators, IPS officers, and police personnel.
+
+CRIME DATABASE CONTEXT:
 {context}
 
-Guidelines:
-- Answer in the same language as the question (English or Kannada)
-- Be precise and factual based on the data provided
-- Highlight patterns, repeat offenders, and connections
-- Always mention case IDs when referencing specific cases
-- For Kannada queries, respond in Kannada script
-- Provide actionable intelligence for investigators
-- Never reveal sensitive data to unauthorized users"""
+REPEAT OFFENDERS:
+{json.dumps(repeat_offenders, indent=2)}
 
-        # Build messages for Claude
-        messages = conversation_history + [{"role": "user", "content": user_message}]
-        
-        # Call Claude API
-        response = client.messages.create(
-            model="claude-sonnet-4-6",
+CURRENT HOTSPOTS:
+{json.dumps(hotspots, indent=2)}
+
+EARLY WARNINGS:
+{json.dumps(warnings, indent=2)}
+
+RESPONSE RULES:
+- Always cite Case IDs (e.g., CR001, CR005)
+- Respond in the SAME language as the question
+- For Kannada questions, respond FULLY in Kannada script
+- For English questions, respond in English
+- Be precise and factual
+- Highlight repeat offenders and connections
+- Prefix urgent matters with ALERT:
+- Never fabricate case details"""
+
+        messages = [{"role": "system", "content": system_prompt}]
+        for msg in conversation_history:
+            messages.append({"role": msg["role"], "content": msg["content"]})
+        messages.append({"role": "user", "content": user_message})
+
+        response = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=messages,
             max_tokens=1000,
-            system=system_prompt,
-            messages=messages
+            temperature=0.3
         )
-        
-        assistant_message = response.content[0].text
-        
+
+        assistant_message = response.choices[0].message.content
+
         return jsonify({
             'response': assistant_message,
             'relevant_cases': [c['id'] for c in relevant_crimes],
             'network_connections': connections
         })
-        
+
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
 @app.route('/api/stats', methods=['GET'])
 def stats():
-    """Get crime statistics"""
     crimes = crime_data["crimes"]
-    
-    # Count by type
     by_type = {}
     by_district = {}
     by_status = {}
-    
     for crime in crimes:
         by_type[crime['type']] = by_type.get(crime['type'], 0) + 1
         by_district[crime['district']] = by_district.get(crime['district'], 0) + 1
         by_status[crime['status']] = by_status.get(crime['status'], 0) + 1
-    
     return jsonify({
         'total_cases': len(crimes),
         'by_type': by_type,
@@ -149,16 +189,31 @@ def stats():
 
 @app.route('/api/network', methods=['GET'])
 def network():
-    """Get full criminal network data"""
     return jsonify(crime_data["criminal_network"])
+
+@app.route('/api/repeat-offenders', methods=['GET'])
+def repeat_offenders_route():
+    offenders = detect_repeat_offenders(crime_data["crimes"])
+    return jsonify(offenders)
+
+@app.route('/api/hotspots', methods=['GET'])
+def hotspots_route():
+    spots = get_hotspots(crime_data["crimes"])
+    return jsonify(spots)
+
+@app.route('/api/warnings', methods=['GET'])
+def warnings_route():
+    alerts = early_warning(crime_data["crimes"])
+    return jsonify(alerts)
+
+@app.route('/api/trends', methods=['GET'])
+def trends_route():
+    trend_data = analyze_trends(crime_data["crimes"])
+    return jsonify(trend_data)
 
 @app.route('/health', methods=['GET'])
 def health():
     return jsonify({'status': 'ok', 'service': 'KSP CrimeBot'})
-
-def handler(context, event):
-    """Catalyst handler"""
-    return app
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
