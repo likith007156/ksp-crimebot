@@ -7,12 +7,14 @@
     "chargesheeted": 13,
     "convicted": 2,
     "detection_rate_percent": 60.2,
-    "repeat_offender_cases": 61,
+    "repeat_offender_cases": 83,
     "total_economic_loss_inr": 50604000,
     "districts_covered": 12,
     "police_stations_covered": 49,
     "data_period": "2024-2025",
-    "ncrb_reference_year": 2022
+    "ncrb_reference_year": 2022,
+    "unique_accused": 33,
+    "repeat_offenders_count": 29
   },
   "crime_type_distribution": [
     {

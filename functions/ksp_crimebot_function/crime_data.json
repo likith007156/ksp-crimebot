@@ -44,9 +44,15 @@
       "modus_operandi": "Snatching mobile phone in crowded area",
       "repeat_offender": true,
       "prior_cases": [
-        "CR005"
+        "CR005",
+        "CR016",
+        "CR027"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics",
+      "accused": [
+        "Raju Kumar",
+        "Suresh M"
+      ]
     },
     {
       "CaseMasterID": 2,
@@ -93,9 +99,13 @@
       "repeat_offender": true,
       "prior_cases": [
         "CR008",
-        "CR012"
+        "CR012",
+        "CR048"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Mysuru District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Mysuru District Crime Statistics",
+      "accused": [
+        "Mahesh R"
+      ]
     },
     {
       "CaseMasterID": 3,
@@ -141,7 +151,10 @@
       "modus_operandi": "UPI fraud via fake customer care",
       "repeat_offender": false,
       "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics",
+      "accused": [
+        "Sanjay Gupta"
+      ]
     },
     {
       "CaseMasterID": 4,
@@ -185,9 +198,17 @@
       "economic_loss": 5000,
       "socio_economic": "Land dispute related",
       "modus_operandi": "Gang assault over property dispute",
-      "repeat_offender": false,
-      "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Hubballi-Dharwad District Crime Statistics"
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR035",
+        "CR058",
+        "CR079"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Hubballi-Dharwad District Crime Statistics",
+      "accused": [
+        "Vijay S",
+        "Arun T"
+      ]
     },
     {
       "CaseMasterID": 5,
@@ -233,9 +254,14 @@
       "modus_operandi": "Vehicle theft from parking lot",
       "repeat_offender": true,
       "prior_cases": [
-        "CR001"
+        "CR001",
+        "CR016",
+        "CR027"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics",
+      "accused": [
+        "Raju Kumar"
+      ]
     },
     {
       "CaseMasterID": 6,
@@ -279,9 +305,14 @@
       "economic_loss": 32000,
       "socio_economic": "Elderly victim",
       "modus_operandi": "Online lottery fraud",
-      "repeat_offender": false,
-      "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Dakshina Kannada District Crime Statistics"
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR060"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Dakshina Kannada District Crime Statistics",
+      "accused": [
+        "Karan Malhotra"
+      ]
     },
     {
       "CaseMasterID": 7,
@@ -325,9 +356,16 @@
       "economic_loss": 0,
       "socio_economic": "Rural agricultural community",
       "modus_operandi": "Stabbing over personal dispute",
-      "repeat_offender": false,
-      "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Kalaburagi District Crime Statistics"
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR020",
+        "CR059",
+        "CR070"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Kalaburagi District Crime Statistics",
+      "accused": [
+        "Basavaraj K"
+      ]
     },
     {
       "CaseMasterID": 8,
@@ -374,9 +412,14 @@
       "repeat_offender": true,
       "prior_cases": [
         "CR002",
-        "CR012"
+        "CR012",
+        "CR048"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics",
+      "accused": [
+        "Mahesh R",
+        "Suresh M"
+      ]
     },
     {
       "CaseMasterID": 9,
@@ -420,9 +463,15 @@
       "economic_loss": 40000,
       "socio_economic": "Migrant worker background",
       "modus_operandi": "House burglary during night",
-      "repeat_offender": false,
-      "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Belagavi District Crime Statistics"
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR024",
+        "CR080"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Belagavi District Crime Statistics",
+      "accused": [
+        "Santosh B"
+      ]
     },
     {
       "CaseMasterID": 10,
@@ -468,7 +517,10 @@
       "modus_operandi": "Ransomware attack on company servers",
       "repeat_offender": false,
       "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics",
+      "accused": [
+        "Suresh Babu"
+      ]
     },
     {
       "CaseMasterID": 11,
@@ -512,9 +564,17 @@
       "economic_loss": 2000,
       "socio_economic": "Low income household",
       "modus_operandi": "Domestic violence",
-      "repeat_offender": false,
-      "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Tumakuru District Crime Statistics"
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR022",
+        "CR061",
+        "CR072"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Tumakuru District Crime Statistics",
+      "accused": [
+        "Ravi G",
+        "Kumar H"
+      ]
     },
     {
       "CaseMasterID": 12,
@@ -561,9 +621,13 @@
       "repeat_offender": true,
       "prior_cases": [
         "CR002",
-        "CR008"
+        "CR008",
+        "CR048"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Mysuru District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Mysuru District Crime Statistics",
+      "accused": [
+        "Mahesh R"
+      ]
     },
     {
       "CaseMasterID": 13,
@@ -609,9 +673,15 @@
       "modus_operandi": "Smuggling ganja via coastal route",
       "repeat_offender": true,
       "prior_cases": [
-        "CR014"
+        "CR014",
+        "CR041",
+        "CR053"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Dakshina Kannada District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Dakshina Kannada District Crime Statistics",
+      "accused": [
+        "Imran Khan",
+        "Saleem A"
+      ]
     },
     {
       "CaseMasterID": 14,
@@ -656,8 +726,15 @@
       "socio_economic": "Port area network",
       "modus_operandi": "Distribution of MDMA tablets in city",
       "repeat_offender": true,
-      "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Dakshina Kannada District Crime Statistics"
+      "prior_cases": [
+        "CR013",
+        "CR041",
+        "CR053"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Dakshina Kannada District Crime Statistics",
+      "accused": [
+        "Imran Khan"
+      ]
     },
     {
       "CaseMasterID": 15,
@@ -701,9 +778,17 @@
       "economic_loss": 500000,
       "socio_economic": "Ransom demand of Rs 5 lakhs",
       "modus_operandi": "Child kidnapping for ransom",
-      "repeat_offender": false,
-      "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Belagavi District Crime Statistics"
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR027",
+        "CR062",
+        "CR078"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Belagavi District Crime Statistics",
+      "accused": [
+        "Shivappa N",
+        "Mallesh D"
+      ]
     },
     {
       "CaseMasterID": 16,
@@ -750,9 +835,14 @@
       "repeat_offender": true,
       "prior_cases": [
         "CR001",
-        "CR005"
+        "CR005",
+        "CR027"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics",
+      "accused": [
+        "Raju Kumar",
+        "Nagaraj P"
+      ]
     },
     {
       "CaseMasterID": 17,
@@ -798,9 +888,15 @@
       "modus_operandi": "Fake investment scheme promising high returns",
       "repeat_offender": true,
       "prior_cases": [
-        "CR018"
+        "CR018",
+        "CR043",
+        "CR054"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics",
+      "accused": [
+        "Vikram Shah",
+        "Anand Joshi"
+      ]
     },
     {
       "CaseMasterID": 18,
@@ -845,8 +941,15 @@
       "socio_economic": "Lower middle class victim",
       "modus_operandi": "Chit fund fraud collecting money and absconding",
       "repeat_offender": true,
-      "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics"
+      "prior_cases": [
+        "CR017",
+        "CR043",
+        "CR054"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics",
+      "accused": [
+        "Vikram Shah"
+      ]
     },
     {
       "CaseMasterID": 19,
@@ -890,9 +993,17 @@
       "economic_loss": 0,
       "socio_economic": "Agricultural land dispute",
       "modus_operandi": "Murder over land boundary dispute",
-      "repeat_offender": false,
-      "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Raichur District Crime Statistics"
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR042",
+        "CR064",
+        "CR084"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Raichur District Crime Statistics",
+      "accused": [
+        "Hanumantha R",
+        "Bheema S"
+      ]
     },
     {
       "CaseMasterID": 20,
@@ -938,9 +1049,15 @@
       "modus_operandi": "Gang assault over caste dispute",
       "repeat_offender": true,
       "prior_cases": [
-        "CR007"
+        "CR007",
+        "CR059",
+        "CR070"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Kalaburagi District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Kalaburagi District Crime Statistics",
+      "accused": [
+        "Basavaraj K",
+        "Shivanand M"
+      ]
     },
     {
       "CaseMasterID": 21,
@@ -987,9 +1104,14 @@
       "repeat_offender": true,
       "prior_cases": [
         "CR001",
-        "CR008"
+        "CR008",
+        "CR028"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Mysuru District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Mysuru District Crime Statistics",
+      "accused": [
+        "Suresh M",
+        "Nagaraj P"
+      ]
     },
     {
       "CaseMasterID": 22,
@@ -1035,9 +1157,14 @@
       "modus_operandi": "Repeated physical assault by husband under alcohol influence",
       "repeat_offender": true,
       "prior_cases": [
-        "CR011"
+        "CR011",
+        "CR061",
+        "CR072"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Shivamogga District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Shivamogga District Crime Statistics",
+      "accused": [
+        "Ravi G"
+      ]
     },
     {
       "CaseMasterID": 23,
@@ -1081,9 +1208,16 @@
       "economic_loss": 1200000,
       "socio_economic": "Rural land ownership conflict",
       "modus_operandi": "Encroachment of agricultural land using forged documents",
-      "repeat_offender": false,
-      "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Vijayapura District Crime Statistics"
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR073",
+        "CR083"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Vijayapura District Crime Statistics",
+      "accused": [
+        "Basappa Y",
+        "Channappa Y"
+      ]
     },
     {
       "CaseMasterID": 24,
@@ -1129,9 +1263,15 @@
       "modus_operandi": "Burglary of jewellery shop using drilling method",
       "repeat_offender": true,
       "prior_cases": [
-        "CR009"
+        "CR009",
+        "CR080",
+        "CR033"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Ballari District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Ballari District Crime Statistics",
+      "accused": [
+        "Santosh B",
+        "Ramanna K"
+      ]
     },
     {
       "CaseMasterID": 25,
@@ -1175,9 +1315,16 @@
       "economic_loss": 240000,
       "socio_economic": "Educated urban victim",
       "modus_operandi": "SIM swap fraud to steal bank funds",
-      "repeat_offender": false,
-      "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics"
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR036",
+        "CR049",
+        "CR065"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics",
+      "accused": [
+        "Arjun Mehta"
+      ]
     },
     {
       "CaseMasterID": 26,
@@ -1221,9 +1368,15 @@
       "economic_loss": 0,
       "socio_economic": "Gambling addiction related",
       "modus_operandi": "Murder using country-made pistol over gambling debt",
-      "repeat_offender": false,
-      "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Raichur District Crime Statistics"
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR044",
+        "CR075"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Raichur District Crime Statistics",
+      "accused": [
+        "Mallappa R"
+      ]
     },
     {
       "CaseMasterID": 27,
@@ -1269,9 +1422,15 @@
       "modus_operandi": "Woman kidnapped for forced marriage",
       "repeat_offender": true,
       "prior_cases": [
-        "CR015"
+        "CR015",
+        "CR062",
+        "CR078"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Vijayapura District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Vijayapura District Crime Statistics",
+      "accused": [
+        "Shivappa N",
+        "Raju Kumar"
+      ]
     },
     {
       "CaseMasterID": 28,
@@ -1318,9 +1477,14 @@
       "repeat_offender": true,
       "prior_cases": [
         "CR016",
-        "CR021"
+        "CR021",
+        "CR031"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Hubballi-Dharwad District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Hubballi-Dharwad District Crime Statistics",
+      "accused": [
+        "Nagaraj P",
+        "Suresh M"
+      ]
     },
     {
       "CaseMasterID": 29,
@@ -1366,9 +1530,14 @@
       "modus_operandi": "Real estate fraud selling non-existent plots",
       "repeat_offender": true,
       "prior_cases": [
-        "CR017"
+        "CR017",
+        "CR043",
+        "CR057"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Dakshina Kannada District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Dakshina Kannada District Crime Statistics",
+      "accused": [
+        "Anand Joshi"
+      ]
     },
     {
       "CaseMasterID": 30,
@@ -1414,9 +1583,15 @@
       "modus_operandi": "Assault using weapons over road rage incident",
       "repeat_offender": true,
       "prior_cases": [
-        "CR011"
+        "CR011",
+        "CR071",
+        "CR050"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Tumakuru District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Tumakuru District Crime Statistics",
+      "accused": [
+        "Kumar H",
+        "Manjunath L"
+      ]
     },
     {
       "CaseMasterID": 31,
@@ -1462,10 +1637,14 @@
       "modus_operandi": "Motorcycle stolen from roadside using master key",
       "repeat_offender": true,
       "prior_cases": [
+        "CR016",
         "CR021",
         "CR028"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics",
+      "accused": [
+        "Nagaraj P"
+      ]
     },
     {
       "CaseMasterID": 32,
@@ -1511,9 +1690,15 @@
       "modus_operandi": "Distribution of heroin packets near bus stand",
       "repeat_offender": true,
       "prior_cases": [
-        "CR013"
+        "CR013",
+        "CR053",
+        "CR056"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Hubballi-Dharwad District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Hubballi-Dharwad District Crime Statistics",
+      "accused": [
+        "Saleem A",
+        "Arif B"
+      ]
     },
     {
       "CaseMasterID": 33,
@@ -1559,9 +1744,15 @@
       "modus_operandi": "Copper wire theft from irrigation pump",
       "repeat_offender": true,
       "prior_cases": [
-        "CR024"
+        "CR024",
+        "CR045",
+        "CR063"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Rural District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Rural District Crime Statistics",
+      "accused": [
+        "Ramanna K",
+        "Shiva T"
+      ]
     },
     {
       "CaseMasterID": 34,
@@ -1605,9 +1796,14 @@
       "economic_loss": 0,
       "socio_economic": "Dowry dispute in lower income family",
       "modus_operandi": "Dowry harassment and physical assault",
-      "repeat_offender": false,
-      "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Ballari District Crime Statistics"
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR063"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Ballari District Crime Statistics",
+      "accused": [
+        "Mariyappa S"
+      ]
     },
     {
       "CaseMasterID": 35,
@@ -1653,9 +1849,15 @@
       "modus_operandi": "Highway robbery targeting truck drivers",
       "repeat_offender": true,
       "prior_cases": [
-        "CR004"
+        "CR004",
+        "CR048",
+        "CR058"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Shivamogga District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Shivamogga District Crime Statistics",
+      "accused": [
+        "Arun T",
+        "Vijay S"
+      ]
     },
     {
       "CaseMasterID": 36,
@@ -1701,9 +1903,14 @@
       "modus_operandi": "Return fraud using multiple fake accounts",
       "repeat_offender": true,
       "prior_cases": [
-        "CR025"
+        "CR025",
+        "CR049",
+        "CR065"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics",
+      "accused": [
+        "Arjun Mehta"
+      ]
     },
     {
       "CaseMasterID": 37,
@@ -1749,9 +1956,13 @@
       "modus_operandi": "Planned murder using poison over property inheritance",
       "repeat_offender": true,
       "prior_cases": [
-        "CR020"
+        "CR020",
+        "CR070"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Kalaburagi District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Kalaburagi District Crime Statistics",
+      "accused": [
+        "Shivanand M"
+      ]
     },
     {
       "CaseMasterID": 38,
@@ -1795,9 +2006,16 @@
       "economic_loss": 3000000,
       "socio_economic": "Real estate speculation near new highway",
       "modus_operandi": "Illegal land grabbing near highway expansion zone",
-      "repeat_offender": false,
-      "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Rural District Crime Statistics"
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR066",
+        "CR082"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Rural District Crime Statistics",
+      "accused": [
+        "Muniswamy L",
+        "Krishnappa B"
+      ]
     },
     {
       "CaseMasterID": 39,
@@ -1843,9 +2061,14 @@
       "modus_operandi": "Mobile and cash theft from auto-rickshaw passengers",
       "repeat_offender": true,
       "prior_cases": [
-        "CR015"
+        "CR015",
+        "CR078",
+        "CR083"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Vijayapura District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Vijayapura District Crime Statistics",
+      "accused": [
+        "Mallesh D"
+      ]
     },
     {
       "CaseMasterID": 40,
@@ -1891,11 +2114,15 @@
       "modus_operandi": "Drive-by chain snatching near school",
       "repeat_offender": true,
       "prior_cases": [
+        "CR001",
         "CR008",
-        "CR021",
-        "CR028"
+        "CR021"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Mysuru District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Mysuru District Crime Statistics",
+      "accused": [
+        "Suresh M",
+        "Nagaraj P"
+      ]
     },
     {
       "CaseMasterID": 41,
@@ -1942,9 +2169,14 @@
       "repeat_offender": true,
       "prior_cases": [
         "CR013",
-        "CR014"
+        "CR014",
+        "CR053"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics",
+      "accused": [
+        "Imran Khan",
+        "Arif B"
+      ]
     },
     {
       "CaseMasterID": 42,
@@ -1990,9 +2222,14 @@
       "modus_operandi": "Assault with sharp weapon over water rights dispute",
       "repeat_offender": true,
       "prior_cases": [
-        "CR019"
+        "CR019",
+        "CR064",
+        "CR084"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Ballari District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Ballari District Crime Statistics",
+      "accused": [
+        "Hanumantha R"
+      ]
     },
     {
       "CaseMasterID": 43,
@@ -2039,9 +2276,14 @@
       "repeat_offender": true,
       "prior_cases": [
         "CR017",
-        "CR018"
+        "CR018",
+        "CR054"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics",
+      "accused": [
+        "Vikram Shah",
+        "Anand Joshi"
+      ]
     },
     {
       "CaseMasterID": 44,
@@ -2085,9 +2327,17 @@
       "economic_loss": 300000,
       "socio_economic": "Targeting children from poor families",
       "modus_operandi": "Child lured with promise of mobile phone",
-      "repeat_offender": false,
-      "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Raichur District Crime Statistics"
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR019",
+        "CR075",
+        "CR084"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Raichur District Crime Statistics",
+      "accused": [
+        "Bheema S",
+        "Mallappa R"
+      ]
     },
     {
       "CaseMasterID": 45,
@@ -2134,9 +2384,14 @@
       "repeat_offender": true,
       "prior_cases": [
         "CR024",
-        "CR033"
+        "CR033",
+        "CR063"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Belagavi District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Belagavi District Crime Statistics",
+      "accused": [
+        "Ramanna K",
+        "Nagaraj P"
+      ]
     },
     {
       "CaseMasterID": 46,
@@ -2182,9 +2437,13 @@
       "modus_operandi": "Coconut plantation theft using vehicle at night",
       "repeat_offender": true,
       "prior_cases": [
-        "CR033"
+        "CR033",
+        "CR071"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Tumakuru District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Tumakuru District Crime Statistics",
+      "accused": [
+        "Shiva T"
+      ]
     },
     {
       "CaseMasterID": 47,
@@ -2230,7 +2489,10 @@
       "modus_operandi": "Physical assault and harassment for dowry",
       "repeat_offender": false,
       "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Kalaburagi District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Kalaburagi District Crime Statistics",
+      "accused": [
+        "Ningappa S"
+      ]
     },
     {
       "CaseMasterID": 48,
@@ -2280,7 +2542,11 @@
         "CR008",
         "CR012"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics",
+      "accused": [
+        "Mahesh R",
+        "Arun T"
+      ]
     },
     {
       "CaseMasterID": 49,
@@ -2327,9 +2593,13 @@
       "repeat_offender": true,
       "prior_cases": [
         "CR025",
-        "CR036"
+        "CR036",
+        "CR065"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Mysuru District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Mysuru District Crime Statistics",
+      "accused": [
+        "Arjun Mehta"
+      ]
     },
     {
       "CaseMasterID": 50,
@@ -2373,9 +2643,15 @@
       "economic_loss": 0,
       "socio_economic": "Superstition-driven rural crime",
       "modus_operandi": "Murder following alleged witchcraft accusation",
-      "repeat_offender": false,
-      "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Shivamogga District Crime Statistics"
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR030",
+        "CR061"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Shivamogga District Crime Statistics",
+      "accused": [
+        "Manjunath L"
+      ]
     },
     {
       "CaseMasterID": 51,
@@ -2421,7 +2697,11 @@
       "modus_operandi": "Encroachment of SC/ST land using fake documents",
       "repeat_offender": false,
       "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Raichur District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Raichur District Crime Statistics",
+      "accused": [
+        "Durugappa N",
+        "Venkatappa R"
+      ]
     },
     {
       "CaseMasterID": 52,
@@ -2471,7 +2751,11 @@
         "CR005",
         "CR016"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics",
+      "accused": [
+        "Raju Kumar",
+        "Suresh M"
+      ]
     },
     {
       "CaseMasterID": 53,
@@ -2519,9 +2803,13 @@
       "prior_cases": [
         "CR013",
         "CR032",
-        "CR041"
+        "CR056"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Belagavi District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Belagavi District Crime Statistics",
+      "accused": [
+        "Saleem A",
+        "Imran Khan"
+      ]
     },
     {
       "CaseMasterID": 54,
@@ -2565,9 +2853,16 @@
       "economic_loss": 95000,
       "socio_economic": "Middle class urban professional victim",
       "modus_operandi": "Phishing email targeting bank credentials",
-      "repeat_offender": false,
-      "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics"
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR017",
+        "CR018",
+        "CR043"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics",
+      "accused": [
+        "Vikram Shah"
+      ]
     },
     {
       "CaseMasterID": 55,
@@ -2614,9 +2909,13 @@
       "repeat_offender": true,
       "prior_cases": [
         "CR001",
+        "CR005",
         "CR016"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics",
+      "accused": [
+        "Raju Kumar"
+      ]
     },
     {
       "CaseMasterID": 56,
@@ -2662,9 +2961,15 @@
       "modus_operandi": "Heroin smuggling via Mysuru-Bengaluru highway",
       "repeat_offender": true,
       "prior_cases": [
-        "CR013"
+        "CR013",
+        "CR014",
+        "CR041"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Mysuru District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Mysuru District Crime Statistics",
+      "accused": [
+        "Imran Khan",
+        "Saleem A"
+      ]
     },
     {
       "CaseMasterID": 57,
@@ -2710,9 +3015,14 @@
       "modus_operandi": "Fake insurance scheme collecting premiums",
       "repeat_offender": true,
       "prior_cases": [
-        "CR017"
+        "CR017",
+        "CR029",
+        "CR043"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Dakshina Kannada District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Dakshina Kannada District Crime Statistics",
+      "accused": [
+        "Anand Joshi"
+      ]
     },
     {
       "CaseMasterID": 58,
@@ -2756,9 +3066,17 @@
       "economic_loss": 150000,
       "socio_economic": "Rural boundary dispute",
       "modus_operandi": "Forced eviction using muscle power",
-      "repeat_offender": false,
-      "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Hubballi-Dharwad District Crime Statistics"
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR004",
+        "CR035",
+        "CR079"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Hubballi-Dharwad District Crime Statistics",
+      "accused": [
+        "Vijay S",
+        "Arun T"
+      ]
     },
     {
       "CaseMasterID": 59,
@@ -2804,9 +3122,14 @@
       "modus_operandi": "Stabbing in bar fight over cricket betting",
       "repeat_offender": true,
       "prior_cases": [
-        "CR007"
+        "CR007",
+        "CR020",
+        "CR070"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Kalaburagi District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Kalaburagi District Crime Statistics",
+      "accused": [
+        "Basavaraj K"
+      ]
     },
     {
       "CaseMasterID": 60,
@@ -2850,9 +3173,14 @@
       "economic_loss": 48000,
       "socio_economic": "Elderly victim with limited digital literacy",
       "modus_operandi": "OTP fraud posing as bank official",
-      "repeat_offender": false,
-      "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Tumakuru District Crime Statistics"
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR006"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Tumakuru District Crime Statistics",
+      "accused": [
+        "Karan Malhotra"
+      ]
     },
     {
       "CaseMasterID": 61,
@@ -2898,9 +3226,15 @@
       "modus_operandi": "Two-wheeler theft from college parking",
       "repeat_offender": true,
       "prior_cases": [
-        "CR022"
+        "CR011",
+        "CR022",
+        "CR072"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Shivamogga District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Shivamogga District Crime Statistics",
+      "accused": [
+        "Ravi G",
+        "Manjunath L"
+      ]
     },
     {
       "CaseMasterID": 62,
@@ -2946,9 +3280,14 @@
       "modus_operandi": "Night robbery of petrol bunk",
       "repeat_offender": true,
       "prior_cases": [
-        "CR015"
+        "CR015",
+        "CR027",
+        "CR078"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Vijayapura District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Vijayapura District Crime Statistics",
+      "accused": [
+        "Shivappa N"
+      ]
     },
     {
       "CaseMasterID": 63,
@@ -2992,9 +3331,17 @@
       "economic_loss": 950000,
       "socio_economic": "Rural land ownership conflict",
       "modus_operandi": "Agricultural land encroachment using forged sale deed",
-      "repeat_offender": false,
-      "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Ballari District Crime Statistics"
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR024",
+        "CR033",
+        "CR045"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Ballari District Crime Statistics",
+      "accused": [
+        "Ramanna K",
+        "Mariyappa S"
+      ]
     },
     {
       "CaseMasterID": 64,
@@ -3040,9 +3387,14 @@
       "modus_operandi": "Child kidnapping near school gate",
       "repeat_offender": true,
       "prior_cases": [
-        "CR019"
+        "CR019",
+        "CR042",
+        "CR084"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Raichur District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Raichur District Crime Statistics",
+      "accused": [
+        "Hanumantha R"
+      ]
     },
     {
       "CaseMasterID": 65,
@@ -3089,9 +3441,14 @@
       "repeat_offender": true,
       "prior_cases": [
         "CR017",
-        "CR018"
+        "CR018",
+        "CR043"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics",
+      "accused": [
+        "Vikram Shah",
+        "Arjun Mehta"
+      ]
     },
     {
       "CaseMasterID": 66,
@@ -3135,9 +3492,15 @@
       "economic_loss": 4000,
       "socio_economic": "Rural community conflict",
       "modus_operandi": "Assault over irrigation water sharing dispute",
-      "repeat_offender": false,
-      "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Rural District Crime Statistics"
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR038",
+        "CR082"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Rural District Crime Statistics",
+      "accused": [
+        "Muniswamy L"
+      ]
     },
     {
       "CaseMasterID": 67,
@@ -3184,9 +3547,13 @@
       "repeat_offender": true,
       "prior_cases": [
         "CR017",
-        "CR018"
+        "CR018",
+        "CR043"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Mysuru District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Mysuru District Crime Statistics",
+      "accused": [
+        "Vikram Shah"
+      ]
     },
     {
       "CaseMasterID": 68,
@@ -3232,9 +3599,14 @@
       "modus_operandi": "Gang assault on rival drug dealer",
       "repeat_offender": true,
       "prior_cases": [
-        "CR013"
+        "CR013",
+        "CR014",
+        "CR041"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Dakshina Kannada District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Dakshina Kannada District Crime Statistics",
+      "accused": [
+        "Imran Khan"
+      ]
     },
     {
       "CaseMasterID": 69,
@@ -3280,7 +3652,10 @@
       "modus_operandi": "Social media account hacking for extortion",
       "repeat_offender": false,
       "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Belagavi District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Belagavi District Crime Statistics",
+      "accused": [
+        "Deepak Sharma"
+      ]
     },
     {
       "CaseMasterID": 70,
@@ -3327,9 +3702,14 @@
       "repeat_offender": true,
       "prior_cases": [
         "CR007",
-        "CR020"
+        "CR020",
+        "CR059"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Kalaburagi District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Kalaburagi District Crime Statistics",
+      "accused": [
+        "Basavaraj K",
+        "Shivanand M"
+      ]
     },
     {
       "CaseMasterID": 71,
@@ -3375,9 +3755,15 @@
       "modus_operandi": "Car theft from hospital parking",
       "repeat_offender": true,
       "prior_cases": [
-        "CR030"
+        "CR011",
+        "CR030",
+        "CR033"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Tumakuru District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Tumakuru District Crime Statistics",
+      "accused": [
+        "Kumar H",
+        "Shiva T"
+      ]
     },
     {
       "CaseMasterID": 72,
@@ -3423,10 +3809,14 @@
       "modus_operandi": "Gold ornament theft from house during wedding",
       "repeat_offender": true,
       "prior_cases": [
+        "CR011",
         "CR022",
-        "CR035"
+        "CR061"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Shivamogga District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Shivamogga District Crime Statistics",
+      "accused": [
+        "Ravi G"
+      ]
     },
     {
       "CaseMasterID": 73,
@@ -3470,9 +3860,15 @@
       "economic_loss": 0,
       "socio_economic": "Dowry dispute in rural family",
       "modus_operandi": "Dowry harassment leading to severe injury",
-      "repeat_offender": false,
-      "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Vijayapura District Crime Statistics"
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR023",
+        "CR083"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Vijayapura District Crime Statistics",
+      "accused": [
+        "Basappa Y"
+      ]
     },
     {
       "CaseMasterID": 74,
@@ -3518,9 +3914,14 @@
       "modus_operandi": "Murder over gambling debt at local bar",
       "repeat_offender": true,
       "prior_cases": [
-        "CR024"
+        "CR024",
+        "CR033",
+        "CR045"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Ballari District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Ballari District Crime Statistics",
+      "accused": [
+        "Ramanna K"
+      ]
     },
     {
       "CaseMasterID": 75,
@@ -3566,10 +3967,15 @@
       "modus_operandi": "Group assault over water sharing dispute",
       "repeat_offender": true,
       "prior_cases": [
-        "CR019",
-        "CR026"
+        "CR026",
+        "CR044",
+        "CR019"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Raichur District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Raichur District Crime Statistics",
+      "accused": [
+        "Mallappa R",
+        "Bheema S"
+      ]
     },
     {
       "CaseMasterID": 76,
@@ -3615,10 +4021,15 @@
       "modus_operandi": "Luxury car theft from mall parking",
       "repeat_offender": true,
       "prior_cases": [
+        "CR016",
         "CR021",
-        "CR031"
+        "CR028"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics",
+      "accused": [
+        "Nagaraj P",
+        "Suresh M"
+      ]
     },
     {
       "CaseMasterID": 77,
@@ -3664,9 +4075,14 @@
       "modus_operandi": "Ganja cultivation and distribution in rural area",
       "repeat_offender": true,
       "prior_cases": [
-        "CR013"
+        "CR013",
+        "CR032",
+        "CR053"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Rural District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Rural District Crime Statistics",
+      "accused": [
+        "Saleem A"
+      ]
     },
     {
       "CaseMasterID": 78,
@@ -3713,9 +4129,14 @@
       "repeat_offender": true,
       "prior_cases": [
         "CR015",
-        "CR039"
+        "CR039",
+        "CR083"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Mysuru District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Mysuru District Crime Statistics",
+      "accused": [
+        "Mallesh D",
+        "Shivappa N"
+      ]
     },
     {
       "CaseMasterID": 79,
@@ -3762,9 +4183,13 @@
       "repeat_offender": true,
       "prior_cases": [
         "CR004",
-        "CR035"
+        "CR035",
+        "CR058"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Hubballi-Dharwad District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Hubballi-Dharwad District Crime Statistics",
+      "accused": [
+        "Vijay S"
+      ]
     },
     {
       "CaseMasterID": 80,
@@ -3810,9 +4235,13 @@
       "modus_operandi": "Assault over land boundary dispute",
       "repeat_offender": true,
       "prior_cases": [
-        "CR009"
+        "CR009",
+        "CR024"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Belagavi District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Belagavi District Crime Statistics",
+      "accused": [
+        "Santosh B"
+      ]
     },
     {
       "CaseMasterID": 81,
@@ -3859,9 +4288,14 @@
       "repeat_offender": true,
       "prior_cases": [
         "CR017",
-        "CR029"
+        "CR029",
+        "CR043"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Tumakuru District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Tumakuru District Crime Statistics",
+      "accused": [
+        "Anand Joshi",
+        "Arjun Mehta"
+      ]
     },
     {
       "CaseMasterID": 82,
@@ -3905,9 +4339,17 @@
       "economic_loss": 2000000,
       "socio_economic": "Environmental land dispute",
       "modus_operandi": "Forest land encroachment near wildlife zone",
-      "repeat_offender": false,
-      "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Shivamogga District Crime Statistics"
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR011",
+        "CR022",
+        "CR061"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Shivamogga District Crime Statistics",
+      "accused": [
+        "Ravi G",
+        "Muniswamy L"
+      ]
     },
     {
       "CaseMasterID": 83,
@@ -3953,9 +4395,15 @@
       "modus_operandi": "Ganja peddling near rural fair",
       "repeat_offender": true,
       "prior_cases": [
-        "CR039"
+        "CR023",
+        "CR073",
+        "CR015"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Vijayapura District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Vijayapura District Crime Statistics",
+      "accused": [
+        "Basappa Y",
+        "Mallesh D"
+      ]
     },
     {
       "CaseMasterID": 84,
@@ -4001,9 +4449,15 @@
       "modus_operandi": "Farm equipment theft during harvest season",
       "repeat_offender": true,
       "prior_cases": [
-        "CR019"
+        "CR019",
+        "CR042",
+        "CR064"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Raichur District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Raichur District Crime Statistics",
+      "accused": [
+        "Hanumantha R",
+        "Bheema S"
+      ]
     },
     {
       "CaseMasterID": 85,
@@ -4047,9 +4501,17 @@
       "economic_loss": 5000000,
       "socio_economic": "Corporate kidnapping for business rivalry",
       "modus_operandi": "Business executive kidnapping for ransom",
-      "repeat_offender": false,
-      "prior_cases": [],
-      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics"
+      "repeat_offender": true,
+      "prior_cases": [
+        "CR017",
+        "CR018",
+        "CR043"
+      ],
+      "ncrb_reference": "NCRB 2022 Karnataka - Bengaluru Urban District Crime Statistics",
+      "accused": [
+        "Vikram Shah",
+        "Ganesh B"
+      ]
     },
     {
       "CaseMasterID": 86,
@@ -4096,9 +4558,14 @@
       "repeat_offender": true,
       "prior_cases": [
         "CR013",
-        "CR014"
+        "CR014",
+        "CR041"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Dakshina Kannada District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Dakshina Kannada District Crime Statistics",
+      "accused": [
+        "Imran Khan",
+        "Saleem A"
+      ]
     },
     {
       "CaseMasterID": 87,
@@ -4145,9 +4612,13 @@
       "repeat_offender": true,
       "prior_cases": [
         "CR007",
-        "CR020"
+        "CR020",
+        "CR059"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Kalaburagi District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Kalaburagi District Crime Statistics",
+      "accused": [
+        "Basavaraj K"
+      ]
     },
     {
       "CaseMasterID": 88,
@@ -4197,7 +4668,11 @@
         "CR036",
         "CR049"
       ],
-      "ncrb_reference": "NCRB 2022 Karnataka - Ballari District Crime Statistics"
+      "ncrb_reference": "NCRB 2022 Karnataka - Ballari District Crime Statistics",
+      "accused": [
+        "Arjun Mehta",
+        "Amit Patel"
+      ]
     }
   ],
   "criminal_network": [
@@ -5183,10 +5658,3 @@
     }
   }
 }
-
-
-
-
-
-
-
