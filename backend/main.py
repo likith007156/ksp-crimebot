@@ -87,6 +87,18 @@ def analyze_trends(crimes):
         month = crime.get("date", crime.get("CrimeRegisteredDate", "2025-01"))[:7]
         monthly[month] = monthly.get(month, 0) + 1
     return dict(sorted(monthly.items()))
+def find_similar_cases(crime_type, modus):
+    similar = []
+    for crime in crime_data["crimes"]:
+        c_type = crime.get("type", crime.get("CrimeMinorHead", ""))
+        c_modus = crime.get("modus_operandi", crime.get("BriefFacts", ""))
+        if c_type.lower() == crime_type.lower():
+            similar.append({
+                "id": crime.get("id"),
+                "modus": c_modus,
+                "district": crime.get("district", crime.get("DistrictName", ""))
+            })
+    return similar[:5]
 
 def build_context(query, relevant_crimes, connections):
     context = "KARNATAKA STATE POLICE - CRIME DATABASE\n\n"
@@ -180,7 +192,9 @@ RESPONSE RULES:
         return jsonify({
             'response': assistant_message,
             'relevant_cases': [c.get('id', 'Unknown') for c in relevant_crimes],
-            'network_connections': connections
+            'network_connections': connections,
+            'hotspots': get_hotspots(crime_data["crimes"])[:3],
+            'warnings': early_warning(crime_data["crimes"])[:2]
         })
 
     except Exception as e:
