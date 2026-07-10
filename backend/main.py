@@ -18,7 +18,7 @@ def search_crime_data(query):
     query_lower = query.lower()
     relevant_crimes = []
     for crime in crime_data["crimes"]:
-        searchable = f"{crime['type']} {crime['location']} {crime['district']} {crime['status']} {crime['modus_operandi']} {' '.join(crime['accused'])}".lower()
+        searchable = f"{crime.get('type','')} {crime.get('location','')} {crime.get('district','')} {crime.get('status','')} {crime.get('modus_operandi','')} {' '.join(crime.get('accused', []))}".lower()
         if any(word in searchable for word in query_lower.split()):
             relevant_crimes.append(crime)
     return relevant_crimes if relevant_crimes else crime_data["crimes"][:3]
@@ -80,16 +80,16 @@ def build_context(query, relevant_crimes, connections):
     context += f"Relevant Crime Records ({len(relevant_crimes)} found):\n"
     for crime in relevant_crimes:
         context += f"""
-Case ID: {crime['id']}
-Type: {crime['type']}
-Location: {crime['location']} ({crime['district']})
-Station: {crime['station']}
-Date: {crime['date']}
-Accused: {', '.join(crime['accused'])}
-Victim: {crime['victim']}
-Status: {crime['status']}
-Modus Operandi: {crime['modus_operandi']}
-Socio-Economic Factor: {crime['socio_economic']}
+Case ID: {crime.get('id', 'Unknown')}
+Type: {crime.get('type', 'Unknown')}
+Location: {crime.get('location', 'Unknown')} ({crime.get('district', 'Unknown')})
+Station: {crime.get('station', 'Unknown')}
+Date: {crime.get('date', 'Unknown')}
+Accused: {', '.join(crime.get('accused', ['Unknown']))}
+Victim: {crime.get('victim', 'Unknown')}
+Status: {crime.get('status', 'Unknown')}
+Modus Operandi: {crime.get('modus_operandi', 'Unknown')}
+Socio-Economic Factor: {crime.get('socio_economic', 'Unknown')}
 ---"""
     if connections:
         context += "\n\nCriminal Network Connections:\n"
