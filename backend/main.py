@@ -35,7 +35,7 @@ def detect_repeat_offenders(crimes):
     accused_count = {}
     accused_cases = {}
     for crime in crimes:
-        for accused in crime["accused"]:
+       for accused in crime.get("accused", []):
             accused_count[accused] = accused_count.get(accused, 0) + 1
             if accused not in accused_cases:
                 accused_cases[accused] = []
@@ -111,7 +111,7 @@ def chat():
 
         connections = []
         for crime in crime_data["crimes"]:
-            for accused in crime["accused"]:
+            for accused in crime.get("accused", []):
                 if accused.lower().split()[0] in user_message.lower():
                     connections = get_criminal_network(accused)
                     break
