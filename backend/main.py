@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app, origins=["https://ksp-crimebot.vercel.app", "http://localhost:3000"])
 
 # Load crime data
-with open(os.path.join(os.path.dirname(__file__), 'crime_data.json'), 'r') as f:
+with open(os.path.join(os.path.dirname(__file__), 'crime_data.json'), 'r', encoding='utf-8') as f:
     crime_data = json.load(f)
 
 # Initialize Groq client
@@ -18,7 +18,20 @@ def search_crime_data(query):
     query_lower = query.lower()
     relevant_crimes = []
     for crime in crime_data["crimes"]:
-        searchable = f"{crime.get('type','')} {crime.get('location','')} {crime.get('district','')} {crime.get('status','')} {crime.get('modus_operandi','')} {' '.join(crime.get('accused', []))}".lower()
+        searchable = f"""
+            {crime.get('type', '')} 
+            {crime.get('CaseCategory', '')}
+            {crime.get('location', '')} 
+            {crime.get('district', '')} 
+            {crime.get('DistrictName', '')}
+            {crime.get('status', '')} 
+            {crime.get('CaseStatus', '')}
+            {crime.get('modus_operandi', '')} 
+            {crime.get('BriefFacts', '')}
+            {crime.get('CrimeMajorHead', '')}
+            {crime.get('CrimeMinorHead', '')}
+            {' '.join(crime.get('accused', []))}
+        """.lower()
         if any(word in searchable for word in query_lower.split()):
             relevant_crimes.append(crime)
     return relevant_crimes if relevant_crimes else crime_data["crimes"][:3]
@@ -35,11 +48,11 @@ def detect_repeat_offenders(crimes):
     accused_count = {}
     accused_cases = {}
     for crime in crimes:
-       for accused in crime.get("accused", []):
+        for accused in crime.get("accused", []):
             accused_count[accused] = accused_count.get(accused, 0) + 1
             if accused not in accused_cases:
                 accused_cases[accused] = []
-            accused_cases[accused].append(crime["id"])
+            accused_cases[accused].append(crime.get("id", "Unknown"))
     repeat_offenders = {
         k: {"count": v, "cases": accused_cases[k]}
         for k, v in accused_count.items() if v > 1
@@ -49,7 +62,7 @@ def detect_repeat_offenders(crimes):
 def get_hotspots(crimes):
     location_count = {}
     for crime in crimes:
-        loc = crime.get("district", "Unknown")
+        loc = crime.get("district") or crime.get("DistrictName") or "Unknown"
         location_count[loc] = location_count.get(loc, 0) + 1
     return sorted(location_count.items(), key=lambda x: x[1], reverse=True)
 
@@ -57,7 +70,7 @@ def early_warning(crimes):
     warnings = []
     location_count = {}
     for crime in crimes:
-        loc = crime.get("district", "Unknown")
+        loc = crime.get("district") or crime.get("DistrictName") or "Unknown"
         location_count[loc] = location_count.get(loc, 0) + 1
     for loc, count in location_count.items():
         if count >= 3:
@@ -71,7 +84,7 @@ def early_warning(crimes):
 def analyze_trends(crimes):
     monthly = {}
     for crime in crimes:
-        month = crime.get("date", "2025-01")[:7]
+        month = crime.get("date", crime.get("CrimeRegisteredDate", "2025-01"))[:7]
         monthly[month] = monthly.get(month, 0) + 1
     return dict(sorted(monthly.items()))
 
@@ -80,21 +93,25 @@ def build_context(query, relevant_crimes, connections):
     context += f"Relevant Crime Records ({len(relevant_crimes)} found):\n"
     for crime in relevant_crimes:
         context += f"""
-Case ID: {crime.get('id', 'Unknown')}
-Type: {crime.get('type', 'Unknown')}
-Location: {crime.get('location', 'Unknown')} ({crime.get('district', 'Unknown')})
-Station: {crime.get('station', 'Unknown')}
-Date: {crime.get('date', 'Unknown')}
+Case ID: {crime.get('id', crime.get('CaseMasterID', 'Unknown'))}
+Type: {crime.get('type', crime.get('CaseCategory', 'Unknown'))}
+Location: {crime.get('location', crime.get('PoliceStationName', 'Unknown'))}
+District: {crime.get('district', crime.get('DistrictName', 'Unknown'))}
+Station: {crime.get('station', crime.get('PoliceStationName', 'Unknown'))}
+Date: {crime.get('date', crime.get('CrimeRegisteredDate', 'Unknown'))}
 Accused: {', '.join(crime.get('accused', ['Unknown']))}
 Victim: {crime.get('victim', 'Unknown')}
-Status: {crime.get('status', 'Unknown')}
-Modus Operandi: {crime.get('modus_operandi', 'Unknown')}
+Status: {crime.get('status', crime.get('CaseStatus', 'Unknown'))}
+Modus Operandi: {crime.get('modus_operandi', crime.get('BriefFacts', 'Unknown'))}
 Socio-Economic Factor: {crime.get('socio_economic', 'Unknown')}
+IPC Section: {crime.get('ActCode', '')} {crime.get('SectionCode', '')}
+Crime Head: {crime.get('CrimeMajorHead', '')} - {crime.get('CrimeMinorHead', '')}
+Gravity: {crime.get('GravityOffence', 'Unknown')}
 ---"""
     if connections:
         context += "\n\nCriminal Network Connections:\n"
         for conn in connections:
-            context += f"• {conn['from']} ↔ {conn['to']} ({conn['relationship']}) - Cases: {', '.join(conn['cases']) if conn['cases'] else 'Associated'}\n"
+            context += f"• {conn.get('from','?')} ↔ {conn.get('to','?')} ({conn.get('relationship','?')}) - Cases: {', '.join(conn.get('cases', [])) if conn.get('cases') else 'Associated'}\n"
     return context
 
 @app.route('/api/chat', methods=['POST'])
@@ -162,7 +179,7 @@ RESPONSE RULES:
 
         return jsonify({
             'response': assistant_message,
-            'relevant_cases': [c['id'] for c in relevant_crimes],
+            'relevant_cases': [c.get('id', 'Unknown') for c in relevant_crimes],
             'network_connections': connections
         })
 
@@ -170,7 +187,7 @@ RESPONSE RULES:
         import traceback
         traceback.print_exc()
         return jsonify({'error': str(e)}), 500
-        
+
 @app.route('/api/stats', methods=['GET'])
 def stats():
     crimes = crime_data["crimes"]
@@ -178,9 +195,12 @@ def stats():
     by_district = {}
     by_status = {}
     for crime in crimes:
-     by_type[crime.get('type', 'Unknown')] = by_type.get(crime.get('type', 'Unknown'), 0) + 1
-    by_district[crime.get('district', 'Unknown')] = by_district.get(crime.get('district', 'Unknown'), 0) + 1
-    by_status[crime.get('status', 'Unknown')] = by_status.get(crime.get('status', 'Unknown'), 0) + 1
+        t = crime.get('type') or crime.get('CaseCategory') or 'Unknown'
+        d = crime.get('district') or crime.get('DistrictName') or 'Unknown'
+        s = crime.get('status') or crime.get('CaseStatus') or 'Unknown'
+        by_type[t] = by_type.get(t, 0) + 1
+        by_district[d] = by_district.get(d, 0) + 1
+        by_status[s] = by_status.get(s, 0) + 1
     return jsonify({
         'total_cases': len(crimes),
         'by_type': by_type,
