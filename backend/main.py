@@ -27,7 +27,7 @@ def get_criminal_network(name):
     name_lower = name.lower()
     connections = []
     for link in crime_data["criminal_network"]:
-        if name_lower in link["from"].lower() or name_lower in link["to"].lower():
+        if name_lower in link.get("from", "").lower() or name_lower in link.get("to", "").lower():
             connections.append(link)
     return connections
 
@@ -57,7 +57,7 @@ def early_warning(crimes):
     warnings = []
     location_count = {}
     for crime in crimes:
-        loc = crime["district"]
+        loc = crime.get("district", "Unknown")
         location_count[loc] = location_count.get(loc, 0) + 1
     for loc, count in location_count.items():
         if count >= 3:
@@ -71,7 +71,7 @@ def early_warning(crimes):
 def analyze_trends(crimes):
     monthly = {}
     for crime in crimes:
-        month = crime["date"][:7]
+        month = crime.get("date", "2025-01")[:7]
         monthly[month] = monthly.get(month, 0) + 1
     return dict(sorted(monthly.items()))
 
