@@ -1,129 +1,97 @@
 {
-  "summary": {
-    "total_cases": 88,
-    "total_cases_kannada": "ಒಟ್ಟು 88 ಪ್ರಕರಣಗಳು",
-    "arrested_cases": 53,
-    "under_investigation": 35,
-    "chargesheeted": 13,
-    "convicted": 2,
-    "detection_rate_percent": 60.2,
-    "repeat_offender_cases": 83,
-    "total_economic_loss_inr": 50604000,
-    "districts_covered": 12,
-    "police_stations_covered": 49,
+  "metadata": {
+    "total_records": 100,
     "data_period": "2024-2025",
-    "ncrb_reference_year": 2022,
-    "unique_accused": 33,
-    "repeat_offenders_count": 29
+    "last_updated": "2025-06-26"
+  },
+  "summary": {
+    "total_cases": 100,
+    "total_cases_kannada": "ಒಟ್ಟು 100 ಪ್ರಕರಣಗಳು",
+    "arrested_cases": 50,
+    "under_investigation": 40,
+    "chargesheeted": 8,
+    "convicted": 2,
+    "detection_rate_percent": 60.0,
+    "repeat_offender_cases": 83,
+    "unique_accused": 61,
+    "repeat_offenders_count": 29,
+    "total_economic_loss_inr": 64816000,
+    "criminal_network_links": 50,
+    "districts_covered": 12,
+    "police_stations_covered": 49
   },
   "crime_type_distribution": [
     {
       "type": "Cybercrime",
       "type_kannada": "ಸೈಬರ್ ಅಪರಾಧ",
-      "count": 10,
-      "percentage": 11.4,
-      "SubHeadID": 601,
-      "ActCode": "IT_ACT",
-      "SectionCode": "66C"
+      "count": 12,
+      "percentage": 12.0
     },
     {
       "type": "Assault",
       "type_kannada": "ಹಲ್ಲೆ",
-      "count": 10,
-      "percentage": 11.4,
-      "SubHeadID": 102,
-      "ActCode": "IPC",
-      "SectionCode": "323"
+      "count": 11,
+      "percentage": 11.0
     },
     {
       "type": "Theft",
       "type_kannada": "ಕಳ್ಳತನ",
-      "count": 9,
-      "percentage": 10.2,
-      "SubHeadID": 201,
-      "ActCode": "IPC",
-      "SectionCode": "379"
+      "count": 10,
+      "percentage": 10.0
     },
     {
       "type": "Drug Trafficking",
       "type_kannada": "ಮಾದಕ ವ್ಯಸನ ಕಳ್ಳಸಾಗಣೆ",
-      "count": 9,
-      "percentage": 10.2,
-      "SubHeadID": 701,
-      "ActCode": "NDPS",
-      "SectionCode": "20"
+      "count": 10,
+      "percentage": 10.0
     },
     {
       "type": "Robbery",
       "type_kannada": "ದರೋಡೆ",
-      "count": 8,
-      "percentage": 9.1,
-      "SubHeadID": 103,
-      "ActCode": "IPC",
-      "SectionCode": "392"
+      "count": 9,
+      "percentage": 9.0
     },
     {
       "type": "Financial Fraud",
       "type_kannada": "ಆರ್ಥಿಕ ವಂಚನೆ",
-      "count": 8,
-      "percentage": 9.1,
-      "SubHeadID": 501,
-      "ActCode": "IPC",
-      "SectionCode": "420"
+      "count": 9,
+      "percentage": 9.0
     },
     {
       "type": "Murder",
       "type_kannada": "ಕೊಲೆ",
-      "count": 6,
-      "percentage": 6.8,
-      "SubHeadID": 101,
-      "ActCode": "IPC",
-      "SectionCode": "302"
+      "count": 7,
+      "percentage": 7.0
     },
     {
       "type": "Kidnapping",
       "type_kannada": "ಅಪಹರಣ",
-      "count": 6,
-      "percentage": 6.8,
-      "SubHeadID": 401,
-      "ActCode": "IPC",
-      "SectionCode": "363"
+      "count": 7,
+      "percentage": 7.0
     },
     {
       "type": "Vehicle Theft",
       "type_kannada": "ವಾಹನ ಕಳ್ಳತನ",
-      "count": 6,
-      "percentage": 6.8,
-      "SubHeadID": 203,
-      "ActCode": "IPC",
-      "SectionCode": "379"
+      "count": 7,
+      "percentage": 7.0
     },
     {
       "type": "Land Dispute",
       "type_kannada": "ಭೂಮಿ ವಿವಾದ",
+      "count": 7,
+      "percentage": 7.0
+    },
+    {
+      "type": "Domestic Violence",
+      "type_kannada": "ಗೃಹ ಹಿಂಸೆ",
       "count": 6,
-      "percentage": 6.8,
-      "SubHeadID": 801,
-      "ActCode": "IPC",
-      "SectionCode": "447"
+      "percentage": 6.0
     },
     {
       "type": "Chain Snatching",
       "type_kannada": "ಚೈನ್ ಕಸಿದುಕೊಳ್ಳುವಿಕೆ",
       "count": 5,
-      "percentage": 5.7,
-      "SubHeadID": 202,
-      "ActCode": "IPC",
-      "SectionCode": "379"
-    },
-    {
-      "type": "Domestic Violence",
-      "type_kannada": "ಗೃಹ ಹಿಂಸೆ",
-      "count": 5,
-      "percentage": 5.7,
-      "SubHeadID": 301,
-      "ActCode": "IPC",
-      "SectionCode": "498A"
+      "percentage": 5.0
     }
   ],
   "district_wise_crimes": [
@@ -131,135 +99,147 @@
       "DistrictID": 1,
       "DistrictName": "Bengaluru Urban",
       "DistrictName_KN": "ಬೆಂಗಳೂರು ನಗರ",
-      "count": 20,
-      "percentage": 22.7,
+      "count": 21,
+      "percentage": 21.0,
       "ncrb_2022_total": 46187,
-      "ncrb_crime_rate": 385
+      "ncrb_crime_rate_per_lakh": 385,
+      "alert_level": "HIGH"
     },
     {
       "DistrictID": 3,
       "DistrictName": "Mysuru",
       "DistrictName_KN": "ಮೈಸೂರು",
-      "count": 8,
-      "percentage": 9.1,
+      "count": 9,
+      "percentage": 9.0,
       "ncrb_2022_total": 8708,
-      "ncrb_crime_rate": 295
+      "ncrb_crime_rate_per_lakh": 295,
+      "alert_level": "MEDIUM"
     },
     {
       "DistrictID": 4,
       "DistrictName": "Dakshina Kannada",
       "DistrictName_KN": "ದಕ್ಷಿಣ ಕನ್ನಡ",
-      "count": 7,
+      "count": 8,
       "percentage": 8.0,
       "ncrb_2022_total": 4743,
-      "ncrb_crime_rate": 215
+      "ncrb_crime_rate_per_lakh": 215,
+      "alert_level": "MEDIUM"
     },
     {
       "DistrictID": 7,
       "DistrictName": "Kalaburagi",
       "DistrictName_KN": "ಕಲಬುರಗಿ",
-      "count": 7,
+      "count": 8,
       "percentage": 8.0,
       "ncrb_2022_total": 5662,
-      "ncrb_crime_rate": 209
+      "ncrb_crime_rate_per_lakh": 209,
+      "alert_level": "MEDIUM"
     },
     {
       "DistrictID": 12,
       "DistrictName": "Raichur",
       "DistrictName_KN": "ರಾಯಚೂರು",
-      "count": 7,
+      "count": 8,
       "percentage": 8.0,
       "ncrb_2022_total": 3925,
-      "ncrb_crime_rate": 206
+      "ncrb_crime_rate_per_lakh": 206,
+      "alert_level": "MEDIUM"
     },
     {
       "DistrictID": 6,
       "DistrictName": "Belagavi",
       "DistrictName_KN": "ಬೆಳಗಾವಿ",
-      "count": 6,
-      "percentage": 6.8,
+      "count": 7,
+      "percentage": 7.0,
       "ncrb_2022_total": 8154,
-      "ncrb_crime_rate": 167
+      "ncrb_crime_rate_per_lakh": 167,
+      "alert_level": "LOW"
     },
     {
       "DistrictID": 8,
       "DistrictName": "Tumakuru",
       "DistrictName_KN": "ತುಮಕೂರು",
-      "count": 6,
-      "percentage": 6.8,
+      "count": 7,
+      "percentage": 7.0,
       "ncrb_2022_total": 7044,
-      "ncrb_crime_rate": 261
+      "ncrb_crime_rate_per_lakh": 261,
+      "alert_level": "LOW"
     },
     {
       "DistrictID": 9,
       "DistrictName": "Shivamogga",
       "DistrictName_KN": "ಶಿವಮೊಗ್ಗ",
-      "count": 6,
-      "percentage": 6.8,
+      "count": 7,
+      "percentage": 7.0,
       "ncrb_2022_total": 6091,
-      "ncrb_crime_rate": 358
+      "ncrb_crime_rate_per_lakh": 358,
+      "alert_level": "LOW"
     },
     {
       "DistrictID": 10,
       "DistrictName": "Vijayapura",
       "DistrictName_KN": "ವಿಜಯಪುರ",
-      "count": 6,
-      "percentage": 6.8,
+      "count": 7,
+      "percentage": 7.0,
       "ncrb_2022_total": 4296,
-      "ncrb_crime_rate": 195
+      "ncrb_crime_rate_per_lakh": 195,
+      "alert_level": "LOW"
     },
     {
       "DistrictID": 11,
       "DistrictName": "Ballari",
       "DistrictName_KN": "ಬಳ್ಳಾರಿ",
-      "count": 6,
-      "percentage": 6.8,
+      "count": 7,
+      "percentage": 7.0,
       "ncrb_2022_total": 3226,
-      "ncrb_crime_rate": 115
+      "ncrb_crime_rate_per_lakh": 115,
+      "alert_level": "LOW"
     },
     {
       "DistrictID": 5,
       "DistrictName": "Hubballi-Dharwad",
       "DistrictName_KN": "ಹುಬ್ಬಳ್ಳಿ-ಧಾರವಾಡ",
-      "count": 5,
-      "percentage": 5.7,
+      "count": 6,
+      "percentage": 6.0,
       "ncrb_2022_total": 4874,
-      "ncrb_crime_rate": 256
+      "ncrb_crime_rate_per_lakh": 256,
+      "alert_level": "LOW"
     },
     {
       "DistrictID": 2,
       "DistrictName": "Bengaluru Rural",
       "DistrictName_KN": "ಬೆಂಗಳೂರು ಗ್ರಾಮಾಂತರ",
-      "count": 4,
-      "percentage": 4.5,
+      "count": 5,
+      "percentage": 5.0,
       "ncrb_2022_total": 6992,
-      "ncrb_crime_rate": 70
+      "ncrb_crime_rate_per_lakh": 70,
+      "alert_level": "LOW"
     }
   ],
   "case_status_breakdown": [
     {
-      "CaseStatusID": 2,
       "status": "Arrested",
       "status_kannada": "ಬಂಧಿಸಲಾಗಿದೆ",
-      "count": 38
+      "count": 50,
+      "percentage": 50.0
     },
     {
-      "CaseStatusID": 1,
       "status": "Under Investigation",
       "status_kannada": "ತನಿಖೆಯಲ್ಲಿದೆ",
-      "count": 35
+      "count": 40,
+      "percentage": 40.0
     },
     {
-      "CaseStatusID": 3,
       "status": "Chargesheeted",
       "status_kannada": "ಆರೋಪಪಟ್ಟಿ ಸಲ್ಲಿಸಲಾಗಿದೆ",
-      "count": 13
+      "count": 8,
+      "percentage": 8.0
     },
     {
-      "CaseStatusID": 4,
       "status": "Convicted",
       "status_kannada": "ಶಿಕ್ಷೆ ವಿಧಿಸಲಾಗಿದೆ",
-      "count": 2
+      "count": 2,
+      "percentage": 2.0
     }
   ],
   "monthly_trend": [
@@ -329,109 +309,98 @@
     },
     {
       "month": "2025-06",
-      "count": 1
+      "count": 13
     }
   ],
   "time_of_day_analysis": [
     {
       "time": "Night",
       "time_kannada": "ರಾತ್ರಿ",
-      "count": 43,
-      "percentage": 48.9
+      "count": 49,
+      "percentage": 49.0
     },
     {
       "time": "Evening",
       "time_kannada": "ಸಂಜೆ",
-      "count": 17,
-      "percentage": 19.3
+      "count": 19,
+      "percentage": 19.0
     },
     {
       "time": "Afternoon",
       "time_kannada": "ಮಧ್ಯಾಹ್ನ",
-      "count": 16,
-      "percentage": 18.2
+      "count": 19,
+      "percentage": 19.0
     },
     {
       "time": "Morning",
       "time_kannada": "ಬೆಳಿಗ್ಗೆ",
-      "count": 12,
-      "percentage": 13.6
+      "count": 13,
+      "percentage": 13.0
     }
   ],
   "gravity_analysis": [
     {
-      "GravityOffenceID": 3,
       "gravity": "Minor",
-      "count": 31
+      "count": 34
     },
     {
-      "GravityOffenceID": 1,
       "gravity": "Heinous",
-      "count": 29
+      "count": 33
     },
     {
-      "GravityOffenceID": 2,
       "gravity": "Non-Heinous",
-      "count": 28
+      "count": 33
     }
   ],
   "major_crime_heads": [
     {
-      "CrimeHeadID": 1,
       "head": "Crimes Against Body",
-      "count": 24
+      "count": 27
     },
     {
-      "CrimeHeadID": 2,
       "head": "Crimes Against Property",
-      "count": 20
+      "count": 22
     },
     {
-      "CrimeHeadID": 6,
       "head": "Cyber Crimes",
+      "count": 12
+    },
+    {
+      "head": "Narcotics & Drug Offences",
       "count": 10
     },
     {
-      "CrimeHeadID": 7,
-      "head": "Narcotics & Drug Offences",
+      "head": "Economic Offences",
       "count": 9
     },
     {
-      "CrimeHeadID": 5,
-      "head": "Economic Offences",
-      "count": 8
-    },
-    {
-      "CrimeHeadID": 4,
       "head": "Crimes Against Children",
-      "count": 6
+      "count": 7
     },
     {
-      "CrimeHeadID": 8,
       "head": "Land & Property Disputes",
-      "count": 6
+      "count": 7
     },
     {
-      "CrimeHeadID": 3,
       "head": "Crimes Against Women",
-      "count": 5
+      "count": 6
     }
   ],
   "weapon_analysis": [
     {
       "weapon": "None",
       "weapon_kannada": "ಯಾವುದೂ ಇಲ್ಲ",
-      "count": 63
+      "count": 71
     },
     {
       "weapon": "Knife",
       "weapon_kannada": "ಚಾಕು",
-      "count": 7
+      "count": 8
     },
     {
       "weapon": "Iron rod",
       "weapon_kannada": "ಕಬ್ಬಿಣದ ರಾಡ್",
-      "count": 4
+      "count": 5
     },
     {
       "weapon": "Stick",
@@ -439,18 +408,18 @@
       "count": 3
     },
     {
-      "weapon": "Country-made pistol",
-      "weapon_kannada": "ದೇಸಿ ಪಿಸ್ತೂಲು",
-      "count": 2
-    },
-    {
       "weapon": "Cutting tool",
       "weapon_kannada": "ಕತ್ತರಿಸುವ ಉಪಕರಣ",
-      "count": 2
+      "count": 3
     },
     {
       "weapon": "Gun",
       "weapon_kannada": "ಬಂದೂಕು",
+      "count": 3
+    },
+    {
+      "weapon": "Country-made pistol",
+      "weapon_kannada": "ದೇಸಿ ಪಿಸ್ತೂಲು",
       "count": 2
     },
     {
@@ -479,781 +448,248 @@
       "count": 1
     }
   ],
+  "top_repeat_offenders": [
+    {
+      "AccusedName": "Suresh M",
+      "total_cases": 7,
+      "cases": [
+        "CR001",
+        "CR008",
+        "CR021",
+        "CR028",
+        "CR040",
+        "CR052",
+        "CR076"
+      ]
+    },
+    {
+      "AccusedName": "Imran Khan",
+      "total_cases": 7,
+      "cases": [
+        "CR013",
+        "CR014",
+        "CR041",
+        "CR053",
+        "CR056",
+        "CR068",
+        "CR086"
+      ]
+    },
+    {
+      "AccusedName": "Nagaraj P",
+      "total_cases": 7,
+      "cases": [
+        "CR016",
+        "CR021",
+        "CR028",
+        "CR031",
+        "CR040",
+        "CR045",
+        "CR076"
+      ]
+    },
+    {
+      "AccusedName": "Vikram Shah",
+      "total_cases": 7,
+      "cases": [
+        "CR017",
+        "CR018",
+        "CR043",
+        "CR054",
+        "CR065",
+        "CR067",
+        "CR085"
+      ]
+    },
+    {
+      "AccusedName": "Raju Kumar",
+      "total_cases": 6,
+      "cases": [
+        "CR001",
+        "CR005",
+        "CR016",
+        "CR027",
+        "CR052",
+        "CR055"
+      ]
+    },
+    {
+      "AccusedName": "Saleem A",
+      "total_cases": 6,
+      "cases": [
+        "CR013",
+        "CR032",
+        "CR053",
+        "CR056",
+        "CR077",
+        "CR086"
+      ]
+    },
+    {
+      "AccusedName": "Arjun Mehta",
+      "total_cases": 6,
+      "cases": [
+        "CR025",
+        "CR036",
+        "CR049",
+        "CR065",
+        "CR081",
+        "CR088"
+      ]
+    },
+    {
+      "AccusedName": "Basavaraj K",
+      "total_cases": 5,
+      "cases": [
+        "CR007",
+        "CR020",
+        "CR059",
+        "CR070",
+        "CR087"
+      ]
+    },
+    {
+      "AccusedName": "Ravi G",
+      "total_cases": 5,
+      "cases": [
+        "CR011",
+        "CR022",
+        "CR061",
+        "CR072",
+        "CR082"
+      ]
+    },
+    {
+      "AccusedName": "Anand Joshi",
+      "total_cases": 5,
+      "cases": [
+        "CR017",
+        "CR029",
+        "CR043",
+        "CR057",
+        "CR081"
+      ]
+    }
+  ],
+  "criminal_network_summary": {
+    "total_links": 50,
+    "co_accused": 19,
+    "gang_members": 15,
+    "known_associates": 15,
+    "family": 1
+  },
   "early_warnings": [
     {
       "DistrictID": 1,
       "district": "Bengaluru Urban",
       "district_kannada": "ಬೆಂಗಳೂರು ನಗರ",
-      "crime_count": 20,
+      "crime_count": 21,
       "alert_level": "HIGH",
-      "alert": "HIGH ALERT: 20 crimes recorded in Bengaluru Urban. Increased patrolling recommended."
+      "alert_level_kannada": "ಅತ್ಯಧಿಕ ಎಚ್ಚರಿಕೆ",
+      "alert": "HIGH ALERT: 21 crimes in Bengaluru Urban"
     },
     {
       "DistrictID": 3,
       "district": "Mysuru",
       "district_kannada": "ಮೈಸೂರು",
-      "crime_count": 8,
+      "crime_count": 9,
       "alert_level": "MEDIUM",
-      "alert": "MEDIUM ALERT: 8 crimes recorded in Mysuru. Increased patrolling recommended."
+      "alert_level_kannada": "ಮಧ್ಯಮ ಎಚ್ಚರಿಕೆ",
+      "alert": "MEDIUM ALERT: 9 crimes in Mysuru"
     },
     {
       "DistrictID": 4,
       "district": "Dakshina Kannada",
       "district_kannada": "ದಕ್ಷಿಣ ಕನ್ನಡ",
-      "crime_count": 7,
-      "alert_level": "LOW",
-      "alert": "LOW ALERT: 7 crimes recorded in Dakshina Kannada. Monitor closely."
+      "crime_count": 8,
+      "alert_level": "MEDIUM",
+      "alert_level_kannada": "ಮಧ್ಯಮ ಎಚ್ಚರಿಕೆ",
+      "alert": "MEDIUM ALERT: 8 crimes in Dakshina Kannada"
     },
     {
       "DistrictID": 7,
       "district": "Kalaburagi",
       "district_kannada": "ಕಲಬುರಗಿ",
-      "crime_count": 7,
-      "alert_level": "LOW",
-      "alert": "LOW ALERT: 7 crimes recorded in Kalaburagi. Monitor closely."
+      "crime_count": 8,
+      "alert_level": "MEDIUM",
+      "alert_level_kannada": "ಮಧ್ಯಮ ಎಚ್ಚರಿಕೆ",
+      "alert": "MEDIUM ALERT: 8 crimes in Kalaburagi"
     },
     {
       "DistrictID": 12,
       "district": "Raichur",
       "district_kannada": "ರಾಯಚೂರು",
-      "crime_count": 7,
-      "alert_level": "LOW",
-      "alert": "LOW ALERT: 7 crimes recorded in Raichur. Monitor closely."
+      "crime_count": 8,
+      "alert_level": "MEDIUM",
+      "alert_level_kannada": "ಮಧ್ಯಮ ಎಚ್ಚರಿಕೆ",
+      "alert": "MEDIUM ALERT: 8 crimes in Raichur"
     },
     {
       "DistrictID": 6,
       "district": "Belagavi",
       "district_kannada": "ಬೆಳಗಾವಿ",
-      "crime_count": 6,
+      "crime_count": 7,
       "alert_level": "LOW",
-      "alert": "LOW ALERT: 6 crimes recorded in Belagavi. Monitor closely."
+      "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ",
+      "alert": "LOW ALERT: 7 crimes in Belagavi"
     },
     {
       "DistrictID": 8,
       "district": "Tumakuru",
       "district_kannada": "ತುಮಕೂರು",
-      "crime_count": 6,
+      "crime_count": 7,
       "alert_level": "LOW",
-      "alert": "LOW ALERT: 6 crimes recorded in Tumakuru. Monitor closely."
+      "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ",
+      "alert": "LOW ALERT: 7 crimes in Tumakuru"
     },
     {
       "DistrictID": 9,
       "district": "Shivamogga",
       "district_kannada": "ಶಿವಮೊಗ್ಗ",
-      "crime_count": 6,
+      "crime_count": 7,
       "alert_level": "LOW",
-      "alert": "LOW ALERT: 6 crimes recorded in Shivamogga. Monitor closely."
+      "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ",
+      "alert": "LOW ALERT: 7 crimes in Shivamogga"
     },
     {
       "DistrictID": 10,
       "district": "Vijayapura",
       "district_kannada": "ವಿಜಯಪುರ",
-      "crime_count": 6,
+      "crime_count": 7,
       "alert_level": "LOW",
-      "alert": "LOW ALERT: 6 crimes recorded in Vijayapura. Monitor closely."
+      "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ",
+      "alert": "LOW ALERT: 7 crimes in Vijayapura"
     },
     {
       "DistrictID": 11,
       "district": "Ballari",
       "district_kannada": "ಬಳ್ಳಾರಿ",
-      "crime_count": 6,
+      "crime_count": 7,
       "alert_level": "LOW",
-      "alert": "LOW ALERT: 6 crimes recorded in Ballari. Monitor closely."
+      "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ",
+      "alert": "LOW ALERT: 7 crimes in Ballari"
     },
     {
       "DistrictID": 5,
       "district": "Hubballi-Dharwad",
       "district_kannada": "ಹುಬ್ಬಳ್ಳಿ-ಧಾರವಾಡ",
-      "crime_count": 5,
+      "crime_count": 6,
       "alert_level": "LOW",
-      "alert": "LOW ALERT: 5 crimes recorded in Hubballi-Dharwad. Monitor closely."
+      "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ",
+      "alert": "LOW ALERT: 6 crimes in Hubballi-Dharwad"
     },
     {
       "DistrictID": 2,
       "district": "Bengaluru Rural",
       "district_kannada": "ಬೆಂಗಳೂರು ಗ್ರಾಮಾಂತರ",
-      "crime_count": 4,
+      "crime_count": 5,
       "alert_level": "LOW",
-      "alert": "LOW ALERT: 4 crimes recorded in Bengaluru Rural. Monitor closely."
+      "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ",
+      "alert": "LOW ALERT: 5 crimes in Bengaluru Rural"
     }
   ],
-  "lookup_tables": {
-    "districts": [
-      {
-        "DistrictID": 1,
-        "DistrictName": "Bengaluru Urban",
-        "DistrictName_KN": "ಬೆಂಗಳೂರು ನಗರ",
-        "StateID": 1,
-        "Active": 1
-      },
-      {
-        "DistrictID": 2,
-        "DistrictName": "Bengaluru Rural",
-        "DistrictName_KN": "ಬೆಂಗಳೂರು ಗ್ರಾಮಾಂತರ",
-        "StateID": 1,
-        "Active": 1
-      },
-      {
-        "DistrictID": 3,
-        "DistrictName": "Mysuru",
-        "DistrictName_KN": "ಮೈಸೂರು",
-        "StateID": 1,
-        "Active": 1
-      },
-      {
-        "DistrictID": 4,
-        "DistrictName": "Dakshina Kannada",
-        "DistrictName_KN": "ದಕ್ಷಿಣ ಕನ್ನಡ",
-        "StateID": 1,
-        "Active": 1
-      },
-      {
-        "DistrictID": 5,
-        "DistrictName": "Hubballi-Dharwad",
-        "DistrictName_KN": "ಹುಬ್ಬಳ್ಳಿ-ಧಾರವಾಡ",
-        "StateID": 1,
-        "Active": 1
-      },
-      {
-        "DistrictID": 6,
-        "DistrictName": "Belagavi",
-        "DistrictName_KN": "ಬೆಳಗಾವಿ",
-        "StateID": 1,
-        "Active": 1
-      },
-      {
-        "DistrictID": 7,
-        "DistrictName": "Kalaburagi",
-        "DistrictName_KN": "ಕಲಬುರಗಿ",
-        "StateID": 1,
-        "Active": 1
-      },
-      {
-        "DistrictID": 8,
-        "DistrictName": "Tumakuru",
-        "DistrictName_KN": "ತುಮಕೂರು",
-        "StateID": 1,
-        "Active": 1
-      },
-      {
-        "DistrictID": 9,
-        "DistrictName": "Shivamogga",
-        "DistrictName_KN": "ಶಿವಮೊಗ್ಗ",
-        "StateID": 1,
-        "Active": 1
-      },
-      {
-        "DistrictID": 10,
-        "DistrictName": "Vijayapura",
-        "DistrictName_KN": "ವಿಜಯಪುರ",
-        "StateID": 1,
-        "Active": 1
-      },
-      {
-        "DistrictID": 11,
-        "DistrictName": "Ballari",
-        "DistrictName_KN": "ಬಳ್ಳಾರಿ",
-        "StateID": 1,
-        "Active": 1
-      },
-      {
-        "DistrictID": 12,
-        "DistrictName": "Raichur",
-        "DistrictName_KN": "ರಾಯಚೂರು",
-        "StateID": 1,
-        "Active": 1
-      }
-    ],
-    "units": [
-      {
-        "UnitID": 1001,
-        "UnitName": "Koramangala PS",
-        "DistrictID": 1,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 1002,
-        "UnitName": "Whitefield PS",
-        "DistrictID": 1,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 1003,
-        "UnitName": "Indiranagar PS",
-        "DistrictID": 1,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 1004,
-        "UnitName": "HSR Layout PS",
-        "DistrictID": 1,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 1005,
-        "UnitName": "Electronic City PS",
-        "DistrictID": 1,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 1006,
-        "UnitName": "Jayanagar PS",
-        "DistrictID": 1,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 1007,
-        "UnitName": "MG Road PS",
-        "DistrictID": 1,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 1008,
-        "UnitName": "Marathahalli PS",
-        "DistrictID": 1,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 1009,
-        "UnitName": "Rajajinagar PS",
-        "DistrictID": 1,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 1010,
-        "UnitName": "Yeshwanthpur PS",
-        "DistrictID": 1,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 1011,
-        "UnitName": "Banashankari PS",
-        "DistrictID": 1,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 1012,
-        "UnitName": "Shivajinagar PS",
-        "DistrictID": 1,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 2001,
-        "UnitName": "Devanahalli PS",
-        "DistrictID": 2,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 2002,
-        "UnitName": "Hosakote PS",
-        "DistrictID": 2,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 3001,
-        "UnitName": "Vijayanagar PS",
-        "DistrictID": 3,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 3002,
-        "UnitName": "Hebbal PS",
-        "DistrictID": 3,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 3003,
-        "UnitName": "Kuvempunagar PS",
-        "DistrictID": 3,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 3004,
-        "UnitName": "Industrial Area PS",
-        "DistrictID": 3,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 4001,
-        "UnitName": "Hampankatta PS",
-        "DistrictID": 4,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 4002,
-        "UnitName": "Bunder PS",
-        "DistrictID": 4,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 4003,
-        "UnitName": "Panambur PS",
-        "DistrictID": 4,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 4004,
-        "UnitName": "Bejai PS",
-        "DistrictID": 4,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 5001,
-        "UnitName": "Gokul Road PS",
-        "DistrictID": 5,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 5002,
-        "UnitName": "Vidyanagar PS",
-        "DistrictID": 5,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 5003,
-        "UnitName": "Old Town PS",
-        "DistrictID": 5,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 6001,
-        "UnitName": "Tilakwadi PS",
-        "DistrictID": 6,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 6002,
-        "UnitName": "Angol PS",
-        "DistrictID": 6,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 6003,
-        "UnitName": "Camp PS",
-        "DistrictID": 6,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 6004,
-        "UnitName": "Khanapur PS",
-        "DistrictID": 6,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 7001,
-        "UnitName": "Aland Road PS",
-        "DistrictID": 7,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 7002,
-        "UnitName": "Super Market PS",
-        "DistrictID": 7,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 7003,
-        "UnitName": "Sedam PS",
-        "DistrictID": 7,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 7004,
-        "UnitName": "Gulbarga Layout PS",
-        "DistrictID": 7,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 8001,
-        "UnitName": "SS Puram PS",
-        "DistrictID": 8,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 8002,
-        "UnitName": "BH Road PS",
-        "DistrictID": 8,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 8003,
-        "UnitName": "Tiptur PS",
-        "DistrictID": 8,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 9001,
-        "UnitName": "Kuvempu Nagar PS",
-        "DistrictID": 9,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 9002,
-        "UnitName": "Sagar Road PS",
-        "DistrictID": 9,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 9003,
-        "UnitName": "Thirthahalli PS",
-        "DistrictID": 9,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 10001,
-        "UnitName": "Sindagi PS",
-        "DistrictID": 10,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 10002,
-        "UnitName": "Indi PS",
-        "DistrictID": 10,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 10003,
-        "UnitName": "Station Road PS",
-        "DistrictID": 10,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 11001,
-        "UnitName": "Gandhinagar PS",
-        "DistrictID": 11,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 11002,
-        "UnitName": "Civil Station PS",
-        "DistrictID": 11,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 11003,
-        "UnitName": "Mundargi Road PS",
-        "DistrictID": 11,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 12001,
-        "UnitName": "Manvi PS",
-        "DistrictID": 12,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 12002,
-        "UnitName": "Lingasugur PS",
-        "DistrictID": 12,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 12003,
-        "UnitName": "Sindhanur PS",
-        "DistrictID": 12,
-        "TypeID": 1,
-        "Active": 1
-      },
-      {
-        "UnitID": 12004,
-        "UnitName": "Devadurga PS",
-        "DistrictID": 12,
-        "TypeID": 1,
-        "Active": 1
-      }
-    ],
-    "crime_heads": [
-      {
-        "CrimeHeadID": 1,
-        "CrimeGroupName": "Crimes Against Body",
-        "Active": 1
-      },
-      {
-        "CrimeHeadID": 2,
-        "CrimeGroupName": "Crimes Against Property",
-        "Active": 1
-      },
-      {
-        "CrimeHeadID": 3,
-        "CrimeGroupName": "Crimes Against Women",
-        "Active": 1
-      },
-      {
-        "CrimeHeadID": 4,
-        "CrimeGroupName": "Crimes Against Children",
-        "Active": 1
-      },
-      {
-        "CrimeHeadID": 5,
-        "CrimeGroupName": "Economic Offences",
-        "Active": 1
-      },
-      {
-        "CrimeHeadID": 6,
-        "CrimeGroupName": "Cyber Crimes",
-        "Active": 1
-      },
-      {
-        "CrimeHeadID": 7,
-        "CrimeGroupName": "Narcotics & Drug Offences",
-        "Active": 1
-      },
-      {
-        "CrimeHeadID": 8,
-        "CrimeGroupName": "Land & Property Disputes",
-        "Active": 1
-      }
-    ],
-    "crime_subheads": [
-      {
-        "CrimeSubHeadID": 101,
-        "CrimeHeadID": 1,
-        "CrimeHeadName": "Murder",
-        "ActCode": "IPC",
-        "SectionCode": "302"
-      },
-      {
-        "CrimeSubHeadID": 102,
-        "CrimeHeadID": 1,
-        "CrimeHeadName": "Assault",
-        "ActCode": "IPC",
-        "SectionCode": "323"
-      },
-      {
-        "CrimeSubHeadID": 103,
-        "CrimeHeadID": 1,
-        "CrimeHeadName": "Robbery",
-        "ActCode": "IPC",
-        "SectionCode": "392"
-      },
-      {
-        "CrimeSubHeadID": 201,
-        "CrimeHeadID": 2,
-        "CrimeHeadName": "Theft",
-        "ActCode": "IPC",
-        "SectionCode": "379"
-      },
-      {
-        "CrimeSubHeadID": 202,
-        "CrimeHeadID": 2,
-        "CrimeHeadName": "Chain Snatching",
-        "ActCode": "IPC",
-        "SectionCode": "379"
-      },
-      {
-        "CrimeSubHeadID": 203,
-        "CrimeHeadID": 2,
-        "CrimeHeadName": "Vehicle Theft",
-        "ActCode": "IPC",
-        "SectionCode": "379"
-      },
-      {
-        "CrimeSubHeadID": 301,
-        "CrimeHeadID": 3,
-        "CrimeHeadName": "Domestic Violence",
-        "ActCode": "IPC",
-        "SectionCode": "498A"
-      },
-      {
-        "CrimeSubHeadID": 401,
-        "CrimeHeadID": 4,
-        "CrimeHeadName": "Kidnapping",
-        "ActCode": "IPC",
-        "SectionCode": "363"
-      },
-      {
-        "CrimeSubHeadID": 501,
-        "CrimeHeadID": 5,
-        "CrimeHeadName": "Financial Fraud",
-        "ActCode": "IPC",
-        "SectionCode": "420"
-      },
-      {
-        "CrimeSubHeadID": 601,
-        "CrimeHeadID": 6,
-        "CrimeHeadName": "Cybercrime",
-        "ActCode": "IT_ACT",
-        "SectionCode": "66C"
-      },
-      {
-        "CrimeSubHeadID": 701,
-        "CrimeHeadID": 7,
-        "CrimeHeadName": "Drug Trafficking",
-        "ActCode": "NDPS",
-        "SectionCode": "20"
-      },
-      {
-        "CrimeSubHeadID": 801,
-        "CrimeHeadID": 8,
-        "CrimeHeadName": "Land Dispute",
-        "ActCode": "IPC",
-        "SectionCode": "447"
-      }
-    ],
-    "case_statuses": [
-      {
-        "CaseStatusID": 1,
-        "CaseStatusName": "Under Investigation"
-      },
-      {
-        "CaseStatusID": 2,
-        "CaseStatusName": "Arrested"
-      },
-      {
-        "CaseStatusID": 3,
-        "CaseStatusName": "Chargesheeted"
-      },
-      {
-        "CaseStatusID": 4,
-        "CaseStatusName": "Convicted"
-      },
-      {
-        "CaseStatusID": 5,
-        "CaseStatusName": "Closed"
-      }
-    ],
-    "gravity_offences": [
-      {
-        "GravityOffenceID": 1,
-        "LookupValue": "Heinous"
-      },
-      {
-        "GravityOffenceID": 2,
-        "LookupValue": "Non-Heinous"
-      },
-      {
-        "GravityOffenceID": 3,
-        "LookupValue": "Minor"
-      }
-    ],
-    "courts": [
-      {
-        "CourtID": 1,
-        "CourtName": "Principal Sessions Court Bengaluru",
-        "DistrictID": 1
-      },
-      {
-        "CourtID": 2,
-        "CourtName": "District Sessions Court Mysuru",
-        "DistrictID": 3
-      },
-      {
-        "CourtID": 3,
-        "CourtName": "District Sessions Court Dakshina Kannada",
-        "DistrictID": 4
-      },
-      {
-        "CourtID": 4,
-        "CourtName": "District Sessions Court Hubballi",
-        "DistrictID": 5
-      },
-      {
-        "CourtID": 5,
-        "CourtName": "District Sessions Court Belagavi",
-        "DistrictID": 6
-      },
-      {
-        "CourtID": 6,
-        "CourtName": "District Sessions Court Kalaburagi",
-        "DistrictID": 7
-      },
-      {
-        "CourtID": 7,
-        "CourtName": "District Sessions Court Tumakuru",
-        "DistrictID": 8
-      },
-      {
-        "CourtID": 8,
-        "CourtName": "District Sessions Court Shivamogga",
-        "DistrictID": 9
-      },
-      {
-        "CourtID": 9,
-        "CourtName": "District Sessions Court Vijayapura",
-        "DistrictID": 10
-      },
-      {
-        "CourtID": 10,
-        "CourtName": "District Sessions Court Ballari",
-        "DistrictID": 11
-      },
-      {
-        "CourtID": 11,
-        "CourtName": "District Sessions Court Raichur",
-        "DistrictID": 12
-      },
-      {
-        "CourtID": 12,
-        "CourtName": "District Sessions Court Bengaluru Rural",
-        "DistrictID": 2
-      }
-    ],
-    "acts": [
-      {
-        "ActCode": "IPC",
-        "ActDescription": "Indian Penal Code",
-        "ShortName": "IPC",
-        "Active": 1
-      },
-      {
-        "ActCode": "IT_ACT",
-        "ActDescription": "Information Technology Act 2000",
-        "ShortName": "IT Act",
-        "Active": 1
-      },
-      {
-        "ActCode": "NDPS",
-        "ActDescription": "Narcotic Drugs and Psychotropic Substances Act",
-        "ShortName": "NDPS",
-        "Active": 1
-      }
-    ]
+  "ncrb_comparison": {
+    "source": "NCRB Crime in India 2022 - Karnataka",
+    "total_karnataka_crimes_2022": 180742
   }
 }
