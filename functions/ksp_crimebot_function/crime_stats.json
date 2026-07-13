@@ -2,7 +2,14 @@
   "metadata": {
     "total_records": 100,
     "data_period": "2024-2025",
-    "last_updated": "2025-06-26"
+    "last_updated": "2025-06-26",
+    "new_fields_added": [
+      "victim_demographics",
+      "accused_demographics",
+      "socio_economic_profile",
+      "risk_assessment",
+      "financial_crime_details"
+    ]
   },
   "summary": {
     "total_cases": 100,
@@ -341,15 +348,18 @@
   "gravity_analysis": [
     {
       "gravity": "Minor",
-      "count": 34
+      "count": 34,
+      "percentage": 34.0
     },
     {
       "gravity": "Heinous",
-      "count": 33
+      "count": 33,
+      "percentage": 33.0
     },
     {
       "gravity": "Non-Heinous",
-      "count": 33
+      "count": 33,
+      "percentage": 33.0
     }
   ],
   "major_crime_heads": [
@@ -448,6 +458,67 @@
       "count": 1
     }
   ],
+  "risk_level_distribution": [
+    {
+      "risk_level": "CRITICAL",
+      "count": 51,
+      "percentage": 51.0
+    },
+    {
+      "risk_level": "HIGH",
+      "count": 33,
+      "percentage": 33.0
+    },
+    {
+      "risk_level": "MEDIUM",
+      "count": 16,
+      "percentage": 16.0
+    }
+  ],
+  "urban_rural_distribution": [
+    {
+      "category": "Rural",
+      "count": 51,
+      "percentage": 51.0
+    },
+    {
+      "category": "Semi-Urban",
+      "count": 28,
+      "percentage": 28.0
+    },
+    {
+      "category": "Urban",
+      "count": 21,
+      "percentage": 21.0
+    }
+  ],
+  "victim_age_group_distribution": [
+    {
+      "age_group": "Adult (18-60)",
+      "count": 56
+    },
+    {
+      "age_group": "Minor (< 18)",
+      "count": 20
+    },
+    {
+      "age_group": "Senior (> 60)",
+      "count": 10
+    }
+  ],
+  "sociological_insights": {
+    "unemployment_related_crimes": 41,
+    "alcohol_drug_influenced_crimes": 24,
+    "gang_activity_crimes": 45,
+    "economic_motive_crimes": 59,
+    "property_dispute_crimes": 25,
+    "minor_victims": 20,
+    "female_victims": 42,
+    "urban_crimes": 21,
+    "rural_crimes": 51,
+    "critical_risk_cases": 51,
+    "high_risk_cases": 33
+  },
   "top_repeat_offenders": [
     {
       "AccusedName": "Suresh M",
@@ -688,6 +759,16 @@
       "alert": "LOW ALERT: 5 crimes in Bengaluru Rural"
     }
   ],
+  "financial_crime_note": {
+    "status": "Transaction data NOT included in current scope",
+    "team_action_required": "Confirm whether to add fake transaction fields or skip",
+    "economic_loss_data_available": true,
+    "fields_available": [
+      "economic_loss",
+      "financial_crime_details.payment_mode",
+      "financial_crime_details.estimated_transaction_amount"
+    ]
+  },
   "ncrb_comparison": {
     "source": "NCRB Crime in India 2022 - Karnataka",
     "total_karnataka_crimes_2022": 180742
