@@ -367,7 +367,7 @@ export default function App() {
     }
     setLoading(false);
   };
-
+}
 const exportPDF = () => {
     const doc = new jsPDF();
     const pageWidth = doc.internal.pageSize.getWidth();
@@ -379,40 +379,6 @@ const exportPDF = () => {
       // Dark blue header
       doc.setFillColor(13, 71, 161);
       doc.rect(0, 0, pageWidth, 42, 'F');
-
-      // Gold accent line
-      doc.setFillColor(255, 193, 7);
-      doc.rect(0, 42, pageWidth, 2, 'F');
-
-      // KSP Shield (drawn manually)
-      doc.setFillColor(255, 255, 255);
-      doc.circle(24, 21, 13, 'F');
-      doc.setFillColor(13, 71, 161);
-      doc.circle(24, 21, 10, 'F');
-      doc.setFillColor(255, 193, 7);
-      doc.circle(24, 21, 7, 'F');
-      doc.setFillColor(13, 71, 161);
-      doc.circle(24, 21, 4, 'F');
-      doc.setTextColor(255, 255, 255);
-      doc.setFontSize(5);
-      doc.setFont('helvetica', 'bold');
-      doc.text('KSP', 21.5, 22);
-
-      // Title text
-      doc.setTextColor(255, 255, 255);
-      doc.setFontSize(15);
-      doc.setFont('helvetica', 'bold');
-      doc.text('KARNATAKA STATE POLICE', 42, 13);
-
-      doc.setFontSize(9);
-      doc.setFont('helvetica', 'normal');
-      doc.text('State Crime Records Bureau (SCRB) — Datathon 2026', 42, 21);
-
-      doc.setFontSize(8);
-      doc.setTextColor(144, 202, 249);
-      doc.text('KSP CrimeBot AI Crime Analysis Report', 42, 29);
-      doc.text(`Generated: ${new Date().toLocaleString('en-IN')}`, 42, 36);
-    };
 
     const addFooter = (pageNum, totalPages) => {
       doc.setFillColor(13, 71, 161);
