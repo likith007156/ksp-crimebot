@@ -34,7 +34,7 @@ def search_crime_data(query):
         """.lower()
         if any(word in searchable for word in query_lower.split()):
             relevant_crimes.append(crime)
-    return relevant_crimes if relevant_crimes else crime_data["crimes"][:3]
+    return relevant_crimes[:5] if relevant_crimes else crime_data["crimes"][:3]
 
 def get_criminal_network(name):
     name_lower = name.lower()
@@ -103,7 +103,7 @@ def find_similar_cases(crime_type, modus):
 def build_context(query, relevant_crimes, connections):
     context = "KARNATAKA STATE POLICE - CRIME DATABASE\n\n"
     context += f"Relevant Crime Records ({len(relevant_crimes)} found):\n"
-    for crime in relevant_crimes:
+    for crime in relevant_crimes[:5]:  # limit to 5 records
         context += f"""
 Case ID: {crime.get('id', crime.get('CaseMasterID', 'Unknown'))}
 Type: {crime.get('type', crime.get('CaseCategory', 'Unknown'))}
@@ -146,7 +146,7 @@ def chat():
                     break
 
         context = build_context(user_message, relevant_crimes, connections)
-        repeat_offenders = detect_repeat_offenders(crime_data["crimes"])
+        repeat_offenders = dict(list(detect_repeat_offenders(crime_data["crimes"]).items())[:5])
         hotspots = get_hotspots(crime_data["crimes"])
         warnings = early_warning(crime_data["crimes"])
 
