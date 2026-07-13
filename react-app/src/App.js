@@ -367,8 +367,8 @@ export default function App() {
     }
     setLoading(false);
   };
-}
-const exportPDF = () => {
+
+  const exportPDF = () => {
     const doc = new jsPDF();
     const pageWidth = doc.internal.pageSize.getWidth();
     const pageHeight = doc.internal.pageSize.getHeight();
@@ -376,129 +376,148 @@ const exportPDF = () => {
     const maxWidth = pageWidth - margin * 2;
 
     const addHeader = () => {
-      // Dark blue header
+      // Dark blue header background
       doc.setFillColor(13, 71, 161);
-      doc.rect(0, 0, pageWidth, 42, 'F');
+      doc.rect(0, 0, pageWidth, 40, 'F');
 
-    const addFooter = (pageNum, totalPages) => {
-      doc.setFillColor(13, 71, 161);
-      doc.rect(0, pageHeight - 12, pageWidth, 12, 'F');
-      doc.setFontSize(7);
+      // KSP Logo placeholder circle
+      doc.setFillColor(255, 255, 255);
+      doc.circle(25, 20, 12, 'F');
+      doc.setTextColor(13, 71, 161);
+      doc.setFontSize(8);
+      doc.setFont('helvetica', 'bold');
+      doc.text('KSP', 21, 21);
+
+      // Title
       doc.setTextColor(255, 255, 255);
+      doc.setFontSize(14);
+      doc.setFont('helvetica', 'bold');
+      doc.text('KARNATAKA STATE POLICE', 45, 14);
+
+      doc.setFontSize(10);
       doc.setFont('helvetica', 'normal');
-      doc.text('Karnataka State Police | SCRB | KSP CrimeBot AI Analysis', margin, pageHeight - 4);
-      doc.text(`Page ${pageNum} of ${totalPages}`, pageWidth - 28, pageHeight - 4);
-      doc.setTextColor(255, 193, 7);
-      doc.text('CONFIDENTIAL — FOR POLICE USE ONLY', pageWidth / 2 - 22, pageHeight - 4);
+      doc.text('State Crime Records Bureau (SCRB)', 45, 22);
+
+      doc.setFontSize(8);
+      doc.text('KSP CrimeBot — AI Crime Analysis Report', 45, 30);
+      doc.text(`Generated: ${new Date().toLocaleString('en-IN')}`, 45, 37);
+
+      // Gold line under header
+      doc.setDrawColor(255, 193, 7);
+      doc.setLineWidth(1);
+      doc.line(0, 40, pageWidth, 40);
     };
 
-    // ---- PAGE 1 ----
+    const addFooter = (pageNum, totalPages) => {
+      doc.setDrawColor(200, 200, 200);
+      doc.setLineWidth(0.5);
+      doc.line(margin, pageHeight - 15, pageWidth - margin, pageHeight - 15);
+      doc.setFontSize(7);
+      doc.setTextColor(100, 100, 100);
+      doc.setFont('helvetica', 'normal');
+      doc.text('Karnataka State Police | SCRB | KSP CrimeBot AI Analysis', margin, pageHeight - 8);
+      doc.text(`Page ${pageNum} of ${totalPages}`, pageWidth - 30, pageHeight - 8);
+      doc.text('CONFIDENTIAL — FOR POLICE USE ONLY', pageWidth / 2 - 20, pageHeight - 8);
+    };
+
+    // Page 1 — Header
     addHeader();
     let y = 52;
 
-    // Report title box
+    // Report Title Box
     doc.setFillColor(232, 240, 254);
-    doc.rect(margin, y, maxWidth, 12, 'F');
+    doc.rect(margin, y, maxWidth, 16, 'F');
     doc.setDrawColor(13, 71, 161);
-    doc.setLineWidth(0.5);
-    doc.rect(margin, y, maxWidth, 12, 'S');
+    doc.rect(margin, y, maxWidth, 16, 'S');
     doc.setTextColor(13, 71, 161);
-    doc.setFontSize(11);
+    doc.setFontSize(12);
     doc.setFont('helvetica', 'bold');
-    doc.text('CRIME ANALYSIS CONVERSATION REPORT', margin + 4, y + 8);
-    y += 18;
+    doc.text('CRIME ANALYSIS CONVERSATION REPORT', margin + 4, y + 10);
+    y += 24;
 
-    // FIR Info Table
-    doc.setFillColor(245, 247, 250);
-    doc.rect(margin, y, maxWidth, 36, 'F');
-    doc.setDrawColor(180, 180, 200);
-    doc.rect(margin, y, maxWidth, 36, 'S');
+    // FIR Style Info Box
+    doc.setFillColor(245, 245, 245);
+    doc.rect(margin, y, maxWidth, 32, 'F');
+    doc.setDrawColor(180, 180, 180);
+    doc.rect(margin, y, maxWidth, 32, 'S');
 
-    const half = maxWidth / 2;
-    const firInfo = [
-      ['District Name', 'All 12 Karnataka Districts', 'Unit Name', 'SCRB — State HQ'],
-      ['FIR Year', '2024-2025', 'FIR Stage', 'Investigation / Trial'],
-      ['Crime Group', 'IPC / NDPS / IT Act', 'Complaint Mode', 'Direct / Online'],
-      ['Total FIRs', '100 Cases Analyzed', 'Report Type', 'AI Pattern Analysis'],
-    ];
+    doc.setFontSize(8);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(50, 50, 50);
 
-    firInfo.forEach(([k1, v1, k2, v2], i) => {
-      const rowY = y + 8 + i * 8;
-      doc.setFontSize(8);
-      doc.setFont('helvetica', 'bold');
-      doc.setTextColor(60, 60, 60);
-      doc.text(k1 + ':', margin + 3, rowY);
-      doc.text(k2 + ':', margin + half + 3, rowY);
-      doc.setFont('helvetica', 'normal');
-      doc.setTextColor(13, 71, 161);
-      doc.text(v1, margin + 38, rowY);
-      doc.text(v2, margin + half + 30, rowY);
-    });
-    y += 44;
+    const col1 = margin + 4;
+    const col2 = margin + maxWidth / 2 + 4;
 
-    // Conversation header
+    doc.text('District Name:', col1, y + 8);
+    doc.text('Unit Name:', col2, y + 8);
+    doc.text('FIR Year:', col1, y + 16);
+    doc.text('FIR Stage:', col2, y + 16);
+    doc.text('Complaint Mode:', col1, y + 24);
+    doc.text('Report Type:', col2, y + 24);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(13, 71, 161);
+    doc.text('Karnataka (All Districts)', col1 + 28, y + 8);
+    doc.text('SCRB — State Crime Records Bureau', col2 + 22, y + 8);
+    doc.text(new Date().getFullYear().toString(), col1 + 16, y + 16);
+    doc.text('AI Analysis Complete', col2 + 20, y + 16);
+    doc.text('KSP CrimeBot AI Interface', col1 + 30, y + 24);
+    doc.text('Crime Pattern Analysis', col2 + 22, y + 24);
+    y += 40;
+
+    // Conversation Section Title
     doc.setFillColor(13, 71, 161);
     doc.rect(margin, y, maxWidth, 8, 'F');
     doc.setTextColor(255, 255, 255);
     doc.setFontSize(9);
     doc.setFont('helvetica', 'bold');
     doc.text('INVESTIGATOR QUERIES & AI RESPONSES', margin + 4, y + 5.5);
-    y += 12;
-
-    // Filter out non-English characters for PDF compatibility
-    const cleanForPDF = (text) => {
-      return text
-        .replace(/\*\*(.*?)\*\*/g, '$1')
-        .replace(/\*(.*?)\*/g, '$1')
-        .replace(/#{1,6} /g, '')
-        .replace(/[^\x00-\x7F]/g, (char) => {
-          // Replace Kannada and other non-latin with transliteration note
-          return '[Kannada]';
-        });
-    };
+    y += 14;
 
     // Messages
-    const filteredMessages = messages.filter(m => m.role !== 'assistant' || messages.indexOf(m) > 0);
-
-    filteredMessages.forEach((msg, index) => {
-      if (y > pageHeight - 50) {
+    messages.forEach((msg, index) => {
+      if (y > pageHeight - 40) {
+        addFooter(doc.internal.getCurrentPageInfo().pageNumber, '?');
         doc.addPage();
         addHeader();
         y = 52;
       }
 
-      // Role badge
+      // Message box background
       if (msg.role === 'user') {
         doc.setFillColor(227, 242, 253);
         doc.setDrawColor(33, 150, 243);
       } else {
         doc.setFillColor(232, 245, 233);
-        doc.setDrawColor(56, 142, 60);
+        doc.setDrawColor(0, 150, 100);
       }
-      doc.rect(margin, y - 1, maxWidth, 7, 'F');
-      doc.rect(margin, y - 1, 3, 7, 'F');
 
-      doc.setFontSize(8);
+      // Role header
+      doc.setFontSize(9);
       doc.setFont('helvetica', 'bold');
       if (msg.role === 'user') {
         doc.setTextColor(13, 71, 161);
-        doc.text(`[Q${index + 1}] INVESTIGATOR:`, margin + 5, y + 4);
+        doc.text(`[${index + 1}] INVESTIGATOR QUERY:`, margin, y);
       } else {
-        doc.setTextColor(27, 94, 32);
-        doc.text(`[A${index + 1}] KSP CRIMEBOT:`, margin + 5, y + 4);
+        doc.setTextColor(0, 100, 60);
+        doc.text(`[${index + 1}] KSP CRIMEBOT ANALYSIS:`, margin, y);
       }
-      y += 10;
+      y += 6;
 
-      // Content
+      // Message content
       doc.setFont('helvetica', 'normal');
       doc.setFontSize(8);
       doc.setTextColor(40, 40, 40);
 
-      const cleanText = cleanForPDF(msg.content);
-      const lines = doc.splitTextToSize(cleanText, maxWidth - 4);
+      const cleanText = msg.content
+        .replace(/\*\*(.*?)\*\*/g, '$1')
+        .replace(/\*(.*?)\*/g, '$1')
+        .replace(/#{1,6} /g, '');
 
+      const lines = doc.splitTextToSize(cleanText, maxWidth - 4);
       lines.forEach(line => {
-        if (y > pageHeight - 50) {
+        if (y > pageHeight - 40) {
+          addFooter(doc.internal.getCurrentPageInfo().pageNumber, '?');
           doc.addPage();
           addHeader();
           y = 52;
@@ -507,32 +526,29 @@ const exportPDF = () => {
         y += 4.5;
       });
 
-      // Case tags
+      // Case IDs
       if (msg.cases && msg.cases.length > 0) {
-        if (y > pageHeight - 50) {
-          doc.addPage();
-          addHeader();
-          y = 52;
-        }
         y += 2;
         doc.setFillColor(13, 71, 161);
-        doc.rect(margin, y - 3, maxWidth, 7, 'F');
         doc.setTextColor(255, 255, 255);
-        doc.setFontSize(7.5);
+        doc.setFontSize(7);
         doc.setFont('helvetica', 'bold');
-        doc.text(`Referenced Cases: ${msg.cases.join(' | ')}`, margin + 3, y + 1.5);
-        y += 9;
+        const caseText = `Referenced Cases: ${msg.cases.join(' | ')}`;
+        doc.rect(margin, y - 3, maxWidth, 6, 'F');
+        doc.text(caseText, margin + 2, y + 1);
+        y += 8;
       }
 
       // Divider
-      doc.setDrawColor(220, 220, 220);
+      doc.setDrawColor(200, 200, 200);
       doc.setLineWidth(0.3);
       doc.line(margin, y, pageWidth - margin, y);
       y += 6;
     });
 
     // FIR Summary Table
-    if (y > pageHeight - 100) {
+    if (y > pageHeight - 80) {
+      addFooter(doc.internal.getCurrentPageInfo().pageNumber, '?');
       doc.addPage();
       addHeader();
       y = 52;
@@ -545,56 +561,45 @@ const exportPDF = () => {
     doc.setFontSize(9);
     doc.setFont('helvetica', 'bold');
     doc.text('FIR ANALYSIS SUMMARY', margin + 4, y + 5.5);
-    y += 10;
+    y += 12;
 
-    const firSummary = [
+    const firFields = [
       ['District Name', 'All 12 Karnataka Districts'],
-      ['Unit Name', 'SCRB — State Crime Records Bureau'],
       ['FIR Year', '2024-2025'],
-      ['FIR Month', 'January 2024 — December 2025'],
-      ['Crime Group Name', 'IPC / NDPS / IT Act / Special Laws'],
-      ['Crime Head Name', 'Theft / Robbery / Cybercrime / Murder / Kidnapping'],
-      ['Act Section', 'IPC 379 / 392 / 302 / 363 | IT Act 66C | NDPS 20'],
-      ['Place of Offence', 'Urban & Rural areas across Karnataka'],
-      ['Total FIRs Analyzed', '100 Cases'],
-      ['Victim Count', 'Multiple victims across all districts'],
+      ['Crime Group', 'IPC, NDPS, IT Act, Special Laws'],
+      ['Total Cases Analyzed', '100 FIRs'],
+      ['Victim Count', 'Multiple across districts'],
       ['Accused Count', '100+ individuals identified'],
-      ['Arrested Male', '48 arrested'],
-      ['Arrested Female', '2 arrested'],
-      ['Arrested Count', '50 total arrested'],
-      ['Charge Sheeted Count', '8 cases charge sheeted'],
-      ['Conviction Count', '2 convictions recorded'],
-      ['Complaint Mode', 'Direct / Online / Phone / Mobile App'],
-      ['FIR Stage', 'Under Investigation / Chargesheeted / Convicted'],
-      ['IO Name', 'Multiple SCRB Investigating Officers'],
-      ['Beat Name', 'All beats across 12 districts'],
+      ['Arrested Count', '50 arrested'],
+      ['Charge Sheeted', '8 cases'],
+      ['Conviction Count', '2 convictions'],
+      ['Investigating Officers', 'Multiple SCRB officers'],
+      ['Complaint Mode', 'Direct / Online / Phone'],
+      ['FIR Stage', 'Investigation / Trial / Closed'],
     ];
 
-    firSummary.forEach(([field, value], i) => {
-      if (y > pageHeight - 30) {
-        doc.addPage();
-        addHeader();
-        y = 52;
-      }
+    firFields.forEach(([field, value], i) => {
       if (i % 2 === 0) {
-        doc.setFillColor(245, 247, 250);
+        doc.setFillColor(245, 245, 245);
       } else {
         doc.setFillColor(255, 255, 255);
       }
       doc.rect(margin, y, maxWidth, 7, 'F');
       doc.setDrawColor(220, 220, 220);
       doc.rect(margin, y, maxWidth, 7, 'S');
+
       doc.setFontSize(8);
       doc.setFont('helvetica', 'bold');
-      doc.setTextColor(60, 60, 60);
+      doc.setTextColor(50, 50, 50);
       doc.text(field + ':', margin + 3, y + 5);
+
       doc.setFont('helvetica', 'normal');
       doc.setTextColor(13, 71, 161);
       doc.text(value, margin + 65, y + 5);
       y += 7;
     });
 
-    // Fix page numbers
+    // Final footer on all pages
     const totalPages = doc.internal.getNumberOfPages();
     for (let i = 1; i <= totalPages; i++) {
       doc.setPage(i);
