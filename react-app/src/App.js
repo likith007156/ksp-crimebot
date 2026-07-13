@@ -520,7 +520,14 @@ export default function App() {
                       />
                     )}
                     <div className="bubble">
-                      <p>{msg.content}</p>
+                      <p dangerouslySetInnerHTML={{
+  __html: msg.content
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/\n\n/g, '<br/><br/>')
+    .replace(/\n/g, '<br/>')
+    .replace(/^(\d+\.)/gm, '<span class="list-num">$1</span>')
+}} />
                       {msg.cases && msg.cases.length > 0 && (
                         <div className="case-tags">
                           {msg.cases.map((c) => (

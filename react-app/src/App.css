@@ -1170,3 +1170,18 @@ h1, h2, h3, h4 {
     display: none;
   }
 }
+.list-num {
+  color: #64b5f6;
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.bubble strong {
+  color: #64b5f6;
+  font-weight: 700;
+}
+
+.bubble em {
+  color: #90caf9;
+  font-style: italic;
+}
