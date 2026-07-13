@@ -1,5 +1,15 @@
 import jsPDF from 'jspdf';
 import React, { useState, useRef, useEffect, useCallback } from "react";
+import ReactFlow, {
+  Background,
+  Controls,
+  useNodesState,
+  useEdgesState,
+  useReactFlow,
+  ReactFlowProvider,
+} from 'reactflow';
+import 'reactflow/dist/style.css';
+import dagre from 'dagre';
 import { MapContainer, TileLayer, CircleMarker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "./App.css";
@@ -101,92 +111,141 @@ const HotspotMap = ({ hotspots }) => {
   );
 };
 
-/* ─── Network Graph component (ForceGraph2D with lazy import) ─── */
-const NetworkGraph = ({ network, darkMode }) => {
-  const [ForceGraph2D, setForceGraph2D] = useState(null);
-  const [dimensions, setDimensions] = useState({ width: 800, height: 500 });
-  const containerRef = useRef(null);
-  const graphRef = useRef();
+/* ─── Dagre layout helper — component-aware horizontal tiling ─── */
+const NODE_WIDTH = 160;
+const NODE_HEIGHT = 40;
+const CLUSTER_GAP = 80; // horizontal gap between disconnected clusters
 
-  useEffect(() => {
-    import("react-force-graph-2d").then((mod) => {
-      setForceGraph2D(() => mod.default);
-    });
-  }, []);
+const layoutOneCluster = (nodes, edges) => {
+  const g = new dagre.graphlib.Graph();
+  g.setDefaultEdgeLabel(() => ({}));
+  g.setGraph({ rankdir: 'TB', nodesep: 70, ranksep: 90, marginx: 10, marginy: 10 });
+  nodes.forEach((n) => g.setNode(n.id, { width: NODE_WIDTH, height: NODE_HEIGHT }));
+  edges.forEach((e) => g.setEdge(e.source, e.target));
+  dagre.layout(g);
+  const laid = nodes.map((n) => {
+    const pos = g.node(n.id);
+    return { ...n, position: { x: pos.x - NODE_WIDTH / 2, y: pos.y - NODE_HEIGHT / 2 } };
+  });
+  // bounding box of this cluster
+  const xs = laid.map((n) => n.position.x);
+  const ys = laid.map((n) => n.position.y);
+  const w = Math.max(...xs) + NODE_WIDTH - Math.min(...xs);
+  const h = Math.max(...ys) + NODE_HEIGHT - Math.min(...ys);
+  const minX = Math.min(...xs);
+  const minY = Math.min(...ys);
+  // normalise so cluster starts at (0, 0)
+  const normalised = laid.map((n) => ({
+    ...n,
+    position: { x: n.position.x - minX, y: n.position.y - minY },
+  }));
+  return { nodes: normalised, width: w, height: h };
+};
 
-  useEffect(() => {
-    const updateSize = () => {
-      if (containerRef.current) {
-        setDimensions({
-          width: containerRef.current.offsetWidth,
-          height: containerRef.current.offsetHeight
-        });
-      }
-    };
-    updateSize();
-    window.addEventListener('resize', updateSize);
-    return () => window.removeEventListener('resize', updateSize);
-  }, []);
+const getLayoutedElements = (nodes, edges) => {
+  // 1. find connected components via union-find
+  const parent = {};
+  const find = (x) => { if (parent[x] !== x) parent[x] = find(parent[x]); return parent[x]; };
+  const union = (a, b) => { parent[find(a)] = find(b); };
+  nodes.forEach((n) => { parent[n.id] = n.id; });
+  edges.forEach((e) => union(e.source, e.target));
 
-  const graphData = React.useMemo(() => {
-    if (!network || network.length === 0) return { nodes: [], links: [] };
+  const componentMap = {};
+  nodes.forEach((n) => {
+    const root = find(n.id);
+    if (!componentMap[root]) componentMap[root] = { nodes: [], edges: [] };
+    componentMap[root].nodes.push(n);
+  });
+  edges.forEach((e) => {
+    const root = find(e.source);
+    componentMap[root].edges.push(e);
+  });
+
+  // 2. layout each component, then tile left-to-right
+  const components = Object.values(componentMap);
+  // sort largest first so the big cluster anchors left
+  components.sort((a, b) => b.nodes.length - a.nodes.length);
+
+  let cursorX = 0;
+  const allNodes = [];
+  components.forEach((comp) => {
+    const { nodes: laid, width } = layoutOneCluster(comp.nodes, comp.edges);
+    laid.forEach((n) => allNodes.push({ ...n, position: { x: n.position.x + cursorX, y: n.position.y } }));
+    cursorX += width + CLUSTER_GAP;
+  });
+
+  return { nodes: allNodes, edges };
+};
+
+/* ─── Inner flow component (needs ReactFlowProvider context) ─── */
+const NetworkFlowInner = ({ network, darkMode }) => {
+  const [nodes, setNodes, onNodesChange] = useNodesState([]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+  const [selectedNode, setSelectedNode] = useState(null);
+  const { fitView } = useReactFlow();
+
+  // Build react-flow nodes/edges from network data
+  const { flowNodes, flowEdges } = React.useMemo(() => {
+    if (!network || network.length === 0) return { flowNodes: [], flowEdges: [] };
+
     const nodeSet = new Set();
-    network.forEach((link) => {
-      nodeSet.add(link.from);
-      nodeSet.add(link.to);
-    });
-    const nodes = Array.from(nodeSet).map((id) => ({ id, name: id }));
-    const links = network.map((link) => ({
-      source: link.from,
-      target: link.to,
-      label: link.relationship,
+    network.forEach((rel) => { nodeSet.add(rel.from); nodeSet.add(rel.to); });
+
+    const rawNodes = Array.from(nodeSet).map((name) => ({
+      id: name,
+      data: { label: name, cases: [] },
+      position: { x: 0, y: 0 },
+      style: {
+        background: darkMode ? '#1565c0' : '#1976d2',
+        color: '#ffffff',
+        border: '2px solid rgba(255,255,255,0.6)',
+        borderRadius: '8px',
+        padding: '6px 12px',
+        fontSize: '14px',
+        fontFamily: 'Inter, sans-serif',
+        fontWeight: '500',
+        cursor: 'pointer',
+        boxShadow: '0 2px 8px rgba(21,101,192,0.35)',
+        whiteSpace: 'nowrap',
+        minWidth: '80px',
+        textAlign: 'center',
+      },
     }));
-    return { nodes, links };
-  }, [network]);
 
+    const rawEdges = network.map((rel, i) => ({
+      id: `e${i}`,
+      source: rel.from,
+      target: rel.to,
+      label: rel.relationship || '',
+      labelStyle: { fontSize: 10, fill: darkMode ? '#90caf9' : '#546e7a', fontFamily: 'Inter, sans-serif' },
+      labelBgStyle: { fill: darkMode ? '#0d1420' : '#f8faff', fillOpacity: 0.85 },
+      style: { stroke: darkMode ? '#4a90d9' : '#90caf9', strokeWidth: 1.5 },
+      animated: false,
+      type: 'default',
+    }));
+
+    const { nodes: ln, edges: le } = getLayoutedElements(rawNodes, rawEdges);
+    return { flowNodes: ln, flowEdges: le };
+  }, [network, darkMode]);
+
+  // Set nodes/edges and auto-fit when data changes
   useEffect(() => {
-    if (graphRef.current && graphData?.nodes?.length) {
-      graphRef.current.zoomToFit(400, 50);
+    setNodes(flowNodes);
+    setEdges(flowEdges);
+    if (flowNodes.length > 0) {
+      // Small delay to let ReactFlow measure, then fit
+      setTimeout(() => fitView({ padding: 0.1, duration: 400 }), 50);
     }
-  }, [graphData, ForceGraph2D]);
+  }, [flowNodes, flowEdges, setNodes, setEdges, fitView]);
 
-  const nodeCanvasObject = useCallback((node, ctx, globalScale) => {
-    const label = node.name || node.id;
-    const fontSize = 12 / globalScale;
-    ctx.font = `${fontSize}px Inter, sans-serif`;
-
-    // draw node circle
-    ctx.beginPath();
-    ctx.arc(node.x, node.y, 8, 0, 2 * Math.PI);
-    ctx.fillStyle = '#1565c0';
-    ctx.fill();
-
-    // draw label below node
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'top';
-    ctx.fillStyle = '#1a1a2e';
-    ctx.fillText(label, node.x, node.y + 10);
+  const onNodeClick = useCallback((event, node) => {
+    setSelectedNode((prev) => (prev && prev.id === node.id ? null : node));
   }, []);
 
-  const nodePointerAreaPaint = useCallback((node, color, ctx) => {
-    ctx.beginPath();
-    ctx.arc(node.x, node.y, 8, 0, 2 * Math.PI);
-    ctx.fillStyle = color;
-    ctx.fill();
-  }, []);
+  const bg = darkMode ? '#0d1420' : '#f0f4ff';
+  const bgDotColor = darkMode ? '#1e3a5f' : '#c7d4f0';
 
-  const linkLabel = useCallback((link) => link.label || "", []);
-
-  if (!ForceGraph2D) {
-    return (
-      <div className="graph-loading">
-        <RefreshCw size={24} className="spin-icon" />
-        <span>Loading graph…</span>
-      </div>
-    );
-  }
-
-  if (graphData.nodes.length === 0) {
+  if (!network || network.length === 0) {
     return (
       <div className="graph-empty">
         <Network size={40} />
@@ -196,27 +255,74 @@ const NetworkGraph = ({ network, darkMode }) => {
   }
 
   return (
-    <div ref={containerRef} style={{ height: '600px', width: '100%', overflow: 'hidden' }} className="force-graph-container">
-      <ForceGraph2D
-        ref={graphRef}
-        graphData={graphData}
-        width={dimensions.width}
-        height={dimensions.height}
-        backgroundColor={darkMode ? "#0d1420" : "#f0f4ff"}
-        nodeCanvasObject={nodeCanvasObject}
-        nodeCanvasObjectMode={() => "replace"}
-        nodePointerAreaPaint={nodePointerAreaPaint}
-        linkColor={() => (darkMode ? "#334e6b" : "#94a3b8")}
-        linkWidth={2}
-        linkDirectionalArrowLength={6}
-        linkDirectionalArrowRelPos={1}
-        linkLabel={linkLabel}
-        cooldownTicks={100}
-        nodeLabel={(node) => node.name || node.id}
-      />
+    <div style={{ width: '100%', height: '600px', position: 'relative', borderRadius: '12px', overflow: 'hidden', border: `1px solid ${darkMode ? '#1e3a5f' : '#dde8ff'}` }}>
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onNodeClick={onNodeClick}
+        fitView
+        fitViewOptions={{ padding: 0.2 }}
+        nodesDraggable={true}
+        panOnDrag={true}
+        zoomOnScroll={true}
+        style={{ background: bg }}
+        minZoom={0.2}
+        maxZoom={3}
+        attributionPosition="bottom-right"
+      >
+        <Background color={bgDotColor} gap={20} size={1} />
+        <Controls style={{ bottom: 16, left: 16, top: 'auto', background: darkMode ? '#1a2744' : '#fff', border: `1px solid ${darkMode ? '#334e7a' : '#dde8ff'}`, borderRadius: '8px' }} />
+      </ReactFlow>
+
+      {/* Node info panel */}
+      {selectedNode && (
+        <div style={{
+          position: 'absolute', top: 12, right: 12, zIndex: 10,
+          background: darkMode ? '#1a2744' : '#fff',
+          border: `1px solid ${darkMode ? '#334e7a' : '#dde8ff'}`,
+          borderRadius: '10px', padding: '14px 18px', minWidth: '200px',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
+          fontFamily: 'Inter, sans-serif',
+        }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+            <span style={{ fontWeight: 700, fontSize: 13, color: darkMode ? '#90caf9' : '#1565c0' }}>
+              {selectedNode.data.label}
+            </span>
+            <button
+              onClick={() => setSelectedNode(null)}
+              style={{ background: 'none', border: 'none', cursor: 'pointer', color: darkMode ? '#90caf9' : '#546e7a', fontSize: 16, lineHeight: 1 }}
+            >×</button>
+          </div>
+          <div style={{ fontSize: 12, color: darkMode ? '#b0c4de' : '#546e7a' }}>
+            {network
+              .filter((r) => r.from === selectedNode.id || r.to === selectedNode.id)
+              .map((r, i) => (
+                <div key={i} style={{ marginBottom: 4 }}>
+                  <span style={{ fontWeight: 600, color: darkMode ? '#fff' : '#1a1a2e' }}>
+                    {r.from === selectedNode.id ? r.to : r.from}
+                  </span>
+                  {' — '}{r.relationship || 'Associated'}
+                  {r.case_id && <span style={{ opacity: 0.65 }}> ({r.case_id})</span>}
+                </div>
+              ))}
+            {network.filter((r) => r.from === selectedNode.id || r.to === selectedNode.id).length === 0 && (
+              <span>No connections found</span>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
+
+/* ─── Network Graph component (wrapped with ReactFlowProvider) ─── */
+const NetworkGraph = ({ network, darkMode }) => (
+  <ReactFlowProvider>
+    <NetworkFlowInner network={network} darkMode={darkMode} />
+  </ReactFlowProvider>
+);
 
 /* ─── Main App ─── */
 export default function App() {
