@@ -5,7 +5,12 @@ import json
 import os
 
 app = Flask(__name__)
-CORS(app, origins=["https://ksp-crimebot.vercel.app", "http://localhost:3000"])
+CORS(app, origins=[
+    "https://ksp-crimebot.vercel.app",
+    "https://ksp-crimebot-vgzydfhk.onslate.in",
+    "https://ksp-crimebot-60074844883.development.catalystserverless.in",
+    "http://localhost:3000"
+])
 
 # Load crime data
 with open(os.path.join(os.path.dirname(__file__), 'crime_data.json'), 'r', encoding='utf-8') as f:
