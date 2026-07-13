@@ -106,6 +106,7 @@ const NetworkGraph = ({ network, darkMode }) => {
   const [ForceGraph2D, setForceGraph2D] = useState(null);
   const [dimensions, setDimensions] = useState({ width: 800, height: 500 });
   const containerRef = useRef(null);
+  const graphRef = useRef();
 
   useEffect(() => {
     import("react-force-graph-2d").then((mod) => {
@@ -114,16 +115,17 @@ const NetworkGraph = ({ network, darkMode }) => {
   }, []);
 
   useEffect(() => {
-    const observer = new ResizeObserver((entries) => {
-      for (const entry of entries) {
+    const updateSize = () => {
+      if (containerRef.current) {
         setDimensions({
-          width: entry.contentRect.width,
-          height: Math.max(entry.contentRect.height, 500),
+          width: containerRef.current.offsetWidth,
+          height: containerRef.current.offsetHeight
         });
       }
-    });
-    if (containerRef.current) observer.observe(containerRef.current);
-    return () => observer.disconnect();
+    };
+    updateSize();
+    window.addEventListener('resize', updateSize);
+    return () => window.removeEventListener('resize', updateSize);
   }, []);
 
   const graphData = React.useMemo(() => {
@@ -133,7 +135,7 @@ const NetworkGraph = ({ network, darkMode }) => {
       nodeSet.add(link.from);
       nodeSet.add(link.to);
     });
-    const nodes = Array.from(nodeSet).map((id) => ({ id }));
+    const nodes = Array.from(nodeSet).map((id) => ({ id, name: id }));
     const links = network.map((link) => ({
       source: link.from,
       target: link.to,
@@ -142,30 +144,36 @@ const NetworkGraph = ({ network, darkMode }) => {
     return { nodes, links };
   }, [network]);
 
-  const nodeCanvasObject = useCallback(
-    (node, ctx, globalScale) => {
-      const label = node.id;
-      const fontSize = Math.max(12 / globalScale, 8);
-      const r = 18;
-      ctx.beginPath();
-      ctx.arc(node.x, node.y, r, 0, 2 * Math.PI, false);
-      ctx.fillStyle = darkMode ? "#1a4a8a" : "#1a3a6b";
-      ctx.fill();
-      ctx.strokeStyle = darkMode ? "#4fa3e3" : "#2563eb";
-      ctx.lineWidth = 2;
-      ctx.stroke();
-      ctx.font = `${fontSize}px Inter, sans-serif`;
-      ctx.fillStyle = "#ffffff";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      // Truncate long names
-      const maxLen = 12;
-      const displayLabel =
-        label.length > maxLen ? label.slice(0, maxLen) + "…" : label;
-      ctx.fillText(displayLabel, node.x, node.y);
-    },
-    [darkMode]
-  );
+  useEffect(() => {
+    if (graphRef.current && graphData?.nodes?.length) {
+      graphRef.current.zoomToFit(400, 50);
+    }
+  }, [graphData, ForceGraph2D]);
+
+  const nodeCanvasObject = useCallback((node, ctx, globalScale) => {
+    const label = node.name || node.id;
+    const fontSize = 12 / globalScale;
+    ctx.font = `${fontSize}px Inter, sans-serif`;
+
+    // draw node circle
+    ctx.beginPath();
+    ctx.arc(node.x, node.y, 8, 0, 2 * Math.PI);
+    ctx.fillStyle = '#1565c0';
+    ctx.fill();
+
+    // draw label below node
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    ctx.fillStyle = '#1a1a2e';
+    ctx.fillText(label, node.x, node.y + 10);
+  }, []);
+
+  const nodePointerAreaPaint = useCallback((node, color, ctx) => {
+    ctx.beginPath();
+    ctx.arc(node.x, node.y, 8, 0, 2 * Math.PI);
+    ctx.fillStyle = color;
+    ctx.fill();
+  }, []);
 
   const linkLabel = useCallback((link) => link.label || "", []);
 
@@ -188,21 +196,23 @@ const NetworkGraph = ({ network, darkMode }) => {
   }
 
   return (
-    <div ref={containerRef} className="force-graph-container">
+    <div ref={containerRef} style={{ height: '600px', width: '100%', overflow: 'hidden' }} className="force-graph-container">
       <ForceGraph2D
+        ref={graphRef}
         graphData={graphData}
         width={dimensions.width}
         height={dimensions.height}
         backgroundColor={darkMode ? "#0d1420" : "#f0f4ff"}
         nodeCanvasObject={nodeCanvasObject}
         nodeCanvasObjectMode={() => "replace"}
+        nodePointerAreaPaint={nodePointerAreaPaint}
         linkColor={() => (darkMode ? "#334e6b" : "#94a3b8")}
         linkWidth={2}
         linkDirectionalArrowLength={6}
         linkDirectionalArrowRelPos={1}
         linkLabel={linkLabel}
         cooldownTicks={100}
-        nodeLabel={(node) => node.id}
+        nodeLabel={(node) => node.name || node.id}
       />
     </div>
   );
@@ -646,9 +656,11 @@ export default function App() {
   return (
     <div className={`app${darkMode ? " dark" : ""}`}>
       {/* ── Watermark ── */}
-      <div className="watermark" aria-hidden="true">
-        <img src="/ksp-emblem.png" alt="" />
-      </div>
+      {activeTab !== 'network' && (
+        <div className="watermark" aria-hidden="true">
+          <img src="/ksp-emblem.png" alt="" />
+        </div>
+      )}
 
       {/* ── Header ── */}
       <header className="header">
