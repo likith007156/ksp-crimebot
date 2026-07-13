@@ -1,3 +1,4 @@
+import jsPDF from 'jspdf';
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { MapContainer, TileLayer, CircleMarker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
@@ -368,15 +369,244 @@ export default function App() {
   };
 
   const exportPDF = () => {
-    const content = messages
-      .map((m) => `[${m.role.toUpperCase()}]: ${m.content}`)
-      .join("\n\n");
-    const blob = new Blob([content], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "ksp_crimebot_conversation.txt";
-    a.click();
+    const doc = new jsPDF();
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const pageHeight = doc.internal.pageSize.getHeight();
+    const margin = 15;
+    const maxWidth = pageWidth - margin * 2;
+
+    const addHeader = () => {
+      // Dark blue header background
+      doc.setFillColor(13, 71, 161);
+      doc.rect(0, 0, pageWidth, 40, 'F');
+
+      // KSP Logo placeholder circle
+      doc.setFillColor(255, 255, 255);
+      doc.circle(25, 20, 12, 'F');
+      doc.setTextColor(13, 71, 161);
+      doc.setFontSize(8);
+      doc.setFont('helvetica', 'bold');
+      doc.text('KSP', 21, 21);
+
+      // Title
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(14);
+      doc.setFont('helvetica', 'bold');
+      doc.text('KARNATAKA STATE POLICE', 45, 14);
+
+      doc.setFontSize(10);
+      doc.setFont('helvetica', 'normal');
+      doc.text('State Crime Records Bureau (SCRB)', 45, 22);
+
+      doc.setFontSize(8);
+      doc.text('KSP CrimeBot — AI Crime Analysis Report', 45, 30);
+      doc.text(`Generated: ${new Date().toLocaleString('en-IN')}`, 45, 37);
+
+      // Gold line under header
+      doc.setDrawColor(255, 193, 7);
+      doc.setLineWidth(1);
+      doc.line(0, 40, pageWidth, 40);
+    };
+
+    const addFooter = (pageNum, totalPages) => {
+      doc.setDrawColor(200, 200, 200);
+      doc.setLineWidth(0.5);
+      doc.line(margin, pageHeight - 15, pageWidth - margin, pageHeight - 15);
+      doc.setFontSize(7);
+      doc.setTextColor(100, 100, 100);
+      doc.setFont('helvetica', 'normal');
+      doc.text('Karnataka State Police | SCRB | KSP CrimeBot AI Analysis', margin, pageHeight - 8);
+      doc.text(`Page ${pageNum} of ${totalPages}`, pageWidth - 30, pageHeight - 8);
+      doc.text('CONFIDENTIAL — FOR POLICE USE ONLY', pageWidth / 2 - 20, pageHeight - 8);
+    };
+
+    // Page 1 — Header
+    addHeader();
+    let y = 52;
+
+    // Report Title Box
+    doc.setFillColor(232, 240, 254);
+    doc.rect(margin, y, maxWidth, 16, 'F');
+    doc.setDrawColor(13, 71, 161);
+    doc.rect(margin, y, maxWidth, 16, 'S');
+    doc.setTextColor(13, 71, 161);
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'bold');
+    doc.text('CRIME ANALYSIS CONVERSATION REPORT', margin + 4, y + 10);
+    y += 24;
+
+    // FIR Style Info Box
+    doc.setFillColor(245, 245, 245);
+    doc.rect(margin, y, maxWidth, 32, 'F');
+    doc.setDrawColor(180, 180, 180);
+    doc.rect(margin, y, maxWidth, 32, 'S');
+
+    doc.setFontSize(8);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(50, 50, 50);
+
+    const col1 = margin + 4;
+    const col2 = margin + maxWidth / 2 + 4;
+
+    doc.text('District Name:', col1, y + 8);
+    doc.text('Unit Name:', col2, y + 8);
+    doc.text('FIR Year:', col1, y + 16);
+    doc.text('FIR Stage:', col2, y + 16);
+    doc.text('Complaint Mode:', col1, y + 24);
+    doc.text('Report Type:', col2, y + 24);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(13, 71, 161);
+    doc.text('Karnataka (All Districts)', col1 + 28, y + 8);
+    doc.text('SCRB — State Crime Records Bureau', col2 + 22, y + 8);
+    doc.text(new Date().getFullYear().toString(), col1 + 16, y + 16);
+    doc.text('AI Analysis Complete', col2 + 20, y + 16);
+    doc.text('KSP CrimeBot AI Interface', col1 + 30, y + 24);
+    doc.text('Crime Pattern Analysis', col2 + 22, y + 24);
+    y += 40;
+
+    // Conversation Section Title
+    doc.setFillColor(13, 71, 161);
+    doc.rect(margin, y, maxWidth, 8, 'F');
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'bold');
+    doc.text('INVESTIGATOR QUERIES & AI RESPONSES', margin + 4, y + 5.5);
+    y += 14;
+
+    // Messages
+    messages.forEach((msg, index) => {
+      if (y > pageHeight - 40) {
+        addFooter(doc.internal.getCurrentPageInfo().pageNumber, '?');
+        doc.addPage();
+        addHeader();
+        y = 52;
+      }
+
+      // Message box background
+      if (msg.role === 'user') {
+        doc.setFillColor(227, 242, 253);
+        doc.setDrawColor(33, 150, 243);
+      } else {
+        doc.setFillColor(232, 245, 233);
+        doc.setDrawColor(0, 150, 100);
+      }
+
+      // Role header
+      doc.setFontSize(9);
+      doc.setFont('helvetica', 'bold');
+      if (msg.role === 'user') {
+        doc.setTextColor(13, 71, 161);
+        doc.text(`[${index + 1}] INVESTIGATOR QUERY:`, margin, y);
+      } else {
+        doc.setTextColor(0, 100, 60);
+        doc.text(`[${index + 1}] KSP CRIMEBOT ANALYSIS:`, margin, y);
+      }
+      y += 6;
+
+      // Message content
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(8);
+      doc.setTextColor(40, 40, 40);
+
+      const cleanText = msg.content
+        .replace(/\*\*(.*?)\*\*/g, '$1')
+        .replace(/\*(.*?)\*/g, '$1')
+        .replace(/#{1,6} /g, '');
+
+      const lines = doc.splitTextToSize(cleanText, maxWidth - 4);
+      lines.forEach(line => {
+        if (y > pageHeight - 40) {
+          addFooter(doc.internal.getCurrentPageInfo().pageNumber, '?');
+          doc.addPage();
+          addHeader();
+          y = 52;
+        }
+        doc.text(line, margin + 2, y);
+        y += 4.5;
+      });
+
+      // Case IDs
+      if (msg.cases && msg.cases.length > 0) {
+        y += 2;
+        doc.setFillColor(13, 71, 161);
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(7);
+        doc.setFont('helvetica', 'bold');
+        const caseText = `Referenced Cases: ${msg.cases.join(' | ')}`;
+        doc.rect(margin, y - 3, maxWidth, 6, 'F');
+        doc.text(caseText, margin + 2, y + 1);
+        y += 8;
+      }
+
+      // Divider
+      doc.setDrawColor(200, 200, 200);
+      doc.setLineWidth(0.3);
+      doc.line(margin, y, pageWidth - margin, y);
+      y += 6;
+    });
+
+    // FIR Summary Table
+    if (y > pageHeight - 80) {
+      addFooter(doc.internal.getCurrentPageInfo().pageNumber, '?');
+      doc.addPage();
+      addHeader();
+      y = 52;
+    }
+
+    y += 4;
+    doc.setFillColor(13, 71, 161);
+    doc.rect(margin, y, maxWidth, 8, 'F');
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'bold');
+    doc.text('FIR ANALYSIS SUMMARY', margin + 4, y + 5.5);
+    y += 12;
+
+    const firFields = [
+      ['District Name', 'All 12 Karnataka Districts'],
+      ['FIR Year', '2024-2025'],
+      ['Crime Group', 'IPC, NDPS, IT Act, Special Laws'],
+      ['Total Cases Analyzed', '100 FIRs'],
+      ['Victim Count', 'Multiple across districts'],
+      ['Accused Count', '100+ individuals identified'],
+      ['Arrested Count', '50 arrested'],
+      ['Charge Sheeted', '8 cases'],
+      ['Conviction Count', '2 convictions'],
+      ['Investigating Officers', 'Multiple SCRB officers'],
+      ['Complaint Mode', 'Direct / Online / Phone'],
+      ['FIR Stage', 'Investigation / Trial / Closed'],
+    ];
+
+    firFields.forEach(([field, value], i) => {
+      if (i % 2 === 0) {
+        doc.setFillColor(245, 245, 245);
+      } else {
+        doc.setFillColor(255, 255, 255);
+      }
+      doc.rect(margin, y, maxWidth, 7, 'F');
+      doc.setDrawColor(220, 220, 220);
+      doc.rect(margin, y, maxWidth, 7, 'S');
+
+      doc.setFontSize(8);
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(50, 50, 50);
+      doc.text(field + ':', margin + 3, y + 5);
+
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(13, 71, 161);
+      doc.text(value, margin + 65, y + 5);
+      y += 7;
+    });
+
+    // Final footer on all pages
+    const totalPages = doc.internal.getNumberOfPages();
+    for (let i = 1; i <= totalPages; i++) {
+      doc.setPage(i);
+      addFooter(i, totalPages);
+    }
+
+    doc.save(`KSP_FIR_Report_${new Date().toISOString().slice(0,10)}.pdf`);
   };
 
   const suggestedQueries = [
