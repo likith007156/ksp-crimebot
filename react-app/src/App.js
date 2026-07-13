@@ -1,32 +1,64 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { MapContainer, TileLayer, CircleMarker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "./App.css";
+import LoginScreen from "./LoginScreen";
+import {
+  MessageSquare,
+  BarChart2,
+  Map,
+  Network,
+  AlertTriangle,
+  Sun,
+  Moon,
+  Download,
+  Tag,
+  MapPin,
+  ShieldAlert,
+  AlertOctagon,
+  Lightbulb,
+  Send,
+  RefreshCw,
+} from "lucide-react";
 
 const FUNCTION_URL = "https://ksp-crimebot-backend.onrender.com";
 
+/* ─── Dark-map tile layer (CartoDB Dark Matter) ─── */
+const CARTO_DARK =
+  "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png";
+const CARTO_ATTR =
+  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>';
+
+/* ─── Map component ─── */
 const HotspotMap = ({ hotspots }) => {
   const districtCoords = {
     "Bengaluru Urban": [12.9716, 77.5946],
     "Bengaluru Rural": [13.1986, 77.7066],
-    "Mysuru": [12.2958, 76.6394],
-    "Dakshina Kannada": [12.9141, 74.8560],
-    "Dharwad": [15.4589, 75.0078],
-    "Hubballi-Dharwad": [15.3647, 75.1240],
-    "Belagavi": [15.8497, 74.4977],
-    "Kalaburagi": [17.3297, 76.8343],
-    "Tumakuru": [13.3379, 77.1173],
-    "Shivamogga": [13.9299, 75.5681],
-    "Vijayapura": [16.8302, 75.7100],
-    "Ballari": [15.1394, 76.9214],
-    "Raichur": [16.2120, 77.3439]
+    Mysuru: [12.2958, 76.6394],
+    "Dakshina Kannada": [12.9141, 74.856],
+    Dharwad: [15.4589, 75.0078],
+    "Hubballi-Dharwad": [15.3647, 75.124],
+    Belagavi: [15.8497, 74.4977],
+    Kalaburagi: [17.3297, 76.8343],
+    Tumakuru: [13.3379, 77.1173],
+    Shivamogga: [13.9299, 75.5681],
+    Vijayapura: [16.8302, 75.71],
+    Ballari: [15.1394, 76.9214],
+    Raichur: [16.212, 77.3439],
   };
 
   const getColor = (count) => {
-    if (count >= 15) return "#ff0000";
-    if (count >= 8) return "#ff6600";
-    if (count >= 5) return "#ffaa00";
-    return "#ffff00";
+    if (count >= 15) return "#ff4444";
+    if (count >= 8) return "#ff7700";
+    if (count >= 5) return "#ffbb00";
+    return "#88dd44";
+  };
+
+  const getSeverityLabel = (count) => {
+    if (count >= 15) return "CRITICAL ZONE";
+    if (count >= 8) return "HIGH ALERT";
+    if (count >= 5) return "MEDIUM RISK";
+    return "LOW RISK";
   };
 
   return (
@@ -35,42 +67,154 @@ const HotspotMap = ({ hotspots }) => {
       zoom={7}
       style={{ height: "450px", width: "100%", borderRadius: "12px" }}
     >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution="© OpenStreetMap"
-      />
-      {hotspots && hotspots.map(([district, count], i) => {
-        const coords = districtCoords[district];
-        if (!coords) return null;
-        return (
-          <CircleMarker
-            key={i}
-            center={coords}
-            radius={Math.max(count * 3, 10)}
-            fillColor={getColor(count)}
-            color="#cc0000"
-            fillOpacity={0.7}
-            weight={2}
-          >
-            <Popup>
-              <div style={{textAlign:'center'}}>
-                <b>{district}</b><br />
-                🚨 {count} crimes recorded<br />
-                {count >= 15 ? "⛔ CRITICAL ZONE" : count >= 8 ? "🔴 HIGH ALERT" : count >= 5 ? "🟡 MEDIUM RISK" : "🟢 LOW RISK"}
-              </div>
-            </Popup>
-          </CircleMarker>
-        );
-      })}
+      <TileLayer url={CARTO_DARK} attribution={CARTO_ATTR} />
+      {hotspots &&
+        hotspots.map(([district, count], i) => {
+          const coords = districtCoords[district];
+          if (!coords) return null;
+          return (
+            <CircleMarker
+              key={i}
+              center={coords}
+              radius={Math.max(count * 3, 10)}
+              fillColor={getColor(count)}
+              color="#cc0000"
+              fillOpacity={0.75}
+              weight={2}
+            >
+              <Popup>
+                <div style={{ textAlign: "center", fontFamily: "Inter, sans-serif" }}>
+                  <b>{district}</b>
+                  <br />
+                  {count} crimes recorded
+                  <br />
+                  <span style={{ color: getColor(count), fontWeight: 600 }}>
+                    {getSeverityLabel(count)}
+                  </span>
+                </div>
+              </Popup>
+            </CircleMarker>
+          );
+        })}
     </MapContainer>
   );
 };
 
+/* ─── Network Graph component (ForceGraph2D with lazy import) ─── */
+const NetworkGraph = ({ network, darkMode }) => {
+  const [ForceGraph2D, setForceGraph2D] = useState(null);
+  const [dimensions, setDimensions] = useState({ width: 800, height: 500 });
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    import("react-force-graph-2d").then((mod) => {
+      setForceGraph2D(() => mod.default);
+    });
+  }, []);
+
+  useEffect(() => {
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        setDimensions({
+          width: entry.contentRect.width,
+          height: Math.max(entry.contentRect.height, 500),
+        });
+      }
+    });
+    if (containerRef.current) observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  const graphData = React.useMemo(() => {
+    if (!network || network.length === 0) return { nodes: [], links: [] };
+    const nodeSet = new Set();
+    network.forEach((link) => {
+      nodeSet.add(link.from);
+      nodeSet.add(link.to);
+    });
+    const nodes = Array.from(nodeSet).map((id) => ({ id }));
+    const links = network.map((link) => ({
+      source: link.from,
+      target: link.to,
+      label: link.relationship,
+    }));
+    return { nodes, links };
+  }, [network]);
+
+  const nodeCanvasObject = useCallback(
+    (node, ctx, globalScale) => {
+      const label = node.id;
+      const fontSize = Math.max(12 / globalScale, 8);
+      const r = 18;
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, r, 0, 2 * Math.PI, false);
+      ctx.fillStyle = darkMode ? "#1a4a8a" : "#1a3a6b";
+      ctx.fill();
+      ctx.strokeStyle = darkMode ? "#4fa3e3" : "#2563eb";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      ctx.font = `${fontSize}px Inter, sans-serif`;
+      ctx.fillStyle = "#ffffff";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      // Truncate long names
+      const maxLen = 12;
+      const displayLabel =
+        label.length > maxLen ? label.slice(0, maxLen) + "…" : label;
+      ctx.fillText(displayLabel, node.x, node.y);
+    },
+    [darkMode]
+  );
+
+  const linkLabel = useCallback((link) => link.label || "", []);
+
+  if (!ForceGraph2D) {
+    return (
+      <div className="graph-loading">
+        <RefreshCw size={24} className="spin-icon" />
+        <span>Loading graph…</span>
+      </div>
+    );
+  }
+
+  if (graphData.nodes.length === 0) {
+    return (
+      <div className="graph-empty">
+        <Network size={40} />
+        <p>No network data available</p>
+      </div>
+    );
+  }
+
+  return (
+    <div ref={containerRef} className="force-graph-container">
+      <ForceGraph2D
+        graphData={graphData}
+        width={dimensions.width}
+        height={dimensions.height}
+        backgroundColor={darkMode ? "#0d1420" : "#f0f4ff"}
+        nodeCanvasObject={nodeCanvasObject}
+        nodeCanvasObjectMode={() => "replace"}
+        linkColor={() => (darkMode ? "#334e6b" : "#94a3b8")}
+        linkWidth={2}
+        linkDirectionalArrowLength={6}
+        linkDirectionalArrowRelPos={1}
+        linkLabel={linkLabel}
+        cooldownTicks={100}
+        nodeLabel={(node) => node.id}
+      />
+    </div>
+  );
+};
+
+/* ─── Main App ─── */
 export default function App() {
+  const [user, setUser] = useState(null);
   const [messages, setMessages] = useState([
     {
       role: "assistant",
-      content: "ನಮಸ್ಕಾರ! I am KSP CrimeBot 🚔 — your intelligent crime analysis assistant for Karnataka State Police. Ask me anything about crime patterns, cases, or criminal networks in English or Kannada.",
+      content:
+        "ನಮಸ್ಕಾರ! I am KSP CrimeBot — your intelligent crime analysis assistant for Karnataka State Police. Ask me anything about crime patterns, cases, or criminal networks in English or Kannada.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -80,13 +224,64 @@ export default function App() {
   const [network, setNetwork] = useState([]);
   const [hotspots, setHotspots] = useState([]);
   const [warnings, setWarnings] = useState([]);
+  const [darkMode, setDarkMode] = useState(false); // light mode default
+  const [lastSynced, setLastSynced] = useState("");
+  const [hintDismissed, setHintDismissed] = useState(false);
+  const [statsVisible, setStatsVisible] = useState(false);
   const messagesEndRef = useRef(null);
+
+  // Animated counter hook
+  const useCounter = (target, active, duration = 1200) => {
+    const [value, setValue] = useState(0);
+    useEffect(() => {
+      if (!active || !target) { setValue(0); return; }
+      let start = 0;
+      const step = Math.ceil(target / (duration / 16));
+      const timer = setInterval(() => {
+        start += step;
+        if (start >= target) { setValue(target); clearInterval(timer); }
+        else setValue(start);
+      }, 16);
+      return () => clearInterval(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [target, active]);
+    return value;
+  };
+
+  // Trigger stats animation when tab opens
+  useEffect(() => {
+    if (activeTab === "stats") {
+      setStatsVisible(false);
+      const t = setTimeout(() => setStatsVisible(true), 50);
+      return () => clearTimeout(t);
+    }
+  }, [activeTab]);
+
+  const handleLogin = (userInfo) => {
+    setUser(userInfo);
+    if (userInfo.role === "Policymaker") {
+      setActiveTab("stats");
+    } else {
+      setActiveTab("chat");
+    }
+  };
+
+  // Counter values
+  const cTotal      = useCounter(stats?.total_cases,                       statsVisible);
+  const cLinks      = useCounter(stats?.network_links,                     statsVisible);
+  const cArrested   = useCounter(stats?.by_status?.Arrested ?? 0,          statsVisible);
+  const cInvest     = useCounter(stats?.by_status?.["Under Investigation"] ?? 0, statsVisible);
 
   useEffect(() => {
     fetchStats();
     fetchNetwork();
     fetchHotspots();
     fetchWarnings();
+    // Set last synced timestamp
+    const now = new Date();
+    setLastSynced(
+      now.toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" })
+    );
   }, []);
 
   useEffect(() => {
@@ -98,7 +293,9 @@ export default function App() {
       const res = await fetch(`${FUNCTION_URL}/api/stats`);
       const data = await res.json();
       setStats(data);
-    } catch (e) { console.error(e); }
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const fetchNetwork = async () => {
@@ -106,7 +303,9 @@ export default function App() {
       const res = await fetch(`${FUNCTION_URL}/api/network`);
       const data = await res.json();
       setNetwork(data);
-    } catch (e) { console.error(e); }
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const fetchHotspots = async () => {
@@ -114,7 +313,9 @@ export default function App() {
       const res = await fetch(`${FUNCTION_URL}/api/hotspots`);
       const data = await res.json();
       setHotspots(data);
-    } catch (e) { console.error(e); }
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const fetchWarnings = async () => {
@@ -122,7 +323,9 @@ export default function App() {
       const res = await fetch(`${FUNCTION_URL}/api/warnings`);
       const data = await res.json();
       setWarnings(data);
-    } catch (e) { console.error(e); }
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const sendMessage = async () => {
@@ -153,13 +356,21 @@ export default function App() {
         },
       ]);
     } catch (e) {
-      setMessages([...newMessages, { role: "assistant", content: "⚠️ Error connecting to server. Please try again." }]);
+      setMessages([
+        ...newMessages,
+        {
+          role: "assistant",
+          content: "Error connecting to server. Please try again.",
+        },
+      ]);
     }
     setLoading(false);
   };
 
   const exportPDF = () => {
-    const content = messages.map((m) => `[${m.role.toUpperCase()}]: ${m.content}`).join("\n\n");
+    const content = messages
+      .map((m) => `[${m.role.toUpperCase()}]: ${m.content}`)
+      .join("\n\n");
     const blob = new Blob([content], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -176,188 +387,401 @@ export default function App() {
     "ಬೆಂಗಳೂರಿನಲ್ಲಿ ಅಪರಾಧ ಮಾಹಿತಿ ತೋರಿಸಿ",
   ];
 
+  const tabs = [
+    { id: "chat", label: "Chat", icon: <MessageSquare size={16} /> },
+    { id: "stats", label: "Stats", icon: <BarChart2 size={16} /> },
+    { id: "map", label: "Map", icon: <Map size={16} /> },
+    { id: "network", label: "Network", icon: <Network size={16} /> },
+    { id: "warnings", label: "Warnings", icon: <AlertTriangle size={16} /> },
+  ];
+
+  const filteredTabs = React.useMemo(() => {
+    if (user?.role === "Policymaker") {
+      return tabs.filter((tab) => tab.id === "stats" || tab.id === "map");
+    }
+    return tabs;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
+
+  const maxStatValue =
+    stats
+      ? Math.max(
+          ...[
+            ...Object.values(stats.by_type || {}),
+            ...Object.values(stats.by_district || {}),
+          ]
+        )
+      : 1;
+
   return (
-    <div className="app">
-      {/* Header */}
+    <div className={`app${darkMode ? " dark" : ""}`}>
+      {/* ── Watermark ── */}
+      <div className="watermark" aria-hidden="true">
+        <img src="/ksp-emblem.png" alt="" />
+      </div>
+
+      {/* ── Header ── */}
       <header className="header">
         <div className="header-left">
-          <span className="badge">🛡️</span>
+          <img
+            src="/ksp-emblem.png"
+            alt="KSP Emblem"
+            className="header-logo"
+            onError={(e) => {
+              e.target.style.display = "none";
+            }}
+          />
           <div>
             <h1>KSP CrimeBot</h1>
             <p>Karnataka State Police — Intelligent Crime Analysis</p>
           </div>
         </div>
         <div className="header-right">
-          <span className="status-dot" />
-          <span>Live</span>
-          <button className="export-btn" onClick={exportPDF}>📄 Export</button>
+          {user && (
+            <div className="user-badge" title={`${user.badgeNumber} (${user.role})`}>
+              <span className="user-status-dot"></span>
+              <span className="user-info-text">{user.badgeNumber} ({user.role})</span>
+            </div>
+          )}
+          <div className="last-synced-badge">
+            <RefreshCw size={13} />
+            <span>Last synced: {lastSynced || "—"}</span>
+          </div>
+          <button
+            className="theme-toggle"
+            onClick={() => setDarkMode((d) => !d)}
+            title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+            aria-label="Toggle dark mode"
+          >
+            {darkMode ? <Sun size={17} /> : <Moon size={17} />}
+          </button>
+          <button className="export-btn" onClick={exportPDF} title="Export conversation">
+            <Download size={15} />
+            <span>Export</span>
+          </button>
         </div>
       </header>
 
-      {/* Tabs */}
-      <div className="tabs">
-        {["chat", "stats", "map", "network", "warnings"].map((tab) => (
-          <button
-            key={tab}
-            className={`tab ${activeTab === tab ? "active" : ""}`}
-            onClick={() => setActiveTab(tab)}
-          >
-            {tab === "chat" ? "💬 Chat" :
-             tab === "stats" ? "📊 Stats" :
-             tab === "map" ? "🗺️ Map" :
-             tab === "network" ? "🕸️ Network" : "⚠️ Warnings"}
-          </button>
-        ))}
-      </div>
-
-      {/* Chat Tab */}
-      {activeTab === "chat" && (
-        <div className="chat-container">
-          <div className="messages">
-            {messages.map((msg, i) => (
-              <div key={i} className={`message ${msg.role}`}>
-                <div className="bubble">
-                  <p>{msg.content}</p>
-                  {msg.cases && msg.cases.length > 0 && (
-                    <div className="case-tags">
-                      {msg.cases.map((c) => (
-                        <span key={c} className="case-tag">{c}</span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            ))}
-            {loading && (
-              <div className="message assistant">
-                <div className="bubble loading"><span /><span /><span /></div>
-              </div>
-            )}
-            <div ref={messagesEndRef} />
-          </div>
-          <div className="suggestions">
-            {suggestedQueries.map((q, i) => (
-              <button key={i} className="suggestion" onClick={() => setInput(q)}>{q}</button>
-            ))}
-          </div>
-          <div className="input-area">
-            <input
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-              placeholder="Ask about crimes, patterns, suspects... (English or Kannada)"
-            />
-            <button onClick={sendMessage} disabled={loading}>
-              {loading ? "..." : "Send 🚀"}
+      {/* ── Tabs ── */}
+      {user && (
+        <div className="tabs" role="tablist">
+          {filteredTabs.map((tab) => (
+            <button
+              key={tab.id}
+              role="tab"
+              aria-selected={activeTab === tab.id}
+              className={`tab${activeTab === tab.id ? " active" : ""}`}
+              onClick={() => setActiveTab(tab.id)}
+            >
+              {tab.icon}
+              <span>{tab.label}</span>
             </button>
-          </div>
+          ))}
         </div>
       )}
 
-      {/* Stats Tab */}
-      {activeTab === "stats" && stats && (
-        <div className="stats-container">
-          <div className="stat-card">
-            <h2>{stats.total_cases}</h2>
-            <p>Total Cases</p>
-          </div>
-          <div className="stat-card">
-            <h2>{stats.network_links}</h2>
-            <p>Criminal Network Links</p>
-          </div>
-          <div className="stat-card">
-            <h2>{stats.by_status?.Arrested || 0}</h2>
-            <p>Arrested</p>
-          </div>
-          <div className="stat-card">
-            <h2>{stats.by_status?.["Under Investigation"] || 0}</h2>
-            <p>Under Investigation</p>
-          </div>
-          <div className="stat-section">
-            <h3>📌 By Crime Type</h3>
-            {Object.entries(stats.by_type || {}).sort((a,b) => b[1]-a[1]).map(([type, count]) => (
-              <div key={type} className="stat-bar">
-                <span>{type}</span>
-                <div className="bar">
-                  <div className="fill" style={{ width: `${(count / stats.total_cases) * 100}%` }} />
+      {/* ── Conditional Login vs Dashboard content ── */}
+      {!user ? (
+        <LoginScreen onLogin={handleLogin} />
+      ) : (
+        <>
+          {/* ══ CHAT TAB ══ */}
+          {activeTab === "chat" && (
+            <div className="chat-container">
+              {/* Onboarding hint */}
+              {!hintDismissed && (
+                <div className="onboarding-hint" role="note">
+                  <Lightbulb size={15} className="hint-icon" />
+                  <span>
+                    Try: <em>"Show all theft cases in Bengaluru"</em> or ask in
+                    Kannada — <em>"ಬೆಂಗಳೂರಿನಲ್ಲಿ ಅಪರಾಧ ಮಾಹಿತಿ ತೋರಿಸಿ"</em>
+                  </span>
+                  <button
+                    className="hint-dismiss"
+                    onClick={() => setHintDismissed(true)}
+                    aria-label="Dismiss hint"
+                  >
+                    ×
+                  </button>
                 </div>
-                <span>{count}</span>
-              </div>
-            ))}
-          </div>
-          <div className="stat-section">
-            <h3>📍 By District</h3>
-            {Object.entries(stats.by_district || {}).sort((a,b) => b[1]-a[1]).map(([district, count]) => (
-              <div key={district} className="stat-bar">
-                <span>{district}</span>
-                <div className="bar">
-                  <div className="fill" style={{ width: `${(count / stats.total_cases) * 100}%` }} />
-                </div>
-                <span>{count}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+              )}
 
-      {/* Map Tab */}
-      {activeTab === "map" && (
-        <div className="map-container">
-          <h3>🗺️ Karnataka Crime Hotspot Map</h3>
-          <p>Circle size and color indicate crime density per district</p>
-          <div className="map-legend">
-            <span><span className="legend-dot" style={{background:'#ff0000'}}/>⛔ Critical (15+)</span>
-            <span><span className="legend-dot" style={{background:'#ff6600'}}/>🔴 High (8-14)</span>
-            <span><span className="legend-dot" style={{background:'#ffaa00'}}/>🟡 Medium (5-7)</span>
-            <span><span className="legend-dot" style={{background:'#ffff00'}}/>🟢 Low (1-4)</span>
-          </div>
-          <HotspotMap hotspots={hotspots} />
-        </div>
-      )}
-
-      {/* Network Tab */}
-      {activeTab === "network" && (
-        <div className="network-container">
-          <h3>🕸️ Criminal Network Map</h3>
-          <p>Known associations between accused persons</p>
-          {network.map((link, i) => (
-            <div key={i} className="network-card">
-              <div className="node">{link.from}</div>
-              <div className="edge">
-                <span>{link.relationship}</span>
-                <div className="arrow">↔</div>
-                {link.cases && link.cases.length > 0 && (
-                  <div className="cases">
-                    {link.cases.map((c) => (
-                      <span key={c} className="case-tag">{c}</span>
-                    ))}
+              <div className="messages">
+                {messages.map((msg, i) => (
+                  <div key={i} className={`message ${msg.role}`}>
+                    {msg.role === "assistant" && (
+                      <img
+                        src="/bot-avatar.jpg"
+                        alt="KSP Bot"
+                        className="bot-avatar"
+                        onError={(e) => {
+                          e.target.style.display = "none";
+                        }}
+                      />
+                    )}
+                    <div className="bubble">
+                      <p>{msg.content}</p>
+                      {msg.cases && msg.cases.length > 0 && (
+                        <div className="case-tags">
+                          {msg.cases.map((c) => (
+                            <span key={c} className="case-tag">
+                              {c}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+                {loading && (
+                  <div className="message assistant">
+                    <img
+                      src="/bot-avatar.jpg"
+                      alt="KSP Bot"
+                      className="bot-avatar"
+                      onError={(e) => {
+                        e.target.style.display = "none";
+                      }}
+                    />
+                    <div className="bubble loading">
+                      <span />
+                      <span />
+                      <span />
+                    </div>
                   </div>
                 )}
+                <div ref={messagesEndRef} />
               </div>
-              <div className="node">{link.to}</div>
-            </div>
-          ))}
-        </div>
-      )}
 
-      {/* Warnings Tab */}
-      {activeTab === "warnings" && (
-        <div className="warnings-container">
-          <h3>⚠️ Early Warning System</h3>
-          <p>Districts requiring immediate attention</p>
-          {warnings.map((w, i) => (
-            <div key={i} className={`warning-card ${w.crime_count >= 15 ? 'critical' : w.crime_count >= 8 ? 'high' : 'medium'}`}>
-              <div className="warning-header">
-                <span className="warning-icon">
-                  {w.crime_count >= 15 ? '⛔' : w.crime_count >= 8 ? '🔴' : '🟡'}
-                </span>
-                <h4>{w.district}</h4>
-                <span className="warning-count">{w.crime_count} crimes</span>
+              {/* Suggestions */}
+              <div className="suggestions">
+                {suggestedQueries.map((q, i) => (
+                  <button
+                    key={i}
+                    className="suggestion"
+                    onClick={() => setInput(q)}
+                  >
+                    {q}
+                  </button>
+                ))}
               </div>
-              <p>{w.alert}</p>
+
+              {/* Input */}
+              <div className="input-area">
+                <input
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+                  placeholder="Ask about crimes, patterns, suspects… (English or Kannada)"
+                />
+                <button
+                  onClick={sendMessage}
+                  disabled={loading}
+                  aria-label="Send message"
+                >
+                  <Send size={17} />
+                  <span>{loading ? "Sending…" : "Send"}</span>
+                </button>
+              </div>
             </div>
-          ))}
-        </div>
+          )}
+
+          {/* ══ STATS TAB ══ */}
+          {activeTab === "stats" && stats && (
+            <div className="stats-container">
+              {/* Stat cards — animated counters */}
+              <div className="stat-card accent-blue">
+                <div className="stat-number">{cTotal}</div>
+                <div className="stat-label">Total Cases</div>
+              </div>
+              <div className="stat-card accent-purple">
+                <div className="stat-number">{cLinks}</div>
+                <div className="stat-label">Network Links</div>
+              </div>
+              <div className="stat-card accent-green">
+                <div className="stat-number">{cArrested}</div>
+                <div className="stat-label">Arrested</div>
+              </div>
+              <div className="stat-card accent-amber">
+                <div className="stat-number">{cInvest}</div>
+                <div className="stat-label">Under Investigation</div>
+              </div>
+
+              {/* By Crime Type */}
+              <div className="stat-section">
+                <h3>
+                  <Tag size={15} />
+                  <span>By Crime Type</span>
+                </h3>
+                <div className="bar-chart">
+                  {Object.entries(stats.by_type || {})
+                    .sort((a, b) => b[1] - a[1])
+                    .map(([type, count]) => {
+                      const pct = Math.round((count / maxStatValue) * 100);
+                      return (
+                        <div key={type} className="stat-bar">
+                          <span className="bar-label">{type}</span>
+                          <div className="bar-track">
+                            <div
+                              className="bar-fill"
+                              style={{ width: statsVisible ? `${pct}%` : "0%" }}
+                            />
+                            {/* Gridlines */}
+                            {[25, 50, 75].map((tick) => (
+                              <div
+                                key={tick}
+                                className="bar-tick"
+                                style={{ left: `${tick}%` }}
+                              />
+                            ))}
+                          </div>
+                          <span className="bar-count">{count}</span>
+                        </div>
+                      );
+                    })}
+                  <div className="bar-axis">
+                    <span>0</span>
+                    <span>25%</span>
+                    <span>50%</span>
+                    <span>75%</span>
+                    <span>100%</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* By District */}
+              <div className="stat-section">
+                <h3>
+                  <MapPin size={15} />
+                  <span>By District</span>
+                </h3>
+                <div className="bar-chart">
+                  {Object.entries(stats.by_district || {})
+                    .sort((a, b) => b[1] - a[1])
+                    .map(([district, count]) => {
+                      const pct = Math.round((count / maxStatValue) * 100);
+                      return (
+                        <div key={district} className="stat-bar">
+                          <span className="bar-label">{district}</span>
+                          <div className="bar-track">
+                            <div
+                              className="bar-fill"
+                              style={{ width: statsVisible ? `${pct}%` : "0%" }}
+                            />
+                            {[25, 50, 75].map((tick) => (
+                              <div
+                                key={tick}
+                                className="bar-tick"
+                                style={{ left: `${tick}%` }}
+                              />
+                            ))}
+                          </div>
+                          <span className="bar-count">{count}</span>
+                        </div>
+                      );
+                    })}
+                  <div className="bar-axis">
+                    <span>0</span>
+                    <span>25%</span>
+                    <span>50%</span>
+                    <span>75%</span>
+                    <span>100%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ══ MAP TAB ══ */}
+          {activeTab === "map" && (
+            <div className="map-container">
+              <h3>
+                <Map size={18} />
+                <span>Karnataka Crime Hotspot Map</span>
+              </h3>
+              <p className="map-subtitle">
+                Circle size and color indicate crime density per district
+              </p>
+              <div className="map-hint">
+                <Lightbulb size={13} />
+                <span>
+                  Pan by dragging · Zoom with scroll or pinch · Click a circle to
+                  see district details
+                </span>
+              </div>
+              <div className="map-legend">
+                <span>
+                  <span className="legend-dot" style={{ background: "#ff4444" }} />
+                  Critical (15+)
+                </span>
+                <span>
+                  <span className="legend-dot" style={{ background: "#ff7700" }} />
+                  High (8–14)
+                </span>
+                <span>
+                  <span className="legend-dot" style={{ background: "#ffbb00" }} />
+                  Medium (5–7)
+                </span>
+                <span>
+                  <span className="legend-dot" style={{ background: "#88dd44" }} />
+                  Low (1–4)
+                </span>
+              </div>
+              <HotspotMap hotspots={hotspots} />
+            </div>
+          )}
+
+          {/* ══ NETWORK TAB ══ */}
+          {activeTab === "network" && (
+            <div className="network-container">
+              <h3>
+                <Network size={18} />
+                <span>Criminal Network Graph</span>
+              </h3>
+              <p>
+                Known associations between accused persons — drag nodes to explore
+              </p>
+              <NetworkGraph network={network} darkMode={darkMode} />
+            </div>
+          )}
+
+          {/* ══ WARNINGS TAB ══ */}
+          {activeTab === "warnings" && (
+            <div className="warnings-container">
+              <h3>
+                <AlertTriangle size={18} />
+                <span>Early Warning System</span>
+              </h3>
+              <p>Districts requiring immediate attention</p>
+              {warnings.map((w, i) => {
+                const severity =
+                  w.crime_count >= 15
+                    ? "critical"
+                    : w.crime_count >= 8
+                    ? "high"
+                    : "medium";
+                const Icon =
+                  w.crime_count >= 15
+                    ? ShieldAlert
+                    : w.crime_count >= 8
+                    ? AlertOctagon
+                    : AlertTriangle;
+                return (
+                  <div key={i} className={`warning-card ${severity}`}>
+                    <div className="warning-header">
+                      <span className="warning-icon">
+                        <Icon size={20} />
+                      </span>
+                      <h4>{w.district}</h4>
+                      <span className="warning-count">{w.crime_count} crimes</span>
+                    </div>
+                    <p>{w.alert}</p>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </>
       )}
     </div>
   );
