@@ -494,6 +494,67 @@ export default function App() {
     const margin = 15;
     const maxWidth = pageWidth - margin * 2;
 
+    // ── Kannada text shaping fix ──────────────────────────────────────────
+    // jsPDF's built-in renderer places glyphs one-by-one and does not apply
+    // the complex-script shaping (conjuncts, vowel signs) that Kannada needs.
+    // The browser's Canvas 2D text engine DOES apply correct shaping, so for
+    // any line containing Kannada characters we render it to an offscreen
+    // canvas first, then embed that canvas as an image in the PDF.
+    const KANNADA_REGEX = /[\u0C80-\u0CFF]/;
+    const PT_TO_MM = 25.4 / 72;
+    const RENDER_SCALE = 6; // px per pt — higher = crisper raster text
+    const MM_PER_PX = PT_TO_MM / RENDER_SCALE;
+
+    let kannadaCanvasFontReady = false;
+    try {
+      const kannadaFontFace = new FontFace(
+        'NotoSansKannadaCanvas',
+        `url(data:font/ttf;base64,${notoSansKannadaBase64}) format('truetype')`
+      );
+      await kannadaFontFace.load();
+      document.fonts.add(kannadaFontFace);
+      kannadaCanvasFontReady = true;
+    } catch (e) {
+      console.error('Kannada canvas font failed to load, falling back to jsPDF font:', e);
+    }
+
+    const renderKannadaLineToImage = (text, fontSizePt, colorRgb) => {
+      const fontPx = fontSizePt * RENDER_SCALE;
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      ctx.font = `${fontPx}px NotoSansKannadaCanvas`;
+      const measured = ctx.measureText(text);
+      const widthPx = Math.max(1, Math.ceil(measured.width) + 6);
+      const heightPx = Math.ceil(fontPx * 1.5);
+      canvas.width = widthPx;
+      canvas.height = heightPx;
+      // context resets after resizing the canvas — reapply settings
+      ctx.font = `${fontPx}px NotoSansKannadaCanvas`;
+      ctx.fillStyle = `rgb(${colorRgb[0]}, ${colorRgb[1]}, ${colorRgb[2]})`;
+      ctx.textBaseline = 'alphabetic';
+      ctx.fillText(text, 3, fontPx);
+      return {
+        dataUrl: canvas.toDataURL('image/png'),
+        widthMM: widthPx * MM_PER_PX,
+        heightMM: heightPx * MM_PER_PX,
+      };
+    };
+
+    // Draws one line of text at (x, y) — baseline position matches doc.text().
+    // Uses canvas-rendered image for Kannada lines, native jsPDF text otherwise.
+    const drawLine = (text, x, y, fontSizePt, colorRgb, fontFamily = 'helvetica') => {
+      if (kannadaCanvasFontReady && KANNADA_REGEX.test(text)) {
+        const { dataUrl, widthMM, heightMM } = renderKannadaLineToImage(text, fontSizePt, colorRgb);
+        const baselineOffsetMM = fontSizePt * PT_TO_MM * 0.78;
+        doc.addImage(dataUrl, 'PNG', x, y - baselineOffsetMM, widthMM, heightMM);
+      } else {
+        doc.setFont(fontFamily, 'normal');
+        doc.setFontSize(fontSizePt);
+        doc.setTextColor(colorRgb[0], colorRgb[1], colorRgb[2]);
+        doc.text(text, x, y);
+      }
+    };
+
     const getBase64Image = (url) => {
       return new Promise((resolve) => {
         const img = new Image();
@@ -660,24 +721,21 @@ export default function App() {
       y += 10;
 
       doc.setFont('NotoSansKannada', 'normal');
-doc.setFontSize(8);
-doc.setTextColor(40, 40, 40);
+      doc.setFontSize(8);
+      doc.setTextColor(40, 40, 40);
 
-const clean = cleanText(msg.content);
-const lines = doc.splitTextToSize(clean, maxWidth - 4);
+      const clean = cleanText(msg.content);
+      const lines = doc.splitTextToSize(clean, maxWidth - 4);
 
-lines.forEach(line => {
-  if (y > pageHeight - 50) {
-    doc.addPage();
-    addHeader();
-    y = 55;
-    doc.setFont('NotoSansKannada', 'normal');
-    doc.setFontSize(8);
-    doc.setTextColor(40, 40, 40);
-  }
-  doc.text(line, margin + 2, y);
-  y += 4.5;
-});
+      lines.forEach(line => {
+        if (y > pageHeight - 50) {
+          doc.addPage();
+          addHeader();
+          y = 55;
+        }
+        drawLine(line, margin + 2, y, 8, [40, 40, 40], 'NotoSansKannada');
+        y += 4.5;
+      });
 
       if (msg.cases && msg.cases.length > 0) {
         if (y > pageHeight - 50) {
