@@ -1170,16 +1170,6 @@ export default function App() {
                         </div>
                       )}
                     </div>
-                    {msg.role === "assistant" && (
-                      <button
-                        className={`speak-btn ${speakingMessageId === i ? "active" : ""}`}
-                        onClick={() => speakText(msg.content, i)}
-                        title={speakingMessageId === i ? "Stop speaking" : "Speak response"}
-                        aria-label="Speak response"
-                      >
-                        {speakingMessageId === i ? <VolumeX size={15} /> : <Volume2 size={15} />}
-                      </button>
-                    )}
                   </div>
                 ))}
                 {loading && (
