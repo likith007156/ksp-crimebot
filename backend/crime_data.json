@@ -134,7 +134,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Koramangala PS",
+      "district": "Bengaluru Urban",
+      "station": "Koramangala PS",
+      "date": "2025-01-15",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 2,
@@ -253,7 +258,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Vijayanagar PS",
+      "district": "Mysuru",
+      "station": "Vijayanagar PS",
+      "date": "2025-01-20",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 3,
@@ -372,7 +382,12 @@
         "payment_mode": "Bank Transfer",
         "financial_institution_involved": true,
         "cyber_financial": true
-      }
+      },
+      "location": "Whitefield PS",
+      "district": "Bengaluru Urban",
+      "station": "Whitefield PS",
+      "date": "2025-02-05",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 4,
@@ -509,7 +524,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Gokul Road PS",
+      "district": "Hubballi-Dharwad",
+      "station": "Gokul Road PS",
+      "date": "2025-02-10",
+      "status": "Chargesheeted"
     },
     {
       "CaseMasterID": 5,
@@ -628,7 +648,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Indiranagar PS",
+      "district": "Bengaluru Urban",
+      "station": "Indiranagar PS",
+      "date": "2025-02-18",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 6,
@@ -749,7 +774,12 @@
         "payment_mode": "Cryptocurrency",
         "financial_institution_involved": false,
         "cyber_financial": true
-      }
+      },
+      "location": "Hampankatta PS",
+      "district": "Dakshina Kannada",
+      "station": "Hampankatta PS",
+      "date": "2025-03-01",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 7,
@@ -868,7 +898,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Aland Road PS",
+      "district": "Kalaburagi",
+      "station": "Aland Road PS",
+      "date": "2025-03-15",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 8,
@@ -1004,7 +1039,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "HSR Layout PS",
+      "district": "Bengaluru Urban",
+      "station": "HSR Layout PS",
+      "date": "2025-03-22",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 9,
@@ -1122,7 +1162,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Tilakwadi PS",
+      "district": "Belagavi",
+      "station": "Tilakwadi PS",
+      "date": "2025-04-05",
+      "status": "Chargesheeted"
     },
     {
       "CaseMasterID": 10,
@@ -1242,7 +1287,12 @@
         "payment_mode": "Bank Transfer",
         "financial_institution_involved": false,
         "cyber_financial": true
-      }
+      },
+      "location": "Electronic City PS",
+      "district": "Bengaluru Urban",
+      "station": "Electronic City PS",
+      "date": "2025-04-12",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 11,
@@ -1379,7 +1429,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "SS Puram PS",
+      "district": "Tumakuru",
+      "station": "SS Puram PS",
+      "date": "2025-04-20",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 12,
@@ -1498,7 +1553,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Hebbal PS",
+      "district": "Mysuru",
+      "station": "Hebbal PS",
+      "date": "2025-05-03",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 13,
@@ -1635,7 +1695,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Bunder PS",
+      "district": "Dakshina Kannada",
+      "station": "Bunder PS",
+      "date": "2024-06-10",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 14,
@@ -1753,7 +1818,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Panambur PS",
+      "district": "Dakshina Kannada",
+      "station": "Panambur PS",
+      "date": "2024-04-18",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 15,
@@ -1890,7 +1960,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Angol PS",
+      "district": "Belagavi",
+      "station": "Angol PS",
+      "date": "2024-07-22",
+      "status": "Convicted"
     },
     {
       "CaseMasterID": 16,
@@ -2027,7 +2102,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Jayanagar PS",
+      "district": "Bengaluru Urban",
+      "station": "Jayanagar PS",
+      "date": "2024-08-05",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 17,
@@ -2169,7 +2249,12 @@
         "payment_mode": "Cheque",
         "financial_institution_involved": false,
         "cyber_financial": false
-      }
+      },
+      "location": "MG Road PS",
+      "district": "Bengaluru Urban",
+      "station": "MG Road PS",
+      "date": "2024-08-20",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 18,
@@ -2293,7 +2378,12 @@
         "payment_mode": "Bank Transfer",
         "financial_institution_involved": true,
         "cyber_financial": false
-      }
+      },
+      "location": "MG Road PS",
+      "district": "Bengaluru Urban",
+      "station": "MG Road PS",
+      "date": "2024-06-15",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 19,
@@ -2430,7 +2520,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Manvi PS",
+      "district": "Raichur",
+      "station": "Manvi PS",
+      "date": "2024-09-10",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 20,
@@ -2567,7 +2662,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Super Market PS",
+      "district": "Kalaburagi",
+      "station": "Super Market PS",
+      "date": "2024-09-25",
+      "status": "Chargesheeted"
     },
     {
       "CaseMasterID": 21,
@@ -2704,7 +2804,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Kuvempunagar PS",
+      "district": "Mysuru",
+      "station": "Kuvempunagar PS",
+      "date": "2024-10-08",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 22,
@@ -2823,7 +2928,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Kuvempu Nagar PS",
+      "district": "Shivamogga",
+      "station": "Kuvempu Nagar PS",
+      "date": "2024-10-15",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 23,
@@ -2959,7 +3069,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Sindagi PS",
+      "district": "Vijayapura",
+      "station": "Sindagi PS",
+      "date": "2024-11-02",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 24,
@@ -3096,7 +3211,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Gandhinagar PS",
+      "district": "Ballari",
+      "station": "Gandhinagar PS",
+      "date": "2024-11-18",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 25,
@@ -3219,7 +3339,12 @@
         "payment_mode": "UPI",
         "financial_institution_involved": true,
         "cyber_financial": true
-      }
+      },
+      "location": "Marathahalli PS",
+      "district": "Bengaluru Urban",
+      "station": "Marathahalli PS",
+      "date": "2024-12-01",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 26,
@@ -3337,7 +3462,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Lingasugur PS",
+      "district": "Raichur",
+      "station": "Lingasugur PS",
+      "date": "2024-12-10",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 27,
@@ -3474,7 +3604,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Indi PS",
+      "district": "Vijayapura",
+      "station": "Indi PS",
+      "date": "2025-01-08",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 28,
@@ -3611,7 +3746,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Vidyanagar PS",
+      "district": "Hubballi-Dharwad",
+      "station": "Vidyanagar PS",
+      "date": "2025-01-25",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 29,
@@ -3734,7 +3874,12 @@
         "payment_mode": "Cash",
         "financial_institution_involved": true,
         "cyber_financial": false
-      }
+      },
+      "location": "Bejai PS",
+      "district": "Dakshina Kannada",
+      "station": "Bejai PS",
+      "date": "2025-02-12",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 30,
@@ -3871,7 +4016,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "BH Road PS",
+      "district": "Tumakuru",
+      "station": "BH Road PS",
+      "date": "2025-02-28",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 31,
@@ -3990,7 +4140,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Rajajinagar PS",
+      "district": "Bengaluru Urban",
+      "station": "Rajajinagar PS",
+      "date": "2025-03-05",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 32,
@@ -4127,7 +4282,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Old Town PS",
+      "district": "Hubballi-Dharwad",
+      "station": "Old Town PS",
+      "date": "2025-03-18",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 33,
@@ -4264,7 +4424,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Devanahalli PS",
+      "district": "Bengaluru Rural",
+      "station": "Devanahalli PS",
+      "date": "2025-03-28",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 34,
@@ -4381,7 +4546,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Civil Station PS",
+      "district": "Ballari",
+      "station": "Civil Station PS",
+      "date": "2025-04-02",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 35,
@@ -4518,7 +4688,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Sagar Road PS",
+      "district": "Shivamogga",
+      "station": "Sagar Road PS",
+      "date": "2025-04-15",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 36,
@@ -4642,7 +4817,12 @@
         "payment_mode": "UPI",
         "financial_institution_involved": false,
         "cyber_financial": true
-      }
+      },
+      "location": "Marathahalli PS",
+      "district": "Bengaluru Urban",
+      "station": "Marathahalli PS",
+      "date": "2025-04-28",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 37,
@@ -4760,7 +4940,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Sedam PS",
+      "district": "Kalaburagi",
+      "station": "Sedam PS",
+      "date": "2024-07-14",
+      "status": "Convicted"
     },
     {
       "CaseMasterID": 38,
@@ -4896,7 +5081,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Hosakote PS",
+      "district": "Bengaluru Rural",
+      "station": "Hosakote PS",
+      "date": "2024-08-30",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 39,
@@ -5015,7 +5205,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Station Road PS",
+      "district": "Vijayapura",
+      "station": "Station Road PS",
+      "date": "2024-09-12",
+      "status": "Chargesheeted"
     },
     {
       "CaseMasterID": 40,
@@ -5152,7 +5347,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Hebbal PS",
+      "district": "Mysuru",
+      "station": "Hebbal PS",
+      "date": "2024-10-20",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 41,
@@ -5289,7 +5489,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Shivajinagar PS",
+      "district": "Bengaluru Urban",
+      "station": "Shivajinagar PS",
+      "date": "2024-11-05",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 42,
@@ -5408,7 +5613,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Mundargi Road PS",
+      "district": "Ballari",
+      "station": "Mundargi Road PS",
+      "date": "2024-11-22",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 43,
@@ -5550,7 +5760,12 @@
         "payment_mode": "Cheque",
         "financial_institution_involved": false,
         "cyber_financial": false
-      }
+      },
+      "location": "Jayanagar PS",
+      "district": "Bengaluru Urban",
+      "station": "Jayanagar PS",
+      "date": "2024-12-08",
+      "status": "Chargesheeted"
     },
     {
       "CaseMasterID": 44,
@@ -5687,7 +5902,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Sindhanur PS",
+      "district": "Raichur",
+      "station": "Sindhanur PS",
+      "date": "2025-01-12",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 45,
@@ -5824,7 +6044,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Camp PS",
+      "district": "Belagavi",
+      "station": "Camp PS",
+      "date": "2025-01-30",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 46,
@@ -5942,7 +6167,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Tiptur PS",
+      "district": "Tumakuru",
+      "station": "Tiptur PS",
+      "date": "2025-02-20",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 47,
@@ -6057,7 +6287,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Gulbarga Layout PS",
+      "district": "Kalaburagi",
+      "station": "Gulbarga Layout PS",
+      "date": "2025-03-10",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 48,
@@ -6194,7 +6429,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Yeshwanthpur PS",
+      "district": "Bengaluru Urban",
+      "station": "Yeshwanthpur PS",
+      "date": "2025-03-25",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 49,
@@ -6318,7 +6558,12 @@
         "payment_mode": "UPI",
         "financial_institution_involved": true,
         "cyber_financial": true
-      }
+      },
+      "location": "Industrial Area PS",
+      "district": "Mysuru",
+      "station": "Industrial Area PS",
+      "date": "2025-04-08",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 50,
@@ -6436,7 +6681,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Thirthahalli PS",
+      "district": "Shivamogga",
+      "station": "Thirthahalli PS",
+      "date": "2025-04-22",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 51,
@@ -6569,7 +6819,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Devadurga PS",
+      "district": "Raichur",
+      "station": "Devadurga PS",
+      "date": "2024-07-30",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 52,
@@ -6706,7 +6961,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Banashankari PS",
+      "district": "Bengaluru Urban",
+      "station": "Banashankari PS",
+      "date": "2025-05-05",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 53,
@@ -6843,7 +7103,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Khanapur PS",
+      "district": "Belagavi",
+      "station": "Khanapur PS",
+      "date": "2025-05-12",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 54,
@@ -6967,7 +7232,12 @@
         "payment_mode": "UPI",
         "financial_institution_involved": true,
         "cyber_financial": true
-      }
+      },
+      "location": "Koramangala PS",
+      "district": "Bengaluru Urban",
+      "station": "Koramangala PS",
+      "date": "2024-03-10",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 55,
@@ -7086,7 +7356,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Indiranagar PS",
+      "district": "Bengaluru Urban",
+      "station": "Indiranagar PS",
+      "date": "2024-04-22",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 56,
@@ -7223,7 +7498,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Vijayanagar PS",
+      "district": "Mysuru",
+      "station": "Vijayanagar PS",
+      "date": "2024-05-18",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 57,
@@ -7347,7 +7627,12 @@
         "payment_mode": "Bank Transfer",
         "financial_institution_involved": true,
         "cyber_financial": false
-      }
+      },
+      "location": "Hampankatta PS",
+      "district": "Dakshina Kannada",
+      "station": "Hampankatta PS",
+      "date": "2024-06-25",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 58,
@@ -7484,7 +7769,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Gokul Road PS",
+      "district": "Hubballi-Dharwad",
+      "station": "Gokul Road PS",
+      "date": "2024-07-08",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 59,
@@ -7603,7 +7893,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Aland Road PS",
+      "district": "Kalaburagi",
+      "station": "Aland Road PS",
+      "date": "2024-08-14",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 60,
@@ -7725,7 +8020,12 @@
         "payment_mode": "Bank Transfer",
         "financial_institution_involved": false,
         "cyber_financial": true
-      }
+      },
+      "location": "SS Puram PS",
+      "district": "Tumakuru",
+      "station": "SS Puram PS",
+      "date": "2024-09-20",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 61,
@@ -7862,7 +8162,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Kuvempu Nagar PS",
+      "district": "Shivamogga",
+      "station": "Kuvempu Nagar PS",
+      "date": "2024-10-12",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 62,
@@ -7981,7 +8286,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Sindagi PS",
+      "district": "Vijayapura",
+      "station": "Sindagi PS",
+      "date": "2024-11-08",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 63,
@@ -8118,7 +8428,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Gandhinagar PS",
+      "district": "Ballari",
+      "station": "Gandhinagar PS",
+      "date": "2024-12-15",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 64,
@@ -8237,7 +8552,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Manvi PS",
+      "district": "Raichur",
+      "station": "Manvi PS",
+      "date": "2025-01-20",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 65,
@@ -8379,7 +8699,12 @@
         "payment_mode": "Cheque",
         "financial_institution_involved": true,
         "cyber_financial": false
-      }
+      },
+      "location": "Electronic City PS",
+      "district": "Bengaluru Urban",
+      "station": "Electronic City PS",
+      "date": "2025-02-08",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 66,
@@ -8497,7 +8822,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Devanahalli PS",
+      "district": "Bengaluru Rural",
+      "station": "Devanahalli PS",
+      "date": "2025-02-25",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 67,
@@ -8621,7 +8951,12 @@
         "payment_mode": "Cryptocurrency",
         "financial_institution_involved": false,
         "cyber_financial": false
-      }
+      },
+      "location": "Hebbal PS",
+      "district": "Mysuru",
+      "station": "Hebbal PS",
+      "date": "2025-03-15",
+      "status": "Chargesheeted"
     },
     {
       "CaseMasterID": 68,
@@ -8740,7 +9075,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Bunder PS",
+      "district": "Dakshina Kannada",
+      "station": "Bunder PS",
+      "date": "2025-03-30",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 69,
@@ -8860,7 +9200,12 @@
         "payment_mode": "Bank Transfer",
         "financial_institution_involved": true,
         "cyber_financial": true
-      }
+      },
+      "location": "Tilakwadi PS",
+      "district": "Belagavi",
+      "station": "Tilakwadi PS",
+      "date": "2025-04-10",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 70,
@@ -8997,7 +9342,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Super Market PS",
+      "district": "Kalaburagi",
+      "station": "Super Market PS",
+      "date": "2025-04-25",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 71,
@@ -9134,7 +9484,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "BH Road PS",
+      "district": "Tumakuru",
+      "station": "BH Road PS",
+      "date": "2025-05-02",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 72,
@@ -9253,7 +9608,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Sagar Road PS",
+      "district": "Shivamogga",
+      "station": "Sagar Road PS",
+      "date": "2025-05-08",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 73,
@@ -9370,7 +9730,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Indi PS",
+      "district": "Vijayapura",
+      "station": "Indi PS",
+      "date": "2025-05-15",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 74,
@@ -9489,7 +9854,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Civil Station PS",
+      "district": "Ballari",
+      "station": "Civil Station PS",
+      "date": "2025-05-20",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 75,
@@ -9626,7 +9996,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Lingasugur PS",
+      "district": "Raichur",
+      "station": "Lingasugur PS",
+      "date": "2025-06-01",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 76,
@@ -9763,7 +10138,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Koramangala PS",
+      "district": "Bengaluru Urban",
+      "station": "Koramangala PS",
+      "date": "2024-02-14",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 77,
@@ -9882,7 +10262,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Hosakote PS",
+      "district": "Bengaluru Rural",
+      "station": "Hosakote PS",
+      "date": "2024-03-25",
+      "status": "Chargesheeted"
     },
     {
       "CaseMasterID": 78,
@@ -10019,7 +10404,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Kuvempunagar PS",
+      "district": "Mysuru",
+      "station": "Kuvempunagar PS",
+      "date": "2024-04-30",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 79,
@@ -10138,7 +10528,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Vidyanagar PS",
+      "district": "Hubballi-Dharwad",
+      "station": "Vidyanagar PS",
+      "date": "2024-06-18",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 80,
@@ -10256,7 +10651,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Camp PS",
+      "district": "Belagavi",
+      "station": "Camp PS",
+      "date": "2024-08-22",
+      "status": "Chargesheeted"
     },
     {
       "CaseMasterID": 81,
@@ -10398,7 +10798,12 @@
         "payment_mode": "UPI",
         "financial_institution_involved": false,
         "cyber_financial": false
-      }
+      },
+      "location": "Tiptur PS",
+      "district": "Tumakuru",
+      "station": "Tiptur PS",
+      "date": "2024-10-05",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 82,
@@ -10535,7 +10940,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Thirthahalli PS",
+      "district": "Shivamogga",
+      "station": "Thirthahalli PS",
+      "date": "2024-11-28",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 83,
@@ -10671,7 +11081,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Station Road PS",
+      "district": "Vijayapura",
+      "station": "Station Road PS",
+      "date": "2024-12-20",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 84,
@@ -10808,7 +11223,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Sindhanur PS",
+      "district": "Raichur",
+      "station": "Sindhanur PS",
+      "date": "2025-01-28",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 85,
@@ -10945,7 +11365,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Jayanagar PS",
+      "district": "Bengaluru Urban",
+      "station": "Jayanagar PS",
+      "date": "2025-02-18",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 86,
@@ -11081,7 +11506,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Panambur PS",
+      "district": "Dakshina Kannada",
+      "station": "Panambur PS",
+      "date": "2025-03-08",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 87,
@@ -11200,7 +11630,12 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "location": "Sedam PS",
+      "district": "Kalaburagi",
+      "station": "Sedam PS",
+      "date": "2025-04-05",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 88,
@@ -11342,7 +11777,12 @@
         "payment_mode": "Cryptocurrency",
         "financial_institution_involved": true,
         "cyber_financial": true
-      }
+      },
+      "location": "Mundargi Road PS",
+      "district": "Ballari",
+      "station": "Mundargi Road PS",
+      "date": "2025-05-10",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 89,
@@ -11382,7 +11822,7 @@
       "type_kannada": "ಸೈಬರ್ ಅಪರಾಧ",
       "time_of_day": "Afternoon",
       "time_of_day_kannada": "ಮಧ್ಯಾಹ್ನ",
-      "location": "Bengaluru, BTM Layout",
+      "location": "Koramangala PS",
       "accused": [
         "Rohit Verma",
         "Pradeep Kumar"
@@ -11483,7 +11923,11 @@
         "payment_mode": "Bank Transfer",
         "financial_institution_involved": true,
         "cyber_financial": true
-      }
+      },
+      "district": "Bengaluru Urban",
+      "station": "Koramangala PS",
+      "date": "2025-06-02",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 90,
@@ -11523,7 +11967,7 @@
       "type_kannada": "ಕೊಲೆ",
       "time_of_day": "Night",
       "time_of_day_kannada": "ರಾತ್ರಿ",
-      "location": "Mysuru, T Narasipura Road",
+      "location": "Vijayanagar PS",
       "accused": [
         "Devaraju K"
       ],
@@ -11601,7 +12045,11 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "district": "Mysuru",
+      "station": "Vijayanagar PS",
+      "date": "2025-06-05",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 91,
@@ -11641,7 +12089,7 @@
       "type_kannada": "ಮಾದಕ ವ್ಯಸನ ಕಳ್ಳಸಾಗಣೆ",
       "time_of_day": "Night",
       "time_of_day_kannada": "ರಾತ್ರಿ",
-      "location": "Hubballi, NH-48 Checkpoint",
+      "location": "Gokul Road PS",
       "accused": [
         "Channappa R",
         "Ningappa M"
@@ -11736,7 +12184,11 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "district": "Hubballi-Dharwad",
+      "station": "Gokul Road PS",
+      "date": "2025-06-08",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 92,
@@ -11776,7 +12228,7 @@
       "type_kannada": "ಭೂಮಿ ವಿವಾದ",
       "time_of_day": "Morning",
       "time_of_day_kannada": "ಬೆಳಿಗ್ಗೆ",
-      "location": "Kalaburagi, Kapnoor Layout",
+      "location": "Aland Road PS",
       "accused": [
         "Ambrish K",
         "Siddappa N"
@@ -11872,7 +12324,11 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "district": "Kalaburagi",
+      "station": "Aland Road PS",
+      "date": "2025-06-10",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 93,
@@ -11912,7 +12368,7 @@
       "type_kannada": "ದರೋಡೆ",
       "time_of_day": "Night",
       "time_of_day_kannada": "ರಾತ್ರಿ",
-      "location": "Shivamogga, Bhadravathi Road",
+      "location": "Kuvempu Nagar PS",
       "accused": [
         "Shivarudrappa K",
         "Chandrashekhar M"
@@ -12008,7 +12464,11 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "district": "Shivamogga",
+      "station": "Kuvempu Nagar PS",
+      "date": "2025-06-12",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 94,
@@ -12048,7 +12508,7 @@
       "type_kannada": "ವಾಹನ ಕಳ್ಳತನ",
       "time_of_day": "Night",
       "time_of_day_kannada": "ರಾತ್ರಿ",
-      "location": "Bengaluru Rural, Doddaballapur",
+      "location": "Devanahalli PS",
       "accused": [
         "Ramachandra N",
         "Nanjundappa G"
@@ -12144,7 +12604,11 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "district": "Bengaluru Rural",
+      "station": "Devanahalli PS",
+      "date": "2025-06-14",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 95,
@@ -12184,7 +12648,7 @@
       "type_kannada": "ಅಪಹರಣ",
       "time_of_day": "Evening",
       "time_of_day_kannada": "ಸಂಜೆ",
-      "location": "Belagavi, Tilakwadi",
+      "location": "Tilakwadi PS",
       "accused": [
         "Irappa M",
         "Yellappa S"
@@ -12280,7 +12744,11 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "district": "Belagavi",
+      "station": "Tilakwadi PS",
+      "date": "2025-06-16",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 96,
@@ -12320,7 +12788,7 @@
       "type_kannada": "ಆರ್ಥಿಕ ವಂಚನೆ",
       "time_of_day": "Afternoon",
       "time_of_day_kannada": "ಮಧ್ಯಾಹ್ನ",
-      "location": "Ballari, Mining Zone",
+      "location": "Gandhinagar PS",
       "accused": [
         "Thippeswamy M",
         "Narasimhaiah T"
@@ -12420,7 +12888,11 @@
         "payment_mode": "Bank Transfer",
         "financial_institution_involved": false,
         "cyber_financial": false
-      }
+      },
+      "district": "Ballari",
+      "station": "Gandhinagar PS",
+      "date": "2025-06-18",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 97,
@@ -12460,7 +12932,7 @@
       "type_kannada": "ಹಲ್ಲೆ",
       "time_of_day": "Evening",
       "time_of_day_kannada": "ಸಂಜೆ",
-      "location": "Raichur, Devadurga",
+      "location": "Manvi PS",
       "accused": [
         "Yerriswamy T",
         "Basavarajappa N"
@@ -12556,7 +13028,11 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "district": "Raichur",
+      "station": "Manvi PS",
+      "date": "2025-06-20",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 98,
@@ -12596,7 +13072,7 @@
       "type_kannada": "ಸೈಬರ್ ಅಪರಾಧ",
       "time_of_day": "Afternoon",
       "time_of_day_kannada": "ಮಧ್ಯಾಹ್ನ",
-      "location": "Mangaluru, Hampankatta",
+      "location": "Hampankatta PS",
       "accused": [
         "Harish Shetty",
         "Dinesh Bhat"
@@ -12696,7 +13172,11 @@
         "payment_mode": "Cryptocurrency",
         "financial_institution_involved": true,
         "cyber_financial": true
-      }
+      },
+      "district": "Dakshina Kannada",
+      "station": "Hampankatta PS",
+      "date": "2025-06-22",
+      "status": "Under Investigation"
     },
     {
       "CaseMasterID": 99,
@@ -12736,7 +13216,7 @@
       "type_kannada": "ಗೃಹ ಹಿಂಸೆ",
       "time_of_day": "Night",
       "time_of_day_kannada": "ರಾತ್ರಿ",
-      "location": "Tumakuru, SS Puram",
+      "location": "SS Puram PS",
       "accused": [
         "Siddaraju M"
       ],
@@ -12814,7 +13294,11 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "district": "Tumakuru",
+      "station": "SS Puram PS",
+      "date": "2025-06-24",
+      "status": "Arrested"
     },
     {
       "CaseMasterID": 100,
@@ -12854,7 +13338,7 @@
       "type_kannada": "ಕಳ್ಳತನ",
       "time_of_day": "Night",
       "time_of_day_kannada": "ರಾತ್ರಿ",
-      "location": "Vijayapura, Sindagi",
+      "location": "Sindagi PS",
       "accused": [
         "Sharanappa T",
         "Yallappa N"
@@ -12949,7 +13433,11 @@
       "financial_crime_details": {
         "is_financial_crime": false,
         "transaction_data_available": false
-      }
+      },
+      "district": "Vijayapura",
+      "station": "Sindagi PS",
+      "date": "2025-06-26",
+      "status": "Under Investigation"
     }
   ],
   "criminal_network": [
