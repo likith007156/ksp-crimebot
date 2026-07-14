@@ -100,45 +100,74 @@ def analyze_trends(crimes):
         month = crime.get("date", crime.get("CrimeRegisteredDate", "2025-01"))[:7]
         monthly[month] = monthly.get(month, 0) + 1
     return dict(sorted(monthly.items()))
-def find_similar_cases(crime_type, modus):
-    similar = []
-    for crime in crime_data["crimes"]:
-        c_type = crime.get("type", crime.get("CrimeMinorHead", ""))
-        c_modus = crime.get("modus_operandi", crime.get("BriefFacts", ""))
-        if c_type.lower() == crime_type.lower():
-            similar.append({
-                "id": crime.get("id"),
-                "modus": c_modus,
-                "district": crime.get("district", crime.get("DistrictName", ""))
-            })
-    return similar[:5]
+@app.route('/api/similar-cases', methods=['GET'])
+def similar_cases_route():
+    crime_type = request.args.get('type', '')
+    modus = request.args.get('modus', '')
+    similar = find_similar_cases(crime_type, modus)
+    return jsonify(similar)
 
 def build_context(query, relevant_crimes, connections):
     context = "KARNATAKA STATE POLICE - CRIME DATABASE\n\n"
     context += f"Relevant Crime Records ({len(relevant_crimes)} found):\n"
-    for crime in relevant_crimes[:5]:  # limit to 5 records
+    for crime in relevant_crimes[:5]:
+        # Basic fields
         context += f"""
 Case ID: {crime.get('id', crime.get('CaseMasterID', 'Unknown'))}
-Type: {crime.get('type', crime.get('CaseCategory', 'Unknown'))}
+Type: {crime.get('type', crime.get('CrimeMinorHead', 'Unknown'))}
 Location: {crime.get('location', crime.get('PoliceStationName', 'Unknown'))}
 District: {crime.get('district', crime.get('DistrictName', 'Unknown'))}
-Station: {crime.get('station', crime.get('PoliceStationName', 'Unknown'))}
 Date: {crime.get('date', crime.get('CrimeRegisteredDate', 'Unknown'))}
 Accused: {', '.join(crime.get('accused', ['Unknown']))}
 Victim: {crime.get('victim', 'Unknown')}
 Status: {crime.get('status', crime.get('CaseStatus', 'Unknown'))}
 Modus Operandi: {crime.get('modus_operandi', crime.get('BriefFacts', 'Unknown'))}
-Socio-Economic Factor: {crime.get('socio_economic', 'Unknown')}
 IPC Section: {crime.get('ActCode', '')} {crime.get('SectionCode', '')}
 Crime Head: {crime.get('CrimeMajorHead', '')} - {crime.get('CrimeMinorHead', '')}
-Gravity: {crime.get('GravityOffence', 'Unknown')}
----"""
+Gravity: {crime.get('GravityOffence', 'Unknown')}"""
+
+        # Risk Assessment
+        risk = crime.get('risk_assessment', {})
+        if risk:
+            context += f"""
+Risk Score: {risk.get('risk_score', 'N/A')}/100
+Risk Level: {risk.get('risk_level', 'N/A')}"""
+
+        # Accused Demographics
+        accused_demo = crime.get('accused_demographics', [])
+        if accused_demo:
+            context += f"\nAccused Demographics:"
+            for acc in accused_demo[:2]:
+                context += f"""
+  - Name: {acc.get('name', 'Unknown')}
+    Age Group: {acc.get('accused_age_group', 'Unknown')}
+    Gender: {acc.get('accused_gender_full', 'Unknown')}
+    Risk Level: {acc.get('accused_risk_level', 'Unknown')}"""
+
+        # Victim Demographics
+        victim_demo = crime.get('victim_demographics', {})
+        if victim_demo:
+            context += f"""
+Victim Age Group: {victim_demo.get('age_group', 'Unknown')}
+Victim Gender: {victim_demo.get('gender', 'Unknown')}
+Victim Occupation: {victim_demo.get('occupation', 'Unknown')}"""
+
+        # Socio Economic Profile
+        socio = crime.get('socio_economic_profile', {})
+        if socio:
+            context += f"""
+Area Type: {socio.get('area_type', 'Unknown')}
+Income Bracket: {socio.get('income_bracket', 'Unknown')}
+Unemployment Factor: {socio.get('unemployment_factor', 'Unknown')}"""
+
+        context += "\n---"
+
     if connections:
         context += "\n\nCriminal Network Connections:\n"
         for conn in connections:
-            context += f"• {conn.get('from','?')} ↔ {conn.get('to','?')} ({conn.get('relationship','?')}) - Cases: {', '.join(conn.get('cases', [])) if conn.get('cases') else 'Associated'}\n"
-    return context
+            context += f"- {conn.get('from','?')} <-> {conn.get('to','?')} ({conn.get('relationship','?')})\n"
 
+    return context
 @app.route('/api/chat', methods=['POST'])
 def chat():
     try:
@@ -261,6 +290,70 @@ def trends_route():
     return jsonify(trend_data)
 
 @app.route('/health', methods=['GET'])
+
+def get_demographics(crimes):
+    gender_count = {}
+    age_group_count = {}
+    income_bracket_count = {}
+    risk_level_count = {}
+
+    for crime in crimes:
+        # Victim demographics
+        victim = crime.get('victim_demographics', {})
+        if victim:
+            gender = victim.get('gender', 'Unknown')
+            age = victim.get('age_group', 'Unknown')
+            gender_count[gender] = gender_count.get(gender, 0) + 1
+            age_group_count[age] = age_group_count.get(age, 0) + 1
+
+        # Accused demographics
+        for accused in crime.get('accused_demographics', []):
+            income = accused.get('income_bracket', 'Unknown')
+            risk = accused.get('accused_risk_level', 'Unknown')
+            income_bracket_count[income] = income_bracket_count.get(income, 0) + 1
+            risk_level_count[risk] = risk_level_count.get(risk, 0) + 1
+
+    return {
+        'victim_gender': gender_count,
+        'victim_age_groups': age_group_count,
+        'accused_income_brackets': income_bracket_count,
+        'accused_risk_levels': risk_level_count
+    }
+
+@app.route('/api/demographics', methods=['GET'])
+def demographics():
+    data = get_demographics(crime_data["crimes"])
+    return jsonify(data)
+
+def get_risk_scores(crimes):
+    risk_distribution = {}
+    high_risk_cases = []
+
+    for crime in crimes:
+        risk = crime.get('risk_assessment', {})
+        if risk:
+            level = risk.get('risk_level', 'Unknown')
+            score = risk.get('risk_score', 0)
+            risk_distribution[level] = risk_distribution.get(level, 0) + 1
+            if score >= 70:
+                high_risk_cases.append({
+                    'id': crime.get('id'),
+                    'type': crime.get('type'),
+                    'district': crime.get('district', crime.get('DistrictName', 'Unknown')),
+                    'risk_score': score,
+                    'risk_level': level
+                })
+
+    return {
+        'distribution': risk_distribution,
+        'high_risk_cases': sorted(high_risk_cases, key=lambda x: x['risk_score'], reverse=True)[:10]
+    }
+
+@app.route('/api/risk-scores', methods=['GET'])
+def risk_scores():
+    data = get_risk_scores(crime_data["crimes"])
+    return jsonify(data)
+
 def health():
     return jsonify({'status': 'ok', 'service': 'KSP CrimeBot'})
 
