@@ -463,12 +463,15 @@ export default function App() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: input, history }),
       });
+      if (!res.ok) {
+        throw new Error(`Server responded with status ${res.status}`);
+      }
       const data = await res.json();
       setMessages([
         ...newMessages,
         {
           role: "assistant",
-          content: data.response,
+          content: data.response || "Sorry, I couldn't generate a response. Please try again.",
           cases: data.relevant_cases,
           connections: data.network_connections,
         },
@@ -971,7 +974,7 @@ export default function App() {
                     )}
                     <div className="bubble">
                       <p dangerouslySetInnerHTML={{
-  __html: msg.content
+  __html: (msg.content || '')
     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.*?)\*/g, '<em>$1</em>')
     .replace(/\n\n/g, '<br/><br/>')
