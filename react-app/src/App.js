@@ -1,3 +1,4 @@
+import notoSansKannadaBase64 from './notoSansKannadaFont';
 import jsPDF from 'jspdf';
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import ReactFlow, {
@@ -486,6 +487,8 @@ export default function App() {
 
  const exportPDF = async () => {
     const doc = new jsPDF();
+    doc.addFileToVFS('NotoSansKannada.ttf', notoSansKannadaBase64);
+    doc.addFont('NotoSansKannada.ttf', 'NotoSansKannada', 'normal');
     const pageWidth = doc.internal.pageSize.getWidth();
     const pageHeight = doc.internal.pageSize.getHeight();
     const margin = 15;
@@ -576,8 +579,7 @@ export default function App() {
         .replace(/\*\*(.*?)\*\*/g, '$1')
         .replace(/\*(.*?)\*/g, '$1')
         .replace(/#{1,6} /g, '')
-        .replace(/[\u0C80-\u0CFF]+/g, '[Kannada Text]')
-        .replace(/[^\x00-\x7F]+/g, '');
+        
     };
 
     addHeader();
@@ -657,22 +659,25 @@ export default function App() {
       }
       y += 10;
 
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(8);
-      doc.setTextColor(40, 40, 40);
+      doc.setFont('NotoSansKannada', 'normal');
+doc.setFontSize(8);
+doc.setTextColor(40, 40, 40);
 
-      const clean = cleanText(msg.content);
-      const lines = doc.splitTextToSize(clean, maxWidth - 4);
+const clean = cleanText(msg.content);
+const lines = doc.splitTextToSize(clean, maxWidth - 4);
 
-      lines.forEach(line => {
-        if (y > pageHeight - 50) {
-          doc.addPage();
-          addHeader();
-          y = 55;
-        }
-        doc.text(line, margin + 2, y);
-        y += 4.5;
-      });
+lines.forEach(line => {
+  if (y > pageHeight - 50) {
+    doc.addPage();
+    addHeader();
+    y = 55;
+    doc.setFont('NotoSansKannada', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(40, 40, 40);
+  }
+  doc.text(line, margin + 2, y);
+  y += 4.5;
+});
 
       if (msg.cases && msg.cases.length > 0) {
         if (y > pageHeight - 50) {
