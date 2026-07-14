@@ -73,7 +73,14 @@ def detect_repeat_offenders(crimes):
     accused_count = {}
     accused_cases = {}
     for crime in crimes:
-        for accused in crime.get("accused", []):
+        accused_list = crime.get("accused")
+        if not accused_list:
+            continue
+        if isinstance(accused_list, str):
+            accused_list = [accused_list]
+        for accused in accused_list:
+            if not accused or not isinstance(accused, str):
+                continue
             accused_count[accused] = accused_count.get(accused, 0) + 1
             if accused not in accused_cases:
                 accused_cases[accused] = []
@@ -225,6 +232,12 @@ Financial Crime Details:
     return context
 @app.route('/api/chat', methods=['POST'])
 def chat():
+    global client
+    if not client:
+        api_key = os.environ.get("GROQ_API_KEY")
+        if api_key:
+            client = Groq(api_key=api_key)
+            
     if not client:
         return jsonify({'error': 'GROQ_API_KEY environment variable is not set. Please set it in a .env file in the backend folder.'}), 500
     try:
