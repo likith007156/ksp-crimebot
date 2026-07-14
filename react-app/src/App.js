@@ -363,7 +363,6 @@ export default function App() {
   const [isListening, setIsListening] = useState(false);
   const [speechLang, setSpeechLang] = useState("kn-IN"); // default to Kannada speech input
   const [speakingMessageId, setSpeakingMessageId] = useState(null);
-  const [autoSpeak, setAutoSpeak] = useState(false);
   const [transcribing, setTranscribing] = useState(false);
 
   const mediaRecorderRef = useRef(null);
@@ -654,9 +653,6 @@ export default function App() {
           connections: data.network_connections,
         },
       ]);
-      if (autoSpeak) {
-        speakText(botResponse, newMessages.length);
-      }
     } catch (e) {
       setMessages([
         ...newMessages,
@@ -1140,17 +1136,6 @@ export default function App() {
                     </button>
                   </div>
                 )}
-                
-                <div className="chat-settings-bar">
-                  <button
-                    className={`auto-speak-toggle ${autoSpeak ? "active" : ""}`}
-                    onClick={() => setAutoSpeak(!autoSpeak)}
-                    title="Toggle auto-speak responses"
-                  >
-                    {autoSpeak ? <Volume2 size={14} /> : <VolumeX size={14} />}
-                    <span>Auto-Speak Responses: {autoSpeak ? "ON" : "OFF"}</span>
-                  </button>
-                </div>
               </div>
 
               <div className="messages">
