@@ -424,6 +424,8 @@ def risk_scores():
     data = get_risk_scores(crime_data["crimes"])
     return jsonify(data)
 
+@app.route('/health', methods=['GET'])
+@app.route('/api/health', methods=['GET'])
 def health():
     return jsonify({'status': 'ok', 'service': 'KSP CrimeBot'})
 
@@ -472,7 +474,7 @@ def transcribe():
             return jsonify({'error': 'No file provided'}), 400
             
         file = request.files['file']
-        lang = request.form.get('language_code', 'kn-IN')
+        lang = request.form.get('language_code')
         
         api_key = os.environ.get("SARVAM_API_KEY")
         if not api_key:
@@ -488,17 +490,22 @@ def transcribe():
             "file": (file.filename, file.read(), file.content_type or 'audio/wav')
         }
         data = {
-            "model": "saarika:v1",
-            "language_code": lang
+            "model": "saaras:v3",
+            "mode": "transcribe"
         }
+        if lang:
+            data["language_code"] = lang
 
         res = requests.post(url, headers=headers, files=files, data=data)
         if res.status_code == 200:
             return jsonify(res.json())
         else:
+            print(f"Sarvam API error: Status {res.status_code}, Response: {res.text}")
             return jsonify({'error': f'Sarvam API returned error: {res.text}'}), res.status_code
             
     except Exception as e:
+        import traceback
+        traceback.print_exc()
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':

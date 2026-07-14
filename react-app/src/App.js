@@ -36,7 +36,10 @@ import {
   VolumeX,
 } from "lucide-react";
 
-const FUNCTION_URL = "https://ksp-crimebot-backend.onrender.com";
+const FUNCTION_URL =
+  window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+    ? "http://localhost:5000"
+    : "https://ksp-crimebot-backend.onrender.com";
 
 /* ─── CartoDB tile layers (light = Positron, dark = Dark Matter) ─── */
 const CARTO_LIGHT =
