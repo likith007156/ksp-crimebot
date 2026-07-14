@@ -31,6 +31,9 @@ import {
   Lightbulb,
   Send,
   RefreshCw,
+  Mic,
+  Volume2,
+  VolumeX,
 } from "lucide-react";
 
 const FUNCTION_URL = "https://ksp-crimebot-backend.onrender.com";
@@ -353,6 +356,116 @@ export default function App() {
   const [statsVisible, setStatsVisible] = useState(false);
   const messagesEndRef = useRef(null);
 
+  // Voice integration states
+  const [isListening, setIsListening] = useState(false);
+  const [speechLang, setSpeechLang] = useState("kn-IN"); // default to Kannada speech input
+  const [speakingMessageId, setSpeakingMessageId] = useState(null);
+  const [autoSpeak, setAutoSpeak] = useState(false);
+
+  const recognitionRef = useRef(null);
+
+  // Initialize Speech Recognition
+  useEffect(() => {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (SpeechRecognition) {
+      const rec = new SpeechRecognition();
+      rec.continuous = false;
+      rec.interimResults = false;
+
+      rec.onstart = () => {
+        setIsListening(true);
+      };
+
+      rec.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        setInput((prev) => {
+          const space = prev && !prev.endsWith(' ') ? ' ' : '';
+          return prev + space + transcript;
+        });
+      };
+
+      rec.onerror = (event) => {
+        console.error("Speech recognition error", event.error);
+        setIsListening(false);
+      };
+
+      rec.onend = () => {
+        setIsListening(false);
+      };
+
+      recognitionRef.current = rec;
+    }
+  }, []);
+
+  // Stop speaking when active tab changes or user logs out
+  useEffect(() => {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      setSpeakingMessageId(null);
+    }
+  }, [activeTab, user]);
+
+  const toggleListening = () => {
+    if (isListening) {
+      recognitionRef.current?.stop();
+    } else {
+      if (recognitionRef.current) {
+        recognitionRef.current.lang = speechLang;
+        recognitionRef.current.start();
+      } else {
+        alert("Speech recognition is not supported in this browser. Please try Google Chrome or MS Edge.");
+      }
+    }
+  };
+
+  const speakText = (text, index) => {
+    if (!('speechSynthesis' in window)) {
+      alert("Text-to-speech is not supported in this browser.");
+      return;
+    }
+
+    if (speakingMessageId === index) {
+      window.speechSynthesis.cancel();
+      setSpeakingMessageId(null);
+      return;
+    }
+
+    window.speechSynthesis.cancel(); // Stop any ongoing speech
+
+    // Clean text of markdown and html tags
+    const cleanText = text
+      .replace(/\*\*(.*?)\*\*/g, '$1')
+      .replace(/\*(.*?)\*/g, '$1')
+      .replace(/<[^>]*>/g, '')
+      .replace(/#[#\s\w]+/g, '');
+
+    const utterance = new SpeechSynthesisUtterance(cleanText);
+    const KANNADA_REGEX = /[\u0C80-\u0CFF]/;
+    const isKannada = KANNADA_REGEX.test(text);
+
+    // Asynchronously retrieve voices to be safe
+    const voices = window.speechSynthesis.getVoices();
+    let voice = null;
+
+    if (isKannada) {
+      voice = voices.find(v => v.lang.startsWith('kn') || v.lang.includes('Kannada'));
+      utterance.lang = 'kn-IN';
+    } else {
+      voice = voices.find(v => v.lang === 'en-IN') || voices.find(v => v.lang.startsWith('en'));
+      utterance.lang = 'en-IN';
+    }
+
+    if (voice) {
+      utterance.voice = voice;
+    }
+
+    utterance.onstart = () => setSpeakingMessageId(index);
+    utterance.onend = () => setSpeakingMessageId(null);
+    utterance.onerror = () => setSpeakingMessageId(null);
+
+    window.speechSynthesis.speak(utterance);
+  };
+
   // Animated counter hook
   const useCounter = (target, active, duration = 1200) => {
     const [value, setValue] = useState(0);
@@ -472,15 +585,19 @@ export default function App() {
         throw new Error(`Server responded with status ${res.status}`);
       }
       const data = await res.json();
+      const botResponse = data.response || "Sorry, I couldn't generate a response. Please try again.";
       setMessages([
         ...newMessages,
         {
           role: "assistant",
-          content: data.response || "Sorry, I couldn't generate a response. Please try again.",
+          content: botResponse,
           cases: data.relevant_cases,
           connections: data.network_connections,
         },
       ]);
+      if (autoSpeak) {
+        speakText(botResponse, newMessages.length);
+      }
     } catch (e) {
       setMessages([
         ...newMessages,
@@ -946,23 +1063,36 @@ export default function App() {
           {/* ══ CHAT TAB ══ */}
           {activeTab === "chat" && (
             <div className="chat-container">
-              {/* Onboarding hint */}
-              {!hintDismissed && (
-                <div className="onboarding-hint" role="note">
-                  <Lightbulb size={15} className="hint-icon" />
-                  <span>
-                    Try: <em>"Show all theft cases in Bengaluru"</em> or ask in
-                    Kannada — <em>"ಬೆಂಗಳೂರಿನಲ್ಲಿ ಅಪರಾಧ ಮಾಹಿತಿ ತೋರಿಸಿ"</em>
-                  </span>
+              {/* Voice settings & Onboarding hint */}
+              <div className="chat-control-header">
+                {!hintDismissed && (
+                  <div className="onboarding-hint" role="note">
+                    <Lightbulb size={15} className="hint-icon" />
+                    <span>
+                      Try: <em>"Show all theft cases in Bengaluru"</em> or ask in
+                      Kannada — <em>"ಬೆಂಗಳೂರಿನಲ್ಲಿ ಅಪರಾಧ ಮಾಹಿತಿ ತೋರಿಸಿ"</em>
+                    </span>
+                    <button
+                      className="hint-dismiss"
+                      onClick={() => setHintDismissed(true)}
+                      aria-label="Dismiss hint"
+                    >
+                      ×
+                    </button>
+                  </div>
+                )}
+                
+                <div className="chat-settings-bar">
                   <button
-                    className="hint-dismiss"
-                    onClick={() => setHintDismissed(true)}
-                    aria-label="Dismiss hint"
+                    className={`auto-speak-toggle ${autoSpeak ? "active" : ""}`}
+                    onClick={() => setAutoSpeak(!autoSpeak)}
+                    title="Toggle auto-speak responses"
                   >
-                    ×
+                    {autoSpeak ? <Volume2 size={14} /> : <VolumeX size={14} />}
+                    <span>Auto-Speak Responses: {autoSpeak ? "ON" : "OFF"}</span>
                   </button>
                 </div>
-              )}
+              </div>
 
               <div className="messages">
                 {messages.map((msg, i) => (
@@ -996,6 +1126,16 @@ export default function App() {
                         </div>
                       )}
                     </div>
+                    {msg.role === "assistant" && (
+                      <button
+                        className={`speak-btn ${speakingMessageId === i ? "active" : ""}`}
+                        onClick={() => speakText(msg.content, i)}
+                        title={speakingMessageId === i ? "Stop speaking" : "Speak response"}
+                        aria-label="Speak response"
+                      >
+                        {speakingMessageId === i ? <VolumeX size={15} /> : <Volume2 size={15} />}
+                      </button>
+                    )}
                   </div>
                 ))}
                 {loading && (
@@ -1033,11 +1173,37 @@ export default function App() {
 
               {/* Input */}
               <div className="input-area">
+                <div className="speech-lang-pill">
+                  <button
+                    className={`lang-btn ${speechLang === "kn-IN" ? "active" : ""}`}
+                    onClick={() => setSpeechLang("kn-IN")}
+                    title="Speak in Kannada"
+                  >
+                    ಕನ್ನಡ
+                  </button>
+                  <button
+                    className={`lang-btn ${speechLang === "en-IN" ? "active" : ""}`}
+                    onClick={() => setSpeechLang("en-IN")}
+                    title="Speak in English"
+                  >
+                    Eng
+                  </button>
+                </div>
+
+                <button
+                  className={`mic-btn ${isListening ? "listening" : ""}`}
+                  onClick={toggleListening}
+                  title={isListening ? "Stop listening" : "Speak (English/Kannada)"}
+                  aria-label="Toggle microphone"
+                >
+                  <Mic size={17} />
+                </button>
+
                 <input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-                  placeholder="Ask about crimes, patterns, suspects… (English or Kannada)"
+                  placeholder={isListening ? "Listening... Speak now..." : "Ask about crimes, patterns, suspects… (English or Kannada)"}
                 />
                 <button
                   onClick={sendMessage}

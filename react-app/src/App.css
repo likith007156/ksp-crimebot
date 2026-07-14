@@ -534,6 +534,148 @@ h1, h2, h3, h4 {
   transform: none;
 }
 
+/* ════════════ VOICE INTEGRATION ════════════ */
+.chat-control-header {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--border);
+}
+
+.chat-settings-bar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 6px 20px;
+  background: var(--suggestions-bg);
+}
+
+.auto-speak-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.auto-speak-toggle:hover {
+  background: var(--sugg-hover);
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.auto-speak-toggle.active {
+  background: rgba(var(--accent-rgb), 0.1);
+  color: var(--accent-light);
+  border-color: var(--accent-light);
+}
+
+/* Speak Button next to message bubble */
+.speak-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-3);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+  margin-bottom: 4px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.speak-btn:hover {
+  color: var(--accent-light);
+  background: var(--surface-2);
+}
+
+.speak-btn.active {
+  color: #ff4444;
+  background: rgba(255, 68, 68, 0.1);
+  animation: pulse-red 1.5s infinite;
+}
+
+/* Language Selection Pill in input-area */
+.speech-lang-pill {
+  display: flex;
+  background: var(--surface-2);
+  border: 1px solid var(--input-border);
+  border-radius: 26px;
+  padding: 2px;
+  align-items: center;
+}
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lang-btn.active {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.app.dark .lang-btn.active {
+  background: var(--accent-light);
+  color: #0a0e1a;
+}
+
+/* Microphone Button */
+.mic-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1.5px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text-2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.mic-btn:hover {
+  background: var(--surface-2);
+  color: var(--accent-light);
+  border-color: var(--accent-light);
+}
+
+.mic-btn.listening {
+  background: #ff4444;
+  color: #ffffff;
+  border-color: #ff4444;
+  animation: pulse-red 1.5s infinite;
+}
+
+@keyframes pulse-red {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 68, 68, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 68, 68, 0);
+  }
+}
+
 /* ════════════ STATS ════════════ */
 .stats-container {
   padding: 24px;

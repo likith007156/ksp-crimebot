@@ -16,8 +16,20 @@ CORS(app, origins=[
 with open(os.path.join(os.path.dirname(__file__), 'crime_data.json'), 'r', encoding='utf-8') as f:
     crime_data = json.load(f)
 
-# Initialize Groq client
-client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
+# Try to load environment variables from local .env file
+env_path = os.path.join(os.path.dirname(__file__), '.env')
+if os.path.exists(env_path):
+    with open(env_path, 'r', encoding='utf-8') as f:
+        for line in f:
+            if '=' in line and not line.strip().startswith('#'):
+                k, v = line.strip().split('=', 1)
+                os.environ[k.strip()] = v.strip().strip('"').strip("'")
+
+# Initialize Groq client safely
+api_key = os.environ.get("GROQ_API_KEY")
+client = None
+if api_key:
+    client = Groq(api_key=api_key)
 
 def search_crime_data(query):
     query_lower = query.lower()
@@ -100,6 +112,34 @@ def analyze_trends(crimes):
         month = crime.get("date", crime.get("CrimeRegisteredDate", "2025-01"))[:7]
         monthly[month] = monthly.get(month, 0) + 1
     return dict(sorted(monthly.items()))
+def find_similar_cases(crime_type, modus):
+    similar = []
+    type_lower = crime_type.lower() if crime_type else ""
+    
+    stop_words = {'the', 'a', 'an', 'and', 'or', 'in', 'on', 'at', 'to', 'for', 'with', 'by', 'of', 'is', 'was', 'were', 'had', 'has', 'have', 'from', 'using', 'through'}
+    modus_words = set(w.strip('.,!?;:"') for w in modus.lower().split() if w.strip('.,!?;:"') not in stop_words) if modus else set()
+    
+    for crime in crime_data["crimes"]:
+        current_type = (crime.get("type") or crime.get("CaseCategory") or "").lower()
+        current_modus = (crime.get("modus_operandi") or crime.get("BriefFacts") or "").lower()
+        
+        type_match = type_lower in current_type if type_lower else False
+        
+        modus_overlap = 0
+        if modus_words and current_modus:
+            current_modus_words = set(w.strip('.,!?;:"') for w in current_modus.split())
+            overlap_words = modus_words.intersection(current_modus_words)
+            modus_overlap = len(overlap_words)
+            
+        if type_match or modus_overlap > 0:
+            similar.append({
+                "crime": crime,
+                "overlap_score": (10 if type_match else 0) + (modus_overlap * 2)
+            })
+            
+    similar.sort(key=lambda x: x["overlap_score"], reverse=True)
+    return [item["crime"] for item in similar[:5]]
+
 @app.route('/api/similar-cases', methods=['GET'])
 def similar_cases_route():
     crime_type = request.args.get('type', '')
@@ -160,6 +200,21 @@ Area Type: {socio.get('area_type', 'Unknown')}
 Income Bracket: {socio.get('income_bracket', 'Unknown')}
 Unemployment Factor: {socio.get('unemployment_factor', 'Unknown')}"""
 
+        # Financial Crime & Money Trail Details
+        fin = crime.get('financial_crime_details', {})
+        if fin and fin.get('is_financial_crime'):
+            context += f"""
+Financial Crime Details:
+  - Estimated Transaction Amount: Rs. {fin.get('estimated_transaction_amount', 'N/A')}
+  - Payment Mode: {fin.get('payment_mode', 'N/A')}
+  - Cyber Financial: {fin.get('cyber_financial', 'N/A')}"""
+            transactions = fin.get('transactions', [])
+            if transactions:
+                context += f"\n  - Money Trail Transactions:"
+                for tx in transactions:
+                    context += f"""
+    * Step {tx.get('step')}: {tx.get('from_name')} (Account: {tx.get('from_account')}, Bank: {tx.get('from_bank')}) -> {tx.get('to_name')} (Account: {tx.get('to_account')}, Bank: {tx.get('to_bank')}) | Amount: Rs. {tx.get('amount')} | Time: {tx.get('timestamp')} | ID: {tx.get('transaction_id')}"""
+
         context += "\n---"
 
     if connections:
@@ -170,6 +225,8 @@ Unemployment Factor: {socio.get('unemployment_factor', 'Unknown')}"""
     return context
 @app.route('/api/chat', methods=['POST'])
 def chat():
+    if not client:
+        return jsonify({'error': 'GROQ_API_KEY environment variable is not set. Please set it in a .env file in the backend folder.'}), 500
     try:
         data = request.json
         user_message = data.get('message', '')
@@ -181,11 +238,24 @@ def chat():
         relevant_crimes = search_crime_data(user_message)
 
         connections = []
-        for crime in crime_data["crimes"]:
-            for accused in crime.get("accused", []):
-                if accused.lower().split()[0] in user_message.lower():
-                    connections = get_criminal_network(accused)
-                    break
+        user_msg_words = set(user_message.lower().split())
+        for crime in crime_data.get("crimes", []):
+            accused_list = crime.get("accused", [])
+            if not accused_list:
+                continue
+            if isinstance(accused_list, str):
+                accused_list = [accused_list]
+            for accused in accused_list:
+                if isinstance(accused, str) and accused.strip():
+                    parts = accused.lower().split()
+                    if parts:
+                        first_name = parts[0]
+                        # Match word-by-word and ignore short search terms / pronouns like 'hi', 'is'
+                        if len(first_name) > 2 and first_name in user_msg_words:
+                            connections = get_criminal_network(accused)
+                            break
+            if connections:
+                break
 
         context = build_context(user_message, relevant_crimes, connections)
         repeat_offenders = dict(list(detect_repeat_offenders(crime_data["crimes"]).items())[:5])
