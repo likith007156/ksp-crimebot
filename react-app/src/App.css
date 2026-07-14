@@ -613,7 +613,7 @@ h1, h2, h3, h4 {
   align-items: center;
 }
 
-.lang-btn {
+.input-area .lang-btn {
   background: transparent;
   border: none;
   padding: 8px 12px;
@@ -623,44 +623,57 @@ h1, h2, h3, h4 {
   color: var(--text-2);
   cursor: pointer;
   transition: all 0.2s ease;
+  transform: none !important;
+  opacity: 1 !important;
 }
 
-.lang-btn.active {
+.input-area .lang-btn:hover {
+  background: var(--sugg-hover);
+  color: var(--text);
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+.input-area .lang-btn.active {
   background: var(--accent);
   color: #ffffff;
 }
 
-.app.dark .lang-btn.active {
+.app.dark .input-area .lang-btn.active {
   background: var(--accent-light);
   color: #0a0e1a;
 }
 
 /* Microphone Button */
-.mic-btn {
+.input-area button.mic-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  border: 1.5px solid var(--input-border);
-  background: var(--input-bg);
-  color: var(--text-2);
+  padding: 0 !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  border: 1.5px solid var(--input-border) !important;
+  background: var(--input-bg) !important;
+  color: var(--text-2) !important;
   cursor: pointer;
   transition: all 0.2s ease;
   flex-shrink: 0;
+  transform: none !important;
 }
 
-.mic-btn:hover {
-  background: var(--surface-2);
-  color: var(--accent-light);
-  border-color: var(--accent-light);
+.input-area button.mic-btn:hover {
+  background: var(--surface-2) !important;
+  color: var(--accent-light) !important;
+  border-color: var(--accent-light) !important;
+  opacity: 1 !important;
+  transform: none !important;
 }
 
-.mic-btn.listening {
-  background: #ff4444;
-  color: #ffffff;
-  border-color: #ff4444;
+.input-area button.mic-btn.listening {
+  background: #ff4444 !important;
+  color: #ffffff !important;
+  border-color: #ff4444 !important;
   animation: pulse-red 1.5s infinite;
 }
 

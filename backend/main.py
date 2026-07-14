@@ -427,5 +427,79 @@ def risk_scores():
 def health():
     return jsonify({'status': 'ok', 'service': 'KSP CrimeBot'})
 
+@app.route('/api/synthesize', methods=['POST'])
+def synthesize():
+    try:
+        data = request.json or {}
+        text = data.get('text', '')
+        lang = data.get('language_code', 'kn-IN')
+        
+        api_key = os.environ.get("SARVAM_API_KEY")
+        if not api_key:
+            return jsonify({'error': 'SARVAM_API_KEY environment variable is not set'}), 500
+            
+        import requests
+        url = "https://api.sarvam.ai/text-to-speech"
+        headers = {
+            "api-subscription-key": api_key,
+            "Content-Type": "application/json"
+        }
+        
+        payload = {
+            "inputs": [text],
+            "target_language_code": lang,
+            "speaker": "meera" if lang == "kn-IN" else "arvind",
+            "pitch": 0,
+            "pace": 1.0,
+            "loudness": 1.5,
+            "speech_sample_rate": 8000,
+            "enable_enhancement": True
+        }
+
+        res = requests.post(url, headers=headers, json=payload)
+        if res.status_code == 200:
+            return jsonify(res.json())
+        else:
+            return jsonify({'error': f'Sarvam API returned error: {res.text}'}), res.status_code
+            
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/transcribe', methods=['POST'])
+def transcribe():
+    try:
+        if 'file' not in request.files:
+            return jsonify({'error': 'No file provided'}), 400
+            
+        file = request.files['file']
+        lang = request.form.get('language_code', 'kn-IN')
+        
+        api_key = os.environ.get("SARVAM_API_KEY")
+        if not api_key:
+            return jsonify({'error': 'SARVAM_API_KEY environment variable is not set'}), 500
+            
+        import requests
+        url = "https://api.sarvam.ai/speech-to-text"
+        headers = {
+            "api-subscription-key": api_key
+        }
+        
+        files = {
+            "file": (file.filename, file.read(), file.content_type or 'audio/wav')
+        }
+        data = {
+            "model": "saarika:v1",
+            "language_code": lang
+        }
+
+        res = requests.post(url, headers=headers, files=files, data=data)
+        if res.status_code == 200:
+            return jsonify(res.json())
+        else:
+            return jsonify({'error': f'Sarvam API returned error: {res.text}'}), res.status_code
+            
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

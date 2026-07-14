@@ -361,109 +361,165 @@ export default function App() {
   const [speechLang, setSpeechLang] = useState("kn-IN"); // default to Kannada speech input
   const [speakingMessageId, setSpeakingMessageId] = useState(null);
   const [autoSpeak, setAutoSpeak] = useState(false);
+  const [transcribing, setTranscribing] = useState(false);
 
-  const recognitionRef = useRef(null);
-
-  // Initialize Speech Recognition
-  useEffect(() => {
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (SpeechRecognition) {
-      const rec = new SpeechRecognition();
-      rec.continuous = false;
-      rec.interimResults = false;
-
-      rec.onstart = () => {
-        setIsListening(true);
-      };
-
-      rec.onresult = (event) => {
-        const transcript = event.results[0][0].transcript;
-        setInput((prev) => {
-          const space = prev && !prev.endsWith(' ') ? ' ' : '';
-          return prev + space + transcript;
-        });
-      };
-
-      rec.onerror = (event) => {
-        console.error("Speech recognition error", event.error);
-        setIsListening(false);
-      };
-
-      rec.onend = () => {
-        setIsListening(false);
-      };
-
-      recognitionRef.current = rec;
-    }
-  }, []);
+  const mediaRecorderRef = useRef(null);
+  const audioChunksRef = useRef([]);
+  const activeAudioRef = useRef(null);
 
   // Stop speaking when active tab changes or user logs out
   useEffect(() => {
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
+    if (activeAudioRef.current) {
+      activeAudioRef.current.pause();
+      activeAudioRef.current = null;
       setSpeakingMessageId(null);
     }
   }, [activeTab, user]);
 
-  const toggleListening = () => {
+  const toggleListening = async () => {
     if (isListening) {
-      recognitionRef.current?.stop();
+      if (mediaRecorderRef.current && mediaRecorderRef.current.state !== "inactive") {
+        mediaRecorderRef.current.stop();
+      }
     } else {
-      if (recognitionRef.current) {
-        recognitionRef.current.lang = speechLang;
-        recognitionRef.current.start();
-      } else {
-        alert("Speech recognition is not supported in this browser. Please try Google Chrome or MS Edge.");
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        
+        let mimeType = 'audio/webm';
+        if (MediaRecorder.isTypeSupported('audio/webm')) {
+          mimeType = 'audio/webm';
+        } else if (MediaRecorder.isTypeSupported('audio/ogg')) {
+          mimeType = 'audio/ogg';
+        } else if (MediaRecorder.isTypeSupported('audio/wav')) {
+          mimeType = 'audio/wav';
+        } else if (MediaRecorder.isTypeSupported('audio/mp4')) {
+          mimeType = 'audio/mp4';
+        }
+
+        const recorder = new MediaRecorder(stream, { mimeType });
+        mediaRecorderRef.current = recorder;
+        audioChunksRef.current = [];
+
+        recorder.ondataavailable = (event) => {
+          if (event.data && event.data.size > 0) {
+            audioChunksRef.current.push(event.data);
+          }
+        };
+
+        recorder.onstart = () => {
+          setIsListening(true);
+        };
+
+        recorder.onstop = async () => {
+          setIsListening(false);
+          stream.getTracks().forEach(track => track.stop());
+
+          const audioBlob = new Blob(audioChunksRef.current, { type: mimeType });
+          if (audioBlob.size === 0) return;
+
+          const formData = new FormData();
+          formData.append("file", audioBlob, "speech.webm");
+          formData.append("language_code", speechLang);
+
+          setTranscribing(true);
+
+          try {
+            const res = await fetch(`${FUNCTION_URL}/api/transcribe`, {
+              method: "POST",
+              body: formData
+            });
+
+            if (!res.ok) {
+              throw new Error(`STT failed: ${res.status}`);
+            }
+
+            const data = await res.json();
+            if (data.transcript) {
+              setInput(data.transcript);
+            }
+          } catch (err) {
+            console.error("Sarvam STT failed:", err);
+            alert("Failed to transcribe speech. Please verify your backend connection and SARVAM_API_KEY.");
+          } finally {
+            setTranscribing(false);
+          }
+        };
+
+        recorder.start();
+      } catch (err) {
+        console.error("Microphone access failed:", err);
+        alert("Could not access microphone. Please grant microphone permissions in your browser settings.");
       }
     }
   };
 
-  const speakText = (text, index) => {
-    if (!('speechSynthesis' in window)) {
-      alert("Text-to-speech is not supported in this browser.");
-      return;
-    }
-
+  const speakText = async (text, index) => {
     if (speakingMessageId === index) {
-      window.speechSynthesis.cancel();
+      if (activeAudioRef.current) {
+        activeAudioRef.current.pause();
+        activeAudioRef.current = null;
+      }
       setSpeakingMessageId(null);
       return;
     }
 
-    window.speechSynthesis.cancel(); // Stop any ongoing speech
+    if (activeAudioRef.current) {
+      activeAudioRef.current.pause();
+      activeAudioRef.current = null;
+      setSpeakingMessageId(null);
+    }
 
-    // Clean text of markdown and html tags
     const cleanText = text
       .replace(/\*\*(.*?)\*\*/g, '$1')
       .replace(/\*(.*?)\*/g, '$1')
       .replace(/<[^>]*>/g, '')
       .replace(/#[#\s\w]+/g, '');
 
-    const utterance = new SpeechSynthesisUtterance(cleanText);
-    const KANNADA_REGEX = /[\u0C80-\u0CFF]/;
-    const isKannada = KANNADA_REGEX.test(text);
+    if (!cleanText.trim()) return;
 
-    // Asynchronously retrieve voices to be safe
-    const voices = window.speechSynthesis.getVoices();
-    let voice = null;
+    try {
+      const KANNADA_REGEX = /[\u0C80-\u0CFF]/;
+      const isKannada = KANNADA_REGEX.test(text);
+      const langCode = isKannada ? "kn-IN" : "en-IN";
 
-    if (isKannada) {
-      voice = voices.find(v => v.lang.startsWith('kn') || v.lang.includes('Kannada'));
-      utterance.lang = 'kn-IN';
-    } else {
-      voice = voices.find(v => v.lang === 'en-IN') || voices.find(v => v.lang.startsWith('en'));
-      utterance.lang = 'en-IN';
+      setSpeakingMessageId(index);
+
+      const res = await fetch(`${FUNCTION_URL}/api/synthesize`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: cleanText, language_code: langCode })
+      });
+
+      if (!res.ok) {
+        throw new Error(`TTS failed: ${res.status}`);
+      }
+
+      const data = await res.json();
+      if (data.audios && data.audios[0]) {
+        const audioUrl = `data:audio/wav;base64,${data.audios[0]}`;
+        const audio = new Audio(audioUrl);
+        activeAudioRef.current = audio;
+
+        audio.onended = () => {
+          setSpeakingMessageId(null);
+          activeAudioRef.current = null;
+        };
+
+        audio.onerror = (e) => {
+          console.error("Audio playback error:", e);
+          setSpeakingMessageId(null);
+          activeAudioRef.current = null;
+        };
+
+        await audio.play();
+      } else {
+        setSpeakingMessageId(null);
+      }
+    } catch (err) {
+      console.error("Sarvam TTS failed:", err);
+      setSpeakingMessageId(null);
+      alert("Failed to synthesize speech. Please check your backend connection and SARVAM_API_KEY.");
     }
-
-    if (voice) {
-      utterance.voice = voice;
-    }
-
-    utterance.onstart = () => setSpeakingMessageId(index);
-    utterance.onend = () => setSpeakingMessageId(null);
-    utterance.onerror = () => setSpeakingMessageId(null);
-
-    window.speechSynthesis.speak(utterance);
   };
 
   // Animated counter hook
@@ -1195,6 +1251,7 @@ export default function App() {
                   onClick={toggleListening}
                   title={isListening ? "Stop listening" : "Speak (English/Kannada)"}
                   aria-label="Toggle microphone"
+                  disabled={transcribing}
                 >
                   <Mic size={17} />
                 </button>
@@ -1203,11 +1260,12 @@ export default function App() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-                  placeholder={isListening ? "Listening... Speak now..." : "Ask about crimes, patterns, suspects… (English or Kannada)"}
+                  placeholder={isListening ? "Listening... Click mic to stop..." : transcribing ? "Transcribing speech..." : "Ask about crimes, patterns, suspects… (English or Kannada)"}
+                  disabled={transcribing}
                 />
                 <button
                   onClick={sendMessage}
-                  disabled={loading}
+                  disabled={loading || transcribing}
                   aria-label="Send message"
                 >
                   <Send size={17} />
