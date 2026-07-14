@@ -357,10 +357,6 @@ def warnings_route():
 @app.route('/api/trends', methods=['GET'])
 def trends_route():
     trend_data = analyze_trends(crime_data["crimes"])
-    return jsonify(trend_data)
-
-@app.route('/health', methods=['GET'])
-
 def get_demographics(crimes):
     gender_count = {}
     age_group_count = {}
