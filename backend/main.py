@@ -305,12 +305,25 @@ RESPONSE RULES:
             messages.append({"role": msg["role"], "content": msg["content"]})
         messages.append({"role": "user", "content": user_message})
 
-        response = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
-            messages=messages,
-            max_tokens=1000,
-            temperature=0.3
-        )
+        try:
+            response = client.chat.completions.create(
+                model="llama-3.3-70b-versatile",
+                messages=messages,
+                max_tokens=1000,
+                temperature=0.3
+            )
+        except Exception as e:
+            err_str = str(e).lower()
+            if "rate_limit" in err_str or "429" in err_str:
+                print("Llama 3.3 70B rate limit hit. Falling back to Llama 3.1 8B...")
+                response = client.chat.completions.create(
+                    model="llama-3.1-8b-instant",
+                    messages=messages,
+                    max_tokens=1000,
+                    temperature=0.3
+                )
+            else:
+                raise e
 
         assistant_message = response.choices[0].message.content
 
