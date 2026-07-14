@@ -517,8 +517,8 @@ export default function App() {
       doc.rect(0, 45, pageWidth, 2, 'F');
 
       if (logoBase64) {
-        doc.addImage(logoBase64, 'PNG', 8, 5, 30, 35);
-      } else {
+      doc.addImage(logoBase64, 'PNG', 8, 5, 34, 29);
+        } else {
         doc.setFillColor(255, 255, 255);
         doc.circle(23, 22, 14, 'F');
         doc.setFillColor(13, 71, 161);
