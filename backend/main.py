@@ -22,6 +22,14 @@ client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 def search_crime_data(query):
     query_lower = query.lower()
     relevant_crimes = []
+    
+    # First check for direct case ID match
+    for crime in crime_data["crimes"]:
+        case_id = crime.get("id", "").lower()
+        if case_id in query_lower:
+            return [crime]
+    
+    # Then do keyword search
     for crime in crime_data["crimes"]:
         searchable = f"""
             {crime.get('type', '')} 
