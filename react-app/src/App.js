@@ -35,14 +35,16 @@ import {
 
 const FUNCTION_URL = "https://ksp-crimebot-backend.onrender.com";
 
-/* ─── Dark-map tile layer (CartoDB Dark Matter) ─── */
+/* ─── CartoDB tile layers (light = Positron, dark = Dark Matter) ─── */
+const CARTO_LIGHT =
+  "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
 const CARTO_DARK =
   "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png";
 const CARTO_ATTR =
   '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>';
 
 /* ─── Map component ─── */
-const HotspotMap = ({ hotspots }) => {
+const HotspotMap = ({ hotspots, darkMode }) => {
   const districtCoords = {
     "Bengaluru Urban": [12.9716, 77.5946],
     "Bengaluru Rural": [13.1986, 77.7066],
@@ -79,7 +81,10 @@ const HotspotMap = ({ hotspots }) => {
       zoom={7}
       style={{ height: "450px", width: "100%", borderRadius: "12px" }}
     >
-      <TileLayer url={CARTO_DARK} attribution={CARTO_ATTR} />
+      <TileLayer
+        url={darkMode ? CARTO_DARK : CARTO_LIGHT}
+        attribution={CARTO_ATTR}
+      />
       {hotspots &&
         hotspots.map(([district, count], i) => {
           const coords = districtCoords[district];
@@ -1187,7 +1192,7 @@ export default function App() {
                   Low (1–4)
                 </span>
               </div>
-              <HotspotMap hotspots={hotspots} />
+              <HotspotMap hotspots={hotspots} darkMode={darkMode} />
             </div>
           )}
 
