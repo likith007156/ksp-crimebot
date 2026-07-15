@@ -16,15 +16,6 @@ CORS(app, origins=[
 with open(os.path.join(os.path.dirname(__file__), 'crime_data.json'), 'r', encoding='utf-8') as f:
     crime_data = json.load(f)
 
-# Try to load environment variables from local .env file
-env_path = os.path.join(os.path.dirname(__file__), '.env')
-if os.path.exists(env_path):
-    with open(env_path, 'r', encoding='utf-8') as f:
-        for line in f:
-            if '=' in line and not line.strip().startswith('#'):
-                k, v = line.strip().split('=', 1)
-                os.environ[k.strip()] = v.strip().strip('"').strip("'")
-
 # Initialize Groq client safely
 api_key = os.environ.get("GROQ_API_KEY")
 client = None
