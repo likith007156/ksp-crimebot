@@ -278,7 +278,13 @@ def chat():
         system_prompt = f"""You are KSP CrimeBot, an expert crime analyst for Karnataka State Police.
 You assist senior investigators, IPS officers, and police personnel.
 
-CRIME DATABASE CONTEXT:
+IMPORTANT DATABASE STATS:
+- Total cases in database: {len(crime_data["crimes"])}
+- Total districts covered: 12
+- Total network links: {len(crime_data["criminal_network"])}
+- Repeat offenders tracked: {len(detect_repeat_offenders(crime_data["crimes"]))}
+
+CRIME DATABASE CONTEXT (showing most relevant records):
 {context}
 
 REPEAT OFFENDERS:
