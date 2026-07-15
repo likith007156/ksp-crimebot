@@ -314,7 +314,7 @@ RESPONSE RULES:
             if "rate_limit" in err_str or "429" in err_str:
                 print("Llama 3.3 70B rate limit hit. Falling back to Llama 3.1 8B...")
                 response = client.chat.completions.create(
-                    model="llama-3.1-8b-instant",
+                    model="llama-3.3-70b-versatile",
                     messages=messages,
                     max_tokens=1000,
                     temperature=0.3
