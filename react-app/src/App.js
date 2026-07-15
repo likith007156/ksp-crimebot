@@ -190,7 +190,7 @@ const getLayoutedElements = (nodes, edges) => {
 };
 
 /* ─── Inner flow component (needs ReactFlowProvider context) ─── */
-const NetworkFlowInner = ({ network, darkMode }) => {
+const NetworkFlowInner = ({ network, darkMode, personRisk }) => {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [selectedNode, setSelectedNode] = useState(null);
@@ -200,29 +200,44 @@ const NetworkFlowInner = ({ network, darkMode }) => {
   const { flowNodes, flowEdges } = React.useMemo(() => {
     if (!network || network.length === 0) return { flowNodes: [], flowEdges: [] };
 
+    const RISK_BORDER_COLOR = {
+      CRITICAL: '#dc2626',
+      HIGH:     '#ea580c',
+      MEDIUM:   '#ca8a04',
+      LOW:      '#16a34a',
+    };
+
     const nodeSet = new Set();
     network.forEach((rel) => { nodeSet.add(rel.from); nodeSet.add(rel.to); });
 
-    const rawNodes = Array.from(nodeSet).map((name) => ({
-      id: name,
-      data: { label: name, cases: [] },
-      position: { x: 0, y: 0 },
-      style: {
-        background: darkMode ? '#1565c0' : '#1976d2',
-        color: '#ffffff',
-        border: '2px solid rgba(255,255,255,0.6)',
-        borderRadius: '8px',
-        padding: '6px 12px',
-        fontSize: '14px',
-        fontFamily: 'Inter, sans-serif',
-        fontWeight: '500',
-        cursor: 'pointer',
-        boxShadow: '0 2px 8px rgba(21,101,192,0.35)',
-        whiteSpace: 'nowrap',
-        minWidth: '80px',
-        textAlign: 'center',
-      },
-    }));
+    const rawNodes = Array.from(nodeSet).map((name) => {
+      const personData = personRisk && personRisk[name];
+      const riskLevel = personData?.risk_level;
+      const riskBorderColor = riskLevel ? (RISK_BORDER_COLOR[riskLevel] || 'rgba(255,255,255,0.6)') : 'rgba(255,255,255,0.6)';
+      return ({
+        id: name,
+        data: { label: name, cases: [] },
+        position: { x: 0, y: 0 },
+        style: {
+          background: darkMode ? '#1565c0' : '#1976d2',
+          color: '#ffffff',
+          border: '2px solid rgba(255,255,255,0.6)',
+          borderLeft: `5px solid ${riskBorderColor}`,
+          borderRadius: '8px',
+          padding: '6px 12px',
+          fontSize: '14px',
+          fontFamily: 'Inter, sans-serif',
+          fontWeight: '500',
+          cursor: 'pointer',
+          boxShadow: riskLevel && riskLevel !== 'Unknown'
+            ? `0 2px 8px ${riskBorderColor}55`
+            : '0 2px 8px rgba(21,101,192,0.35)',
+          whiteSpace: 'nowrap',
+          minWidth: '80px',
+          textAlign: 'center',
+        },
+      });
+    });
 
     const rawEdges = network.map((rel, i) => ({
       id: `e${i}`,
@@ -238,7 +253,7 @@ const NetworkFlowInner = ({ network, darkMode }) => {
 
     const { nodes: ln, edges: le } = getLayoutedElements(rawNodes, rawEdges);
     return { flowNodes: ln, flowEdges: le };
-  }, [network, darkMode]);
+  }, [network, darkMode, personRisk]);
 
   // Set nodes/edges and auto-fit when data changes
   useEffect(() => {
@@ -289,50 +304,72 @@ const NetworkFlowInner = ({ network, darkMode }) => {
       </ReactFlow>
 
       {/* Node info panel */}
-      {selectedNode && (
-        <div style={{
-          position: 'absolute', top: 12, right: 12, zIndex: 10,
-          background: darkMode ? '#1a2744' : '#fff',
-          border: `1px solid ${darkMode ? '#334e7a' : '#dde8ff'}`,
-          borderRadius: '10px', padding: '14px 18px', minWidth: '200px',
-          boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
-          fontFamily: 'Inter, sans-serif',
-        }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-            <span style={{ fontWeight: 700, fontSize: 13, color: darkMode ? '#90caf9' : '#1565c0' }}>
-              {selectedNode.data.label}
-            </span>
-            <button
-              onClick={() => setSelectedNode(null)}
-              style={{ background: 'none', border: 'none', cursor: 'pointer', color: darkMode ? '#90caf9' : '#546e7a', fontSize: 16, lineHeight: 1 }}
-            >×</button>
-          </div>
-          <div style={{ fontSize: 12, color: darkMode ? '#b0c4de' : '#546e7a' }}>
-            {network
-              .filter((r) => r.from === selectedNode.id || r.to === selectedNode.id)
-              .map((r, i) => (
-                <div key={i} style={{ marginBottom: 4 }}>
-                  <span style={{ fontWeight: 600, color: darkMode ? '#fff' : '#1a1a2e' }}>
-                    {r.from === selectedNode.id ? r.to : r.from}
-                  </span>
-                  {' — '}{r.relationship || 'Associated'}
-                  {r.case_id && <span style={{ opacity: 0.65 }}> ({r.case_id})</span>}
-                </div>
-              ))}
-            {network.filter((r) => r.from === selectedNode.id || r.to === selectedNode.id).length === 0 && (
-              <span>No connections found</span>
+      {selectedNode && (() => {
+        const pData = personRisk && personRisk[selectedNode.id];
+        const RISK_COLOR = {
+          CRITICAL: '#dc2626', HIGH: '#ea580c', MEDIUM: '#ca8a04', LOW: '#16a34a',
+        };
+        const badgeColor = pData ? (RISK_COLOR[pData.risk_level] || '#6b7280') : null;
+        return (
+          <div style={{
+            position: 'absolute', top: 12, right: 12, zIndex: 10,
+            background: darkMode ? '#1a2744' : '#fff',
+            border: `1px solid ${darkMode ? '#334e7a' : '#dde8ff'}`,
+            borderRadius: '10px', padding: '14px 18px', minWidth: '220px',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
+            fontFamily: 'Inter, sans-serif',
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+              <span style={{ fontWeight: 700, fontSize: 13, color: darkMode ? '#90caf9' : '#1565c0' }}>
+                {selectedNode.data.label}
+              </span>
+              <button
+                onClick={() => setSelectedNode(null)}
+                style={{ background: 'none', border: 'none', cursor: 'pointer', color: darkMode ? '#90caf9' : '#546e7a', fontSize: 16, lineHeight: 1 }}
+              >×</button>
+            </div>
+            {/* Risk badge row */}
+            {pData && (
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10, padding: '6px 8px', background: darkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.04)', borderRadius: 6 }}>
+                <span style={{
+                  background: badgeColor, color: '#fff', fontSize: 10, fontWeight: 700,
+                  padding: '2px 7px', borderRadius: 4, letterSpacing: '0.5px',
+                }}>{pData.risk_level}</span>
+                <span style={{ fontSize: 12, color: darkMode ? '#b0c4de' : '#374151' }}>
+                  Score: <strong>{pData.risk_score}</strong>/100
+                </span>
+                <span style={{ fontSize: 11, color: darkMode ? '#607d8b' : '#9ca3af', marginLeft: 'auto' }}>
+                  {pData.cases?.length || 0} case{pData.cases?.length !== 1 ? 's' : ''}
+                </span>
+              </div>
             )}
+            <div style={{ fontSize: 12, color: darkMode ? '#b0c4de' : '#546e7a' }}>
+              {network
+                .filter((r) => r.from === selectedNode.id || r.to === selectedNode.id)
+                .map((r, i) => (
+                  <div key={i} style={{ marginBottom: 4 }}>
+                    <span style={{ fontWeight: 600, color: darkMode ? '#fff' : '#1a1a2e' }}>
+                      {r.from === selectedNode.id ? r.to : r.from}
+                    </span>
+                    {' — '}{r.relationship || 'Associated'}
+                    {r.case_id && <span style={{ opacity: 0.65 }}> ({r.case_id})</span>}
+                  </div>
+                ))}
+              {network.filter((r) => r.from === selectedNode.id || r.to === selectedNode.id).length === 0 && (
+                <span>No connections found</span>
+              )}
+            </div>
           </div>
-        </div>
-      )}
+        );
+      })()}
     </div>
   );
 };
 
 /* ─── Network Graph component (wrapped with ReactFlowProvider) ─── */
-const NetworkGraph = ({ network, darkMode }) => (
+const NetworkGraph = ({ network, darkMode, personRisk }) => (
   <ReactFlowProvider>
-    <NetworkFlowInner network={network} darkMode={darkMode} />
+    <NetworkFlowInner network={network} darkMode={darkMode} personRisk={personRisk} />
   </ReactFlowProvider>
 );
 
@@ -357,6 +394,11 @@ export default function App() {
   const [lastSynced, setLastSynced] = useState("");
   const [hintDismissed, setHintDismissed] = useState(false);
   const [statsVisible, setStatsVisible] = useState(false);
+  const [demographics, setDemographics] = useState(null);
+  const [demographicsLoading, setDemographicsLoading] = useState(false);
+  const [riskScores, setRiskScores] = useState(null);
+  const [riskScoresLoading, setRiskScoresLoading] = useState(false);
+  const [personRisk, setPersonRisk] = useState(null);
   const messagesEndRef = useRef(null);
 
   // Voice integration states
@@ -571,6 +613,9 @@ export default function App() {
     fetchNetwork();
     fetchHotspots();
     fetchWarnings();
+    fetchDemographics();
+    fetchRiskScores();
+    fetchPersonRisk();
     // Set last synced timestamp
     const now = new Date();
     setLastSynced(
@@ -617,6 +662,42 @@ export default function App() {
       const res = await fetch(`${FUNCTION_URL}/api/warnings`);
       const data = await res.json();
       setWarnings(data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const fetchDemographics = async () => {
+    setDemographicsLoading(true);
+    try {
+      const res = await fetch(`${FUNCTION_URL}/api/demographics`);
+      const data = await res.json();
+      setDemographics(data);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setDemographicsLoading(false);
+    }
+  };
+
+  const fetchRiskScores = async () => {
+    setRiskScoresLoading(true);
+    try {
+      const res = await fetch(`${FUNCTION_URL}/api/risk-scores`);
+      const data = await res.json();
+      setRiskScores(data);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setRiskScoresLoading(false);
+    }
+  };
+
+  const fetchPersonRisk = async () => {
+    try {
+      const res = await fetch(`${FUNCTION_URL}/api/persons`);
+      const data = await res.json();
+      setPersonRisk(data);
     } catch (e) {
       console.error(e);
     }
@@ -1031,6 +1112,13 @@ export default function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
+  const RISK_COLORS = {
+    CRITICAL: '#dc2626',
+    HIGH:     '#ea580c',
+    MEDIUM:   '#ca8a04',
+    LOW:      '#16a34a',
+  };
+
   const maxStatValue =
     stats
       ? Math.max(
@@ -1040,6 +1128,39 @@ export default function App() {
           ]
         )
       : 1;
+
+  // Helper: render a generic bar chart section
+  const renderBarSection = (title, icon, dataObj, maxVal, customFillFn) => (
+    <div className="stat-section">
+      <h3>{icon}<span>{title}</span></h3>
+      <div className="bar-chart">
+        {Object.entries(dataObj || {})
+          .sort((a, b) => b[1] - a[1])
+          .map(([label, count]) => {
+            const pct = Math.round((count / maxVal) * 100);
+            const fillColor = customFillFn ? customFillFn(label) : undefined;
+            return (
+              <div key={label} className="stat-bar">
+                <span className="bar-label">{label}</span>
+                <div className="bar-track">
+                  <div
+                    className="bar-fill"
+                    style={{ width: statsVisible ? `${pct}%` : '0%', ...(fillColor ? { background: fillColor } : {}) }}
+                  />
+                  {[25, 50, 75].map((tick) => (
+                    <div key={tick} className="bar-tick" style={{ left: `${tick}%` }} />
+                  ))}
+                </div>
+                <span className="bar-count">{count}</span>
+              </div>
+            );
+          })}
+        <div className="bar-axis">
+          <span>0</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div className={`app${darkMode ? " dark" : ""}`}>
@@ -1356,6 +1477,55 @@ export default function App() {
                   </div>
                 </div>
               </div>
+
+
+              {/* ── NEW: High Risk Cases table ── */}
+
+              <div className="stat-section">
+                <h3>
+                  <ShieldAlert size={15} />
+                  <span>High Risk Cases</span>
+                </h3>
+                {riskScoresLoading ? (
+                  <div className="skeleton-loader">
+                    <div className="skeleton-bar" />
+                    <div className="skeleton-bar" style={{ width: '85%' }} />
+                    <div className="skeleton-bar" style={{ width: '70%' }} />
+                    <div className="skeleton-bar" style={{ width: '90%' }} />
+                  </div>
+                ) : riskScores?.high_risk_cases?.length > 0 ? (
+                  <div className="high-risk-table-wrapper">
+                    <table className="high-risk-table">
+                      <thead>
+                        <tr>
+                          <th>Case ID</th>
+                          <th>Type</th>
+                          <th>District</th>
+                          <th>Score</th>
+                          <th>Level</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {riskScores.high_risk_cases.map((c) => (
+                          <tr key={c.id}>
+                            <td><span className="case-id-chip">{c.id}</span></td>
+                            <td>{c.type || '—'}</td>
+                            <td>{c.district || '—'}</td>
+                            <td><strong>{c.risk_score}</strong></td>
+                            <td>
+                              <span className="risk-badge" style={{ background: RISK_COLORS[c.risk_level] || '#6b7280' }}>
+                                {c.risk_level}
+                              </span>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                ) : (
+                  <p style={{ fontSize: 13, color: 'var(--text-3)', padding: '12px 0' }}>No high-risk cases found.</p>
+                )}
+              </div>
             </div>
           )}
 
@@ -1408,7 +1578,14 @@ export default function App() {
               <p>
                 Known associations between accused persons — drag nodes to explore
               </p>
-              <NetworkGraph network={network} darkMode={darkMode} />
+              <div className="network-legend">
+                <span className="network-legend-item"><span className="legend-dot" style={{ background: '#dc2626' }} />CRITICAL</span>
+                <span className="network-legend-item"><span className="legend-dot" style={{ background: '#ea580c' }} />HIGH</span>
+                <span className="network-legend-item"><span className="legend-dot" style={{ background: '#ca8a04' }} />MEDIUM</span>
+                <span className="network-legend-item"><span className="legend-dot" style={{ background: '#16a34a' }} />LOW</span>
+                <span className="network-legend-item" style={{ color: 'var(--text-3)', fontSize: 11 }}>← left border color = risk level</span>
+              </div>
+              <NetworkGraph network={network} darkMode={darkMode} personRisk={personRisk} />
             </div>
           )}
 

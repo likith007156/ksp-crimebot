@@ -1,21 +1,17 @@
 import React, { useState } from "react";
 import { Shield, BarChart2, ShieldAlert, Briefcase, Key } from "lucide-react";
 
-// Module-level registry to remember badge allocations during the session
-const badgeRoleRegistry = new Map([
-  ["INV-1001", "Investigator"],
-  ["ANA-2001", "Analyst"],
-  ["SUP-3001", "Supervisor"],
-  ["PM-4001", "Policymaker"],
-  ["KSP-1234", "Investigator"],
-]);
-
-const rolePrefixes = {
-  Investigator: ["INV", "INVESTIGATOR"],
-  Analyst: ["ANA", "ANALYST"],
-  Supervisor: ["SUP", "SUPERVISOR"],
-  Policymaker: ["PM", "POLICY"]
+// ─── Whitelist: ID → role mapping ───────────────────────────────────────────
+// Add new IDs here without touching the validation logic below.
+// Keys are stored UPPERCASE; lookup always uppercases the input first.
+const VALID_CREDENTIALS = {
+  "INV-1001": "Investigator",
+  "KSP-1234": "Investigator",
+  "ANA-2001": "Analyst",
+  "SUP-3001": "Supervisor",
+  "PM-4001":  "Policymaker",
 };
+// ────────────────────────────────────────────────────────────────────────────
 
 export default function LoginScreen({ onLogin }) {
   const [selectedRole, setSelectedRole] = useState("Investigator");
@@ -47,6 +43,7 @@ export default function LoginScreen({ onLogin }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const cleanBadge = badgeNumber.trim();
     if (!cleanBadge) {
       setError("Please enter a valid Badge Number / Officer ID.");
@@ -54,33 +51,23 @@ export default function LoginScreen({ onLogin }) {
     }
 
     const upperBadge = cleanBadge.toUpperCase();
+    const mappedRole = VALID_CREDENTIALS[upperBadge];
 
-    // Check if the badge is already registered to a role
-    const registeredRole = badgeRoleRegistry.get(cleanBadge);
-    if (registeredRole) {
-      if (registeredRole !== selectedRole) {
-        setError(`Access Denied: Badge ID '${cleanBadge}' is unique to the '${registeredRole}' role.`);
-        return;
-      }
-    } else {
-      // Check if it matches prefixes of other roles to avoid mismatching formats
-      let prefixMatchRole = null;
-      for (const [roleName, prefixes] of Object.entries(rolePrefixes)) {
-        if (prefixes.some(p => upperBadge.startsWith(p))) {
-          prefixMatchRole = roleName;
-          break;
-        }
-      }
-
-      if (prefixMatchRole && prefixMatchRole !== selectedRole) {
-        setError(`Access Denied: Badge format detected as '${prefixMatchRole}'. Cannot login as '${selectedRole}'.`);
-        return;
-      }
-
-      // Dynamically lock new badge to selected role for this session
-      badgeRoleRegistry.set(cleanBadge, selectedRole);
+    if (!mappedRole) {
+      // ID not in whitelist at all
+      setError("Badge number not recognized.");
+      return;
     }
 
+    if (mappedRole !== selectedRole) {
+      // ID exists but maps to a different role
+      setError(
+        `This ID is not valid for the ${selectedRole} role. Try selecting ${mappedRole} instead.`
+      );
+      return; // keep selectedRole highlighted — do NOT reset it
+    }
+
+    // ID found and role matches → proceed
     onLogin({ role: selectedRole, badgeNumber: cleanBadge });
   };
 
@@ -102,7 +89,10 @@ export default function LoginScreen({ onLogin }) {
                 key={role.name}
                 type="button"
                 className={`role-card ${selectedRole === role.name ? "selected" : ""}`}
-                onClick={() => setSelectedRole(role.name)}
+                onClick={() => {
+                  setSelectedRole(role.name);
+                  setError(""); // clear error when role changes
+                }}
               >
                 <div className="role-icon-wrapper">{role.icon}</div>
                 <div className="role-info">
@@ -120,10 +110,12 @@ export default function LoginScreen({ onLogin }) {
               <input
                 type="text"
                 id="badgeNumber"
-                placeholder="Enter Badge Number (e.g. KSP-9874)"
+                placeholder="e.g. INV-1001, KSP-1234, ANA-2001…"
                 value={badgeNumber}
                 onChange={(e) => {
                   setBadgeNumber(e.target.value);
+                  // Clear error only on keystroke so the message isn't
+                  // disruptive, but validation still fires on submit.
                   if (error) setError("");
                 }}
               />
@@ -132,7 +124,7 @@ export default function LoginScreen({ onLogin }) {
           </div>
 
           <button type="submit" className="login-submit-btn">
-            Authenticate & Proceed
+            Authenticate &amp; Proceed
           </button>
         </form>
 

@@ -22,8 +22,22 @@ client = None
 if api_key:
     client = Groq(api_key=api_key)
 
+# Patterns that indicate the user is asking about the total count of all cases
+_TOTAL_COUNT_PATTERNS = [
+    "total number of cases", "total number of crimes", "how many cases",
+    "how many crimes", "total cases", "total crimes", "number of cases",
+    "number of crimes", "count of cases", "count of crimes",
+    "ಒಟ್ಟು ಪ್ರಕರಣ", "ಎಷ್ಟು ಪ್ರಕರಣ",
+]
+
 def search_crime_data(query):
     query_lower = query.lower()
+
+    # Fix 3: Bypass keyword search for total-count questions so the LLM
+    # receives the full dataset and can report the correct total (100).
+    if any(pat in query_lower for pat in _TOTAL_COUNT_PATTERNS):
+        return crime_data["crimes"]
+
     relevant_crimes = []
     
     # First check for direct case ID match
@@ -266,6 +280,21 @@ def chat():
         hotspots = get_hotspots(crime_data["crimes"])
         warnings = early_warning(crime_data["crimes"])
 
+        # Fix 4: Detect the actual language of the typed query rather than
+        # relying on the UI toggle. Unicode block U+0C80–U+0CFF = Kannada.
+        import re as _re
+        _KANNADA_RE = _re.compile(r'[\u0C80-\u0CFF]')
+        query_is_kannada = bool(_KANNADA_RE.search(user_message))
+        if query_is_kannada:
+            lang_rule = (
+                "- The question is in KANNADA — respond FULLY and ONLY in Kannada script (ಕನ್ನಡ)."
+            )
+        else:
+            lang_rule = (
+                "- The question is in ENGLISH — respond FULLY and ONLY in English. "
+                "Do NOT switch to Kannada even if the database contains Kannada text."
+            )
+
         system_prompt = f"""You are KSP CrimeBot, an expert crime analyst for Karnataka State Police.
 You assist senior investigators, IPS officers, and police personnel.
 
@@ -289,9 +318,7 @@ EARLY WARNINGS:
 
 RESPONSE RULES:
 - Always cite Case IDs (e.g., CR001, CR005)
-- Respond in the SAME language as the question
-- For Kannada questions, respond FULLY in Kannada script
-- For English questions, respond in English
+{lang_rule}
 - Be precise and factual
 - Highlight repeat offenders and connections
 - Prefix urgent matters with ALERT:
@@ -380,6 +407,53 @@ def warnings_route():
 @app.route('/api/trends', methods=['GET'])
 def trends_route():
     trend_data = analyze_trends(crime_data["crimes"])
+    return jsonify(trend_data)  # Fix 2: was missing, caused 500 on every call
+# ── Fix 1: /api/persons ─────────────────────────────────────────────────────
+# Risk-level ranking: higher index = higher priority
+_RISK_RANK = {"CRITICAL": 4, "HIGH": 3, "MEDIUM": 2, "LOW": 1, "Unknown": 0}
+
+def get_persons(crimes):
+    """
+    Aggregate per-accused risk data across all cases.
+    Returns a dict keyed by AccusedName with their highest risk_level,
+    the case-level risk_score from that highest-risk case, and all case IDs.
+    """
+    persons = {}  # name -> {risk_level, risk_score, cases}
+
+    for crime in crimes:
+        case_id = crime.get("id", "Unknown")
+        case_risk = crime.get("risk_assessment", {})
+        case_score = case_risk.get("risk_score", 0) if case_risk else 0
+
+        for accused in crime.get("accused_demographics", []):
+            name = accused.get("AccusedName") or accused.get("name", "").strip()
+            if not name:
+                continue
+            risk_level = accused.get("accused_risk_level", "Unknown") or "Unknown"
+
+            if name not in persons:
+                persons[name] = {
+                    "risk_level": risk_level,
+                    "risk_score": case_score,
+                    "cases": [case_id],
+                }
+            else:
+                existing_rank = _RISK_RANK.get(persons[name]["risk_level"], 0)
+                new_rank = _RISK_RANK.get(risk_level, 0)
+                if new_rank > existing_rank:
+                    persons[name]["risk_level"] = risk_level
+                    persons[name]["risk_score"] = case_score
+                if case_id not in persons[name]["cases"]:
+                    persons[name]["cases"].append(case_id)
+
+    return persons
+
+@app.route('/api/persons', methods=['GET'])
+def persons_route():
+    data = get_persons(crime_data["crimes"])
+    return jsonify(data)
+
+
 def get_demographics(crimes):
     gender_count = {}
     age_group_count = {}
