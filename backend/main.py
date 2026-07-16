@@ -4,6 +4,28 @@ from groq import Groq
 import json
 import os
 
+def log_to_catalyst(query, response, district="", case_ids="", role="user"):
+    try:
+        import datetime
+        url = "https://api.catalyst.zoho.com/baas/v1/project/43405000000024001/table/43405000000030011/row"
+        headers = {
+            "Authorization": f"Zoho-oauthtoken {os.environ.get('CATALYST_TOKEN')}",
+            "Content-Type": "application/json"
+        }
+        data = {
+            "session_id": f"session_{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}",
+            "query": str(query)[:500],
+            "response": str(response)[:500],
+            "query_time": datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+            "role": role,
+            "district": district[:255],
+            "case_ids": str(case_ids)[:255]
+        }
+        requests.post(url, json=data, headers=headers, timeout=5)
+    except Exception as e:
+        print(f"Catalyst logging failed: {e}")
+        pass
+
 app = Flask(__name__)
 CORS(app, origins=[
     "https://ksp-crimebot.vercel.app",
@@ -15,6 +37,24 @@ CORS(app, origins=[
 # Load crime data
 with open(os.path.join(os.path.dirname(__file__), 'crime_data.json'), 'r', encoding='utf-8') as f:
     crime_data = json.load(f)
+    # Load additional data files
+try:
+    with open(os.path.join(os.path.dirname(__file__), 'crime_stats.json'), 'r', encoding='utf-8') as f:
+        crime_stats = json.load(f)
+except:
+    crime_stats = {}
+
+try:
+    with open(os.path.join(os.path.dirname(__file__), 'hotspot_zones.json'), 'r', encoding='utf-8') as f:
+        hotspot_zones = json.load(f)
+except:
+    hotspot_zones = {}
+
+try:
+    with open(os.path.join(os.path.dirname(__file__), 'offender_profiles.json'), 'r', encoding='utf-8') as f:
+        offender_profiles = json.load(f)
+except:
+    offender_profiles = {}
 
 # Initialize Groq client safely
 api_key = os.environ.get("GROQ_API_KEY")
@@ -350,6 +390,26 @@ RESPONSE RULES:
                 raise e
 
         assistant_message = response.choices[0].message.content
+        assistant_message = response.choices[0].message.content
+
+        # Log to Catalyst Data Store
+        log_to_catalyst(
+            query=user_message,
+            response=assistant_message[:500],
+            district=relevant_crimes[0].get('district', '') if relevant_crimes else '',
+            case_ids=', '.join([c.get('id', '') for c in relevant_crimes]),
+            role='investigator'
+        )
+
+        return jsonify({
+            'response': assistant_message,
+            'relevant_cases': [c.get('id', 'Unknown') for c in relevant_crimes],
+            'network_connections': connections,
+            'hotspots': get_hotspots(crime_data["crimes"])[:3],
+            'warnings': early_warning(crime_data["crimes"])[:2]
+        })
+
+        
 
         return jsonify({
             'response': assistant_message,
