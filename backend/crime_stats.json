@@ -1,0 +1,776 @@
+{
+  "metadata": {
+    "total_records": 100,
+    "data_period": "2024-2025",
+    "last_updated": "2025-06-26",
+    "new_fields_added": [
+      "victim_demographics",
+      "accused_demographics",
+      "socio_economic_profile",
+      "risk_assessment",
+      "financial_crime_details"
+    ]
+  },
+  "summary": {
+    "total_cases": 100,
+    "total_cases_kannada": "ಒಟ್ಟು 100 ಪ್ರಕರಣಗಳು",
+    "arrested_cases": 50,
+    "under_investigation": 40,
+    "chargesheeted": 8,
+    "convicted": 2,
+    "detection_rate_percent": 60.0,
+    "repeat_offender_cases": 83,
+    "unique_accused": 61,
+    "repeat_offenders_count": 29,
+    "total_economic_loss_inr": 64816000,
+    "criminal_network_links": 50,
+    "districts_covered": 12,
+    "police_stations_covered": 49
+  },
+  "crime_type_distribution": [
+    {
+      "type": "Cybercrime",
+      "type_kannada": "ಸೈಬರ್ ಅಪರಾಧ",
+      "count": 12,
+      "percentage": 12.0
+    },
+    {
+      "type": "Assault",
+      "type_kannada": "ಹಲ್ಲೆ",
+      "count": 11,
+      "percentage": 11.0
+    },
+    {
+      "type": "Theft",
+      "type_kannada": "ಕಳ್ಳತನ",
+      "count": 10,
+      "percentage": 10.0
+    },
+    {
+      "type": "Drug Trafficking",
+      "type_kannada": "ಮಾದಕ ವ್ಯಸನ ಕಳ್ಳಸಾಗಣೆ",
+      "count": 10,
+      "percentage": 10.0
+    },
+    {
+      "type": "Robbery",
+      "type_kannada": "ದರೋಡೆ",
+      "count": 9,
+      "percentage": 9.0
+    },
+    {
+      "type": "Financial Fraud",
+      "type_kannada": "ಆರ್ಥಿಕ ವಂಚನೆ",
+      "count": 9,
+      "percentage": 9.0
+    },
+    {
+      "type": "Murder",
+      "type_kannada": "ಕೊಲೆ",
+      "count": 7,
+      "percentage": 7.0
+    },
+    {
+      "type": "Kidnapping",
+      "type_kannada": "ಅಪಹರಣ",
+      "count": 7,
+      "percentage": 7.0
+    },
+    {
+      "type": "Vehicle Theft",
+      "type_kannada": "ವಾಹನ ಕಳ್ಳತನ",
+      "count": 7,
+      "percentage": 7.0
+    },
+    {
+      "type": "Land Dispute",
+      "type_kannada": "ಭೂಮಿ ವಿವಾದ",
+      "count": 7,
+      "percentage": 7.0
+    },
+    {
+      "type": "Domestic Violence",
+      "type_kannada": "ಗೃಹ ಹಿಂಸೆ",
+      "count": 6,
+      "percentage": 6.0
+    },
+    {
+      "type": "Chain Snatching",
+      "type_kannada": "ಚೈನ್ ಕಸಿದುಕೊಳ್ಳುವಿಕೆ",
+      "count": 5,
+      "percentage": 5.0
+    }
+  ],
+  "district_wise_crimes": [
+    {
+      "DistrictID": 1,
+      "DistrictName": "Bengaluru Urban",
+      "DistrictName_KN": "ಬೆಂಗಳೂರು ನಗರ",
+      "count": 21,
+      "percentage": 21.0,
+      "ncrb_2022_total": 46187,
+      "ncrb_crime_rate_per_lakh": 385,
+      "alert_level": "HIGH"
+    },
+    {
+      "DistrictID": 3,
+      "DistrictName": "Mysuru",
+      "DistrictName_KN": "ಮೈಸೂರು",
+      "count": 9,
+      "percentage": 9.0,
+      "ncrb_2022_total": 8708,
+      "ncrb_crime_rate_per_lakh": 295,
+      "alert_level": "MEDIUM"
+    },
+    {
+      "DistrictID": 4,
+      "DistrictName": "Dakshina Kannada",
+      "DistrictName_KN": "ದಕ್ಷಿಣ ಕನ್ನಡ",
+      "count": 8,
+      "percentage": 8.0,
+      "ncrb_2022_total": 4743,
+      "ncrb_crime_rate_per_lakh": 215,
+      "alert_level": "MEDIUM"
+    },
+    {
+      "DistrictID": 7,
+      "DistrictName": "Kalaburagi",
+      "DistrictName_KN": "ಕಲಬುರಗಿ",
+      "count": 8,
+      "percentage": 8.0,
+      "ncrb_2022_total": 5662,
+      "ncrb_crime_rate_per_lakh": 209,
+      "alert_level": "MEDIUM"
+    },
+    {
+      "DistrictID": 12,
+      "DistrictName": "Raichur",
+      "DistrictName_KN": "ರಾಯಚೂರು",
+      "count": 8,
+      "percentage": 8.0,
+      "ncrb_2022_total": 3925,
+      "ncrb_crime_rate_per_lakh": 206,
+      "alert_level": "MEDIUM"
+    },
+    {
+      "DistrictID": 6,
+      "DistrictName": "Belagavi",
+      "DistrictName_KN": "ಬೆಳಗಾವಿ",
+      "count": 7,
+      "percentage": 7.0,
+      "ncrb_2022_total": 8154,
+      "ncrb_crime_rate_per_lakh": 167,
+      "alert_level": "LOW"
+    },
+    {
+      "DistrictID": 8,
+      "DistrictName": "Tumakuru",
+      "DistrictName_KN": "ತುಮಕೂರು",
+      "count": 7,
+      "percentage": 7.0,
+      "ncrb_2022_total": 7044,
+      "ncrb_crime_rate_per_lakh": 261,
+      "alert_level": "LOW"
+    },
+    {
+      "DistrictID": 9,
+      "DistrictName": "Shivamogga",
+      "DistrictName_KN": "ಶಿವಮೊಗ್ಗ",
+      "count": 7,
+      "percentage": 7.0,
+      "ncrb_2022_total": 6091,
+      "ncrb_crime_rate_per_lakh": 358,
+      "alert_level": "LOW"
+    },
+    {
+      "DistrictID": 10,
+      "DistrictName": "Vijayapura",
+      "DistrictName_KN": "ವಿಜಯಪುರ",
+      "count": 7,
+      "percentage": 7.0,
+      "ncrb_2022_total": 4296,
+      "ncrb_crime_rate_per_lakh": 195,
+      "alert_level": "LOW"
+    },
+    {
+      "DistrictID": 11,
+      "DistrictName": "Ballari",
+      "DistrictName_KN": "ಬಳ್ಳಾರಿ",
+      "count": 7,
+      "percentage": 7.0,
+      "ncrb_2022_total": 3226,
+      "ncrb_crime_rate_per_lakh": 115,
+      "alert_level": "LOW"
+    },
+    {
+      "DistrictID": 5,
+      "DistrictName": "Hubballi-Dharwad",
+      "DistrictName_KN": "ಹುಬ್ಬಳ್ಳಿ-ಧಾರವಾಡ",
+      "count": 6,
+      "percentage": 6.0,
+      "ncrb_2022_total": 4874,
+      "ncrb_crime_rate_per_lakh": 256,
+      "alert_level": "LOW"
+    },
+    {
+      "DistrictID": 2,
+      "DistrictName": "Bengaluru Rural",
+      "DistrictName_KN": "ಬೆಂಗಳೂರು ಗ್ರಾಮಾಂತರ",
+      "count": 5,
+      "percentage": 5.0,
+      "ncrb_2022_total": 6992,
+      "ncrb_crime_rate_per_lakh": 70,
+      "alert_level": "LOW"
+    }
+  ],
+  "case_status_breakdown": [
+    {
+      "status": "Arrested",
+      "status_kannada": "ಬಂಧಿಸಲಾಗಿದೆ",
+      "count": 50,
+      "percentage": 50.0
+    },
+    {
+      "status": "Under Investigation",
+      "status_kannada": "ತನಿಖೆಯಲ್ಲಿದೆ",
+      "count": 40,
+      "percentage": 40.0
+    },
+    {
+      "status": "Chargesheeted",
+      "status_kannada": "ಆರೋಪಪಟ್ಟಿ ಸಲ್ಲಿಸಲಾಗಿದೆ",
+      "count": 8,
+      "percentage": 8.0
+    },
+    {
+      "status": "Convicted",
+      "status_kannada": "ಶಿಕ್ಷೆ ವಿಧಿಸಲಾಗಿದೆ",
+      "count": 2,
+      "percentage": 2.0
+    }
+  ],
+  "monthly_trend": [
+    {
+      "month": "2024-02",
+      "count": 1
+    },
+    {
+      "month": "2024-03",
+      "count": 2
+    },
+    {
+      "month": "2024-04",
+      "count": 3
+    },
+    {
+      "month": "2024-05",
+      "count": 1
+    },
+    {
+      "month": "2024-06",
+      "count": 4
+    },
+    {
+      "month": "2024-07",
+      "count": 4
+    },
+    {
+      "month": "2024-08",
+      "count": 5
+    },
+    {
+      "month": "2024-09",
+      "count": 4
+    },
+    {
+      "month": "2024-10",
+      "count": 5
+    },
+    {
+      "month": "2024-11",
+      "count": 6
+    },
+    {
+      "month": "2024-12",
+      "count": 5
+    },
+    {
+      "month": "2025-01",
+      "count": 8
+    },
+    {
+      "month": "2025-02",
+      "count": 9
+    },
+    {
+      "month": "2025-03",
+      "count": 11
+    },
+    {
+      "month": "2025-04",
+      "count": 11
+    },
+    {
+      "month": "2025-05",
+      "count": 8
+    },
+    {
+      "month": "2025-06",
+      "count": 13
+    }
+  ],
+  "time_of_day_analysis": [
+    {
+      "time": "Night",
+      "time_kannada": "ರಾತ್ರಿ",
+      "count": 49,
+      "percentage": 49.0
+    },
+    {
+      "time": "Evening",
+      "time_kannada": "ಸಂಜೆ",
+      "count": 19,
+      "percentage": 19.0
+    },
+    {
+      "time": "Afternoon",
+      "time_kannada": "ಮಧ್ಯಾಹ್ನ",
+      "count": 19,
+      "percentage": 19.0
+    },
+    {
+      "time": "Morning",
+      "time_kannada": "ಬೆಳಿಗ್ಗೆ",
+      "count": 13,
+      "percentage": 13.0
+    }
+  ],
+  "gravity_analysis": [
+    {
+      "gravity": "Minor",
+      "count": 34,
+      "percentage": 34.0
+    },
+    {
+      "gravity": "Heinous",
+      "count": 33,
+      "percentage": 33.0
+    },
+    {
+      "gravity": "Non-Heinous",
+      "count": 33,
+      "percentage": 33.0
+    }
+  ],
+  "major_crime_heads": [
+    {
+      "head": "Crimes Against Body",
+      "count": 27
+    },
+    {
+      "head": "Crimes Against Property",
+      "count": 22
+    },
+    {
+      "head": "Cyber Crimes",
+      "count": 12
+    },
+    {
+      "head": "Narcotics & Drug Offences",
+      "count": 10
+    },
+    {
+      "head": "Economic Offences",
+      "count": 9
+    },
+    {
+      "head": "Crimes Against Children",
+      "count": 7
+    },
+    {
+      "head": "Land & Property Disputes",
+      "count": 7
+    },
+    {
+      "head": "Crimes Against Women",
+      "count": 6
+    }
+  ],
+  "weapon_analysis": [
+    {
+      "weapon": "None",
+      "weapon_kannada": "ಯಾವುದೂ ಇಲ್ಲ",
+      "count": 71
+    },
+    {
+      "weapon": "Knife",
+      "weapon_kannada": "ಚಾಕು",
+      "count": 8
+    },
+    {
+      "weapon": "Iron rod",
+      "weapon_kannada": "ಕಬ್ಬಿಣದ ರಾಡ್",
+      "count": 5
+    },
+    {
+      "weapon": "Stick",
+      "weapon_kannada": "ಕೋಲು",
+      "count": 3
+    },
+    {
+      "weapon": "Cutting tool",
+      "weapon_kannada": "ಕತ್ತರಿಸುವ ಉಪಕರಣ",
+      "count": 3
+    },
+    {
+      "weapon": "Gun",
+      "weapon_kannada": "ಬಂದೂಕು",
+      "count": 3
+    },
+    {
+      "weapon": "Country-made pistol",
+      "weapon_kannada": "ದೇಸಿ ಪಿಸ್ತೂಲು",
+      "count": 2
+    },
+    {
+      "weapon": "Sharp object",
+      "weapon_kannada": "ಚೂಪಾದ ವಸ್ತು",
+      "count": 1
+    },
+    {
+      "weapon": "Drilling tool",
+      "weapon_kannada": "ಕೊರೆಯುವ ಉಪಕರಣ",
+      "count": 1
+    },
+    {
+      "weapon": "Poison",
+      "weapon_kannada": "ವಿಷ",
+      "count": 1
+    },
+    {
+      "weapon": "Sickle",
+      "weapon_kannada": "ಕುಡಗೋಲು",
+      "count": 1
+    },
+    {
+      "weapon": "Axe",
+      "weapon_kannada": "ಕೊಡಲಿ",
+      "count": 1
+    }
+  ],
+  "risk_level_distribution": [
+    {
+      "risk_level": "CRITICAL",
+      "count": 51,
+      "percentage": 51.0
+    },
+    {
+      "risk_level": "HIGH",
+      "count": 33,
+      "percentage": 33.0
+    },
+    {
+      "risk_level": "MEDIUM",
+      "count": 16,
+      "percentage": 16.0
+    }
+  ],
+  "urban_rural_distribution": [
+    {
+      "category": "Rural",
+      "count": 51,
+      "percentage": 51.0
+    },
+    {
+      "category": "Semi-Urban",
+      "count": 28,
+      "percentage": 28.0
+    },
+    {
+      "category": "Urban",
+      "count": 21,
+      "percentage": 21.0
+    }
+  ],
+  "victim_age_group_distribution": [
+    {
+      "age_group": "Adult (18-60)",
+      "count": 56
+    },
+    {
+      "age_group": "Minor (< 18)",
+      "count": 20
+    },
+    {
+      "age_group": "Senior (> 60)",
+      "count": 10
+    }
+  ],
+  "sociological_insights": {
+    "unemployment_related_crimes": 41,
+    "alcohol_drug_influenced_crimes": 24,
+    "gang_activity_crimes": 45,
+    "economic_motive_crimes": 59,
+    "property_dispute_crimes": 25,
+    "minor_victims": 20,
+    "female_victims": 42,
+    "urban_crimes": 21,
+    "rural_crimes": 51,
+    "critical_risk_cases": 51,
+    "high_risk_cases": 33
+  },
+  "top_repeat_offenders": [
+    {
+      "AccusedName": "Suresh M",
+      "total_cases": 7,
+      "cases": [
+        "CR001",
+        "CR008",
+        "CR021",
+        "CR028",
+        "CR040",
+        "CR052",
+        "CR076"
+      ]
+    },
+    {
+      "AccusedName": "Imran Khan",
+      "total_cases": 7,
+      "cases": [
+        "CR013",
+        "CR014",
+        "CR041",
+        "CR053",
+        "CR056",
+        "CR068",
+        "CR086"
+      ]
+    },
+    {
+      "AccusedName": "Nagaraj P",
+      "total_cases": 7,
+      "cases": [
+        "CR016",
+        "CR021",
+        "CR028",
+        "CR031",
+        "CR040",
+        "CR045",
+        "CR076"
+      ]
+    },
+    {
+      "AccusedName": "Vikram Shah",
+      "total_cases": 7,
+      "cases": [
+        "CR017",
+        "CR018",
+        "CR043",
+        "CR054",
+        "CR065",
+        "CR067",
+        "CR085"
+      ]
+    },
+    {
+      "AccusedName": "Raju Kumar",
+      "total_cases": 6,
+      "cases": [
+        "CR001",
+        "CR005",
+        "CR016",
+        "CR027",
+        "CR052",
+        "CR055"
+      ]
+    },
+    {
+      "AccusedName": "Saleem A",
+      "total_cases": 6,
+      "cases": [
+        "CR013",
+        "CR032",
+        "CR053",
+        "CR056",
+        "CR077",
+        "CR086"
+      ]
+    },
+    {
+      "AccusedName": "Arjun Mehta",
+      "total_cases": 6,
+      "cases": [
+        "CR025",
+        "CR036",
+        "CR049",
+        "CR065",
+        "CR081",
+        "CR088"
+      ]
+    },
+    {
+      "AccusedName": "Basavaraj K",
+      "total_cases": 5,
+      "cases": [
+        "CR007",
+        "CR020",
+        "CR059",
+        "CR070",
+        "CR087"
+      ]
+    },
+    {
+      "AccusedName": "Ravi G",
+      "total_cases": 5,
+      "cases": [
+        "CR011",
+        "CR022",
+        "CR061",
+        "CR072",
+        "CR082"
+      ]
+    },
+    {
+      "AccusedName": "Anand Joshi",
+      "total_cases": 5,
+      "cases": [
+        "CR017",
+        "CR029",
+        "CR043",
+        "CR057",
+        "CR081"
+      ]
+    }
+  ],
+  "criminal_network_summary": {
+    "total_links": 50,
+    "co_accused": 19,
+    "gang_members": 15,
+    "known_associates": 15,
+    "family": 1
+  },
+  "early_warnings": [
+    {
+      "DistrictID": 1,
+      "district": "Bengaluru Urban",
+      "district_kannada": "ಬೆಂಗಳೂರು ನಗರ",
+      "crime_count": 21,
+      "alert_level": "HIGH",
+      "alert_level_kannada": "ಅತ್ಯಧಿಕ ಎಚ್ಚರಿಕೆ",
+      "alert": "HIGH ALERT: 21 crimes in Bengaluru Urban"
+    },
+    {
+      "DistrictID": 3,
+      "district": "Mysuru",
+      "district_kannada": "ಮೈಸೂರು",
+      "crime_count": 9,
+      "alert_level": "MEDIUM",
+      "alert_level_kannada": "ಮಧ್ಯಮ ಎಚ್ಚರಿಕೆ",
+      "alert": "MEDIUM ALERT: 9 crimes in Mysuru"
+    },
+    {
+      "DistrictID": 4,
+      "district": "Dakshina Kannada",
+      "district_kannada": "ದಕ್ಷಿಣ ಕನ್ನಡ",
+      "crime_count": 8,
+      "alert_level": "MEDIUM",
+      "alert_level_kannada": "ಮಧ್ಯಮ ಎಚ್ಚರಿಕೆ",
+      "alert": "MEDIUM ALERT: 8 crimes in Dakshina Kannada"
+    },
+    {
+      "DistrictID": 7,
+      "district": "Kalaburagi",
+      "district_kannada": "ಕಲಬುರಗಿ",
+      "crime_count": 8,
+      "alert_level": "MEDIUM",
+      "alert_level_kannada": "ಮಧ್ಯಮ ಎಚ್ಚರಿಕೆ",
+      "alert": "MEDIUM ALERT: 8 crimes in Kalaburagi"
+    },
+    {
+      "DistrictID": 12,
+      "district": "Raichur",
+      "district_kannada": "ರಾಯಚೂರು",
+      "crime_count": 8,
+      "alert_level": "MEDIUM",
+      "alert_level_kannada": "ಮಧ್ಯಮ ಎಚ್ಚರಿಕೆ",
+      "alert": "MEDIUM ALERT: 8 crimes in Raichur"
+    },
+    {
+      "DistrictID": 6,
+      "district": "Belagavi",
+      "district_kannada": "ಬೆಳಗಾವಿ",
+      "crime_count": 7,
+      "alert_level": "LOW",
+      "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ",
+      "alert": "LOW ALERT: 7 crimes in Belagavi"
+    },
+    {
+      "DistrictID": 8,
+      "district": "Tumakuru",
+      "district_kannada": "ತುಮಕೂರು",
+      "crime_count": 7,
+      "alert_level": "LOW",
+      "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ",
+      "alert": "LOW ALERT: 7 crimes in Tumakuru"
+    },
+    {
+      "DistrictID": 9,
+      "district": "Shivamogga",
+      "district_kannada": "ಶಿವಮೊಗ್ಗ",
+      "crime_count": 7,
+      "alert_level": "LOW",
+      "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ",
+      "alert": "LOW ALERT: 7 crimes in Shivamogga"
+    },
+    {
+      "DistrictID": 10,
+      "district": "Vijayapura",
+      "district_kannada": "ವಿಜಯಪುರ",
+      "crime_count": 7,
+      "alert_level": "LOW",
+      "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ",
+      "alert": "LOW ALERT: 7 crimes in Vijayapura"
+    },
+    {
+      "DistrictID": 11,
+      "district": "Ballari",
+      "district_kannada": "ಬಳ್ಳಾರಿ",
+      "crime_count": 7,
+      "alert_level": "LOW",
+      "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ",
+      "alert": "LOW ALERT: 7 crimes in Ballari"
+    },
+    {
+      "DistrictID": 5,
+      "district": "Hubballi-Dharwad",
+      "district_kannada": "ಹುಬ್ಬಳ್ಳಿ-ಧಾರವಾಡ",
+      "crime_count": 6,
+      "alert_level": "LOW",
+      "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ",
+      "alert": "LOW ALERT: 6 crimes in Hubballi-Dharwad"
+    },
+    {
+      "DistrictID": 2,
+      "district": "Bengaluru Rural",
+      "district_kannada": "ಬೆಂಗಳೂರು ಗ್ರಾಮಾಂತರ",
+      "crime_count": 5,
+      "alert_level": "LOW",
+      "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ",
+      "alert": "LOW ALERT: 5 crimes in Bengaluru Rural"
+    }
+  ],
+  "financial_crime_note": {
+    "status": "Transaction data NOT included in current scope",
+    "team_action_required": "Confirm whether to add fake transaction fields or skip",
+    "economic_loss_data_available": true,
+    "fields_available": [
+      "economic_loss",
+      "financial_crime_details.payment_mode",
+      "financial_crime_details.estimated_transaction_amount"
+    ]
+  },
+  "ncrb_comparison": {
+    "source": "NCRB Crime in India 2022 - Karnataka",
+    "total_karnataka_crimes_2022": 180742
+  }
+}

@@ -362,7 +362,10 @@ RESPONSE RULES:
     except Exception as e:
         import traceback
         traceback.print_exc()
-        return jsonify({'error': str(e)}), 500
+        error_msg = str(e)
+        if '429' in error_msg or 'rate_limit' in error_msg:
+            return jsonify({'error': 'Rate limit reached. Please wait a few minutes and try again.'}), 429
+        return jsonify({'error': error_msg}), 500
 
 @app.route('/api/stats', methods=['GET'])
 def stats():
@@ -599,7 +602,10 @@ def transcribe():
     except Exception as e:
         import traceback
         traceback.print_exc()
-        return jsonify({'error': str(e)}), 500
+        error_msg = str(e)
+        if '429' in error_msg or 'rate_limit' in error_msg:
+            return jsonify({'error': 'Rate limit reached. Please wait a few minutes and try again.'}), 429
+        return jsonify({'error': error_msg}), 500
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

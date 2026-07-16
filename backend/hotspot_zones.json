@@ -1,0 +1,1307 @@
+{
+  "metadata": {
+    "total_district_zones": 12,
+    "total_micro_zones": 36,
+    "total_zones": 48,
+    "based_on_cases": 100
+  },
+  "district_hotspots": [
+    {
+      "DistrictID": 1,
+      "DistrictName": "Bengaluru Urban",
+      "DistrictName_KN": "ಬೆಂಗಳೂರು ನಗರ",
+      "latitude": 12.9716,
+      "longitude": 77.5946,
+      "total_crimes": 21,
+      "alert_level": "HIGH",
+      "alert_color": "#FF0000",
+      "radius_scale": 21,
+      "dominant_crime": "Cybercrime",
+      "dominant_crime_kannada": "ಸೈಬರ್ ಅಪರಾಧ",
+      "crime_breakdown": {
+        "Cybercrime": 6,
+        "Financial Fraud": 4,
+        "Chain Snatching": 3,
+        "Theft": 2,
+        "Robbery": 2,
+        "Vehicle Theft": 2,
+        "Drug Trafficking": 1,
+        "Kidnapping": 1
+      },
+      "peak_time": "Afternoon",
+      "ncrb_crime_rate_per_lakh": 385,
+      "related_cases": [
+        "CR001",
+        "CR003",
+        "CR005",
+        "CR008",
+        "CR010",
+        "CR016",
+        "CR017",
+        "CR018",
+        "CR025",
+        "CR031",
+        "CR036",
+        "CR041",
+        "CR043",
+        "CR048",
+        "CR052",
+        "CR054",
+        "CR055",
+        "CR065",
+        "CR076",
+        "CR085",
+        "CR089"
+      ]
+    },
+    {
+      "DistrictID": 3,
+      "DistrictName": "Mysuru",
+      "DistrictName_KN": "ಮೈಸೂರು",
+      "latitude": 12.2958,
+      "longitude": 76.6394,
+      "total_crimes": 9,
+      "alert_level": "MEDIUM",
+      "alert_color": "#FFA500",
+      "radius_scale": 9,
+      "dominant_crime": "Robbery",
+      "dominant_crime_kannada": "ದರೋಡೆ",
+      "crime_breakdown": {
+        "Robbery": 2,
+        "Vehicle Theft": 1,
+        "Chain Snatching": 1,
+        "Cybercrime": 1,
+        "Drug Trafficking": 1,
+        "Financial Fraud": 1,
+        "Kidnapping": 1,
+        "Murder": 1
+      },
+      "peak_time": "Night",
+      "ncrb_crime_rate_per_lakh": 295,
+      "related_cases": [
+        "CR002",
+        "CR012",
+        "CR021",
+        "CR040",
+        "CR049",
+        "CR056",
+        "CR067",
+        "CR078",
+        "CR090"
+      ]
+    },
+    {
+      "DistrictID": 4,
+      "DistrictName": "Dakshina Kannada",
+      "DistrictName_KN": "ದಕ್ಷಿಣ ಕನ್ನಡ",
+      "latitude": 12.9141,
+      "longitude": 74.856,
+      "total_crimes": 8,
+      "alert_level": "MEDIUM",
+      "alert_color": "#FFA500",
+      "radius_scale": 8,
+      "dominant_crime": "Cybercrime",
+      "dominant_crime_kannada": "ಸೈಬರ್ ಅಪರಾಧ",
+      "crime_breakdown": {
+        "Cybercrime": 2,
+        "Drug Trafficking": 2,
+        "Financial Fraud": 2,
+        "Assault": 1,
+        "Robbery": 1
+      },
+      "peak_time": "Night",
+      "ncrb_crime_rate_per_lakh": 215,
+      "related_cases": [
+        "CR006",
+        "CR013",
+        "CR014",
+        "CR029",
+        "CR057",
+        "CR068",
+        "CR086",
+        "CR098"
+      ]
+    },
+    {
+      "DistrictID": 7,
+      "DistrictName": "Kalaburagi",
+      "DistrictName_KN": "ಕಲಬುರಗಿ",
+      "latitude": 17.3297,
+      "longitude": 76.8343,
+      "total_crimes": 8,
+      "alert_level": "MEDIUM",
+      "alert_color": "#FFA500",
+      "radius_scale": 8,
+      "dominant_crime": "Murder",
+      "dominant_crime_kannada": "ಕೊಲೆ",
+      "crime_breakdown": {
+        "Murder": 2,
+        "Assault": 2,
+        "Domestic Violence": 2,
+        "Drug Trafficking": 1,
+        "Land Dispute": 1
+      },
+      "peak_time": "Night",
+      "ncrb_crime_rate_per_lakh": 209,
+      "related_cases": [
+        "CR007",
+        "CR020",
+        "CR037",
+        "CR047",
+        "CR059",
+        "CR070",
+        "CR087",
+        "CR092"
+      ]
+    },
+    {
+      "DistrictID": 12,
+      "DistrictName": "Raichur",
+      "DistrictName_KN": "ರಾಯಚೂರು",
+      "latitude": 16.212,
+      "longitude": 77.3439,
+      "total_crimes": 8,
+      "alert_level": "MEDIUM",
+      "alert_color": "#FFA500",
+      "radius_scale": 8,
+      "dominant_crime": "Murder",
+      "dominant_crime_kannada": "ಕೊಲೆ",
+      "crime_breakdown": {
+        "Murder": 2,
+        "Kidnapping": 2,
+        "Assault": 2,
+        "Land Dispute": 1,
+        "Theft": 1
+      },
+      "peak_time": "Evening",
+      "ncrb_crime_rate_per_lakh": 206,
+      "related_cases": [
+        "CR019",
+        "CR026",
+        "CR044",
+        "CR051",
+        "CR064",
+        "CR075",
+        "CR084",
+        "CR097"
+      ]
+    },
+    {
+      "DistrictID": 6,
+      "DistrictName": "Belagavi",
+      "DistrictName_KN": "ಬೆಳಗಾವಿ",
+      "latitude": 15.8497,
+      "longitude": 74.4977,
+      "total_crimes": 7,
+      "alert_level": "LOW",
+      "alert_color": "#00AA00",
+      "radius_scale": 7,
+      "dominant_crime": "Kidnapping",
+      "dominant_crime_kannada": "ಅಪಹರಣ",
+      "crime_breakdown": {
+        "Kidnapping": 2,
+        "Theft": 1,
+        "Vehicle Theft": 1,
+        "Drug Trafficking": 1,
+        "Cybercrime": 1,
+        "Assault": 1
+      },
+      "peak_time": "Night",
+      "ncrb_crime_rate_per_lakh": 167,
+      "related_cases": [
+        "CR009",
+        "CR015",
+        "CR045",
+        "CR053",
+        "CR069",
+        "CR080",
+        "CR095"
+      ]
+    },
+    {
+      "DistrictID": 8,
+      "DistrictName": "Tumakuru",
+      "DistrictName_KN": "ತುಮಕೂರು",
+      "latitude": 13.3379,
+      "longitude": 77.1173,
+      "total_crimes": 7,
+      "alert_level": "LOW",
+      "alert_color": "#00AA00",
+      "radius_scale": 7,
+      "dominant_crime": "Assault",
+      "dominant_crime_kannada": "ಹಲ್ಲೆ",
+      "crime_breakdown": {
+        "Assault": 2,
+        "Theft": 1,
+        "Cybercrime": 1,
+        "Vehicle Theft": 1,
+        "Financial Fraud": 1,
+        "Domestic Violence": 1
+      },
+      "peak_time": "Night",
+      "ncrb_crime_rate_per_lakh": 261,
+      "related_cases": [
+        "CR011",
+        "CR030",
+        "CR046",
+        "CR060",
+        "CR071",
+        "CR081",
+        "CR099"
+      ]
+    },
+    {
+      "DistrictID": 9,
+      "DistrictName": "Shivamogga",
+      "DistrictName_KN": "ಶಿವಮೊಗ್ಗ",
+      "latitude": 13.9299,
+      "longitude": 75.5681,
+      "total_crimes": 7,
+      "alert_level": "LOW",
+      "alert_color": "#00AA00",
+      "radius_scale": 7,
+      "dominant_crime": "Robbery",
+      "dominant_crime_kannada": "ದರೋಡೆ",
+      "crime_breakdown": {
+        "Robbery": 2,
+        "Domestic Violence": 1,
+        "Murder": 1,
+        "Vehicle Theft": 1,
+        "Theft": 1,
+        "Land Dispute": 1
+      },
+      "peak_time": "Night",
+      "ncrb_crime_rate_per_lakh": 358,
+      "related_cases": [
+        "CR022",
+        "CR035",
+        "CR050",
+        "CR061",
+        "CR072",
+        "CR082",
+        "CR093"
+      ]
+    },
+    {
+      "DistrictID": 10,
+      "DistrictName": "Vijayapura",
+      "DistrictName_KN": "ವಿಜಯಪುರ",
+      "latitude": 16.8302,
+      "longitude": 75.71,
+      "total_crimes": 7,
+      "alert_level": "LOW",
+      "alert_color": "#00AA00",
+      "radius_scale": 7,
+      "dominant_crime": "Theft",
+      "dominant_crime_kannada": "ಕಳ್ಳತನ",
+      "crime_breakdown": {
+        "Theft": 2,
+        "Land Dispute": 1,
+        "Kidnapping": 1,
+        "Robbery": 1,
+        "Domestic Violence": 1,
+        "Drug Trafficking": 1
+      },
+      "peak_time": "Night",
+      "ncrb_crime_rate_per_lakh": 195,
+      "related_cases": [
+        "CR023",
+        "CR027",
+        "CR039",
+        "CR062",
+        "CR073",
+        "CR083",
+        "CR100"
+      ]
+    },
+    {
+      "DistrictID": 11,
+      "DistrictName": "Ballari",
+      "DistrictName_KN": "ಬಳ್ಳಾರಿ",
+      "latitude": 15.1394,
+      "longitude": 76.9214,
+      "total_crimes": 7,
+      "alert_level": "LOW",
+      "alert_color": "#00AA00",
+      "radius_scale": 7,
+      "dominant_crime": "Theft",
+      "dominant_crime_kannada": "ಕಳ್ಳತನ",
+      "crime_breakdown": {
+        "Theft": 1,
+        "Domestic Violence": 1,
+        "Assault": 1,
+        "Land Dispute": 1,
+        "Murder": 1,
+        "Cybercrime": 1,
+        "Financial Fraud": 1
+      },
+      "peak_time": "Night",
+      "ncrb_crime_rate_per_lakh": 115,
+      "related_cases": [
+        "CR024",
+        "CR034",
+        "CR042",
+        "CR063",
+        "CR074",
+        "CR088",
+        "CR096"
+      ]
+    },
+    {
+      "DistrictID": 5,
+      "DistrictName": "Hubballi-Dharwad",
+      "DistrictName_KN": "ಹುಬ್ಬಳ್ಳಿ-ಧಾರವಾಡ",
+      "latitude": 15.3647,
+      "longitude": 75.124,
+      "total_crimes": 6,
+      "alert_level": "LOW",
+      "alert_color": "#00AA00",
+      "radius_scale": 6,
+      "dominant_crime": "Drug Trafficking",
+      "dominant_crime_kannada": "ಮಾದಕ ವ್ಯಸನ ಕಳ್ಳಸಾಗಣೆ",
+      "crime_breakdown": {
+        "Drug Trafficking": 2,
+        "Assault": 1,
+        "Chain Snatching": 1,
+        "Land Dispute": 1,
+        "Robbery": 1
+      },
+      "peak_time": "Night",
+      "ncrb_crime_rate_per_lakh": 256,
+      "related_cases": [
+        "CR004",
+        "CR028",
+        "CR032",
+        "CR058",
+        "CR079",
+        "CR091"
+      ]
+    },
+    {
+      "DistrictID": 2,
+      "DistrictName": "Bengaluru Rural",
+      "DistrictName_KN": "ಬೆಂಗಳೂರು ಗ್ರಾಮಾಂತರ",
+      "latitude": 13.1986,
+      "longitude": 77.7066,
+      "total_crimes": 5,
+      "alert_level": "LOW",
+      "alert_color": "#00AA00",
+      "radius_scale": 5,
+      "dominant_crime": "Theft",
+      "dominant_crime_kannada": "ಕಳ್ಳತನ",
+      "crime_breakdown": {
+        "Theft": 1,
+        "Land Dispute": 1,
+        "Assault": 1,
+        "Drug Trafficking": 1,
+        "Vehicle Theft": 1
+      },
+      "peak_time": "Night",
+      "ncrb_crime_rate_per_lakh": 70,
+      "related_cases": [
+        "CR033",
+        "CR038",
+        "CR066",
+        "CR077",
+        "CR094"
+      ]
+    }
+  ],
+  "micro_hotspots": [
+    {
+      "ZoneID": "MH0101",
+      "ZoneName": "Koramangala, Bengaluru Urban",
+      "ZoneName_KN": "Koramangala, ಬೆಂಗಳೂರು ನಗರ",
+      "DistrictID": 1,
+      "DistrictName": "Bengaluru Urban",
+      "DistrictName_KN": "ಬೆಂಗಳೂರು ನಗರ",
+      "PoliceStationID": 1001,
+      "PoliceStationName": "Koramangala PS",
+      "latitude": 12.985543,
+      "longitude": 77.547101,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Theft",
+      "dominant_crime_kannada": "ಕಳ್ಳತನ",
+      "peak_hours": "09:00-11:00",
+      "crime_types": [
+        "Cybercrime",
+        "Theft"
+      ],
+      "related_cases": [
+        "CR001",
+        "CR003"
+      ]
+    },
+    {
+      "ZoneID": "MH0102",
+      "ZoneName": "Whitefield, Bengaluru Urban",
+      "ZoneName_KN": "Whitefield, ಬೆಂಗಳೂರು ನಗರ",
+      "DistrictID": 1,
+      "DistrictName": "Bengaluru Urban",
+      "DistrictName_KN": "ಬೆಂಗಳೂರು ನಗರ",
+      "PoliceStationID": 1003,
+      "PoliceStationName": "Indiranagar PS",
+      "latitude": 12.949103,
+      "longitude": 77.566921,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Theft",
+      "dominant_crime_kannada": "ಕಳ್ಳತನ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Robbery",
+        "Theft"
+      ],
+      "related_cases": [
+        "CR005",
+        "CR008"
+      ]
+    },
+    {
+      "ZoneID": "MH0103",
+      "ZoneName": "Indiranagar, Bengaluru Urban",
+      "ZoneName_KN": "Indiranagar, ಬೆಂಗಳೂರು ನಗರ",
+      "DistrictID": 1,
+      "DistrictName": "Bengaluru Urban",
+      "DistrictName_KN": "ಬೆಂಗಳೂರು ನಗರ",
+      "PoliceStationID": 1005,
+      "PoliceStationName": "Electronic City PS",
+      "latitude": 12.995247,
+      "longitude": 77.61227,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Cybercrime",
+      "dominant_crime_kannada": "ಸೈಬರ್ ಅಪರಾಧ",
+      "peak_hours": "09:00-11:00",
+      "crime_types": [
+        "Cybercrime",
+        "Chain Snatching"
+      ],
+      "related_cases": [
+        "CR010",
+        "CR016"
+      ]
+    },
+    {
+      "ZoneID": "MH0301",
+      "ZoneName": "Vijayanagar, Mysuru",
+      "ZoneName_KN": "Vijayanagar, ಮೈಸೂರು",
+      "DistrictID": 3,
+      "DistrictName": "Mysuru",
+      "DistrictName_KN": "ಮೈಸೂರು",
+      "PoliceStationID": 3001,
+      "PoliceStationName": "Vijayanagar PS",
+      "latitude": 12.335018,
+      "longitude": 76.598094,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Robbery",
+      "dominant_crime_kannada": "ದರೋಡೆ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Robbery"
+      ],
+      "related_cases": [
+        "CR002",
+        "CR012"
+      ]
+    },
+    {
+      "ZoneID": "MH0302",
+      "ZoneName": "Hebbal, Mysuru",
+      "ZoneName_KN": "Hebbal, ಮೈಸೂರು",
+      "DistrictID": 3,
+      "DistrictName": "Mysuru",
+      "DistrictName_KN": "ಮೈಸೂರು",
+      "PoliceStationID": 3003,
+      "PoliceStationName": "Kuvempunagar PS",
+      "latitude": 12.287992,
+      "longitude": 76.59238,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Vehicle Theft",
+      "dominant_crime_kannada": "ವಾಹನ ಕಳ್ಳತನ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Vehicle Theft",
+        "Chain Snatching"
+      ],
+      "related_cases": [
+        "CR021",
+        "CR040"
+      ]
+    },
+    {
+      "ZoneID": "MH0303",
+      "ZoneName": "Kuvempunagar, Mysuru",
+      "ZoneName_KN": "Kuvempunagar, ಮೈಸೂರು",
+      "DistrictID": 3,
+      "DistrictName": "Mysuru",
+      "DistrictName_KN": "ಮೈಸೂರು",
+      "PoliceStationID": 3004,
+      "PoliceStationName": "Industrial Area PS",
+      "latitude": 12.267664,
+      "longitude": 76.639936,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Cybercrime",
+      "dominant_crime_kannada": "ಸೈಬರ್ ಅಪರಾಧ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Drug Trafficking",
+        "Cybercrime"
+      ],
+      "related_cases": [
+        "CR049",
+        "CR056"
+      ]
+    },
+    {
+      "ZoneID": "MH0401",
+      "ZoneName": "Hampankatta, Dakshina Kannada",
+      "ZoneName_KN": "Hampankatta, ದಕ್ಷಿಣ ಕನ್ನಡ",
+      "DistrictID": 4,
+      "DistrictName": "Dakshina Kannada",
+      "DistrictName_KN": "ದಕ್ಷಿಣ ಕನ್ನಡ",
+      "PoliceStationID": 4001,
+      "PoliceStationName": "Hampankatta PS",
+      "latitude": 12.866754,
+      "longitude": 74.825884,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Cybercrime",
+      "dominant_crime_kannada": "ಸೈಬರ್ ಅಪರಾಧ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Drug Trafficking",
+        "Cybercrime"
+      ],
+      "related_cases": [
+        "CR006",
+        "CR013"
+      ]
+    },
+    {
+      "ZoneID": "MH0402",
+      "ZoneName": "Bunder, Dakshina Kannada",
+      "ZoneName_KN": "Bunder, ದಕ್ಷಿಣ ಕನ್ನಡ",
+      "DistrictID": 4,
+      "DistrictName": "Dakshina Kannada",
+      "DistrictName_KN": "ದಕ್ಷಿಣ ಕನ್ನಡ",
+      "PoliceStationID": 4003,
+      "PoliceStationName": "Panambur PS",
+      "latitude": 12.929088,
+      "longitude": 74.860494,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Drug Trafficking",
+      "dominant_crime_kannada": "ಮಾದಕ ವ್ಯಸನ ಕಳ್ಳಸಾಗಣೆ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Drug Trafficking",
+        "Financial Fraud"
+      ],
+      "related_cases": [
+        "CR014",
+        "CR029"
+      ]
+    },
+    {
+      "ZoneID": "MH0403",
+      "ZoneName": "Panambur, Dakshina Kannada",
+      "ZoneName_KN": "Panambur, ದಕ್ಷಿಣ ಕನ್ನಡ",
+      "DistrictID": 4,
+      "DistrictName": "Dakshina Kannada",
+      "DistrictName_KN": "ದಕ್ಷಿಣ ಕನ್ನಡ",
+      "PoliceStationID": 4001,
+      "PoliceStationName": "Hampankatta PS",
+      "latitude": 12.886144,
+      "longitude": 74.864927,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Financial Fraud",
+      "dominant_crime_kannada": "ಆರ್ಥಿಕ ವಂಚನೆ",
+      "peak_hours": "09:00-11:00",
+      "crime_types": [
+        "Financial Fraud",
+        "Assault"
+      ],
+      "related_cases": [
+        "CR057",
+        "CR068"
+      ]
+    },
+    {
+      "ZoneID": "MH0701",
+      "ZoneName": "Aland Road, Kalaburagi",
+      "ZoneName_KN": "Aland Road, ಕಲಬುರಗಿ",
+      "DistrictID": 7,
+      "DistrictName": "Kalaburagi",
+      "DistrictName_KN": "ಕಲಬುರಗಿ",
+      "PoliceStationID": 7001,
+      "PoliceStationName": "Aland Road PS",
+      "latitude": 17.360643,
+      "longitude": 76.78495,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Murder",
+      "dominant_crime_kannada": "ಕೊಲೆ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Murder",
+        "Assault"
+      ],
+      "related_cases": [
+        "CR007",
+        "CR020"
+      ]
+    },
+    {
+      "ZoneID": "MH0702",
+      "ZoneName": "Super Market Area, Kalaburagi",
+      "ZoneName_KN": "Super Market Area, ಕಲಬುರಗಿ",
+      "DistrictID": 7,
+      "DistrictName": "Kalaburagi",
+      "DistrictName_KN": "ಕಲಬುರಗಿ",
+      "PoliceStationID": 7003,
+      "PoliceStationName": "Sedam PS",
+      "latitude": 17.360282,
+      "longitude": 76.854114,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Murder",
+      "dominant_crime_kannada": "ಕೊಲೆ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Murder",
+        "Domestic Violence"
+      ],
+      "related_cases": [
+        "CR037",
+        "CR047"
+      ]
+    },
+    {
+      "ZoneID": "MH0703",
+      "ZoneName": "Sedam, Kalaburagi",
+      "ZoneName_KN": "Sedam, ಕಲಬುರಗಿ",
+      "DistrictID": 7,
+      "DistrictName": "Kalaburagi",
+      "DistrictName_KN": "ಕಲಬುರಗಿ",
+      "PoliceStationID": 7001,
+      "PoliceStationName": "Aland Road PS",
+      "latitude": 17.313725,
+      "longitude": 76.799848,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Assault",
+      "dominant_crime_kannada": "ಹಲ್ಲೆ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Drug Trafficking",
+        "Assault"
+      ],
+      "related_cases": [
+        "CR059",
+        "CR070"
+      ]
+    },
+    {
+      "ZoneID": "MH1201",
+      "ZoneName": "Manvi, Raichur",
+      "ZoneName_KN": "Manvi, ರಾಯಚೂರು",
+      "DistrictID": 12,
+      "DistrictName": "Raichur",
+      "DistrictName_KN": "ರಾಯಚೂರು",
+      "PoliceStationID": 12001,
+      "PoliceStationName": "Manvi PS",
+      "latitude": 16.257721,
+      "longitude": 77.327559,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Murder",
+      "dominant_crime_kannada": "ಕೊಲೆ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Murder"
+      ],
+      "related_cases": [
+        "CR019",
+        "CR026"
+      ]
+    },
+    {
+      "ZoneID": "MH1202",
+      "ZoneName": "Lingasugur, Raichur",
+      "ZoneName_KN": "Lingasugur, ರಾಯಚೂರು",
+      "DistrictID": 12,
+      "DistrictName": "Raichur",
+      "DistrictName_KN": "ರಾಯಚೂರು",
+      "PoliceStationID": 12003,
+      "PoliceStationName": "Sindhanur PS",
+      "latitude": 16.171275,
+      "longitude": 77.303572,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Kidnapping",
+      "dominant_crime_kannada": "ಅಪಹರಣ",
+      "peak_hours": "09:00-11:00",
+      "crime_types": [
+        "Kidnapping",
+        "Land Dispute"
+      ],
+      "related_cases": [
+        "CR044",
+        "CR051"
+      ]
+    },
+    {
+      "ZoneID": "MH1203",
+      "ZoneName": "Sindhanur, Raichur",
+      "ZoneName_KN": "Sindhanur, ರಾಯಚೂರು",
+      "DistrictID": 12,
+      "DistrictName": "Raichur",
+      "DistrictName_KN": "ರಾಯಚೂರು",
+      "PoliceStationID": 12001,
+      "PoliceStationName": "Manvi PS",
+      "latitude": 16.246749,
+      "longitude": 77.354273,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Kidnapping",
+      "dominant_crime_kannada": "ಅಪಹರಣ",
+      "peak_hours": "09:00-11:00",
+      "crime_types": [
+        "Kidnapping",
+        "Assault"
+      ],
+      "related_cases": [
+        "CR064",
+        "CR075"
+      ]
+    },
+    {
+      "ZoneID": "MH0601",
+      "ZoneName": "Tilakwadi, Belagavi",
+      "ZoneName_KN": "Tilakwadi, ಬೆಳಗಾವಿ",
+      "DistrictID": 6,
+      "DistrictName": "Belagavi",
+      "DistrictName_KN": "ಬೆಳಗಾವಿ",
+      "PoliceStationID": 6001,
+      "PoliceStationName": "Tilakwadi PS",
+      "latitude": 15.880413,
+      "longitude": 74.520673,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Theft",
+      "dominant_crime_kannada": "ಕಳ್ಳತನ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Theft",
+        "Kidnapping"
+      ],
+      "related_cases": [
+        "CR009",
+        "CR015"
+      ]
+    },
+    {
+      "ZoneID": "MH0602",
+      "ZoneName": "Angol, Belagavi",
+      "ZoneName_KN": "Angol, ಬೆಳಗಾವಿ",
+      "DistrictID": 6,
+      "DistrictName": "Belagavi",
+      "DistrictName_KN": "ಬೆಳಗಾವಿ",
+      "PoliceStationID": 6003,
+      "PoliceStationName": "Camp PS",
+      "latitude": 15.853323,
+      "longitude": 74.545012,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Vehicle Theft",
+      "dominant_crime_kannada": "ವಾಹನ ಕಳ್ಳತನ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Vehicle Theft",
+        "Drug Trafficking"
+      ],
+      "related_cases": [
+        "CR045",
+        "CR053"
+      ]
+    },
+    {
+      "ZoneID": "MH0603",
+      "ZoneName": "Camp, Belagavi",
+      "ZoneName_KN": "Camp, ಬೆಳಗಾವಿ",
+      "DistrictID": 6,
+      "DistrictName": "Belagavi",
+      "DistrictName_KN": "ಬೆಳಗಾವಿ",
+      "PoliceStationID": 6001,
+      "PoliceStationName": "Tilakwadi PS",
+      "latitude": 15.837553,
+      "longitude": 74.502904,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Cybercrime",
+      "dominant_crime_kannada": "ಸೈಬರ್ ಅಪರಾಧ",
+      "peak_hours": "09:00-11:00",
+      "crime_types": [
+        "Cybercrime",
+        "Assault"
+      ],
+      "related_cases": [
+        "CR069",
+        "CR080"
+      ]
+    },
+    {
+      "ZoneID": "MH0801",
+      "ZoneName": "SS Puram, Tumakuru",
+      "ZoneName_KN": "SS Puram, ತುಮಕೂರು",
+      "DistrictID": 8,
+      "DistrictName": "Tumakuru",
+      "DistrictName_KN": "ತುಮಕೂರು",
+      "PoliceStationID": 8001,
+      "PoliceStationName": "SS Puram PS",
+      "latitude": 13.37084,
+      "longitude": 77.129152,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Assault",
+      "dominant_crime_kannada": "ಹಲ್ಲೆ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Assault"
+      ],
+      "related_cases": [
+        "CR011",
+        "CR030"
+      ]
+    },
+    {
+      "ZoneID": "MH0802",
+      "ZoneName": "BH Road, Tumakuru",
+      "ZoneName_KN": "BH Road, ತುಮಕೂರು",
+      "DistrictID": 8,
+      "DistrictName": "Tumakuru",
+      "DistrictName_KN": "ತುಮಕೂರು",
+      "PoliceStationID": 8003,
+      "PoliceStationName": "Tiptur PS",
+      "latitude": 13.374071,
+      "longitude": 77.125035,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Theft",
+      "dominant_crime_kannada": "ಕಳ್ಳತನ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Cybercrime",
+        "Theft"
+      ],
+      "related_cases": [
+        "CR046",
+        "CR060"
+      ]
+    },
+    {
+      "ZoneID": "MH0803",
+      "ZoneName": "Tiptur, Tumakuru",
+      "ZoneName_KN": "Tiptur, ತುಮಕೂರು",
+      "DistrictID": 8,
+      "DistrictName": "Tumakuru",
+      "DistrictName_KN": "ತುಮಕೂರು",
+      "PoliceStationID": 8002,
+      "PoliceStationName": "BH Road PS",
+      "latitude": 13.358357,
+      "longitude": 77.071882,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Vehicle Theft",
+      "dominant_crime_kannada": "ವಾಹನ ಕಳ್ಳತನ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Vehicle Theft",
+        "Financial Fraud"
+      ],
+      "related_cases": [
+        "CR071",
+        "CR081"
+      ]
+    },
+    {
+      "ZoneID": "MH0901",
+      "ZoneName": "Kuvempu Nagar, Shivamogga",
+      "ZoneName_KN": "Kuvempu Nagar, ಶಿವಮೊಗ್ಗ",
+      "DistrictID": 9,
+      "DistrictName": "Shivamogga",
+      "DistrictName_KN": "ಶಿವಮೊಗ್ಗ",
+      "PoliceStationID": 9001,
+      "PoliceStationName": "Kuvempu Nagar PS",
+      "latitude": 13.90269,
+      "longitude": 75.547039,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Domestic Violence",
+      "dominant_crime_kannada": "ಗೃಹ ಹಿಂಸೆ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Robbery",
+        "Domestic Violence"
+      ],
+      "related_cases": [
+        "CR022",
+        "CR035"
+      ]
+    },
+    {
+      "ZoneID": "MH0902",
+      "ZoneName": "Sagar Road, Shivamogga",
+      "ZoneName_KN": "Sagar Road, ಶಿವಮೊಗ್ಗ",
+      "DistrictID": 9,
+      "DistrictName": "Shivamogga",
+      "DistrictName_KN": "ಶಿವಮೊಗ್ಗ",
+      "PoliceStationID": 9003,
+      "PoliceStationName": "Thirthahalli PS",
+      "latitude": 13.887879,
+      "longitude": 75.541379,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Murder",
+      "dominant_crime_kannada": "ಕೊಲೆ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Murder",
+        "Vehicle Theft"
+      ],
+      "related_cases": [
+        "CR050",
+        "CR061"
+      ]
+    },
+    {
+      "ZoneID": "MH0903",
+      "ZoneName": "Thirthahalli, Shivamogga",
+      "ZoneName_KN": "Thirthahalli, ಶಿವಮೊಗ್ಗ",
+      "DistrictID": 9,
+      "DistrictName": "Shivamogga",
+      "DistrictName_KN": "ಶಿವಮೊಗ್ಗ",
+      "PoliceStationID": 9002,
+      "PoliceStationName": "Sagar Road PS",
+      "latitude": 13.89,
+      "longitude": 75.545897,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Theft",
+      "dominant_crime_kannada": "ಕಳ್ಳತನ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Theft",
+        "Land Dispute"
+      ],
+      "related_cases": [
+        "CR072",
+        "CR082"
+      ]
+    },
+    {
+      "ZoneID": "MH1001",
+      "ZoneName": "Sindagi, Vijayapura",
+      "ZoneName_KN": "Sindagi, ವಿಜಯಪುರ",
+      "DistrictID": 10,
+      "DistrictName": "Vijayapura",
+      "DistrictName_KN": "ವಿಜಯಪುರ",
+      "PoliceStationID": 10001,
+      "PoliceStationName": "Sindagi PS",
+      "latitude": 16.843768,
+      "longitude": 75.696483,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Land Dispute",
+      "dominant_crime_kannada": "ಭೂಮಿ ವಿವಾದ",
+      "peak_hours": "09:00-11:00",
+      "crime_types": [
+        "Kidnapping",
+        "Land Dispute"
+      ],
+      "related_cases": [
+        "CR023",
+        "CR027"
+      ]
+    },
+    {
+      "ZoneID": "MH1002",
+      "ZoneName": "Indi, Vijayapura",
+      "ZoneName_KN": "Indi, ವಿಜಯಪುರ",
+      "DistrictID": 10,
+      "DistrictName": "Vijayapura",
+      "DistrictName_KN": "ವಿಜಯಪುರ",
+      "PoliceStationID": 10003,
+      "PoliceStationName": "Station Road PS",
+      "latitude": 16.817218,
+      "longitude": 75.680951,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Theft",
+      "dominant_crime_kannada": "ಕಳ್ಳತನ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Robbery",
+        "Theft"
+      ],
+      "related_cases": [
+        "CR039",
+        "CR062"
+      ]
+    },
+    {
+      "ZoneID": "MH1003",
+      "ZoneName": "Station Road, Vijayapura",
+      "ZoneName_KN": "Station Road, ವಿಜಯಪುರ",
+      "DistrictID": 10,
+      "DistrictName": "Vijayapura",
+      "DistrictName_KN": "ವಿಜಯಪುರ",
+      "PoliceStationID": 10002,
+      "PoliceStationName": "Indi PS",
+      "latitude": 16.806898,
+      "longitude": 75.753665,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Domestic Violence",
+      "dominant_crime_kannada": "ಗೃಹ ಹಿಂಸೆ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Drug Trafficking",
+        "Domestic Violence"
+      ],
+      "related_cases": [
+        "CR073",
+        "CR083"
+      ]
+    },
+    {
+      "ZoneID": "MH1101",
+      "ZoneName": "Gandhinagar, Ballari",
+      "ZoneName_KN": "Gandhinagar, ಬಳ್ಳಾರಿ",
+      "DistrictID": 11,
+      "DistrictName": "Ballari",
+      "DistrictName_KN": "ಬಳ್ಳಾರಿ",
+      "PoliceStationID": 11001,
+      "PoliceStationName": "Gandhinagar PS",
+      "latitude": 15.154204,
+      "longitude": 76.932313,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Theft",
+      "dominant_crime_kannada": "ಕಳ್ಳತನ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Theft",
+        "Domestic Violence"
+      ],
+      "related_cases": [
+        "CR024",
+        "CR034"
+      ]
+    },
+    {
+      "ZoneID": "MH1102",
+      "ZoneName": "Civil Station, Ballari",
+      "ZoneName_KN": "Civil Station, ಬಳ್ಳಾರಿ",
+      "DistrictID": 11,
+      "DistrictName": "Ballari",
+      "DistrictName_KN": "ಬಳ್ಳಾರಿ",
+      "PoliceStationID": 11003,
+      "PoliceStationName": "Mundargi Road PS",
+      "latitude": 15.106514,
+      "longitude": 76.944313,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Assault",
+      "dominant_crime_kannada": "ಹಲ್ಲೆ",
+      "peak_hours": "09:00-11:00",
+      "crime_types": [
+        "Assault",
+        "Land Dispute"
+      ],
+      "related_cases": [
+        "CR042",
+        "CR063"
+      ]
+    },
+    {
+      "ZoneID": "MH1103",
+      "ZoneName": "Mundargi Road, Ballari",
+      "ZoneName_KN": "Mundargi Road, ಬಳ್ಳಾರಿ",
+      "DistrictID": 11,
+      "DistrictName": "Ballari",
+      "DistrictName_KN": "ಬಳ್ಳಾರಿ",
+      "PoliceStationID": 11002,
+      "PoliceStationName": "Civil Station PS",
+      "latitude": 15.10574,
+      "longitude": 76.909346,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Murder",
+      "dominant_crime_kannada": "ಕೊಲೆ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Murder",
+        "Cybercrime"
+      ],
+      "related_cases": [
+        "CR074",
+        "CR088"
+      ]
+    },
+    {
+      "ZoneID": "MH0501",
+      "ZoneName": "Gokul Road, Hubballi-Dharwad",
+      "ZoneName_KN": "Gokul Road, ಹುಬ್ಬಳ್ಳಿ-ಧಾರವಾಡ",
+      "DistrictID": 5,
+      "DistrictName": "Hubballi-Dharwad",
+      "DistrictName_KN": "ಹುಬ್ಬಳ್ಳಿ-ಧಾರವಾಡ",
+      "PoliceStationID": 5001,
+      "PoliceStationName": "Gokul Road PS",
+      "latitude": 15.413652,
+      "longitude": 75.138,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Assault",
+      "dominant_crime_kannada": "ಹಲ್ಲೆ",
+      "peak_hours": "09:00-11:00",
+      "crime_types": [
+        "Assault",
+        "Chain Snatching"
+      ],
+      "related_cases": [
+        "CR004",
+        "CR028"
+      ]
+    },
+    {
+      "ZoneID": "MH0502",
+      "ZoneName": "Vidyanagar, Hubballi-Dharwad",
+      "ZoneName_KN": "Vidyanagar, ಹುಬ್ಬಳ್ಳಿ-ಧಾರವಾಡ",
+      "DistrictID": 5,
+      "DistrictName": "Hubballi-Dharwad",
+      "DistrictName_KN": "ಹುಬ್ಬಳ್ಳಿ-ಧಾರವಾಡ",
+      "PoliceStationID": 5003,
+      "PoliceStationName": "Old Town PS",
+      "latitude": 15.370395,
+      "longitude": 75.142461,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Drug Trafficking",
+      "dominant_crime_kannada": "ಮಾದಕ ವ್ಯಸನ ಕಳ್ಳಸಾಗಣೆ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Drug Trafficking",
+        "Land Dispute"
+      ],
+      "related_cases": [
+        "CR032",
+        "CR058"
+      ]
+    },
+    {
+      "ZoneID": "MH0503",
+      "ZoneName": "Old Town, Hubballi-Dharwad",
+      "ZoneName_KN": "Old Town, ಹುಬ್ಬಳ್ಳಿ-ಧಾರವಾಡ",
+      "DistrictID": 5,
+      "DistrictName": "Hubballi-Dharwad",
+      "DistrictName_KN": "ಹುಬ್ಬಳ್ಳಿ-ಧಾರವಾಡ",
+      "PoliceStationID": 5002,
+      "PoliceStationName": "Vidyanagar PS",
+      "latitude": 15.398985,
+      "longitude": 75.1516,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Robbery",
+      "dominant_crime_kannada": "ದರೋಡೆ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Drug Trafficking",
+        "Robbery"
+      ],
+      "related_cases": [
+        "CR079",
+        "CR091"
+      ]
+    },
+    {
+      "ZoneID": "MH0201",
+      "ZoneName": "Devanahalli, Bengaluru Rural",
+      "ZoneName_KN": "Devanahalli, ಬೆಂಗಳೂರು ಗ್ರಾಮಾಂತರ",
+      "DistrictID": 2,
+      "DistrictName": "Bengaluru Rural",
+      "DistrictName_KN": "ಬೆಂಗಳೂರು ಗ್ರಾಮಾಂತರ",
+      "PoliceStationID": 2001,
+      "PoliceStationName": "Devanahalli PS",
+      "latitude": 13.171505,
+      "longitude": 77.65981,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Theft",
+      "dominant_crime_kannada": "ಕಳ್ಳತನ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Theft",
+        "Land Dispute"
+      ],
+      "related_cases": [
+        "CR033",
+        "CR038"
+      ]
+    },
+    {
+      "ZoneID": "MH0202",
+      "ZoneName": "Hosakote, Bengaluru Rural",
+      "ZoneName_KN": "Hosakote, ಬೆಂಗಳೂರು ಗ್ರಾಮಾಂತರ",
+      "DistrictID": 2,
+      "DistrictName": "Bengaluru Rural",
+      "DistrictName_KN": "ಬೆಂಗಳೂರು ಗ್ರಾಮಾಂತರ",
+      "PoliceStationID": 2001,
+      "PoliceStationName": "Devanahalli PS",
+      "latitude": 13.180145,
+      "longitude": 77.683374,
+      "crime_count": 2,
+      "alert_level": "MEDIUM",
+      "dominant_crime": "Assault",
+      "dominant_crime_kannada": "ಹಲ್ಲೆ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Drug Trafficking",
+        "Assault"
+      ],
+      "related_cases": [
+        "CR066",
+        "CR077"
+      ]
+    },
+    {
+      "ZoneID": "MH0203",
+      "ZoneName": "Nelamangala, Bengaluru Rural",
+      "ZoneName_KN": "Nelamangala, ಬೆಂಗಳೂರು ಗ್ರಾಮಾಂತರ",
+      "DistrictID": 2,
+      "DistrictName": "Bengaluru Rural",
+      "DistrictName_KN": "ಬೆಂಗಳೂರು ಗ್ರಾಮಾಂತರ",
+      "PoliceStationID": 2001,
+      "PoliceStationName": "Devanahalli PS",
+      "latitude": 13.169698,
+      "longitude": 77.750891,
+      "crime_count": 1,
+      "alert_level": "LOW",
+      "dominant_crime": "Vehicle Theft",
+      "dominant_crime_kannada": "ವಾಹನ ಕಳ್ಳತನ",
+      "peak_hours": "21:00-23:00",
+      "crime_types": [
+        "Vehicle Theft"
+      ],
+      "related_cases": [
+        "CR094"
+      ]
+    }
+  ]
+}
