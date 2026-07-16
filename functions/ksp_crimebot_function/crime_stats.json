@@ -1,14 +1,17 @@
 {
   "metadata": {
+    "generated_from": "KSP CaseMaster Schema — 100 Records (Final)",
     "total_records": 100,
     "data_period": "2024-2025",
-    "last_updated": "2025-06-26",
-    "new_fields_added": [
+    "ncrb_reference_year": 2022,
+    "last_updated": "2025-07-15",
+    "fields_included": [
       "victim_demographics",
       "accused_demographics",
       "socio_economic_profile",
       "risk_assessment",
-      "financial_crime_details"
+      "financial_crime_details",
+      "kannada_translations"
     ]
   },
   "summary": {
@@ -23,9 +26,17 @@
     "unique_accused": 61,
     "repeat_offenders_count": 29,
     "total_economic_loss_inr": 64816000,
+    "total_economic_loss_lakhs": 648.16,
     "criminal_network_links": 50,
     "districts_covered": 12,
-    "police_stations_covered": 49
+    "police_stations_covered": 49,
+    "minor_victims": 3,
+    "female_victims": 25,
+    "gang_activity_cases": 45,
+    "unemployment_related": 41,
+    "economic_motive_cases": 59,
+    "critical_risk_cases": 51,
+    "high_risk_cases": 33
   },
   "crime_type_distribution": [
     {
@@ -110,7 +121,8 @@
       "percentage": 21.0,
       "ncrb_2022_total": 46187,
       "ncrb_crime_rate_per_lakh": 385,
-      "alert_level": "HIGH"
+      "alert_level": "HIGH",
+      "alert_level_kannada": "ಅತ್ಯಧಿಕ ಎಚ್ಚರಿಕೆ"
     },
     {
       "DistrictID": 3,
@@ -120,7 +132,8 @@
       "percentage": 9.0,
       "ncrb_2022_total": 8708,
       "ncrb_crime_rate_per_lakh": 295,
-      "alert_level": "MEDIUM"
+      "alert_level": "MEDIUM",
+      "alert_level_kannada": "ಮಧ್ಯಮ ಎಚ್ಚರಿಕೆ"
     },
     {
       "DistrictID": 4,
@@ -130,7 +143,8 @@
       "percentage": 8.0,
       "ncrb_2022_total": 4743,
       "ncrb_crime_rate_per_lakh": 215,
-      "alert_level": "MEDIUM"
+      "alert_level": "MEDIUM",
+      "alert_level_kannada": "ಮಧ್ಯಮ ಎಚ್ಚರಿಕೆ"
     },
     {
       "DistrictID": 7,
@@ -140,7 +154,8 @@
       "percentage": 8.0,
       "ncrb_2022_total": 5662,
       "ncrb_crime_rate_per_lakh": 209,
-      "alert_level": "MEDIUM"
+      "alert_level": "MEDIUM",
+      "alert_level_kannada": "ಮಧ್ಯಮ ಎಚ್ಚರಿಕೆ"
     },
     {
       "DistrictID": 12,
@@ -150,7 +165,8 @@
       "percentage": 8.0,
       "ncrb_2022_total": 3925,
       "ncrb_crime_rate_per_lakh": 206,
-      "alert_level": "MEDIUM"
+      "alert_level": "MEDIUM",
+      "alert_level_kannada": "ಮಧ್ಯಮ ಎಚ್ಚರಿಕೆ"
     },
     {
       "DistrictID": 6,
@@ -160,7 +176,8 @@
       "percentage": 7.0,
       "ncrb_2022_total": 8154,
       "ncrb_crime_rate_per_lakh": 167,
-      "alert_level": "LOW"
+      "alert_level": "LOW",
+      "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ"
     },
     {
       "DistrictID": 8,
@@ -170,7 +187,8 @@
       "percentage": 7.0,
       "ncrb_2022_total": 7044,
       "ncrb_crime_rate_per_lakh": 261,
-      "alert_level": "LOW"
+      "alert_level": "LOW",
+      "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ"
     },
     {
       "DistrictID": 9,
@@ -180,7 +198,8 @@
       "percentage": 7.0,
       "ncrb_2022_total": 6091,
       "ncrb_crime_rate_per_lakh": 358,
-      "alert_level": "LOW"
+      "alert_level": "LOW",
+      "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ"
     },
     {
       "DistrictID": 10,
@@ -190,7 +209,8 @@
       "percentage": 7.0,
       "ncrb_2022_total": 4296,
       "ncrb_crime_rate_per_lakh": 195,
-      "alert_level": "LOW"
+      "alert_level": "LOW",
+      "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ"
     },
     {
       "DistrictID": 11,
@@ -200,7 +220,8 @@
       "percentage": 7.0,
       "ncrb_2022_total": 3226,
       "ncrb_crime_rate_per_lakh": 115,
-      "alert_level": "LOW"
+      "alert_level": "LOW",
+      "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ"
     },
     {
       "DistrictID": 5,
@@ -210,7 +231,8 @@
       "percentage": 6.0,
       "ncrb_2022_total": 4874,
       "ncrb_crime_rate_per_lakh": 256,
-      "alert_level": "LOW"
+      "alert_level": "LOW",
+      "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ"
     },
     {
       "DistrictID": 2,
@@ -220,29 +242,34 @@
       "percentage": 5.0,
       "ncrb_2022_total": 6992,
       "ncrb_crime_rate_per_lakh": 70,
-      "alert_level": "LOW"
+      "alert_level": "LOW",
+      "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ"
     }
   ],
   "case_status_breakdown": [
     {
+      "CaseStatusID": 2,
       "status": "Arrested",
       "status_kannada": "ಬಂಧಿಸಲಾಗಿದೆ",
       "count": 50,
       "percentage": 50.0
     },
     {
+      "CaseStatusID": 1,
       "status": "Under Investigation",
       "status_kannada": "ತನಿಖೆಯಲ್ಲಿದೆ",
       "count": 40,
       "percentage": 40.0
     },
     {
+      "CaseStatusID": 3,
       "status": "Chargesheeted",
       "status_kannada": "ಆರೋಪಪಟ್ಟಿ ಸಲ್ಲಿಸಲಾಗಿದೆ",
       "count": 8,
       "percentage": 8.0
     },
     {
+      "CaseStatusID": 4,
       "status": "Convicted",
       "status_kannada": "ಶಿಕ್ಷೆ ವಿಧಿಸಲಾಗಿದೆ",
       "count": 2,
@@ -365,35 +392,43 @@
   "major_crime_heads": [
     {
       "head": "Crimes Against Body",
-      "count": 27
+      "count": 27,
+      "percentage": 27.0
     },
     {
       "head": "Crimes Against Property",
-      "count": 22
+      "count": 22,
+      "percentage": 22.0
     },
     {
       "head": "Cyber Crimes",
-      "count": 12
+      "count": 12,
+      "percentage": 12.0
     },
     {
       "head": "Narcotics & Drug Offences",
-      "count": 10
+      "count": 10,
+      "percentage": 10.0
     },
     {
       "head": "Economic Offences",
-      "count": 9
+      "count": 9,
+      "percentage": 9.0
     },
     {
       "head": "Crimes Against Children",
-      "count": 7
+      "count": 7,
+      "percentage": 7.0
     },
     {
       "head": "Land & Property Disputes",
-      "count": 7
+      "count": 7,
+      "percentage": 7.0
     },
     {
       "head": "Crimes Against Women",
-      "count": 6
+      "count": 6,
+      "percentage": 6.0
     }
   ],
   "weapon_analysis": [
@@ -492,18 +527,34 @@
       "percentage": 21.0
     }
   ],
-  "victim_age_group_distribution": [
+  "ncrb_sociological_categories": [
     {
-      "age_group": "Adult (18-60)",
-      "count": 56
-    },
-    {
-      "age_group": "Minor (< 18)",
+      "category": "Crimes Against Children",
       "count": 20
     },
     {
-      "age_group": "Senior (> 60)",
-      "count": 10
+      "category": "Violent Crimes",
+      "count": 20
+    },
+    {
+      "category": "Property Crimes",
+      "count": 18
+    },
+    {
+      "category": "Economic Offences",
+      "count": 17
+    },
+    {
+      "category": "Land & Property Disputes",
+      "count": 11
+    },
+    {
+      "category": "Narcotics Offences",
+      "count": 8
+    },
+    {
+      "category": "Crimes Against Women",
+      "count": 6
     }
   ],
   "sociological_insights": {
@@ -512,12 +563,39 @@
     "gang_activity_crimes": 45,
     "economic_motive_crimes": 59,
     "property_dispute_crimes": 25,
-    "minor_victims": 20,
-    "female_victims": 42,
+    "minor_victims": 3,
+    "female_victims": 25,
     "urban_crimes": 21,
+    "semi_urban_crimes": 28,
     "rural_crimes": 51,
     "critical_risk_cases": 51,
-    "high_risk_cases": 33
+    "high_risk_cases": 33,
+    "medium_risk_cases": 16,
+    "low_risk_cases": 0
+  },
+  "victim_age_group_distribution": {
+    "Adult (41-60)": 38,
+    "Middle-aged (26-40)": 30,
+    "Senior (> 60)": 6,
+    "Minor (< 18)": 3,
+    "Youth (18-25)": 2
+  },
+  "victim_gender_distribution": {
+    "Male": 54,
+    "Female": 25,
+    "Organisation": 21
+  },
+  "accused_age_group_distribution": {
+    "Middle-aged (26-40)": 119,
+    "Adult (41-60)": 31,
+    "Youth (18-25)": 6
+  },
+  "accused_income_bracket_distribution": {
+    "Below Poverty": 70,
+    "Low": 62,
+    "Upper Middle": 12,
+    "Middle": 7,
+    "Lower Middle": 5
   },
   "top_repeat_offenders": [
     {
@@ -657,7 +735,7 @@
       "crime_count": 21,
       "alert_level": "HIGH",
       "alert_level_kannada": "ಅತ್ಯಧಿಕ ಎಚ್ಚರಿಕೆ",
-      "alert": "HIGH ALERT: 21 crimes in Bengaluru Urban"
+      "alert": "HIGH ALERT: 21 crimes in Bengaluru Urban. Increased patrolling recommended."
     },
     {
       "DistrictID": 3,
@@ -666,7 +744,7 @@
       "crime_count": 9,
       "alert_level": "MEDIUM",
       "alert_level_kannada": "ಮಧ್ಯಮ ಎಚ್ಚರಿಕೆ",
-      "alert": "MEDIUM ALERT: 9 crimes in Mysuru"
+      "alert": "MEDIUM ALERT: 9 crimes in Mysuru. Increased patrolling recommended."
     },
     {
       "DistrictID": 4,
@@ -675,7 +753,7 @@
       "crime_count": 8,
       "alert_level": "MEDIUM",
       "alert_level_kannada": "ಮಧ್ಯಮ ಎಚ್ಚರಿಕೆ",
-      "alert": "MEDIUM ALERT: 8 crimes in Dakshina Kannada"
+      "alert": "MEDIUM ALERT: 8 crimes in Dakshina Kannada. Increased patrolling recommended."
     },
     {
       "DistrictID": 7,
@@ -684,7 +762,7 @@
       "crime_count": 8,
       "alert_level": "MEDIUM",
       "alert_level_kannada": "ಮಧ್ಯಮ ಎಚ್ಚರಿಕೆ",
-      "alert": "MEDIUM ALERT: 8 crimes in Kalaburagi"
+      "alert": "MEDIUM ALERT: 8 crimes in Kalaburagi. Increased patrolling recommended."
     },
     {
       "DistrictID": 12,
@@ -693,7 +771,7 @@
       "crime_count": 8,
       "alert_level": "MEDIUM",
       "alert_level_kannada": "ಮಧ್ಯಮ ಎಚ್ಚರಿಕೆ",
-      "alert": "MEDIUM ALERT: 8 crimes in Raichur"
+      "alert": "MEDIUM ALERT: 8 crimes in Raichur. Increased patrolling recommended."
     },
     {
       "DistrictID": 6,
@@ -702,7 +780,7 @@
       "crime_count": 7,
       "alert_level": "LOW",
       "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ",
-      "alert": "LOW ALERT: 7 crimes in Belagavi"
+      "alert": "LOW ALERT: 7 crimes in Belagavi. Monitor closely."
     },
     {
       "DistrictID": 8,
@@ -711,7 +789,7 @@
       "crime_count": 7,
       "alert_level": "LOW",
       "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ",
-      "alert": "LOW ALERT: 7 crimes in Tumakuru"
+      "alert": "LOW ALERT: 7 crimes in Tumakuru. Monitor closely."
     },
     {
       "DistrictID": 9,
@@ -720,7 +798,7 @@
       "crime_count": 7,
       "alert_level": "LOW",
       "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ",
-      "alert": "LOW ALERT: 7 crimes in Shivamogga"
+      "alert": "LOW ALERT: 7 crimes in Shivamogga. Monitor closely."
     },
     {
       "DistrictID": 10,
@@ -729,7 +807,7 @@
       "crime_count": 7,
       "alert_level": "LOW",
       "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ",
-      "alert": "LOW ALERT: 7 crimes in Vijayapura"
+      "alert": "LOW ALERT: 7 crimes in Vijayapura. Monitor closely."
     },
     {
       "DistrictID": 11,
@@ -738,7 +816,7 @@
       "crime_count": 7,
       "alert_level": "LOW",
       "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ",
-      "alert": "LOW ALERT: 7 crimes in Ballari"
+      "alert": "LOW ALERT: 7 crimes in Ballari. Monitor closely."
     },
     {
       "DistrictID": 5,
@@ -747,7 +825,7 @@
       "crime_count": 6,
       "alert_level": "LOW",
       "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ",
-      "alert": "LOW ALERT: 6 crimes in Hubballi-Dharwad"
+      "alert": "LOW ALERT: 6 crimes in Hubballi-Dharwad. Monitor closely."
     },
     {
       "DistrictID": 2,
@@ -756,21 +834,66 @@
       "crime_count": 5,
       "alert_level": "LOW",
       "alert_level_kannada": "ಕಡಿಮೆ ಎಚ್ಚರಿಕೆ",
-      "alert": "LOW ALERT: 5 crimes in Bengaluru Rural"
+      "alert": "LOW ALERT: 5 crimes in Bengaluru Rural. Monitor closely."
     }
   ],
-  "financial_crime_note": {
-    "status": "Transaction data NOT included in current scope",
-    "team_action_required": "Confirm whether to add fake transaction fields or skip",
-    "economic_loss_data_available": true,
-    "fields_available": [
-      "economic_loss",
-      "financial_crime_details.payment_mode",
-      "financial_crime_details.estimated_transaction_amount"
-    ]
-  },
   "ncrb_comparison": {
-    "source": "NCRB Crime in India 2022 - Karnataka",
-    "total_karnataka_crimes_2022": 180742
+    "source": "NCRB Crime in India 2022 Report - Karnataka",
+    "total_karnataka_crimes_2022": 180742,
+    "district_data": {
+      "Bengaluru Urban": {
+        "total": 46187,
+        "rate": 385
+      },
+      "Bengaluru Rural": {
+        "total": 6992,
+        "rate": 70
+      },
+      "Mysuru": {
+        "total": 8708,
+        "rate": 295
+      },
+      "Dakshina Kannada": {
+        "total": 4743,
+        "rate": 215
+      },
+      "Hubballi-Dharwad": {
+        "total": 4874,
+        "rate": 256
+      },
+      "Belagavi": {
+        "total": 8154,
+        "rate": 167
+      },
+      "Kalaburagi": {
+        "total": 5662,
+        "rate": 209
+      },
+      "Tumakuru": {
+        "total": 7044,
+        "rate": 261
+      },
+      "Shivamogga": {
+        "total": 6091,
+        "rate": 358
+      },
+      "Vijayapura": {
+        "total": 4296,
+        "rate": 195
+      },
+      "Ballari": {
+        "total": 3226,
+        "rate": 115
+      },
+      "Raichur": {
+        "total": 3925,
+        "rate": 206
+      }
+    }
+  },
+  "financial_crime_note": {
+    "status": "Economic loss data available. Transaction trails not in scope.",
+    "economic_loss_data": true,
+    "transaction_trails": false
   }
 }
