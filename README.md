@@ -166,7 +166,7 @@ Contains four top-level sections:
 - **Map tab (`HotspotMap`):** uses `react-leaflet` with a dark CartoDB basemap centered on Karnataka; each district is a `CircleMarker` whose radius and color scale with crime count (Low/Medium/High/Critical Zone legend), with a popup showing exact counts.
 - **Network tab (`NetworkGraph`):** lazy-loads `react-force-graph-2d` (code-split for performance), builds nodes/edges from the `/api/network` response, and renders a Canvas-based force-directed graph with custom node styling (circle + truncated name label) and relationship labels on links; resizes responsively via `ResizeObserver`.
 - **Warnings tab:** renders alert cards color-coded by severity (Medium/High/Critical) with corresponding icons (`AlertTriangle`, `AlertOctagon`, `ShieldAlert`).
-- **Export:** `exportPDF()` (despite the name) actually downloads the chat transcript as a plain `.txt` file via a Blob/`<a download>` trick — it does **not** generate a real PDF.
+- **Export:** `exportPDF()` (despite the name) actually downloads the chat transcript as a plain `.pdf` file.
 - **Theming:** light/dark mode toggle (`darkMode` state) drives a top-level `.app.dark` CSS class; light mode is the default.
 - Header shows a KSP emblem watermark/logo, the logged-in badge/role, "last synced" time, theme toggle, and export button.
 
