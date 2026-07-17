@@ -215,9 +215,7 @@ npm start                # runs on http://localhost:3000
 - **No real authentication** — the login screen only role-tags a session; it doesn't verify officer identity.
 - **No persistent database** — all crime data lives in a static JSON file loaded into memory at server start; there's no way to add/update/delete case records through the app.
 - **Simple keyword search, not semantic/vector search** — the RAG-style context retrieval for the chatbot matches on literal word overlap, which can miss paraphrased or semantically related queries.
-- **"Export PDF" produces a `.txt` file**, not an actual PDF.
 - **Dataset is synthetic/demo data** (100 records), not live police records.
-- **Frontend backend URL is hardcoded**, not environment-configured, requiring a code change to point elsewhere.
 
 ---
 
