@@ -1,230 +1,267 @@
 # KSP CrimeBot 🚔
 
-An AI-powered crime intelligence assistant for the Karnataka State Police (KSP) — combining a conversational chatbot (in English & Kannada), crime statistics dashboards, a geographic hotspot map, a criminal-network graph, and an early-warning alert system, all built on a synthetic crime dataset.
+**An AI-powered, bilingual crime-intelligence assistant built for Karnataka State Police** — combining a conversational chatbot (English & Kannada, text and voice), a live analytics dashboard, a geographic hotspot map, a risk-aware criminal-network graph, and an automated early-warning system, all running on a rich synthetic crime dataset.
 
-**Live app:** https://ksp-crimebot.vercel.app
+- **Repository:** https://github.com/likith007156/ksp-crimebot
+- **Live app (Vercel):** https://ksp-crimebot-3ngz3rvcn-likith-kumars-projects-7537be6b.vercel.app
+- **Live app (Zoho Catalyst):** https://ksp-crimebot-vgzydfhk.onslate.in
 
-**Repository:** https://github.com/likith007156/ksp-crimebot
+> ⚠️ Built on **synthetic, illustrative crime data** (100 sample cases across 12 Karnataka districts) for the KSP Datathon 2026 — not real police records.
 
-> ⚠️ **Note:** This is a demo/prototype system built on **synthetic, illustrative crime data** (100 sample cases) — not real KSP case records.
+Both live links serve the **same React application**, deployed to two different static hosts (Vercel and Zoho Catalyst's web-client hosting). Both currently call the same Flask API on Render.
 
 ---
 
-## 1. What the Project Does
+## 1. What the project does
 
-KSP CrimeBot is a role-based web dashboard for police personnel that lets a user:
+KSP CrimeBot is a role-gated dashboard that lets police personnel:
 
-- **Chat** with an AI crime analyst (LLM-powered) about cases, suspects, modus operandi, and trends — in English or Kannada, with responses automatically matching the query's language.
-- **View aggregate statistics** — total cases, arrests, cases under investigation, and breakdowns by crime type and district (animated bar charts).
-- **Explore a hotspot map** of Karnataka — districts are plotted with color-coded, size-scaled circles based on crime density.
-- **Visualize a criminal network graph** — a force-directed graph showing associations (co-accused, gang members, etc.) between known offenders.
-- **See an early-warning panel** — automatically generated alerts for districts with unusually high crime counts.
-- **Export the chat conversation** as a text file.
+1. **Chat with an AI crime analyst** — in **English or Kannada**, by typing or speaking. Answers are grounded in the case database and always cite Case IDs.
+2. **Talk to it** — record a question by voice; it's transcribed, answered, and can be read back aloud (Kannada/English text-to-speech).
+3. View a **live stats dashboard** — animated counters, cases by type/district, and a **High-Risk Cases** table driven by a per-case computed risk score.
+4. Explore a **Karnataka hotspot map** — districts plotted with colour/size scaled to crime density.
+5. Explore a **criminal network graph** (auto-laid-out with ReactFlow + dagre) where node colour reflects each person's highest tracked **risk level**, with click-through detail.
+6. See an **early-warning panel** for districts with unusually high case counts.
+7. **Export** the current chat as a formatted, letterhead-styled **PDF report** (Karnataka State Police / SCRB style), including correctly shaped Kannada text.
 
-Access is gated behind a role-based login screen (no real authentication/backend user database — see Section 5), and the UI adapts based on the selected role.
+Access is gated by a **role + badge-number login** (Investigator, Analyst, Supervisor, Policymaker) — see Section 6 for exactly how this works today.
 
 ---
 
 ## 2. Architecture
 
 ```
-┌─────────────────────────┐        HTTPS/JSON         ┌───────────────────────────┐
-│   React Frontend (SPA)  │ ────────────────────────▶ │   Flask Backend (REST API)│
-│   Hosted on Vercel      │ ◀──────────────────────── │   Hosted on Render        │
-│   react-app/             │                           │   backend/                │
-└─────────────────────────┘                            └──────────────┬────────────┘
-                                                                      │
-                                                          ┌────────────▼────────────┐
-                                                          │  Groq LLM API             │
-                                                          │  (Llama 3.3 70B Versatile)│
-                                                          └────────────┬────────────┘
-                                                                       │
-                                                          ┌────────────▼────────────┐
-                                                          │  crime_data.json          │
-                                                          │  (100 synthetic records,  │
-                                                          │  network links, lookups)  │
-                                                          └───────────────────────────┘
+                          ┌───────────────────────────┐
+                          │   React Frontend (SPA)    │
+        ┌───────────────▶ │   • Vercel               │◀───────────────┐
+        │                 │   • Zoho Catalyst (onslate.in / catalystserverless.in)
+        │                 └─────────────┬─────────────┘
+        │                               │ HTTPS / JSON (fetch)
+        │                               ▼
+        │                ┌───────────────────────────┐
+        │                │   Flask REST API          │
+        │                │   Render (gunicorn)       │
+        │                │   backend/main.py         │
+        │                └───────┬──────────┬────────┘
+        │                        │          │
+        │           ┌────────────▼───┐  ┌───▼─────────────┐
+        │           │ Groq LLM API   │  │ Sarvam AI       │
+        │           │ Llama 3.3 70B  │  │ speech-to-text /│
+        │           │(chat reasoning)│  │ text-to-speech  │
+        │           └────────────────┘  └─────────────────┘
+        │                        │
+        │           ┌────────────▼───────────────────────┐
+        │           │ crime_data.json (100 cases,        │
+        │           │ criminal_network, lookup tables)   │
+        │           │ + crime_stats / hotspot_zones /    │
+        │           │ offender_profiles (loaded, unused) │
+        │           └────────────────────────────────────┘
+        │
+        │  best-effort logging
+        └───────────────────────────────────────────────┐
+                                                        ▼
+                                          ┌───────────────────────────┐
+                                          │ Zoho Catalyst Data Store  │
+                                          │ (query/response audit log)│
+                                          └───────────────────────────┘
 ```
 
-The repo also contains a second, parallel backend under `functions/ksp_crimebot_function/` written for Zoho Catalyst (serverless functions), with its own copy of the crime data plus precomputed `crime_stats.json`, `hotspot_zones.json`, and `offender_profiles.json`. This appears to be an alternate/earlier deployment target (Catalyst `advancedio`, Python 3.12) alongside the currently-live Render+Vercel deployment.
+A **second, independent backend** exists at `functions/ksp_crimebot_function/` — a Zoho Catalyst serverless Function (Python 3.12, "AdvancedIO" stack). It is an **earlier, smaller fork** of the API (166 lines vs. 671 in the live backend) that calls **Anthropic's Claude API** instead of Groq, and is missing most of the newer endpoints (voice, demographics, risk scores, persons, similar-cases). It does not appear to be the backend actually used by either live frontend today — `FUNCTION_URL` in the React app points at the Render deployment in production. It's best described as a **parallel/legacy serverless implementation**, not the active production path.
 
 ---
 
-## 3. Tech Stack
+## 3. Tech stack
 
 | Layer | Technology |
 |---|---|
-| Frontend framework | React 19 (Create React App / `react-scripts`) |
-| Maps | `react-leaflet` + `leaflet`, CartoDB Dark Matter tile layer |
-| Network graph | `react-force-graph-2d` (Canvas-based force-directed graph, lazy-loaded) |
+| Frontend framework | React 19 (Create React App) |
+| Maps | `react-leaflet` + `leaflet`, CartoDB Positron/Dark Matter tiles |
+| Network graph | `reactflow` + `dagre` (auto-layout), risk-coloured nodes |
+| PDF export | `jspdf`, with a custom-embedded Noto Sans Kannada font rendered via off-screen `<canvas>` for correct Kannada glyph shaping |
 | Icons | `lucide-react` |
-| Frontend hosting | Vercel |
+| Frontend hosting | Vercel **and** Zoho Catalyst (web-client hosting, `zcatalyst-cli-plugin-react`) |
 | Backend framework | Flask + `flask-cors` |
-| LLM provider | Groq API — model `llama-3.3-70b-versatile` |
-| Backend hosting | Render (via Gunicorn, per the `Procfile`) |
-| Data store | Static JSON file (`crime_data.json`) — no database |
-| Alt. backend | Zoho Catalyst serverless function (Python 3.12) — parallel implementation |
+| Chat LLM | Groq API — `llama-3.3-70b-versatile`, with a same-model retry on rate-limit |
+| Voice (STT/TTS) | Sarvam AI (`saaras:v3` speech-to-text, `text-to-speech` with Kannada/English speakers) |
+| Backend hosting | Render (Gunicorn, per `Procfile`) |
+| Audit logging | Zoho Catalyst Data Store (best-effort, non-blocking) |
+| Data store | Static JSON files loaded into memory — no database |
+| Legacy backend | Zoho Catalyst Function (Python 3.12) using Anthropic Claude — parallel/older implementation |
 
 ---
 
-## 4. Repository Structure
+## 4. Repository structure
 
 ```
 ksp-crimebot/
-├── backend/                              # Flask REST API (deployed on Render)
-│   ├── main.py                           # All API routes + Groq LLM logic
-│   ├── crime_data.json                   # 100 synthetic crime records + network + lookups
-│   ├── fix_dataset.py / fix_dataset2.py  # One-off scripts used to clean/augment the dataset
-│   ├── requirements.txt                  # groq, flask, flask-cors, gunicorn
-│   └── Procfile                          # gunicorn start command for Render
+├── backend/                          # Flask REST API (deployed on Render)
+│   ├── main.py                       # All routes: chat, stats, voice, risk, demographics…
+│   ├── crime_data.json               # 100 cases + criminal_network + lookup_tables + ncrb_statistics
+│   ├── crime_stats.json              # Loaded at startup but currently unused by any route
+│   ├── hotspot_zones.json            # Loaded at startup but currently unused by any route
+│   ├── offender_profiles.json        # Loaded at startup but currently unused by any route
+│   ├── fix_dataset.py / fix_dataset2.py   # One-off dataset-cleanup scripts
+│   ├── requirements.txt              # groq, flask, flask-cors, gunicorn, requests
+│   └── Procfile                      # gunicorn start command for Render
 │
-├── functions/ksp_crimebot_function/      # Parallel Zoho Catalyst serverless function
-│   ├── main.py
-│   ├── catalyst-config.json
-│   ├── crime_data.json
-│   ├── crime_stats.json
-│   ├── hotspot_zones.json
-│   ├── offender_profiles.json
+├── functions/ksp_crimebot_function/  # Legacy/parallel Zoho Catalyst serverless function
+│   ├── main.py                       # Smaller, Anthropic-based fork of the API (166 lines)
+│   ├── catalyst-config.json          # Python 3.12, AdvancedIO stack
+│   ├── crime_data.json / crime_stats.json / hotspot_zones.json / offender_profiles.json
 │   └── requirements.txt
 │
-├── react-app/                            # React frontend (deployed on Vercel)
-│   ├── public/                           # ksp-emblem.png, bot-avatar.jpg, favicon, manifest
+├── react-app/                        # React frontend (deployed to Vercel + Zoho Catalyst)
+│   ├── public/                       # ksp-emblem.png, favicon, manifest
 │   ├── src/
-│   │   ├── App.js                        # Main app: tabs, chat, stats, map, network, warnings
-│   │   ├── App.css                       # All styling (light/dark theme)
-│   │   ├── LoginScreen.js                # Role-based badge-number login gate
-│   │   ├── index.js / index.css          # React entry point
-│   │   └── reportWebVitals.js / setupTests.js / App.test.js
-│   ├── package.json                      # React 19, leaflet, force-graph, lucide-react
-│   └── README.md                         # Default Create React App README
+│   │   ├── App.js                    # Main app: 5 tabs, chat, voice, PDF export, risk UI (~1,630 lines)
+│   │   ├── App.css
+│   │   ├── LoginScreen.js            # Fixed badge → role whitelist login gate
+│   │   ├── notoSansKannadaFont.js    # Base64-embedded Kannada font for PDF export (~836 KB)
+│   │   └── index.js / index.css / reportWebVitals.js / setupTests.js / App.test.js
+│   ├── package.json                  # React 19, reactflow, dagre, jspdf, leaflet, lucide-react…
+│   └── README.md                     # Default Create React App README
 │
-└── vercel-trigger.txt                    # Empty placeholder file used to force Vercel redeploys
+└── vercel-trigger.txt                # Empty placeholder file used to force Vercel redeploys
 ```
 
 ---
 
-## 5. Authentication Model (Important Caveat)
+## 5. Feature detail
 
-Login is **client-side only** — there is no backend user database, password, or session token:
+### Bilingual, voice-enabled chat
+- Text queries in English or Kannada are answered in the **same language as the question**, detected via Unicode range matching on the query text (not the UI toggle).
+- **Voice input**: the browser records via `MediaRecorder` (first supported of `audio/webm` → `ogg` → `wav` → `mp4`), uploads to `/api/transcribe`, which forwards to **Sarvam AI's `saaras:v3`** speech-to-text model.
+- **Voice output**: assistant replies can be sent to `/api/synthesize`, which calls **Sarvam AI text-to-speech** (`meera` voice for Kannada, `arvind` for English) and plays the returned audio.
+- If the primary Groq model (`llama-3.3-70b-versatile`) hits a rate limit, the backend retries once (currently retries the **same** model rather than falling back to a smaller one — see Known limitations).
 
-- `LoginScreen.js` presents four roles: **Investigator, Analyst, Supervisor, Policymaker.**
-- The user types any Badge Number / Officer ID.
-- A small in-memory `Map` (`badgeRoleRegistry`), seeded with a few example badges (e.g. `PM-4001` → Policymaker), tracks which role a badge has been used with during that browser session only — it resets on page reload and is never sent to the server.
-- Badge prefixes (`INV`, `ANA`, `SUP`, `PM`/`POLICY`) are used to sanity-check that the badge format matches the selected role.
-- Once "authenticated," the app simply stores `{ role, badgeNumber }` in React state and uses it to:
-  - Show a reduced tab set for **Policymaker** (only "Stats" and "Map" — no raw case chat or network data).
-  - Show the full tab set (Chat, Stats, Map, Network, Warnings) for the other three roles.
+### Risk scoring & high-risk cases
+- Each case carries a computed `risk_assessment` (`risk_score` 0–100, `risk_level`). The Stats tab renders a **High-Risk Cases table** (score ≥ 70) sorted descending, with colour-coded level badges.
+- `/api/persons` aggregates **per-accused** risk across all their cases (their single highest risk level/score), which is fed into the Network tab so **graph nodes are coloured by the person's own risk profile**, not just case-level severity.
 
-This is a **UI/UX role-simulation layer, not a security mechanism** — any badge number will "work," and there's no verification against a real KSP personnel database.
+### Criminal network graph
+- Built with **ReactFlow**, laid out automatically with **dagre** (rather than a manual force simulation), so the graph reflows cleanly regardless of node count. Clicking a node shows that person's aggregated risk data and linked case IDs.
+
+### PDF export (real PDF, not plain text)
+- Generates a multi-page, **letterhead-styled report** — Karnataka State Police / State Crime Records Bureau header, a red "CONFIDENTIAL" tag, page footers with page numbers, and a generation timestamp.
+- **Kannada text is rasterised**: jsPDF's native text renderer doesn't apply the complex-script shaping Kannada needs (conjuncts, vowel signs), so any line containing Kannada characters is drawn to an off-screen `<canvas>` using an embedded Noto Sans Kannada font and inserted as an image; English lines render as normal PDF text. This keeps the file both correctly rendered and reasonably sized.
+
+### Dataset richness
+Each of the 100 case records includes, beyond the core case fields (Case ID, IPC Act/Section, district, station, gravity, status): `risk_assessment`, `accused_demographics` (age group, gender, income bracket, risk level), `victim_demographics`, `socio_economic_profile`, and — for the 21 cases flagged as financial crimes — a `financial_crime_details` block with a step-by-step **money-trail transaction list** (accounts, banks, amounts, timestamps).
 
 ---
 
-## 6. Backend — API Reference (`backend/main.py`)
+## 6. Authentication model
 
-**Base URL** (as hardcoded in the frontend): `https://ksp-crimebot-backend.onrender.com`
+Login now uses a **fixed, hardcoded whitelist** (`VALID_CREDENTIALS` in `LoginScreen.js`) mapping specific badge numbers to specific roles:
+
+| Badge | Role |
+|---|---|
+| `INV-1001`, `KSP-1234` | Investigator |
+| `ANA-2001` | Analyst |
+| `SUP-3001` | Supervisor |
+| `PM-4001` | Policymaker |
+
+Entering an unlisted badge is rejected outright; entering a listed badge under the *wrong* selected role gives a specific correction message. This is a step up from the earlier "any badge number works" behaviour, but it's still a **client-side whitelist baked into the bundle** — there's no backend credential store, password, or session token, so it should be treated as a UI role-gate, not real officer authentication.
+
+---
+
+## 7. Backend — API reference (`backend/main.py`)
+
+Base URL: `https://ksp-crimebot-backend.onrender.com` (or `http://localhost:5000` when the frontend itself is running on `localhost`).
 
 | Method | Endpoint | Description |
 |---|---|---|
-| `POST` | `/api/chat` | Main chatbot endpoint. Body: `{ message, history }`. Returns AI response + relevant case IDs + network connections + top hotspots + warnings. |
-| `GET` | `/api/stats` | Aggregate counts by crime type, district, and case status. |
-| `GET` | `/api/network` | Full criminal-network link list (`from`, `to`, `relationship`, `cases`). |
-| `GET` | `/api/repeat-offenders` | Accused persons appearing in more than one case, with case counts. |
-| `GET` | `/api/hotspots` | Districts sorted by crime count (descending). |
-| `GET` | `/api/warnings` | Auto-generated high-alert warnings for districts with ≥ 3 crimes. |
-| `GET` | `/api/trends` | Monthly crime counts (from `date`/`CrimeRegisteredDate`, grouped `YYYY-MM`). |
-| `GET` | `/health` | Simple health check (`{status: "ok"}`). |
+| `POST` | `/api/chat` | Main chatbot endpoint. Cites Case IDs, matches query language, logs to Catalyst Data Store. |
+| `GET` | `/api/stats` | Case counts by type, district, status. |
+| `GET` | `/api/network` | Full criminal-network link list. |
+| `GET` | `/api/repeat-offenders` | Accused appearing in 2+ cases. |
+| `GET` | `/api/hotspots` | Districts sorted by crime count. |
+| `GET` | `/api/warnings` | Districts with ≥ 3 crimes. |
+| `GET` | `/api/trends` | Monthly case counts. |
+| `GET` | `/api/similar-cases?type=&modus=` | Cases ranked by type match + modus-operandi keyword overlap. |
+| `GET` | `/api/persons` | Per-accused aggregated risk level/score and case list. |
+| `GET` | `/api/demographics` | Victim/accused demographic breakdowns (fetched by the frontend but not currently displayed). |
+| `GET` | `/api/risk-scores` | Risk-level distribution + top 10 high-risk cases. |
+| `POST` | `/api/synthesize` | Text → speech via Sarvam AI. |
+| `POST` | `/api/transcribe` | Speech → text via Sarvam AI. |
+| `GET` | `/health`, `/api/health` | Health check. |
 
-### How `/api/chat` Works (Retrieval-Augmented Generation, No Vector DB)
-
-1. `search_crime_data(query)` — a simple keyword/substring search across each crime's type, category, location, district, status, modus operandi, brief facts, and accused names. If nothing matches, it falls back to the first 3 records.
-2. `get_criminal_network(name)` — if a word in the user's message matches an accused person's first name, their network connections are pulled in.
-3. `build_context(...)` — formats the matched cases and network links into a structured text block.
-4. The backend also always computes repeat offenders, hotspots, and early warnings across the entire dataset and injects them into the system prompt.
-
-All of this is assembled into a system prompt instructing the model to act as "KSP CrimeBot," cite Case IDs, reply in the same language as the question (full Kannada script for Kannada queries), prefix urgent matters with `ALERT:`, and never fabricate details.
-
-The full conversation (`history` + new message) is sent to Groq's `llama-3.3-70b-versatile` model (`temperature=0.3`, `max_tokens=1000`) and the reply is returned to the frontend along with metadata (matched case IDs, connections, top 3 hotspots, top 2 warnings).
-
-### Dataset (`crime_data.json`)
-
-Contains four top-level sections:
-
-- **`crimes`** — 100 records, each with a rich schema (police-style fields such as `CaseMasterID`, `CrimeNo`, `PoliceStationName`, `GravityOffence`, `IPC` Act/Section, geo-coordinates, bilingual English/Kannada fields, `BriefFacts`, `modus_operandi`, `economic_loss`, `socio_economic`, accused list, victim, and status).
-- **`criminal_network`** — pairwise relationships between accused individuals (`from`, `to`, `relationship` e.g. "Co-accused"/"Gang members", associated `cases`).
-- **`lookup_tables`** — reference/lookup data (e.g. category or code mappings).
-- **`ncrb_statistics`** — reference statistics, likely modeled after NCRB (National Crime Records Bureau) style aggregates.
+### How `/api/chat` works
+1. **Total-count bypass** — if the question matches a "how many cases/crimes" pattern (English or Kannada), the full dataset is handed to the model so it reports the correct total instead of guessing from a keyword-limited subset.
+2. **Case-ID exact match** — if the query contains a literal Case ID, that single case is returned.
+3. **Keyword search** — otherwise, cases are scored by word overlap across type, category, location, district, status, modus operandi, brief facts, and accused names (top 5, or first 3 as a fallback).
+4. **Network linking** — if a word in the query matches an accused person's first name, their network connections are pulled in too.
+5. Repeat offenders, hotspots, and warnings are computed over the **entire** dataset and injected into the system prompt regardless of the keyword match, so the model always has global counts available.
+6. **Language detection** is done on the query itself (Kannada Unicode range check), not the UI's language toggle, so the model reliably answers in the language actually asked.
+7. Sent to Groq's `llama-3.3-70b-versatile` (`temperature=0.3`, `max_tokens=1000`). On a rate-limit error the code retries — currently the **same** model again (see Known limitations).
+8. The exchange is logged (best-effort) to a Zoho Catalyst Data Store table for audit purposes.
 
 ---
 
-## 7. Frontend — How It's Built (`react-app/src/App.js`)
+## 8. Deployment
 
-- Single-page app, all state managed in the top-level `App` component with `useState`/`useEffect` (no Redux/Context).
-- Five tabs: **Chat, Stats, Map, Network, Warnings** (Policymaker role only sees Stats + Map).
-- On load, the app fetches `/api/stats`, `/api/network`, `/api/hotspots`, and `/api/warnings` in parallel and stores a "last synced" timestamp.
-- **Chat tab:** maintains a message list (with a Kannada-greeting welcome message), sends the full conversation history with each new message to `/api/chat`, and renders returned Case-ID "tags" under bot replies. Includes an onboarding hint suggesting example queries and quick-fill "suggested query" buttons.
-- **Stats tab:** four animated counters (Total Cases, Network Links, Arrested, Under Investigation) using a custom `useCounter` hook, plus horizontal bar charts (By Crime Type, By District) with entrance animations and percentage gridlines.
-- **Map tab (`HotspotMap`):** uses `react-leaflet` with a dark CartoDB basemap centered on Karnataka; each district is a `CircleMarker` whose radius and color scale with crime count (Low/Medium/High/Critical Zone legend), with a popup showing exact counts.
-- **Network tab (`NetworkGraph`):** lazy-loads `react-force-graph-2d` (code-split for performance), builds nodes/edges from the `/api/network` response, and renders a Canvas-based force-directed graph with custom node styling (circle + truncated name label) and relationship labels on links; resizes responsively via `ResizeObserver`.
-- **Warnings tab:** renders alert cards color-coded by severity (Medium/High/Critical) with corresponding icons (`AlertTriangle`, `AlertOctagon`, `ShieldAlert`).
-- **Export:** `exportPDF()` (despite the name) actually downloads the chat transcript as a plain `.pdf` file.
-- **Theming:** light/dark mode toggle (`darkMode` state) drives a top-level `.app.dark` CSS class; light mode is the default.
-- Header shows a KSP emblem watermark/logo, the logged-in badge/role, "last synced" time, theme toggle, and export button.
+- **Frontend**: the same React build is deployed to **two** static hosts:
+  - **Vercel**, auto-deployed from `react-app/` (`vercel-trigger.txt` is an empty file kept in the repo purely to force redeploys via trivial commits).
+  - **Zoho Catalyst** web-client hosting, via `zcatalyst-cli-plugin-react`, reachable at the custom domain `onslate.in` and at a default `*.development.catalystserverless.in` address.
+- **Backend**: Render, via the `Procfile` (`gunicorn main:app --bind 0.0.0.0:$PORT`).
+- **CORS** on the Flask backend explicitly allow-lists all three known frontend origins (Vercel, the Catalyst custom domain, the Catalyst dev domain) plus `localhost:3000`.
+- **Audit logging**: successful and failed chat exchanges are posted to a **Zoho Catalyst Data Store** table (`log_to_catalyst`), independent of which frontend the request came from.
+- A separate, older **Zoho Catalyst Function** (`functions/ksp_crimebot_function/`) exists as a parallel serverless backend candidate but is not wired up to either live frontend.
+
+### Environment variables (backend)
+| Variable | Purpose |
+|---|---|
+| `GROQ_API_KEY` | Auth for the Groq chat LLM |
+| `SARVAM_API_KEY` | Auth for Sarvam AI speech-to-text / text-to-speech |
+| `CATALYST_TOKEN` | OAuth token for posting audit logs to Zoho Catalyst Data Store |
 
 ---
 
-## 8. Running It Locally
+## 9. Known limitations
+
+- **Not real authentication** — badge/role checking is a hardcoded whitelist shipped in the frontend bundle, not a verified officer identity system.
+- **No persistent database / no write path** — all case data is static JSON loaded into memory at process start; there's no way to add, edit, or delete cases through the app itself.
+- **Catalyst audit logging is currently broken**: `log_to_catalyst()` calls `requests.post(...)`, but `requests` is never imported at module scope in `backend/main.py` (it's only imported locally inside the `/api/synthesize` and `/api/transcribe` handlers). Every call to `log_to_catalyst` will raise a `NameError`, which is silently caught and printed — so no audit rows are actually being written despite `requests` being present in `requirements.txt`. A one-line `import requests` at the top of `main.py` would fix this.
+- **Three JSON files loaded but unused** — `crime_stats.json`, `hotspot_zones.json`, and `offender_profiles.json` are read into memory on startup but never referenced by any route; they add load time/memory with no current benefit.
+- **Rate-limit fallback doesn't actually fall back** — on a Groq 429, the code retries `llama-3.3-70b-versatile` again rather than switching to a smaller/faster model as the comment ("Falling back to Llama 3.1 8B…") implies.
+- **`/api/demographics` is fetched but never rendered** — the frontend calls it and stores the result in state, but no UI currently displays it.
+- **Simple keyword search**, not semantic/vector search — retrieval matches on literal word overlap and can miss paraphrased or semantically related queries.
+- **The Catalyst serverless Function is a stale fork** — it targets Anthropic's Claude API, is missing most newer endpoints (voice, risk, demographics, persons, similar-cases), and isn't the backend either live frontend actually calls.
+- **Dataset is synthetic/demo data** (100 records), not live police records.
+- **Production backend URL is still a hardcoded literal** for non-localhost origins (`https://ksp-crimebot-backend.onrender.com`), rather than an environment variable — it's dynamic for local dev only.
+
+---
+
+## 10. Running it locally
 
 ### Backend
-
 ```bash
 cd backend
 pip install -r requirements.txt
 export GROQ_API_KEY=your_groq_api_key_here
+export SARVAM_API_KEY=your_sarvam_api_key_here      # optional, needed for voice
+export CATALYST_TOKEN=your_catalyst_oauth_token      # optional, needed for audit logging
 python main.py          # runs on http://localhost:5000 (debug mode)
 ```
 
 ### Frontend
-
 ```bash
 cd react-app
 npm install
 npm start                # runs on http://localhost:3000
 ```
-
-> **Note:** `App.js` currently hardcodes `FUNCTION_URL` to the deployed Render backend (`https://ksp-crimebot-backend.onrender.com`). To point the frontend at your local Flask server, change `FUNCTION_URL` in `src/App.js` to `http://localhost:5000`.
-
-### Environment Variables
-
-| Variable | Where | Purpose |
-|---|---|---|
-| `GROQ_API_KEY` | Backend (Render / local) | Auth key for the Groq LLM API |
+The frontend automatically points at `http://localhost:5000` when it detects it's running on `localhost`/`127.0.0.1`, and at the Render URL otherwise — no manual edit needed for local development.
 
 ---
 
-## 9. Deployment
-
-- **Frontend:** Vercel, auto-deployed from the `react-app/` directory (build via `react-scripts build`). `vercel-trigger.txt` is an empty file kept in the repo purely to force redeploys via trivial commits.
-- **Backend:** Render, using the `Procfile` (`gunicorn main:app --bind 0.0.0.0:$PORT`) to serve the Flask app in production.
-- CORS on the backend is explicitly restricted to `https://ksp-crimebot.vercel.app` and `http://localhost:3000`.
-- An alternate serverless deployment path exists for Zoho Catalyst (`functions/ksp_crimebot_function/`), configured for a Python 3.12 "advancedio" function — this looks like a secondary/experimental hosting option rather than the primary live path.
-
----
-
-## 10. Known Limitations
-
-- **No real authentication** — the login screen only role-tags a session; it doesn't verify officer identity.
-- **No persistent database** — all crime data lives in a static JSON file loaded into memory at server start; there's no way to add/update/delete case records through the app.
-- **Simple keyword search, not semantic/vector search** — the RAG-style context retrieval for the chatbot matches on literal word overlap, which can miss paraphrased or semantically related queries.
-- **Dataset is synthetic/demo data** (100 records), not live police records.
-
----
-
-## 11. Suggested Badge Numbers for Testing the Login (From the Pre-Seeded Registry)
+## 11. Suggested badge numbers for testing the login
 
 | Badge | Role |
 |---|---|
 | `INV-1001` | Investigator |
+| `KSP-1234` | Investigator |
 | `ANA-2001` | Analyst |
 | `SUP-3001` | Supervisor |
 | `PM-4001` | Policymaker |
-| `KSP-1234` | Investigator |
+
+Any badge not in this list is rejected; a listed badge entered under the wrong role selection prompts you to switch to its correct role.
