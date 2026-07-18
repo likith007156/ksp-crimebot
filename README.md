@@ -159,7 +159,7 @@ Login now uses a **fixed, hardcoded whitelist** (`VALID_CREDENTIALS` in `LoginSc
 | `INV-1001`, `KSP-1234` | Investigator |
 | `ANA-2001` | Analyst |
 | `SUP-3001` | Supervisor |
-| `PM-4001` | Policymaker |
+| `PM-4001` | Policemaker |
 
 Entering an unlisted badge is rejected outright; entering a listed badge under the *wrong* selected role gives a specific correction message. This is a step up from the earlier "any badge number works" behaviour, but it's still a **client-side whitelist baked into the bundle** — there's no backend credential store, password, or session token, so it should be treated as a UI role-gate, not real officer authentication.
 
@@ -262,6 +262,6 @@ The frontend automatically points at `http://localhost:5000` when it detects it'
 | `KSP-1234` | Investigator |
 | `ANA-2001` | Analyst |
 | `SUP-3001` | Supervisor |
-| `PM-4001` | Policymaker |
+| `PM-4001` | Policemaker |
 
 Any badge not in this list is rejected; a listed badge entered under the wrong role selection prompts you to switch to its correct role.
